@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Axios学习02-跨域通信 - 倪子铭 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://github.com/niziming/niziming.github.io/blob/master/article/Axios学习02-跨域通信/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Axios" title="Axios">Axios</a>
+                            
+                              <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
+                            
+                        </div>
+                        <h1>Axios学习02-跨域通信</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 倪子铭 on
+                            2019-08-26
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">倪子铭</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="vue学习记录">Vue学习记录</h1>
+<p>这边博客为自己学习vue的记录.开始篇幅较大,如果基础好的同学可以直接点击vue内容开始浏览.</p>
+<h2 id="使用-axios-实现异步通信">使用 Axios 实现异步通信</h2>
+<h3 id="什么是-axios">什么是 Axios</h3>
+<p>Axios 是一个开源的可以用在浏览器端和 NodeJS 的异步通信框架，她的主要作用就是实现 AJAX 异步通信，其功能特点如下：</p>
+<h2 id="测试数据源">测试数据源</h2>
+<p>我在自己的阿里ECS上搭建了一个tomcat的web项目:data.json做为数据测试源</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"广州千锋"</span>,</span><br><span class="line">  <span class="attr">"url"</span>: <span class="string">"http://www.funtl.com"</span>,</span><br><span class="line">  <span class="attr">"page"</span>: <span class="number">88</span>,</span><br><span class="line">  <span class="attr">"isNonProfit"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"address"</span>: &#123;</span><br><span class="line">    <span class="attr">"street"</span>: <span class="string">"元岗路."</span>,</span><br><span class="line">    <span class="attr">"city"</span>: <span class="string">"广东广州"</span>,</span><br><span class="line">    <span class="attr">"country"</span>: <span class="string">"中国"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"links"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"Google"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"http://www.google.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"Baidu"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"http://www.baidu.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"SoSo"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"http://www.SoSo.com"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="开始使用axios请求datajson">开始使用axios请求data.json</h2>
+<h3 id="mainjs">main.js</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'../node_modules/axios'</span></span><br><span class="line"><span class="comment">// 安装路由</span></span><br><span class="line">Vue.prototype.axios = axios;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  <span class="comment">// 启用路由</span></span><br><span class="line">  router,</span><br><span class="line">  axios,</span><br><span class="line">  <span class="comment">// 启用 ElementUI</span></span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="路由配置-indexjs">路由配置 index.js</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Login <span class="keyword">from</span> <span class="string">'../views/Login'</span></span><br><span class="line"><span class="comment">//user</span></span><br><span class="line"><span class="keyword">import</span> UserProfile <span class="keyword">from</span> <span class="string">'../views/user/UserProfile'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 登录页</span></span><br><span class="line">      path: <span class="string">'/login'</span>,</span><br><span class="line">      name: <span class="string">'Login'</span>,</span><br><span class="line">      component: Login</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 首页</span></span><br><span class="line">      path: <span class="string">'/main'</span>,</span><br><span class="line">      props:<span class="literal">true</span>,</span><br><span class="line">      name: <span class="string">'Main'</span>,</span><br><span class="line">      component: Main,</span><br><span class="line">      children:[</span><br><span class="line">        &#123;<span class="attr">path</span>:<span class="string">'/user/profile/:id'</span>, <span class="attr">name</span>:<span class="string">'UserProfile'</span>, <span class="attr">component</span>:UserProfile&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="在userprofile组件中发送axios请求">在UserProfile组件中发送axios请求</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"UserProfile"</span>,</span><br><span class="line">  beforeRouteEnter: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"准备进入个人信息页"</span>);</span><br><span class="line">    <span class="comment">// 注意，一定要在 next 中请求，因为该方法调用时 Vue 实例还没有创建，此时无法获取到 this 对象，在这里使用官方提供的回调函数拿到当前实例</span></span><br><span class="line">    next(<span class="function"><span class="params">vm</span> =&gt;</span> &#123;</span><br><span class="line">      vm.getData();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteLeave: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"准备离开个人信息页"</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getData: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.axios(&#123;</span><br><span class="line">        method: <span class="string">'get'</span>,</span><br><span class="line">        url: <span class="string">'http://服务器地址:8080/data.json'</span></span><br><span class="line">      &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">repos</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(repos);</span><br><span class="line">      &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="启动vue-项目">启动Vue 项目</h3>
+<p>控制台输出<code>npm run dev</code>回车,控制台信息输出</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DONE  Compiled successfully in 547ms10:34:51 AM</span><br><span class="line"></span><br><span class="line">I  Your application is running here: http://localhost:8082</span><br></pre></td></tr></table></figure>
+<h3 id="查看控制台信息">查看控制台信息</h3>
+<p>按下<code>F12</code>调出谷歌浏览器的前端调试工具.信息如下</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Access to XMLHttpRequest at 'http://服务器地址:8080/data.json' </span><br><span class="line">from origin 'http://localhost:8082' has been blocked by CORS </span><br><span class="line">policy: No 'Access-Control-Allow-Origin' header is present on </span><br><span class="line">the requested resource.</span><br></pre></td></tr></table></figure>
+<p>发现是跨域问题,因为Vue的项目是在我PC上运行的,而data.json在我的ECS服务器上.所以出现了跨域问题.</p>
+<h2 id="解决方案">解决方案</h2>
+<p>Axios的跨域是怎么处理的呢?</p>
+<p>查看Vue版本信息</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> vue --version</span><br><span class="line">2.9.6</span><br></pre></td></tr></table></figure>
+<h3 id="配置baseurl">配置BaseURL</h3>
+<p>在 main.js 中，配置下 Url 前缀</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'../node_modules/axios'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入 ElementUI</span></span><br><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">'element-ui'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-chalk/index.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 安装路由</span></span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line">Vue.prototype.axios = axios;</span><br><span class="line"><span class="comment">// 安装 ElementUI</span></span><br><span class="line">Vue.use(ElementUI);</span><br><span class="line"></span><br><span class="line">axios.defaults.baseURL = <span class="string">'/api'</span>;</span><br><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/json'</span>;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  <span class="comment">// 启用路由</span></span><br><span class="line">  router,</span><br><span class="line">  axios,</span><br><span class="line">  <span class="comment">// 启用 ElementUI</span></span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>axios.defaults.baseURL = '/api';</code><br>
+这样每次发送请求都会带一个 /api 的前缀</p>
+<p><code>axios.defaults.headers.post['Content-Type'] = 'application/json';</code></p>
+<h3 id="配置代理">配置代理</h3>
+<p>config 文件夹下的 index.js 文件，在 proxyTable 中加上如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  dev: &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Paths</span></span><br><span class="line">    assetsSubDirectory: <span class="string">'static'</span>,</span><br><span class="line">    assetsPublicPath: <span class="string">'/'</span>,</span><br><span class="line">    proxyTable: &#123;</span><br><span class="line">      <span class="string">'/api'</span>:&#123;</span><br><span class="line">        target: <span class="string">"http://116.62.110.99:8080"</span>,</span><br><span class="line">        changeOrigin:<span class="literal">true</span>,</span><br><span class="line">        pathRewrite:&#123;</span><br><span class="line">          <span class="string">'^/api'</span>:<span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="修改请求url">修改请求URL</h3>
+<p>在请求页面中,我的是<code>UserProfile.vue</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  getData: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.axios(&#123;</span><br><span class="line">      method: <span class="string">'get'</span>,</span><br><span class="line">      url: <span class="string">'/data.json'</span></span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">repos</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(repos.data);</span><br><span class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查看结果">查看结果</h3>
+<p>在浏览器中打开界面请求查看控制台信息如下:<br>
+<img src="Access.png" alt=""></p>
+<h3 id="参考资料">参考资料</h3>
+<blockquote>
+<p>Axiso 解决跨域访问<br>
+<a href="https://blog.csdn.net/yuanlaijike/article/details/80522621" target="_blank" rel="noopener">https://blog.csdn.net/yuanlaijike/article/details/80522621</a><br>
+路由钩子与异步请求<br>
+<a href="https://www.funtl.com/zh/vue-router/%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90%E4%B8%8E%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82.html" target="_blank" rel="noopener">https://www.funtl.com/zh/vue-router/路由钩子与异步请求.html</a></p>
+</blockquote>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Docker学习00-Docker是什么/" data-toggle="tooltip" data-placement="top" title="Docker学习00-Docker安装与应用">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Axios学习01-实现异步通信/" data-toggle="tooltip" data-placement="top" title="Axios学习01-实现异步通信">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vue学习记录"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue&#x5B66;&#x4E60;&#x8BB0;&#x5F55;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#使用-axios-实现异步通信"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x4F7F;&#x7528; Axios &#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x901A;&#x4FE1;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#什么是-axios"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x662F; Axios</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#测试数据源"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x6E90;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#开始使用axios请求datajson"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">&#x5F00;&#x59CB;&#x4F7F;&#x7528;axios&#x8BF7;&#x6C42;data.json</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mainjs"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">main.js</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#路由配置-indexjs"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">&#x8DEF;&#x7531;&#x914D;&#x7F6E; index.js</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在userprofile组件中发送axios请求"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">&#x5728;UserProfile&#x7EC4;&#x4EF6;&#x4E2D;&#x53D1;&#x9001;axios&#x8BF7;&#x6C42;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动vue-项目"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">&#x542F;&#x52A8;Vue &#x9879;&#x76EE;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看控制台信息"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">&#x67E5;&#x770B;&#x63A7;&#x5236;&#x53F0;&#x4FE1;&#x606F;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#解决方案"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">&#x89E3;&#x51B3;&#x65B9;&#x6848;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置baseurl"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">&#x914D;&#x7F6E;BaseURL</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置代理"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">&#x914D;&#x7F6E;&#x4EE3;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#修改请求url"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">&#x4FEE;&#x6539;&#x8BF7;&#x6C42;URL</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看结果"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">&#x67E5;&#x770B;&#x7ED3;&#x679C;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#参考资料"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Axios" title="Axios">Axios</a>
+                        
+                          <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 倪子铭</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub 倪子铭</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/niziming">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 倪子铭 2020
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a>
+                    <span style="display: inline-block; margin: 0 5px;"></span>
+                    <i class="fa fa-heart"></i>
+                    re-Ported by <a href="https://www.douban.com/people/80901919/">倪子铭&nbsp;</a>|
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&repo=hexo-theme&type=star&count=true" >
+                    </iframe>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://github.com/niziming/niziming.github.io/blob/master/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://github.com/niziming/niziming.github.io/blob/master/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

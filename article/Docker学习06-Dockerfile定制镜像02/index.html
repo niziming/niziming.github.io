@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Docker学习06-Dockerfile定制镜像02 - 倪子铭 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://github.com/niziming/niziming.github.io/blob/master/article/Docker学习06-Dockerfile定制镜像02/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                              <a class="tag" href="/tags/#Dockerfile" title="Dockerfile">Dockerfile</a>
+                            
+                        </div>
+                        <h1>Docker学习06-Dockerfile定制镜像02</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 倪子铭 on
+                            2019-09-19
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">倪子铭</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="docker学习06-dockerfile定制镜像02">Docker学习06-Dockerfile定制镜像02</h2>
+<ul>
+<li>Docker 停止一个运行的容器<br>
+<code>docker stop &lt;id&gt;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">7db5c8940e5a        tomcat              &quot;catalina.sh run&quot;        29 minutes ago       Up 29 minutes               0.0.0.0:8081-&gt;8080/tcp   dreamy_moore</span><br><span class="line">[root@MyCentOS]~# docker rm 898</span><br><span class="line">898</span><br><span class="line">[root@MyCentOS]~# docker stop 7db</span><br><span class="line">7db</span><br><span class="line">[root@MyCentOS]~#</span><br></pre></td></tr></table></figure>
+<h2 id="自己配置镜像">自己配置镜像</h2>
+<p>这个是用户经常操作的目录所有把文件存放在这里,所有和docker相关的都在里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]~# cd /usr/local</span><br><span class="line">[root@MyCentOS]/usr/local#</span><br><span class="line">[root@MyCentOS]/usr/local# mkdir docker</span><br><span class="line">[root@MyCentOS]/usr/local# cd docker</span><br><span class="line">[root@MyCentOS]/usr/local/docker# mkdir tomcat</span><br><span class="line">[root@MyCentOS]/usr/local/docker# cd tomcat</span><br><span class="line">[root@MyCentOS]/usr/local/docker/tomcat# vi Dockerfile</span><br></pre></td></tr></table></figure>
+<p>这个 Dockerfile 很简单，一共就两行。涉及到了两条指令，FROM 和 RUN</p>
+<h1 id="dockerfile脚本开始">Dockerfile脚本开始</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM tomcat</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.jsp</span><br><span class="line">~                                                                                        </span><br><span class="line">~                                                                                           </span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<h2 id="from指定基础镜像">FROM指定基础镜像</h2>
+<p>所谓定制镜像，那一定是以一个镜像为基础，在其上进行定制。</p>
+<h2 id="run-执行命令">RUN 执行命令</h2>
+<p>RUN执行命令行命令的命令</p>
+<p>所有的Dockerfile第一行都必须是FROM命令,RUN 指令在定制镜像时是最常用的指令之一</p>
+<ul>
+<li>shell格式:<code>RUN</code>就像直接在命令行中输入的命令一样。刚才写的 Dockerfile 中的 RUN 指令就是这种格式。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.jsp</span><br></pre></td></tr></table></figure>
+<ul>
+<li>exec 格式：RUN [“可执行文件”, “参数1”, “参数2”]，这更像是函数调用中的格式</li>
+</ul>
+<p>既然 RUN 就像 Shell 脚本一样可以执行命令，那么我们是否就可以像 Shell 脚本一样把每个命令对应一个 RUN 呢？比如这样：</p>
+<p>Dockerfile 中每一个指令都会建立一层，RUN 也不例外。每一个 RUN 的行为，就和刚才我们手工建立镜像的过程一样：新建立一层，在其上执行这些命令，执行结束后，commit 这一层的修改，构成新的镜像。</p>
+<p>而上面的这种写法，创建了 7 层镜像。这是完全没有意义的，而且很多运行时不需要的东西，都被装进了镜像里，比如编译环境、更新的软件包等等。结果就是产生非常臃肿、非常多层的镜像，不仅仅增加了构建部署的时间，也很容易出错。 这是很多初学 Docker 的人常犯的一个错误。</p>
+<p>Union FS 是有最大层数限制的，比如 AUFS，曾经是最大不得超过 42 层，现在是不得超过 127 层。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM debian:jessie</span><br><span class="line"></span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y gcc libc6-dev make</span><br><span class="line">RUN wget -O redis.tar.gz &quot;http://download.redis.io/releases/redis-3.2.5.tar.gz&quot;</span><br><span class="line">RUN mkdir -p /usr/src/redis</span><br><span class="line">RUN tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1</span><br><span class="line">RUN make -C /usr/src/redis</span><br><span class="line">RUN make -C /usr/src/redis install</span><br></pre></td></tr></table></figure>
+<p>上面的 Dockerfile 正确的写法应该是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">FROM debian:jessie</span><br><span class="line"></span><br><span class="line">RUN buildDeps=&apos;gcc libc6-dev make&apos; \</span><br><span class="line">    &amp;&amp; apt-get update \</span><br><span class="line">    &amp;&amp; apt-get install -y $buildDeps \</span><br><span class="line">    &amp;&amp; wget -O redis.tar.gz &quot;http://download.redis.io/releases/redis-3.2.5.tar.gz&quot; \</span><br><span class="line">    &amp;&amp; mkdir -p /usr/src/redis \</span><br><span class="line">    &amp;&amp; tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \</span><br><span class="line">    &amp;&amp; make -C /usr/src/redis \</span><br><span class="line">    &amp;&amp; make -C /usr/src/redis install \</span><br><span class="line">    &amp;&amp; rm -rf /var/lib/apt/lists/* \</span><br><span class="line">    &amp;&amp; rm redis.tar.gz \</span><br><span class="line">    &amp;&amp; rm -r /usr/src/redis \</span><br><span class="line">    &amp;&amp; apt-get purge -y --auto-remove $buildDeps</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以交互的方式启动一条命令<br>
+<code>~ sudo docker run -it --rm tomcat bash</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker run -it --rm tomcat bash</span><br><span class="line">root@14630cb2f338:/usr/local/tomcat# ls -al</span><br><span class="line">total 160</span><br><span class="line">drwxr-sr-x 1 root staff  4096 Aug 22 00:26 .</span><br><span class="line">drwxrwsr-x 1 root staff  4096 Aug 15 05:20 ..</span><br><span class="line">-rw-r--r-- 1 root root  19534 Aug 14 22:27 BUILDING.txt</span><br><span class="line">-rw-r--r-- 1 root root   5407 Aug 14 22:27 CONTRIBUTING.md</span><br><span class="line">-rw-r--r-- 1 root root  57011 Aug 14 22:27 LICENSE</span><br><span class="line">-rw-r--r-- 1 root root   1726 Aug 14 22:27 NOTICE</span><br><span class="line">-rw-r--r-- 1 root root   3255 Aug 14 22:27 README.md</span><br><span class="line">-rw-r--r-- 1 root root   7139 Aug 14 22:27 RELEASE-NOTES</span><br><span class="line">-rw-r--r-- 1 root root  16262 Aug 14 22:27 RUNNING.txt</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 bin</span><br><span class="line">drwxr-sr-x 2 root root   4096 Aug 14 22:27 conf</span><br><span class="line">drwxr-sr-x 2 root staff  4096 Aug 22 00:26 include</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 lib</span><br><span class="line">drwxrwxrwx 2 root root   4096 Aug 14 22:24 logs</span><br><span class="line">drwxr-sr-x 3 root staff  4096 Aug 22 00:26 native-jni-lib</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 temp</span><br><span class="line">drwxr-xr-x 7 root root   4096 Aug 14 22:24 webapps</span><br><span class="line">drwxrwxrwx 2 root root   4096 Aug 14 22:24 work</span><br><span class="line"></span><br><span class="line">root@14630cb2f338:/usr/local/tomcat# cd webapps/ROOT/</span><br><span class="line">root@14630cb2f338:/usr/local/tomcat/webapps/ROOT# ls</span><br><span class="line">RELEASE-NOTES.txt  bg-button.png  bg-upper.png	tomcat-power.gif  tomcat.png</span><br><span class="line">WEB-INF		   bg-middle.png  favicon.ico	tomcat.css	  tomcat.svg</span><br><span class="line">asf-logo-wide.svg  bg-nav.png	  index.jsp	tomcat.gif</span><br><span class="line">root@14630cb2f338:/usr/local/tomcat/webapps/ROOT#</span><br><span class="line"></span><br><span class="line">root@14630cb2f338:/usr/local/tomcat/webapps/ROOT# pwd</span><br><span class="line">/usr/local/tomcat/webapps/ROOT</span><br></pre></td></tr></table></figure>
+<p>查看脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]/usr/local/docker/tomcat# cat Dockerfile</span><br><span class="line">## Dockerfile脚本开始</span><br><span class="line">FROM tomcat</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html</span><br></pre></td></tr></table></figure>
+<h2 id="构建镜像">构建镜像</h2>
+<ul>
+<li>在 Dockerfile 文件所在目录执行：<br>
+<code>docker build [选项] &lt;上下文路径/URL/-&gt;</code><br>
+<code>docker build -t &lt;name&gt; .</code><br>
+<code>docker build -t &lt;name&gt; &lt;Dockerfile&gt;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]/usr/local/docker/tomcat# docker build -t mytomcatdocker .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/2 : FROM tomcat</span><br><span class="line"> ---&gt; 96c4e536d0eb</span><br><span class="line">Step 2/2 : RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html</span><br><span class="line"> ---&gt; Running in 5d88c8eacd22</span><br><span class="line">Removing intermediate container 5d88c8eacd22</span><br><span class="line"> ---&gt; 12aa14e2403d</span><br><span class="line">Successfully built 12aa14e2403d</span><br><span class="line">Successfully tagged mytomcatdocker:latest</span><br><span class="line">[root@MyCentOS]/usr/local/docker/tomcat#</span><br></pre></td></tr></table></figure>
+<p>RUN指令启动了一个容器 5d88c8eacd22 执行了所要求的命令，并最后提交了这一层 12aa14e2403d 随后删除了 5d88c8eacd22</p>
+<ul>
+<li>查看镜像</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker images</span><br><span class="line">[sudo] password for ziming:</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mytomcatdocker      latest              12aa14e2403d        6 minutes ago       506MB</span><br><span class="line">1.16.1              latest              97423576f288        3 weeks ago         126MB</span><br><span class="line">tomcat              latest              96c4e536d0eb        4 weeks ago         506MB</span><br><span class="line">nginx               1.16.1              41e97992fcd8        5 weeks ago         126MB</span><br><span class="line">ubuntu              16.04               5e13f8dd4c1a        8 weeks ago         120MB</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再以交互的方式进入mytomcatdocker</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ sudo docker run -it mytomcatdocker bash</span><br><span class="line">root@8de78a99decd:/usr/local/tomcat# ls -al</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">root@8de78a99decd:/usr/local/tomcat# ls -al</span><br><span class="line">total 160</span><br><span class="line">drwxr-sr-x 1 root staff  4096 Aug 22 00:26 .</span><br><span class="line">drwxrwsr-x 1 root staff  4096 Aug 15 05:20 ..</span><br><span class="line">-rw-r--r-- 1 root root  19534 Aug 14 22:27 BUILDING.txt</span><br><span class="line">-rw-r--r-- 1 root root   5407 Aug 14 22:27 CONTRIBUTING.md</span><br><span class="line">-rw-r--r-- 1 root root  57011 Aug 14 22:27 LICENSE</span><br><span class="line">-rw-r--r-- 1 root root   1726 Aug 14 22:27 NOTICE</span><br><span class="line">-rw-r--r-- 1 root root   3255 Aug 14 22:27 README.md</span><br><span class="line">-rw-r--r-- 1 root root   7139 Aug 14 22:27 RELEASE-NOTES</span><br><span class="line">-rw-r--r-- 1 root root  16262 Aug 14 22:27 RUNNING.txt</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 bin</span><br><span class="line">drwxr-sr-x 2 root root   4096 Aug 14 22:27 conf</span><br><span class="line">drwxr-sr-x 2 root staff  4096 Aug 22 00:26 include</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 lib</span><br><span class="line">drwxrwxrwx 2 root root   4096 Aug 14 22:24 logs</span><br><span class="line">drwxr-sr-x 3 root staff  4096 Aug 22 00:26 native-jni-lib</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 temp</span><br><span class="line">drwxr-xr-x 1 root root   4096 Aug 14 22:24 webapps</span><br><span class="line">drwxrwxrwx 2 root root   4096 Aug 14 22:24 work</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入root</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@8de78a99decd:/usr/local/tomcat# cd webapps/ROOT/</span><br><span class="line">root@8de78a99decd:/usr/local/tomcat/webapps/ROOT#</span><br><span class="line">root@8de78a99decd:/usr/local/tomcat/webapps/ROOT# ls -al</span><br><span class="line">total 196</span><br><span class="line">drwxr-xr-x 1 root root  4096 Sep 20 01:34 .</span><br><span class="line">drwxr-xr-x 1 root root  4096 Aug 14 22:24 ..</span><br><span class="line">-rw-r--r-- 1 root root  7139 Aug 14 22:27 RELEASE-NOTES.txt</span><br><span class="line">drwxr-xr-x 2 root root  4096 Aug 22 00:26 WEB-INF</span><br><span class="line">-rw-r--r-- 1 root root 27235 Aug 14 22:27 asf-logo-wide.svg</span><br><span class="line">-rw-r--r-- 1 root root   713 Aug 14 22:24 bg-button.png</span><br><span class="line">-rw-r--r-- 1 root root  1918 Aug 14 22:24 bg-middle.png</span><br><span class="line">-rw-r--r-- 1 root root  1401 Aug 14 22:24 bg-nav.png</span><br><span class="line">-rw-r--r-- 1 root root  3103 Aug 14 22:24 bg-upper.png</span><br><span class="line">-rw-r--r-- 1 root root 21630 Aug 14 22:24 favicon.ico</span><br><span class="line">-rw-r--r-- 1 root root    24 Sep 20 01:34 index.html</span><br><span class="line">-rw-r--r-- 1 root root 12208 Aug 14 22:27 index.jsp</span><br><span class="line">-rw-r--r-- 1 root root  2376 Aug 14 22:24 tomcat-power.gif</span><br><span class="line">-rw-r--r-- 1 root root  5581 Aug 14 22:27 tomcat.css</span><br><span class="line">-rw-r--r-- 1 root root  2066 Aug 14 22:24 tomcat.gif</span><br><span class="line">-rw-r--r-- 1 root root  5103 Aug 14 22:24 tomcat.png</span><br><span class="line">-rw-r--r-- 1 root root 67795 Aug 14 22:27 tomcat.svg</span><br></pre></td></tr></table></figure>
+<p>index.html存在了</p>
+<ul>
+<li>查看index.html</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@8de78a99decd:/usr/local/tomcat/webapps/ROOT# cat index.html</span><br><span class="line">&lt;h1&gt;Hello, Docker!&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="删除indexjsp">删除index.jsp</h2>
+<p>但是我不想要index.jsp,所以需要在dockerfile脚本中删除ROOT下所有的东西这样,我暴露8081端口的时候只能看到index.html中的内容</p>
+<ul>
+<li>进入Dockerfile</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cd /usr/local/docker/tomcat</span><br><span class="line">➜  tomcat ls</span><br><span class="line">Dockerfile</span><br><span class="line">➜  tomcat</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改Dockerfile</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Dockerfile脚本开始</span><br><span class="line">FROM tomcat</span><br><span class="line">RUN cd /usr/local/tomcat/webapps/ROOT/</span><br><span class="line">RUN rm -fr *</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重复先前的操作<br>
+删除掉原先创建的镜像<br>
+sudo docker image rm 12a</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">➜  tomcat sudo docker build -t mydocker .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM tomcat</span><br><span class="line"> ---&gt; 96c4e536d0eb</span><br><span class="line">Step 2/4 : RUN cd /usr/local/tomcat/webapps/ROOT/</span><br><span class="line"> ---&gt; Running in 582adfa700d2</span><br><span class="line">Removing intermediate container 582adfa700d2</span><br><span class="line"> ---&gt; 300e7b9c024b</span><br><span class="line">Step 3/4 : RUN rm -fr *</span><br><span class="line"> ---&gt; Running in 0637d8d5df11</span><br><span class="line">Removing intermediate container 0637d8d5df11</span><br><span class="line"> ---&gt; 137fe42507bf</span><br><span class="line">Step 4/4 : RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html</span><br><span class="line"> ---&gt; Running in 55a7cef531e0</span><br><span class="line">/bin/sh: 1: cannot create /usr/local/tomcat/webapps/ROOT/index.html: Directory nonexistent</span><br><span class="line">The command &apos;/bin/sh -c echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html&apos; returned a non-zero code: 2</span><br><span class="line">➜  tomcat docker images</span><br><span class="line">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/images/json: dial unix /var/run/docker.sock: connect: permission denied</span><br><span class="line">➜  tomcat sudo docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE</span><br><span class="line">&lt;none&gt;              &lt;none&gt;              137fe42507bf        About a minute ago   506MB</span><br><span class="line">1.16.1              latest              97423576f288        3 weeks ago          126MB</span><br><span class="line">tomcat              latest              96c4e536d0eb        4 weeks ago          506MB</span><br><span class="line">nginx               1.16.1              41e97992fcd8        5 weeks ago          126MB</span><br><span class="line">ubuntu              16.04               5e13f8dd4c1a        8 weeks ago          120MB</span><br><span class="line">➜  tomcat</span><br></pre></td></tr></table></figure>
+<p>在创建过程中<code>RUN rm -rf *</code> 连着ROOT也一起删除了所有会报错,所以新的镜像成为了虚悬镜像</p>
+<ul>
+<li>修改脚本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># Dockerfile脚本开始</span><br><span class="line">FROM tomcat</span><br><span class="line">WORKDIR /usr/local/tomcat/webapps/ROOT/</span><br><span class="line">RUN rm -fr *</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html</span><br><span class="line">➜  tomcat sudo docker build -t mydocker .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM tomcat</span><br><span class="line"> ---&gt; 96c4e536d0eb</span><br><span class="line">Step 2/4 : WORKDIR /usr/local/tomcat/webapps/ROOT/</span><br><span class="line"> ---&gt; Running in 57f471bc028d</span><br><span class="line">Removing intermediate container 57f471bc028d</span><br><span class="line"> ---&gt; 9350deb03d0d</span><br><span class="line">Step 3/4 : RUN rm -fr *</span><br><span class="line"> ---&gt; Running in dbaf4d7ad1d1</span><br><span class="line">Removing intermediate container dbaf4d7ad1d1</span><br><span class="line"> ---&gt; f6814fab3fe4</span><br><span class="line">Step 4/4 : RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/local/tomcat/webapps/ROOT/index.html</span><br><span class="line"> ---&gt; Running in 91aa52622c26</span><br><span class="line">Removing intermediate container 91aa52622c26</span><br><span class="line"> ---&gt; 4691fd38efff</span><br><span class="line">Successfully built 4691fd38efff</span><br><span class="line">Successfully tagged mydocker:latest</span><br><span class="line">➜  tomcat sudo docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mydocker            latest              4691fd38efff        34 seconds ago      506MB</span><br><span class="line">&lt;none&gt;              &lt;none&gt;              137fe42507bf        6 minutes ago       506MB</span><br><span class="line">1.16.1              latest              97423576f288        3 weeks ago         126MB</span><br><span class="line">tomcat              latest              96c4e536d0eb        4 weeks ago         506MB</span><br><span class="line">nginx               1.16.1              41e97992fcd8        5 weeks ago         126MB</span><br><span class="line">ubuntu              16.04               5e13f8dd4c1a        8 weeks ago         120MB</span><br><span class="line">➜  tomcat sudo docker run -it 4691 bash</span><br><span class="line">root@33d9191d7b3b:/usr/local/tomcat/webapps/ROOT# ls</span><br><span class="line">index.html</span><br><span class="line">root@33d9191d7b3b:/usr/local/tomcat/webapps/ROOT# cat index.html </span><br><span class="line">&lt;h1&gt;Hello, Docker!&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<p>** notice 各个相同源镜像的空间是公用的 **</p>
+<p><code>docker image prune</code> 删除虚悬镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  tomcat sudo docker run -p 8081:8080 4691</span><br></pre></td></tr></table></figure>
+<p>查看网页是否成功<br>
+<img src="mydocker.png" alt=""></p>
+<p>docker的又一大特性出现了,与运行环境无关,真正做到了一次构建,到处运行.</p>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Docker学习06-Dockerfile定制镜像03/" data-toggle="tooltip" data-placement="top" title="Docker学习06-Dockerfile定制镜像03">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Docker学习06-Dockerfile定制镜像01/" data-toggle="tooltip" data-placement="top" title="Docker学习06-Dockerfile定制镜像01">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker学习06-dockerfile定制镜像02"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker&#x5B66;&#x4E60;06-Dockerfile&#x5B9A;&#x5236;&#x955C;&#x50CF;02</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自己配置镜像"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x81EA;&#x5DF1;&#x914D;&#x7F6E;&#x955C;&#x50CF;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dockerfile脚本开始"><span class="toc-nav-number"></span> <span class="toc-nav-text">Dockerfile&#x811A;&#x672C;&#x5F00;&#x59CB;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#from指定基础镜像"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">FROM&#x6307;&#x5B9A;&#x57FA;&#x7840;&#x955C;&#x50CF;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#run-执行命令"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">RUN &#x6267;&#x884C;&#x547D;&#x4EE4;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#构建镜像"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x6784;&#x5EFA;&#x955C;&#x50CF;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#删除indexjsp"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x5220;&#x9664;index.jsp</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                          <a class="tag" href="/tags/#Dockerfile" title="Dockerfile">Dockerfile</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 倪子铭</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub 倪子铭</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/niziming">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 倪子铭 2020
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a>
+                    <span style="display: inline-block; margin: 0 5px;"></span>
+                    <i class="fa fa-heart"></i>
+                    re-Ported by <a href="https://www.douban.com/people/80901919/">倪子铭&nbsp;</a>|
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&repo=hexo-theme&type=star&count=true" >
+                    </iframe>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://github.com/niziming/niziming.github.io/blob/master/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://github.com/niziming/niziming.github.io/blob/master/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

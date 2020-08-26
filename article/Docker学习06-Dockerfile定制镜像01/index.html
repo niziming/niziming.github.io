@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Docker学习06-Dockerfile定制镜像01 - 倪子铭 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://github.com/niziming/niziming.github.io/blob/master/article/Docker学习06-Dockerfile定制镜像01/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                        </div>
+                        <h1>Docker学习06-Dockerfile定制镜像01</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 倪子铭 on
+                            2019-09-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">倪子铭</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="dockerfile">Dockerfile</h1>
+<h2 id="作用">作用</h2>
+<p>可以将我们的应用程序打包进镜像,启动镜像的容器,一次编译处处运行.</p>
+<h2 id="dockerfile是什么">Dockerfile是什么?</h2>
+<p>windows的脚本叫bat, linux的脚本叫shell,docker的脚本叫Dockerfile<br>
+如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。<br>
+Dockerfile是一个文本文件,其中包含了一条一条的指令(Instruction),因此每一条指令的内容，就是描述该层应当如何构建.</p>
+<p>这次我将在我的阿里云服务器使用 Dockerfile 来定制tomcat镜像为例.</p>
+<h2 id="起步">起步</h2>
+<ul>
+<li>
+<p>docker拉取tomcat<br>
+<code>docker pull tomcat</code></p>
+</li>
+<li>
+<p>进入docker拉取的tomcat<br>
+<code>docker run -it tomcat bash</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~ sudo docker run -it tomcat bash</span><br><span class="line">[sudo] password for ziming:</span><br><span class="line">root@071424b6b8ef:/usr/local/tomcat#</span><br><span class="line">root@071424b6b8ef:/usr/local/tomcat# ls -al</span><br><span class="line">total 160</span><br><span class="line">drwxr-sr-x 1 root staff  4096 Aug 22 00:26 .</span><br><span class="line">drwxrwsr-x 1 root staff  4096 Aug 15 05:20 ..</span><br><span class="line">-rw-r--r-- 1 root root  19534 Aug 14 22:27 BUILDING.txt</span><br><span class="line">-rw-r--r-- 1 root root   5407 Aug 14 22:27 CONTRIBUTING.md</span><br><span class="line">-rw-r--r-- 1 root root  57011 Aug 14 22:27 LICENSE</span><br><span class="line">-rw-r--r-- 1 root root   1726 Aug 14 22:27 NOTICE</span><br><span class="line">-rw-r--r-- 1 root root   3255 Aug 14 22:27 README.md</span><br><span class="line">-rw-r--r-- 1 root root   7139 Aug 14 22:27 RELEASE-NOTES</span><br><span class="line">-rw-r--r-- 1 root root  16262 Aug 14 22:27 RUNNING.txt</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 bin</span><br><span class="line">drwxr-sr-x 2 root root   4096 Aug 14 22:27 conf</span><br><span class="line">drwxr-sr-x 2 root staff  4096 Aug 22 00:26 include</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 lib</span><br><span class="line">drwxrwxrwx 2 root root   4096 Aug 14 22:24 logs</span><br><span class="line">drwxr-sr-x 3 root staff  4096 Aug 22 00:26 native-jni-lib</span><br><span class="line">drwxr-xr-x 2 root root   4096 Aug 22 00:26 temp</span><br><span class="line">drwxr-xr-x 7 root root   4096 Aug 14 22:24 webapps</span><br><span class="line">drwxrwxrwx 2 root root   4096 Aug 14 22:24 work</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入webapps/ROOT <code>ls -la</code>查看ROOT下文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root@071424b6b8ef:/usr/local/tomcat/webapps/ROOT# ls -la</span><br><span class="line">total 192</span><br><span class="line">drwxr-xr-x 3 root root  4096 Aug 22 00:26 .</span><br><span class="line">drwxr-xr-x 7 root root  4096 Aug 14 22:24 ..</span><br><span class="line">-rw-r--r-- 1 root root  7139 Aug 14 22:27 RELEASE-NOTES.txt</span><br><span class="line">drwxr-xr-x 2 root root  4096 Aug 22 00:26 WEB-INF</span><br><span class="line">-rw-r--r-- 1 root root 27235 Aug 14 22:27 asf-logo-wide.svg</span><br><span class="line">-rw-r--r-- 1 root root   713 Aug 14 22:24 bg-button.png</span><br><span class="line">-rw-r--r-- 1 root root  1918 Aug 14 22:24 bg-middle.png</span><br><span class="line">-rw-r--r-- 1 root root  1401 Aug 14 22:24 bg-nav.png</span><br><span class="line">-rw-r--r-- 1 root root  3103 Aug 14 22:24 bg-upper.png</span><br><span class="line">-rw-r--r-- 1 root root 21630 Aug 14 22:24 favicon.ico</span><br><span class="line">-rw-r--r-- 1 root root 12208 Aug 14 22:27 index.jsp</span><br><span class="line">-rw-r--r-- 1 root root  2376 Aug 14 22:24 tomcat-power.gif</span><br><span class="line">-rw-r--r-- 1 root root  5581 Aug 14 22:27 tomcat.css</span><br><span class="line">-rw-r--r-- 1 root root  2066 Aug 14 22:24 tomcat.gif</span><br><span class="line">-rw-r--r-- 1 root root  5103 Aug 14 22:24 tomcat.png</span><br><span class="line">-rw-r--r-- 1 root root 67795 Aug 14 22:27 tomcat.svg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>查看index.jsp文件<br>
+`cat index.jsp’<br>
+root@071424b6b8ef:/usr/local/tomcat/webapps/ROOT# cat index.jsp</p>
+</li>
+<li>
+<p>追加hello docker tomcat 到 index.jsp中<br>
+root@071424b6b8ef:/usr/local/tomcat/webapps/ROOT# echo “hello docker tomcat” &gt;&gt; index.jsp</p>
+</li>
+<li>
+<p>退出容器<br>
+exit</p>
+</li>
+<li>
+<p>运行docker的tomcat<br>
+因为我的8080端口本身就被宿主机的tomcat占用,所有这里解析到8081<br>
+<code>docker run -p 8081:8080 tomcat</code></p>
+<ul>
+<li>run代表启动一个新容器,相当于new,触发隔离机制</li>
+<li><code>-P</code>(大写P) 参数来指定端口映射标记时，Docker 会随机映射一个端口到内部容器开放的网络端口 (端口范围在 Linux 系统使用的端口之外，一般都过万)</li>
+<li><code>-p</code>(小写p)可以指定要映射的端口，并且在一个指定的端口上只可以绑定一个容器。支持的格式有:IP:HostPort:ContainerPort | IP::ContainerPort | HostPort:ContainerPort</li>
+<li>:之前的表示宿主机的端口</li>
+<li>:之后的表示容器的端口</li>
+<li>:表示映射</li>
+</ul>
+</li>
+<li>
+<p>在web端查看有没有hello docker tomcat<br>
+发现没有<br>
+<strong>notice</strong> docker的沙箱机制隔离机制.这里比较细,需要的搜索下资料.</p>
+</li>
+<li>
+<p>另外登录一个用户查看正在运行的docker容器<br>
+查看正在运行的容器<code>docker ps</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beae6fea7aa7        tomcat              &quot;catalina.sh run&quot;   24 seconds ago      Up 24 seconds       0.0.0.0:8081-&gt;8080/tcp   thirsty_jang</span><br></pre></td></tr></table></figure>
+<p>8080端口,宿主机本身的tomcat 版本为7.0.76<br>
+<img src="8080.png" alt=""></p>
+<p>8081端口,Docker的tomcat容器 版本为8.5.45<br>
+<img src="8081.png" alt=""></p>
+<ul>
+<li>
+<p>交互的方式启动容器</p>
+<ul>
+<li>docker run -p 8081:8080 tomcat</li>
+</ul>
+</li>
+<li>
+<p>交互的方式进入容器</p>
+<ul>
+<li>docker exec -it 容器id bash</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker exec -it 7db bash</span><br><span class="line">root@7db5c8940e5a:/usr/local/tomcat# </span><br><span class="line">root@7db5c8940e5a:/usr/local/tomcat# cd webapps/</span><br><span class="line">root@7db5c8940e5a:/usr/local/tomcat/webapps# cd ROOT</span><br><span class="line">root@7db5c8940e5a:/usr/local/tomcat/webapps/ROOT# echo &quot;hello docker tomcat&quot; &gt;&gt; index.jsp</span><br><span class="line">root@7db5c8940e5a:/usr/local/tomcat/webapps/ROOT#</span><br><span class="line">root@7db5c8940e5a:/usr/local/tomcat/webapps/ROOT# cat index.jsp</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">hello docker tomcat</span><br></pre></td></tr></table></figure>
+<p>此时我们看到,hello docker tomcat 已经在文件中了<br>
+打开浏览器查看结果</p>
+<p><img src="hellodocker" alt=""></p>
+<ul>
+<li>查看所有容器<code>docker ps -a</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">a83388199fb6        tomcat              &quot;catalina.sh run&quot;        12 minutes ago      Created                                         flamboyant_goldstine</span><br><span class="line">071424b6b8ef        tomcat              &quot;bash&quot;                   33 minutes ago      Exited (0) 17 minutes ago                       compassionate_jones</span><br><span class="line">f6007831657c        tomcat              &quot;catalina.sh run&quot;        20 hours ago        Created                                         wizardly_newton</span><br><span class="line">8191ed8e159c        tomcat              &quot;catalina.sh run&quot;        20 hours ago        Exited (130) 20 hours ago                       busy_bhabha</span><br><span class="line">7c01da3b0629        nginx:1.16.1        &quot;nginx -g &apos;daemon of…&quot;   3 weeks ago         Exited (0) 24 hours ago                         MyNginx</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除正在运行的tomcat容器<br>
+<code>sudo docker rm f6007831657c</code> 后面那串字符是编号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS   NAMES</span><br><span class="line">7c01da3b0629        nginx:1.16.1        &quot;nginx -g &apos;daemon of…&quot;   3 weeks ago         Exited   MyNginx</span><br></pre></td></tr></table></figure>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Docker学习06-Dockerfile定制镜像02/" data-toggle="tooltip" data-placement="top" title="Docker学习06-Dockerfile定制镜像02">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Docker学习05-Docker基本指令/" data-toggle="tooltip" data-placement="top" title="Docker学习05-Docker基本指令">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dockerfile"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#作用"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x4F5C;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#dockerfile是什么"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Dockerfile&#x662F;&#x4EC0;&#x4E48;?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#起步"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">&#x8D77;&#x6B65;</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 倪子铭</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub 倪子铭</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/niziming">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 倪子铭 2020
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a>
+                    <span style="display: inline-block; margin: 0 5px;"></span>
+                    <i class="fa fa-heart"></i>
+                    re-Ported by <a href="https://www.douban.com/people/80901919/">倪子铭&nbsp;</a>|
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&repo=hexo-theme&type=star&count=true" >
+                    </iframe>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://github.com/niziming/niziming.github.io/blob/master/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://github.com/niziming/niziming.github.io/blob/master/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

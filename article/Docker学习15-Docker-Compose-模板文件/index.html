@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Docker学习15-Docker-Compose-模板文件 - 倪子铭 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://github.com/niziming/niziming.github.io/blob/master/article/Docker学习15-Docker-Compose-模板文件/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                              <a class="tag" href="/tags/#Docker Compose" title="Docker Compose">Docker Compose</a>
+                            
+                        </div>
+                        <h1>Docker学习15-Docker-Compose-模板文件</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 倪子铭 on
+                            2019-09-29
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">倪子铭</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="docker-compose-模板文件">Docker-Compose-模板文件</h1>
+<p>模板文件是使用 Compose 的核心，涉及到的指令关键字也比较多。但大家不用担心，这里面大部分指令跟 docker run 相关参数的含义都是类似的。</p>
+<p>默认的模板文件名称为 docker-compose.yml，格式为 YAML 格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  webapp:</span><br><span class="line">    image: examples/web</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;80:80&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      - &quot;/data&quot;</span><br></pre></td></tr></table></figure>
+<p>注意每个服务都必须通过 image 指令指定镜像或 build 指令（需要 Dockerfile）等来自动构建生成镜像。</p>
+<p>如果使用 build 指令，在 Dockerfile 中设置的选项 (例如：CMD, EXPOSE, VOLUME, ENV 等) 将会自动被获取，无需在 docker-compose.yml 中再次设置。</p>
+<p>下面分别介绍各个指令的用法。</p>
+<p>#build<br>
+指定 Dockerfile 所在文件夹的路径（可以是绝对路径，或者相对 docker-compose.yml 文件的路径）。 Compose 将会利用它自动构建这个镜像，然后使用这个镜像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  webapp:</span><br><span class="line">    build: ./dir</span><br></pre></td></tr></table></figure>
+<p>你也可以使用 context 指令指定 Dockerfile 所在文件夹的路径。</p>
+<p>使用 dockerfile 指令指定 Dockerfile 文件名。</p>
+<p>使用 arg 指令指定构建镜像时的变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  webapp:</span><br><span class="line">    build:</span><br><span class="line">      context: ./dir</span><br><span class="line">      dockerfile: Dockerfile-alternate</span><br><span class="line">      args:</span><br><span class="line">        buildno: 1</span><br></pre></td></tr></table></figure>
+<p>使用 cache_from 指定构建镜像的缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">build:</span><br><span class="line">  context: .</span><br><span class="line">  cache_from:</span><br><span class="line">    - alpine:latest</span><br><span class="line">    - corp/web_app:3.14</span><br><span class="line">#cap_add, cap_drop</span><br></pre></td></tr></table></figure>
+<p>指定容器的内核能力（capacity）分配。</p>
+<p>例如，让容器拥有所有能力可以指定为：</p>
+<p>cap_add:</p>
+<ul>
+<li>ALL<br>
+去掉 NET_ADMIN 能力可以指定为：</li>
+</ul>
+<p>cap_drop:</p>
+<ul>
+<li>NET_ADMIN<br>
+#command<br>
+覆盖容器启动后默认执行的命令。</li>
+</ul>
+<p>command: echo “hello world”<br>
+#configs<br>
+仅用于 Swarm mode</p>
+<p>#cgroup_parent<br>
+指定父 cgroup 组，意味着将继承该组的资源限制。</p>
+<p>例如，创建了一个 cgroup 组名称为 cgroups_1。</p>
+<p>cgroup_parent: cgroups_1<br>
+#container_name<br>
+指定容器名称。默认将会使用 项目名称_服务名称_序号 这样的格式。</p>
+<p>container_name: docker-web-container<br>
+注意：指定容器名称后，该服务将无法进行扩展（scale），因为 Docker 不允许多个容器具有相同的名称。</p>
+<p>#deploy<br>
+仅用于 Swarm mode</p>
+<p>#devices<br>
+指定设备映射关系。</p>
+<p>devices:</p>
+<ul>
+<li>“/dev/ttyUSB1:/dev/ttyUSB0”<br>
+#depends_on<br>
+解决容器的依赖、启动先后的问题。以下例子中会先启动 redis db 再启动 web</li>
+</ul>
+<p>version: ‘3’</p>
+<p>services:<br>
+web:<br>
+build: .<br>
+depends_on:<br>
+- db<br>
+- redis</p>
+<p>redis:<br>
+image: redis</p>
+<p>db:<br>
+image: postgres<br>
+注意：web 服务不会等待 redis db 「完全启动」之后才启动。</p>
+<p>#dns<br>
+自定义 DNS 服务器。可以是一个值，也可以是一个列表。</p>
+<p>dns: 8.8.8.8</p>
+<p>dns:</p>
+<ul>
+<li>8.8.8.8</li>
+<li>114.114.114.114<br>
+#dns_search<br>
+配置 DNS 搜索域。可以是一个值，也可以是一个列表。</li>
+</ul>
+<p>dns_search: <a href="http://example.com" target="_blank" rel="noopener">example.com</a></p>
+<p>dns_search:</p>
+<ul>
+<li><a href="http://domain1.example.com" target="_blank" rel="noopener">domain1.example.com</a></li>
+<li><a href="http://domain2.example.com" target="_blank" rel="noopener">domain2.example.com</a><br>
+#tmpfs<br>
+挂载一个 tmpfs 文件系统到容器。</li>
+</ul>
+<p>tmpfs: /run<br>
+tmpfs:</p>
+<ul>
+<li>/run</li>
+<li>/tmp<br>
+#env_file<br>
+从文件中获取环境变量，可以为单独的文件路径或列表。</li>
+</ul>
+<p>如果通过 docker-compose -f FILE 方式来指定 Compose 模板文件，则 env_file 中变量的路径会基于模板文件路径。</p>
+<p>如果有变量名称与 environment 指令冲突，则按照惯例，以后者为准。</p>
+<p>env_file: .env</p>
+<p>env_file:</p>
+<ul>
+<li>./common.env</li>
+<li>./apps/web.env</li>
+<li>/opt/secrets.env<br>
+环境变量文件中每一行必须符合格式，支持 # 开头的注释行。</li>
+</ul>
+<h1 id="commonenv-set-development-environment">common.env: Set development environment</h1>
+<p>PROG_ENV=development<br>
+#environment<br>
+设置环境变量。你可以使用数组或字典两种格式。</p>
+<p>只给定名称的变量会自动获取运行 Compose 主机上对应变量的值，可以用来防止泄露不必要的数据。</p>
+<p>environment:<br>
+RACK_ENV: development<br>
+SESSION_SECRET:</p>
+<p>environment:</p>
+<ul>
+<li>RACK_ENV=development</li>
+<li>SESSION_SECRET<br>
+如果变量名称或者值中用到 true|false，yes|no 等表达 布尔 含义的词汇，最好放到引号里，避免 YAML 自动解析某些内容为对应的布尔语义。这些特定词汇，包括</li>
+</ul>
+<p>y|Y|yes|Yes|YES|n|N|no|No|NO|true|True|TRUE|false|False|FALSE|on|On|ON|off|Off|OFF<br>
+#expose<br>
+暴露端口，但不映射到宿主机，只被连接的服务访问。</p>
+<p>仅可以指定内部端口为参数</p>
+<p>expose:</p>
+<ul>
+<li>“3000”</li>
+<li>“8000”<br>
+#external_links<br>
+注意：不建议使用该指令。</li>
+</ul>
+<p>链接到 docker-compose.yml 外部的容器，甚至并非 Compose 管理的外部容器。</p>
+<p>external_links:</p>
+<ul>
+<li>redis_1</li>
+<li>project_db_1:mysql</li>
+<li>project_db_1:postgresql<br>
+#extra_hosts<br>
+类似 Docker 中的 --add-host 参数，指定额外的 host 名称映射信息。</li>
+</ul>
+<p>extra_hosts:</p>
+<ul>
+<li>“googledns:8.8.8.8”</li>
+<li>&quot;dockerhub:52.1.157.61&quot;<br>
+会在启动后的服务容器中 /etc/hosts 文件中添加如下两条条目。</li>
+</ul>
+<p>8.8.8.8 googledns<br>
+52.1.157.61 dockerhub<br>
+#healthcheck<br>
+通过命令检查容器是否健康运行。</p>
+<p>healthcheck:<br>
+test: [“CMD”, “curl”, “-f”, “<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a>”]<br>
+interval: 1m30s<br>
+timeout: 10s<br>
+retries: 3<br>
+#image<br>
+指定为镜像名称或镜像 ID。如果镜像在本地不存在，Compose 将会尝试拉取这个镜像。</p>
+<p>image: ubuntu<br>
+image: orchardup/postgresql<br>
+image: a4bc65fd<br>
+#labels<br>
+为容器添加 Docker 元数据（metadata）信息。例如可以为容器添加辅助说明信息。</p>
+<p>labels:<br>
+com.startupteam.description: &quot;webapp for a startup team&quot;<br>
+com.startupteam.department: &quot;devops department&quot;<br>
+com.startupteam.release: “rc3 for v1.0”<br>
+#links<br>
+注意：不推荐使用该指令。</p>
+<p>#logging<br>
+配置日志选项。</p>
+<p>logging:<br>
+driver: syslog<br>
+options:<br>
+syslog-address: &quot;tcp://192.168.0.42:123&quot;<br>
+目前支持三种日志驱动类型。</p>
+<p>driver: &quot;json-file&quot;<br>
+driver: &quot;syslog&quot;<br>
+driver: &quot;none&quot;<br>
+options 配置日志驱动的相关参数。</p>
+<p>options:<br>
+max-size: &quot;200k&quot;<br>
+max-file: “10”<br>
+#network_mode<br>
+设置网络模式。使用和 docker run 的 --network 参数一样的值。</p>
+<p>network_mode: &quot;bridge&quot;<br>
+network_mode: &quot;host&quot;<br>
+network_mode: &quot;none&quot;<br>
+network_mode: &quot;service:[service name]&quot;<br>
+network_mode: “container:[container name/id]”<br>
+#networks<br>
+配置容器连接的网络。</p>
+<p>version: &quot;3&quot;<br>
+services:</p>
+<p>some-service:<br>
+networks:<br>
+- some-network<br>
+- other-network</p>
+<p>networks:<br>
+some-network:<br>
+other-network:<br>
+#pid<br>
+跟主机系统共享进程命名空间。打开该选项的容器之间，以及容器和宿主机系统之间可以通过进程 ID 来相互访问和操作。</p>
+<p>pid: “host”<br>
+#ports<br>
+暴露端口信息。</p>
+<p>使用宿主端口：容器端口 (HOST:CONTAINER) 格式，或者仅仅指定容器的端口（宿主将会随机选择端口）都可以。</p>
+<p>ports:</p>
+<ul>
+<li>“3000”</li>
+<li>“8000:8000”</li>
+<li>“49100:22”</li>
+<li>&quot;127.0.0.1:8001:8001&quot;<br>
+注意：当使用 HOST:CONTAINER 格式来映射端口时，如果你使用的容器端口小于 60 并且没放到引号里，可能会得到错误结果，因为 YAML 会自动解析 xx:yy 这种数字格式为 60 进制。为避免出现这种问题，建议数字串都采用引号包括起来的字符串格式。</li>
+</ul>
+<p>#secrets<br>
+存储敏感数据，例如 mysql 服务密码。</p>
+<p>version: &quot;3.1&quot;<br>
+services:</p>
+<p>mysql:<br>
+image: mysql<br>
+environment:<br>
+MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password<br>
+secrets:<br>
+- db_root_password<br>
+- my_other_secret</p>
+<p>secrets:<br>
+my_secret:<br>
+file: ./my_secret.txt<br>
+my_other_secret:<br>
+external: true<br>
+#security_opt<br>
+指定容器模板标签（label）机制的默认属性（用户、角色、类型、级别等）。例如配置标签的用户名和角色名。</p>
+<p>security_opt:<br>
+- label:user:USER<br>
+- label:role:ROLE<br>
+#stop_signal<br>
+设置另一个信号来停止容器。在默认情况下使用的是 SIGTERM 停止容器。</p>
+<p>stop_signal: SIGUSR1<br>
+#sysctls<br>
+配置容器内核参数。</p>
+<p>sysctls:<br>
+net.core.somaxconn: 1024<br>
+net.ipv4.tcp_syncookies: 0</p>
+<p>sysctls:</p>
+<ul>
+<li>net.core.somaxconn=1024</li>
+<li>net.ipv4.tcp_syncookies=0<br>
+#ulimits<br>
+指定容器的 ulimits 限制值。</li>
+</ul>
+<p>例如，指定最大进程数为 65535，指定文件句柄数为 20000（软限制，应用可以随时修改，不能超过硬限制） 和 40000（系统硬限制，只能 root 用户提高）。</p>
+<p>ulimits:<br>
+nproc: 65535<br>
+nofile:<br>
+soft: 20000<br>
+hard: 40000<br>
+#volumes<br>
+数据卷所挂载路径设置。可以设置宿主机路径 （HOST:CONTAINER） 或加上访问模式 （HOST:CONTAINER:ro）。</p>
+<p>该指令中路径支持相对路径。</p>
+<p>volumes:</p>
+<ul>
+<li>/var/lib/mysql</li>
+<li>cache/:/tmp/cache</li>
+<li>~/configs:/etc/configs/:ro<br>
+#其它指令<br>
+此外，还有包括 domainname, entrypoint, hostname, ipc, mac_address, privileged, read_only, shm_size, restart, stdin_open, tty, user, working_dir 等指令，基本跟 docker run 中对应参数的功能一致。</li>
+</ul>
+<p>指定服务容器启动后执行的入口文件。</p>
+<p>entrypoint: /code/entrypoint.sh<br>
+指定容器中运行应用的用户名。</p>
+<p>user: nginx<br>
+指定容器中工作目录。</p>
+<p>working_dir: /code<br>
+指定容器中搜索域名、主机名、mac 地址等。</p>
+<p>domainname: your_website.com<br>
+hostname: test<br>
+mac_address: 08-00-27-00-0C-0A<br>
+允许容器中运行一些特权命令。</p>
+<p>privileged: true<br>
+指定容器退出后的重启策略为始终重启。该命令对保持服务始终运行十分有效，在生产环境中推荐配置为 always 或者 unless-stopped。</p>
+<p>restart: always<br>
+以只读模式挂载容器的 root 文件系统，意味着不能对容器内容进行修改。</p>
+<p>read_only: true<br>
+打开标准输入，可以接受外部输入。</p>
+<p>stdin_open: true<br>
+模拟一个伪终端。</p>
+<p>tty: true<br>
+#读取变量<br>
+Compose 模板文件支持动态读取主机的系统环境变量和当前目录下的 .env 文件中的变量。</p>
+<p>例如，下面的 Compose 文件将从运行它的环境中读取变量 ${MONGO_VERSION} 的值，并写入执行的指令中。</p>
+<p>version: &quot;3&quot;<br>
+services:</p>
+<p>db:<br>
+image: &quot;mongo:${MONGO_VERSION}&quot;<br>
+如果执行 MONGO_VERSION=3.2 docker-compose up 则会启动一个 mongo:3.2 镜像的容器；如果执行 MONGO_VERSION=2.8 docker-compose up 则会启动一个 mongo:2.8 镜像的容器。</p>
+<p>若当前目录存在 .env 文件，执行 docker-compose 命令时将从该文件中读取变量。</p>
+<p>在当前目录新建 .env 文件并写入以下内容。</p>
+<h1 id="支持-号注释">支持 # 号注释</h1>
+<p>MONGO_VERSION=3.6<br>
+执行 docker-compose up 则会启动一个 mongo:3.6 镜像的容器。</p>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Docker学习16-Docker-Compose-命令说明/" data-toggle="tooltip" data-placement="top" title="Docker学习16-Docker-Compose命令说明">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Docker学习14-Docker-Compose-的使用/" data-toggle="tooltip" data-placement="top" title="Docker学习14-Docker-Compose-的使用">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#docker-compose-模板文件"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker-Compose-&#x6A21;&#x677F;&#x6587;&#x4EF6;</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#commonenv-set-development-environment"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">common.env: Set development environment</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#支持-号注释"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x652F;&#x6301; # &#x53F7;&#x6CE8;&#x91CA;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                          <a class="tag" href="/tags/#Docker Compose" title="Docker Compose">Docker Compose</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 倪子铭</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub 倪子铭</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/niziming">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 倪子铭 2020
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a>
+                    <span style="display: inline-block; margin: 0 5px;"></span>
+                    <i class="fa fa-heart"></i>
+                    re-Ported by <a href="https://www.douban.com/people/80901919/">倪子铭&nbsp;</a>|
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&repo=hexo-theme&type=star&count=true" >
+                    </iframe>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://github.com/niziming/niziming.github.io/blob/master/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://github.com/niziming/niziming.github.io/blob/master/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
