@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://niziming.github.io/tags/pve/</loc>
-        <lastmod>2023-04-02T01:46:54.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://niziming.github.io/tags/PEV/</loc>
         <lastmod>2023-04-02T01:47:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,13 +16,6 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/Axios/</loc>
-        <lastmod>2023-05-20T12:43:10.578Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://niziming.github.io/tags/%E6%A2%AF%E5%AD%90/</loc>
         <lastmod>2023-05-20T12:43:10.578Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -38,6 +24,13 @@
 
     <url>
         <loc>https://niziming.github.io/tags/Brook/</loc>
+        <lastmod>2023-05-20T12:43:10.578Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/tags/Axios/</loc>
         <lastmod>2023-05-20T12:43:10.578Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -81,13 +74,6 @@
     <url>
         <loc>https://niziming.github.io/tags/github/</loc>
         <lastmod>2023-05-20T12:43:10.615Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://niziming.github.io/tags/Docker/</loc>
-        <lastmod>2023-05-20T12:43:10.616Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -396,6 +382,20 @@
     <url>
         <loc>https://niziming.github.io/tags/wsl/</loc>
         <lastmod>2023-12-24T04:28:32.792Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/tags/PVE/</loc>
+        <lastmod>2023-12-24T04:49:59.816Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/tags/Docker/</loc>
+        <lastmod>2023-12-24T04:50:57.095Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
