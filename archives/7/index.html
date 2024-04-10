@@ -217,6 +217,130 @@
 
 <div class="post-preview">
 
+    <a href="/2019/09/29/Docker学习13-Docker-Compose-安装与卸载/">
+        <h2 class="post-title">
+            Docker学习13-Docker-Compose-安装与卸载
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Docker Compose安装与卸载
+Compose 支持 Linux、macOS、Windows 10 三大平台。
+Compose 可以通过 Python 的包管理工具 pip 进行安装，也可以直接下载编译好的二进制文件使用，甚至能够直接在 Docker 容器中运行。
+前两种方式是传统方式，适合本地环境下安装使用；最后一种方式则不破坏系统环境，更适合云计算场景。
+Docker for M......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2019-09-29
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+              <a href="/tags/#Docker Compose" title="Docker Compose">Docker Compose</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/09/27/Docker学习12-Docker-Compose-介绍/">
+        <h2 class="post-title">
+            Docker学习12-Docker-Compose-介绍
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            什么是Docker Compose?
+Docker Compose 是 Docker 官方编排（Orchestration）项目之一，负责快速的部署分布式应用。
+概况
+Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。从功能上看，跟 OpenStack 中的 Heat 十分类似。
+其代码目前在 https://github.com/docke......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2019-09-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+              <a href="/tags/#Docker Compose" title="Docker Compose">Docker Compose</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/09/25/Docker学习11-部署项目到容器/">
+        <h2 class="post-title">
+            Docker学习11-部署项目到容器
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            部署项目到容器
+打包项目的war包
+这里用的是我毕业设计的项目,基于SSM的旅游项目网站.
+`mvn package’
+
+在本地测试项目是否可以正常启动
+
+
+将项目解压到ROOT中
+
+
+
+启动tomcat
+
+
+
+浏览器端查看
+
+
+
+查看控制台
+
+
+
+server端操作
+上传war到ECS中
+
+将war移动到ROOT中做数据卷挂载
+1234567891011121314151617[root@......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2019-09-25
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2019/09/24/Windows端口占用关闭/">
         <h2 class="post-title">
             Windows端口占用关闭
@@ -445,103 +569,6 @@ Docker Hub是官方维护了一个公共仓库,其中已经包括了数量超过
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/09/23/并发的原子性-可见性-有序性/">
-        <h2 class="post-title">
-            并发的原子性,可见性,有序性
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            并发的原子性,可见性,有序性
-volatile 这个关键字可能很多朋友都听说过，或许也都用过。在 Java 5 之前，它是一个备受争议的关键字，因为在程序中使用它往往会导致出人意料的结果。在 Java 5 之后，volatile 关键字才得以重获生机。
-volatile 关键字虽然从字面上理解起来比较简单，但是要用好不是一件容易的事情。由于 volatile 关键字是与 Java 的内存模型......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 十渊 on
-            2019-09-23
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#计算机理论" title="计算机理论">计算机理论</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/09/20/Docker学习6-Dockerfile定制镜像3/">
-        <h2 class="post-title">
-            Docker学习06-Dockerfile定制镜像03
-        </h2>
-        <h3 class="post-subtitle">
-            Dockerfile定制镜像03
-        </h3>
-        <div class="post-content-preview">
-            Dockerfile定制镜像03
-镜像构建上下文(Context)
-docker build -t &lt;name&gt; .
-这里的点表示当前目录
-如果注意，会看到 docker build 命令最后有一个 .。. 表示当前目录，而 Dockerfile 就在当前目录，因此不少初学者以为这个路径是在指定 Dockerfile 所在路径，这么理解其实是不准确的。如果对应上面的命令格式，你可......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 十渊 on
-            2019-09-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Docker" title="Docker">Docker</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/09/19/Docker学习6-Dockerfile定制镜像2/">
-        <h2 class="post-title">
-            Docker学习6-Dockerfile定制镜像2
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Docker学习6-Dockerfile定制镜像2
-
-Docker 停止一个运行的容器
-docker stop &lt;id&gt;
-
-1234567db5c8940e5a        tomcat              "catalina.sh run"        29 minutes ago       Up 29 minutes               0.0.0.0:8......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 十渊 on
-            2019-09-19
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Docker" title="Docker">Docker</a>
-            
-              <a href="/tags/#Dockerfile" title="Dockerfile">Dockerfile</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -596,7 +623,9 @@ docker stop &lt;id&gt;
             
         
             
-            <a href="/tags/#Docker" title="Docker" rel="23">Docker</a>
+            <a href="/tags/#Docker" title="Docker" rel="25">Docker</a>
+            
+        
             
         
             
@@ -634,9 +663,9 @@ docker stop &lt;id&gt;
             
         
             
-            <a href="/tags/#PVE" title="PVE" rel="4">PVE</a>
-            
         
+            
+            <a href="/tags/#PVE" title="PVE" rel="4">PVE</a>
             
         
             
@@ -724,7 +753,7 @@ docker stop &lt;id&gt;
             
         
             
-            <a href="/tags/#wsl" title="wsl" rel="2">wsl</a>
+            <a href="/tags/#wsl" title="wsl" rel="3">wsl</a>
             
         
             
@@ -791,23 +820,23 @@ docker stop &lt;id&gt;
     <ul>
       
         <li>
+          <a href="/2024/04/09/Docker学习19-Docker-安装mysql/">Docker学习19-Docker-安装mysql</a>
+        </li>
+      
+        <li>
+          <a href="/2024/04/09/windows10-subsystem-for-linux-04-子系统文件导出到windows系统/">windows10-subsystem-for-linux-04-子系统文件导出到windows系统</a>
+        </li>
+      
+        <li>
           <a href="/2023/12/29/windows10-subsystem-for-linux-03-C盘空间转移/">windows10-subsystem-for-linux-03-C盘空间转移</a>
         </li>
       
         <li>
+          <a href="/2023/12/28/Docker19-portainer-Docker图形化工具/">Docker19-portainer-Docker图形化工具</a>
+        </li>
+      
+        <li>
           <a href="/2023/12/28/windows10-subsystem-for-android-02-安卓子系统/">windows10-subsystem-for-android-02-安卓子系统</a>
-        </li>
-      
-        <li>
-          <a href="/2023/12/28/Curl指令详解/">Curl指令详解</a>
-        </li>
-      
-        <li>
-          <a href="/2023/12/24/Linux使用ubuntu22-04-LTS-初始化/">Linux使用ubuntu22.04_LTS_初始化</a>
-        </li>
-      
-        <li>
-          <a href="/2023/12/24/windows-subsystem-for-linux-01-wsl安装/">windows subsystem for linux 01-wsl安装</a>
         </li>
       
     </ul>
@@ -832,7 +861,7 @@ docker stop &lt;id&gt;
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
@@ -874,7 +903,7 @@ docker stop &lt;id&gt;
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; 十渊 2023
+                    Copyright &copy; 十渊 2024
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a>
                     <span style="display: inline-block; margin: 0 5px;">
