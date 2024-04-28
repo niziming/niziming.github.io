@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>https://niziming.github.io/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/</loc>
+        <lastmod>2024-04-28T08:23:39.874Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/2023/12/28/windows10-subsystem-for-android-02-%E5%AE%89%E5%8D%93%E5%AD%90%E7%B3%BB%E7%BB%9F/</loc>
+        <lastmod>2024-04-24T13:50:08.485Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://niziming.github.io/2024/04/09/Docker%E5%AD%A6%E4%B9%A019-Docker-%E5%AE%89%E8%A3%85mysql/</loc>
         <lastmod>2024-04-09T10:46:19.252Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -41,14 +57,6 @@
     <url>
         <loc>https://niziming.github.io/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/</loc>
         <lastmod>2023-12-28T10:04:23.663Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://niziming.github.io/2023/12/28/windows10-subsystem-for-android-02-%E5%AE%89%E5%8D%93%E5%AD%90%E7%B3%BB%E7%BB%9F/</loc>
-        <lastmod>2023-12-28T08:39:29.488Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -95,7 +103,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/10/27/Docker-Registry%E5%AD%A6%E4%B9%A03-%E9%85%8D%E7%BD%AEWebUI%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
+        <loc>https://niziming.github.io/2019/10/27/Docker-Registry%E5%AD%A6%E4%B9%A02-%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/</loc>
         <lastmod>2023-12-28T08:33:13.546Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -103,7 +111,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/10/27/Docker-Registry%E5%AD%A6%E4%B9%A02-%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/</loc>
+        <loc>https://niziming.github.io/2019/10/27/Docker-Registry%E5%AD%A6%E4%B9%A03-%E9%85%8D%E7%BD%AEWebUI%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
         <lastmod>2023-12-28T08:33:13.546Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -167,14 +175,6 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2021/03/21/%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
-        <lastmod>2023-05-20T12:43:10.772Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://niziming.github.io/2019/09/23/%E5%B9%B6%E5%8F%91%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7-%E5%8F%AF%E8%A7%81%E6%80%A7-%E6%9C%89%E5%BA%8F%E6%80%A7/</loc>
         <lastmod>2023-05-20T12:43:10.772Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -191,6 +191,14 @@
     </url>
 
     <url>
+        <loc>https://niziming.github.io/2021/03/21/%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
+        <lastmod>2023-05-20T12:43:10.772Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://niziming.github.io/2021/11/08/%E4%B8%93%E9%A2%98-GitHub-Copilot/</loc>
         <lastmod>2023-05-20T12:43:10.768Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -199,7 +207,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/08/17/Vue%E5%AD%A6%E4%B9%A005-Vuex%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</loc>
+        <loc>https://niziming.github.io/2019/09/24/Windows%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E5%85%B3%E9%97%AD/</loc>
         <lastmod>2023-05-20T12:43:10.760Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -207,7 +215,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/09/24/Windows%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E5%85%B3%E9%97%AD/</loc>
+        <loc>https://niziming.github.io/2019/08/17/Vue%E5%AD%A6%E4%B9%A005-Vuex%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</loc>
         <lastmod>2023-05-20T12:43:10.760Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -487,7 +495,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/09/30/GitLab%E5%AD%A6%E4%B9%A02-GitLab%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+        <loc>https://niziming.github.io/2019/09/30/GitLab%E5%AD%A6%E4%B9%A01-%E4%BD%BF%E7%94%A8git%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81/</loc>
         <lastmod>2023-05-20T12:43:10.616Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -495,7 +503,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/09/30/GitLab%E5%AD%A6%E4%B9%A01-%E4%BD%BF%E7%94%A8git%E6%89%98%E7%AE%A1%E4%BB%A3%E7%A0%81/</loc>
+        <loc>https://niziming.github.io/2019/09/30/GitLab%E5%AD%A6%E4%B9%A02-GitLab%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
         <lastmod>2023-05-20T12:43:10.616Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -663,7 +671,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2020/12/26/Brook%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%BF%85%E5%A4%87/</loc>
+        <loc>https://niziming.github.io/2019/08/26/Axios%E5%AD%A6%E4%B9%A02-%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1/</loc>
         <lastmod>2023-05-20T12:43:10.578Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -671,7 +679,7 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/2019/08/26/Axios%E5%AD%A6%E4%B9%A02-%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1/</loc>
+        <loc>https://niziming.github.io/2020/12/26/Brook%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%BF%85%E5%A4%87/</loc>
         <lastmod>2023-05-20T12:43:10.578Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
