@@ -140,6 +140,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -148,13 +155,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -214,6 +214,73 @@
 
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2019/09/20/Docker学习6-Dockerfile定制镜像3/">
+        <h2 class="post-title">
+            Docker学习06-Dockerfile定制镜像03
+        </h2>
+        <h3 class="post-subtitle">
+            Dockerfile定制镜像03
+        </h3>
+        <div class="post-content-preview">
+            Dockerfile定制镜像03
+镜像构建上下文(Context)
+docker build -t &lt;name&gt; .
+这里的点表示当前目录
+如果注意，会看到 docker build 命令最后有一个 .。. 表示当前目录，而 Dockerfile 就在当前目录，因此不少初学者以为这个路径是在指定 Dockerfile 所在路径，这么理解其实是不准确的。如果对应上面的命令格式，你可......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2019-09-20
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/09/19/Docker学习6-Dockerfile定制镜像2/">
+        <h2 class="post-title">
+            Docker学习6-Dockerfile定制镜像2
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Docker学习6-Dockerfile定制镜像2
+
+Docker 停止一个运行的容器
+docker stop &lt;id&gt;
+
+1234567db5c8940e5a        tomcat              "catalina.sh run"        29 minutes ago       Up 29 minutes               0.0.0.0:8......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2019-09-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+              <a href="/tags/#Dockerfile" title="Dockerfile">Dockerfile</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -487,77 +554,6 @@ Vue.js 是一个 MVVM 框架，即数据双向绑定，即当数据发生变化�
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/08/17/Vue学习03-生命周期函数/">
-        <h2 class="post-title">
-            Vue学习03-生命周期函数
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Vue学习记录
-这边博客为自己学习vue的记录.开始篇幅较大,如果基础好的同学可以直接点击vue内容开始浏览.
-Vue生命周期
-
-created: 比如钩子可以用来在一个实例被创建之后执行代码：
-mounted
-updated
-destroyed
-
-每个 Vue 实例在被创建时都要经过一系列的初始化过程 —— 例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 十渊 on
-            2019-08-17
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Vue" title="Vue">Vue</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/08/17/Vue学习02-Vue语法/">
-        <h2 class="post-title">
-            Vue学习02-Vue语法
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Vue学习记录
-这边博客为自己学习vue的记录.开始篇幅较大,如果基础好的同学可以直接点击vue内容开始浏览.
-Vue 语法
-
-v-if
-
-12345678910111213 &lt;div id=&quot;app&quot;&gt;   &lt;p v-if=&quot;a === &apos;a&apos;&quot;&gt;a&lt;/p&gt;   &lt;p v-if=&quot......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 十渊 on
-            2019-08-17
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Vue" title="Vue">Vue</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -598,11 +594,11 @@ v-if
     <div class="tags">
         
             
-            <a href="/tags/#生活" title="生活" rel="2">生活</a>
+            <a href="/tags/#AI" title="AI" rel="2">AI</a>
             
         
             
-            <a href="/tags/#AI" title="AI" rel="2">AI</a>
+            <a href="/tags/#生活" title="生活" rel="2">生活</a>
             
         
             
@@ -614,19 +610,23 @@ v-if
             
         
             
-            <a href="/tags/#Docker" title="Docker" rel="27">Docker</a>
-            
-        
-            
-        
-            
-        
-            
             <a href="/tags/#Linux" title="Linux" rel="3">Linux</a>
             
         
             
         
+            
+            <a href="/tags/#Docker" title="Docker" rel="28">Docker</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Gitlab" title="Gitlab" rel="2">Gitlab</a>
             
         
             
@@ -637,6 +637,10 @@ v-if
         
             
             <a href="/tags/#Dockerfile" title="Dockerfile" rel="3">Dockerfile</a>
+            
+        
+            
+        
             
         
             
@@ -658,10 +662,6 @@ v-if
             
         
             
-        
-            
-        
-            
             <a href="/tags/#PVE" title="PVE" rel="4">PVE</a>
             
         
@@ -672,7 +672,13 @@ v-if
             
         
             
+        
+            
             <a href="/tags/#SpringCloud" title="SpringCloud" rel="16">SpringCloud</a>
+            
+        
+            
+            <a href="/tags/#Netflix" title="Netflix" rel="7">Netflix</a>
             
         
             
@@ -680,7 +686,11 @@ v-if
             
         
             
-            <a href="/tags/#Netflix" title="Netflix" rel="7">Netflix</a>
+        
+            
+        
+            
+        
             
         
             
@@ -718,16 +728,6 @@ v-if
             
         
             
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
             <a href="/tags/#Nacos" title="Nacos" rel="4">Nacos</a>
             
         
@@ -746,17 +746,17 @@ v-if
             
         
             
-        
-            
-            <a href="/tags/#wsl" title="wsl" rel="3">wsl</a>
-            
-        
-            
-        
-            
             <a href="/tags/#Hexo" title="Hexo" rel="2">Hexo</a>
             
         
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#wsl" title="wsl" rel="3">wsl</a>
             
         
             
@@ -823,6 +823,14 @@ v-if
     <ul>
       
         <li>
+          <a href="/2024/09/13/Gitlab代码仓库迁移-两个不同版本Gitlab代码迁移/">Gitlab代码仓库迁移-两个不同版本Gitlab代码迁移</a>
+        </li>
+      
+        <li>
+          <a href="/2024/09/13/Docker22-Gitlab部署/">Docker22-Gitlab部署</a>
+        </li>
+      
+        <li>
           <a href="/2024/08/25/香港旅游攻略/">香港旅游攻略</a>
         </li>
       
@@ -832,14 +840,6 @@ v-if
       
         <li>
           <a href="/2024/08/17/GPT4ALL-v3-2-1-大模型语言本地部署01/">GPT4ALL-v3.2.1-大语言模型本地部署01</a>
-        </li>
-      
-        <li>
-          <a href="/2024/07/28/windows-纯净版win10安装/">windows-纯净版win10安装</a>
-        </li>
-      
-        <li>
-          <a href="/2024/07/27/Docker21-docker迁移/">Docker21-docker迁移</a>
         </li>
       
     </ul>
@@ -864,7 +864,7 @@ v-if
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
