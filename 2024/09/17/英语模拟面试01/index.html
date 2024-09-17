@@ -16,11 +16,11 @@
     <title>
         🔥
         
-          Docker学习06-Dockerfile定制镜像03 - 十渊 | Blog
+          英语模拟面试01 - 十渊 | Blog
         
     </title>
 
-    <link rel="canonical" href="https://niziming.github.io/2019/09/20/Docker学习6-Dockerfile定制镜像3/">
+    <link rel="canonical" href="https://niziming.github.io/2024/09/17/英语模拟面试01/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -94,14 +94,12 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
-                            
                         </div>
-                        <h1>Docker学习06-Dockerfile定制镜像03</h1>
-                        <h2 class="subheading">Dockerfile定制镜像03</h2>
+                        <h1>英语模拟面试01</h1>
+                        <h2 class="subheading">英语模拟面试01</h2>
                         <span class="meta">
                             Posted by 十渊 on
-                            2019-09-20
+                            2024-09-17
                         </span>
                     </div>
                 
@@ -218,43 +216,113 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="dockerfile定制镜像03">Dockerfile定制镜像03</h1>
-<h2 id="镜像构建上下文context">镜像构建上下文(Context)</h2>
-<p><code>docker build -t &lt;name&gt; .</code><br>
-这里的点表示当前目录</p>
-<p>如果注意，会看到 docker build 命令最后有一个 .。. 表示当前目录，而 Dockerfile 就在当前目录，因此不少初学者以为这个路径是在指定 Dockerfile 所在路径，这么理解其实是不准确的。如果对应上面的命令格式，你可能会发现，这是在指定上下文路径。那么什么是上下文呢？</p>
-<p>首先我们要理解 docker build 的工作原理。Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具。Docker 的引擎提供了一组 REST API，被称为 Docker Remote API，而如 docker 命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互，从而完成各种功能。因此，虽然表面上我们好像是在本机执行各种 docker 功能，但实际上，一切都是使用的远程调用形式在服务端（Docker 引擎）完成。也因为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举。</p>
+                <h1 id="英语模拟面试01">英语模拟面试01</h1>
+<h2 id="简介">简介</h2>
+<h4 id="1-introduction-and-small-talk"><strong>1. Introduction and Small Talk</strong></h4>
 <ul>
-<li>拓扑图如下</li>
+<li>interviewer：<strong>Hi Simon, how are you today? How are you finding New Zealand so far?</strong></li>
 </ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">host os          请求Rest Api          </span><br><span class="line">docker <span class="builtin-name">run</span>       &lt;----------&gt;      docker server</span><br><span class="line">docker images        返回</span><br><span class="line"></span><br><span class="line">host os                      请求Rest Api 带着当前目录的压缩包           docker server</span><br><span class="line">docker build -t mydocker .       &lt;---------------------&gt;                 接收 docker build</span><br><span class="line">将当前目录打包                             返回                          构建镜像</span><br></pre></td></tr></table></figure>
-<p>如果在 Dockerfile 中这么写：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="bash"> ./package.json /app/</span></span><br></pre></td></tr></table></figure>
-<p>这并不是要复制执行 docker build 命令所在的目录下的 package.json，也不是复制 Dockerfile 所在目录下的 package.json，而是复制 上下文（context） 目录下的 package.json。</p>
+<blockquote>
+<p>“I’m doing great, thank you. I’ve been really <strong>impressed</strong> by the friendly culture and the beautiful landscapes here in New Zealand. When I was young, I watched many movies like <em>The Lord of the Rings</em>, <em>The Hobbit</em>, and <em>King Kong</em>. I later learned that these movies were filmed in New Zealand, which made me believe there must be a lot of beautiful <strong>scenery</strong> here, and it really attracts me.”</p>
+</blockquote>
+<h4 id="2-self-introduction"><strong>2. Self-Introduction</strong></h4>
 <ul>
-<li>上下文环境目录<br>
-宿主机将. 当前目录打包后发送至docker server后,由docker解压打包文件后的目录.</li>
+<li>面试官：<strong>Can you please introduce yourself and tell us a bit about your professional background?</strong></li>
 </ul>
-<p>因此，COPY 这类指令中的源文件的路径都是相对路径。这也是初学者经常会问的为什么 COPY …/package.json /app 或者 COPY /opt/xxxx /app 无法工作的原因，因为这些路径已经超出了上下文的范围，Docker 引擎无法获得这些位置的文件。如果真的需要那些文件，应该将它们复制到上下文目录中去。</p>
-<p>现在就可以理解刚才的命令 docker build -t nginx:v3 . 中的这个 .，实际上是在指定上下文的目录，docker build 命令会将该目录下的内容打包交给 Docker 引擎以帮助构建镜像。</p>
-<p>实际上,dockerfile在打包过程中也说明了镜像构建的上下文</p>
-<h2 id="在tomcat下新建一个indexhtml文件">在tomcat下新建一个index.html文件</h2>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Docker<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="重新写dockerfile脚本">重新写dockerfile脚本</h2>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dockerfile脚本开始</span></span><br><span class="line"><span class="keyword">FROM</span> tomcat</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/<span class="built_in">local</span>/tomcat/webapps/ROOT/</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> rm -fr *</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> index.html /usr/<span class="built_in">local</span>/tomcat/webapps/ROOT</span></span><br><span class="line">tomcat sudo docker build -t test .</span><br><span class="line">Sending build context to Docker daemon  <span class="number">15.87</span>kB</span><br><span class="line">这里的context就已经构建到docker的守护进程中</span><br><span class="line">Step <span class="number">1</span>/<span class="number">4</span> : <span class="keyword">FROM</span> tomcat</span><br><span class="line"> ---&gt; <span class="number">96</span>c4e536d0eb</span><br><span class="line">Step <span class="number">2</span>/<span class="number">4</span> : <span class="keyword">WORKDIR</span><span class="bash"> /usr/<span class="built_in">local</span>/tomcat/webapps/ROOT/</span></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; <span class="number">9350</span>deb03d0d</span><br><span class="line">Step <span class="number">3</span>/<span class="number">4</span> : <span class="keyword">RUN</span><span class="bash"> rm -fr *</span></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; f6814fab3fe4</span><br><span class="line">Step <span class="number">4</span>/<span class="number">4</span> : <span class="keyword">COPY</span><span class="bash"> index.html /usr/<span class="built_in">local</span>/tomcat/webapps/ROOT</span></span><br><span class="line"> ---&gt; <span class="number">1</span>dbbbda7e1cb</span><br><span class="line">Successfully built <span class="number">1</span>dbbbda7e1cb</span><br><span class="line">Successfully tagged test:latest</span><br><span class="line">➜  tomcat sudo docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">test                latest              <span class="number">1</span>dbbbda7e1cb        <span class="number">13</span> seconds ago      <span class="number">506</span>MB</span><br><span class="line">mydocker            latest              <span class="number">4691</span>fd38efff        <span class="number">2</span> hours ago         <span class="number">506</span>MB</span><br><span class="line"><span class="number">1.16</span>.<span class="number">1</span>              latest              <span class="number">97423576</span>f288        <span class="number">3</span> weeks ago         <span class="number">126</span>MB</span><br><span class="line">tomcat              latest              <span class="number">96</span>c4e536d0eb        <span class="number">4</span> weeks ago         <span class="number">506</span>MB</span><br><span class="line">nginx               <span class="number">1.16</span>.<span class="number">1</span>              <span class="number">41</span>e97992fcd8        <span class="number">5</span> weeks ago         <span class="number">126</span>MB</span><br><span class="line">ubuntu              <span class="number">16.04</span>               <span class="number">5</span>e13f8dd4c1a        <span class="number">8</span> weeks ago         <span class="number">120</span>MB</span><br></pre></td></tr></table></figure>
+<p>你可以说：</p>
+<blockquote>
+<p>&quot;Well, I have more than five years of experience in the field of software development, mostly focused on <strong>backend</strong> development using Java and the Spring framework technology stack. I have some experience in <strong>frontend</strong> development as well, particularly with JavaScript and Vue.js. I’ve worked on several related projects, such as an internet loan platform, a smart airport platform, and a WEBGIS series of projects.</p>
+<p>Most of these projects were based on the Spring technology stack, where we used Spring Boot, Spring Cloud, and Spring Gateway to build the application servers for our clients and customers. We used Docker to deploy our services, and various middleware was managed through Docker according to the project requirements. Additionally, I worked on iterating and improving the software as the requirements evolved.</p>
+</blockquote>
+<h4 id="3-technical-questions"><strong>3. Technical Questions</strong></h4>
+<ul>
+<li>面试官：<strong>Tell us about a technical challenge you faced in one of your projects and how you solved it.</strong></li>
+</ul>
+<p>你可以回答：</p>
+<blockquote>
+<p>&quot;&quot;One of the biggest challenges I faced was in an <strong>WebGIS</strong>  (<strong>Geographical</strong> Information System) software project. In that scenario, we needed to implement browser support for rendering 3D models based on geographical data. My role in the project was to calculate and <strong>persist</strong> the geographical data, and then <strong>transmit</strong> it to the frontend using a WebSocket <strong>protocol</strong>. The frontend used the <strong>Cesium</strong> framework to render the 3D models.</p>
+<p>In this context, I calculated the 2D(2 <strong>Dimensional</strong>) area of various shapes and projected these areas onto a 3D globe. However, I realized there was a <strong>loss</strong> of <strong>accuracy</strong> when mapping the flat areas onto the <strong>curved</strong> surface of the globe. After investigating, I found that a correction factor was needed to account for this distortion. Initially, the <strong>collision</strong> and intersection of volumes were not precise, which led me to discover this issue.</p>
+<p>Once I calculated and applied the correction factor, the areas matched perfectly, and the collisions became much more accurate. This challenge occurred during my first job, and while my technical skills were not yet fully developed at the time, I managed to resolve the issue successfully.&quot;&quot;</p>
+</blockquote>
+<h4 id="4how-do-you-ensure-security-in-the-systems-you-develop">4.How do you ensure security in the systems you develop?</h4>
+<p>A: “Mostly, we use the Spring Security framework to ensure the security and authorization of our systems. For example, in one of our projects, like the loan platform, we <strong>integrated</strong> Spring Security within the gateway framework to manage authentication and authorization <strong>efficiently</strong>. We also implemented JWT (JSON Web Tokens) to secure our APIs and ensure safe access to user data. This combination helps protect the system from from <strong>unauthorized</strong> access and ensures that only verified users can <strong>interact</strong> with <strong>sensitive</strong> data.”</p>
+<h4 id="4-behavioral-questions"><strong>4. Behavioral Questions</strong></h4>
+<ul>
+<li>面试官：<strong>Can you give an example of a time when you worked under pressure and how you handled it?</strong></li>
+</ul>
+<p>回答：</p>
+<blockquote>
+<p>“At one point, during the deployment of a new feature in the Smart Airport platform, we encountered critical security vulnerabilities just before the go-live. I worked closely with the security team to identify and patch the vulnerabilities. We conducted multiple rounds of testing within a tight deadline, and despite the pressure, we successfully deployed the project on time without any security breaches.”</p>
+</blockquote>
+<h4 id="5-company-fit-questions"><strong>5. Company Fit Questions</strong></h4>
+<ul>
+<li>面试官：<strong>Why do you want to work in H and what interests you about this company?</strong></li>
+</ul>
+<p>你可以说：</p>
+<blockquote>
+<p><strong>Candidate:</strong><br>
+&quot;My wife is currently studying at a college in Hong Kong, so I’ve visited the city many times over the past few years. I’ve grown to really appreciate Hong Kong, its culture, and its environment. When I was young, I watched many movies and listened to a lot of music from Hong Kong, which made me interested in the city even from a young age.</p>
+<p>As for this company, I read the job description carefully, and I feel that it matches my skills and experience very well. I’ve also researched the company’s background and achievements, and I’m very interested in the opportunity to work in this role and contribute to your team.&quot;</p>
+</blockquote>
+<h4 id="6-questions-for-the-employer"><strong>6. Questions for the Employer</strong></h4>
+<ul>
+<li>面试官：<strong>Do you have any questions for us?</strong></li>
+</ul>
+<p>你可以问：</p>
+<blockquote>
+<p>“Yes, I would love to know more about the team I would be working with. How does the team collaborate on projects, and what technologies do you prioritize for your development processes?”</p>
+</blockquote>
+<p>Here’s a list of common software engineering interview questions, which are often asked during technical interviews. These questions can help you prepare for a wide range of topics, from technical skills to problem-solving and teamwork.</p>
+<h3 id="technical-questions"><strong>Technical Questions:</strong></h3>
+<ol>
+<li>Can you explain the difference between <strong>RESTful APIs</strong> and <strong>SOAP</strong>?</li>
+<li>How does <strong>Garbage Collection</strong> work in Java?</li>
+<li>What are <strong>microservices</strong>, and how have you used them in your projects?</li>
+<li>How would you optimize a slow <strong>SQL query</strong>?</li>
+<li>Explain <strong>multithreading</strong> and <strong>concurrency</strong> in Java.</li>
+<li>Can you explain how you’ve implemented <strong>JWT</strong> for user authentication in your projects?</li>
+<li>What are the benefits of using <strong>Docker</strong> in a production environment?</li>
+<li>How do you ensure <strong>scalability</strong> and <strong>performance</strong> in a distributed system?</li>
+<li>What’s the difference between <strong>NoSQL</strong> and <strong>SQL</strong> databases, and when would you use one over the other?</li>
+<li>Can you walk us through the <strong>Spring Security</strong> framework and how you’ve used it to secure an application?</li>
+</ol>
+<h3 id="problem-solving-amp-algorithm-questions"><strong>Problem-Solving &amp; Algorithm Questions:</strong></h3>
+<ol>
+<li>How would you approach solving a <strong>memory leak</strong> issue?</li>
+<li>Can you describe how to handle <strong>deadlock</strong> in a multi-threaded environment?</li>
+<li>Write a program to find the <strong>longest palindrome</strong> in a string.</li>
+<li>How would you detect and resolve <strong>circular dependencies</strong> in a project?</li>
+<li>Can you implement a <strong>binary search</strong> algorithm?</li>
+<li>Explain how you would debug a program that’s causing <strong>high CPU usage</strong>.</li>
+</ol>
+<h3 id="behavioral-questions"><strong>Behavioral Questions:</strong></h3>
+<ol>
+<li>Can you describe a time when you had to work under a <strong>tight deadline</strong>? How did you manage it?</li>
+<li>Tell me about a time when you had to <strong>learn a new technology</strong> quickly for a project.</li>
+<li>How do you handle <strong>conflicts</strong> within a development team?</li>
+<li>Describe a situation where you received <strong>negative feedback</strong>. How did you handle it?</li>
+<li>Tell me about a time when you encountered a <strong>technical failure</strong>. How did you resolve it?</li>
+</ol>
+<h3 id="system-design-questions"><strong>System Design Questions:</strong></h3>
+<ol>
+<li>How would you design a <strong>scalable e-commerce system</strong>?</li>
+<li>Explain how you would design a <strong>URL shortening service</strong>.</li>
+<li>How would you design a <strong>load balancer</strong>?</li>
+<li>Can you design a <strong>distributed logging system</strong>?</li>
+<li>How would you handle <strong>high availability</strong> and <strong>fault tolerance</strong> in a system?</li>
+</ol>
+<p>These questions cover a variety of scenarios that might come up in a software engineer interview. Let me know if you’d like to practice any specific ones!</p>
+<h2 id="引用资料">引用资料</h2>
+<blockquote></blockquote>
 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/09/23/并发的原子性-可见性-有序性/" data-toggle="tooltip" data-placement="top" title="并发的原子性,可见性,有序性">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2019/09/19/Docker学习6-Dockerfile定制镜像2/" data-toggle="tooltip" data-placement="top" title="Docker学习6-Dockerfile定制镜像2">Next Post &rarr;</a>
+                            <a href="/2024/09/13/Gitlab代码仓库迁移-两个不同版本Gitlab代码迁移/" data-toggle="tooltip" data-placement="top" title="Gitlab代码仓库迁移-两个不同版本Gitlab代码迁移">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -280,7 +348,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dockerfile定制镜像03"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile定制镜像03</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#镜像构建上下文context"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">镜像构建上下文(Context)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#在tomcat下新建一个indexhtml文件"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">在tomcat下新建一个index.html文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重新写dockerfile脚本"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">重新写dockerfile脚本</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#英语模拟面试01"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">英语模拟面试01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#简介"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-introduction-and-small-talk"><span class="toc-nav-number">1.1.0.1.</span> <span class="toc-nav-text">1. Introduction and Small Talk</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-self-introduction"><span class="toc-nav-number">1.1.0.2.</span> <span class="toc-nav-text">2. Self-Introduction</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-technical-questions"><span class="toc-nav-number">1.1.0.3.</span> <span class="toc-nav-text">3. Technical Questions</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4how-do-you-ensure-security-in-the-systems-you-develop"><span class="toc-nav-number">1.1.0.4.</span> <span class="toc-nav-text">4.How do you ensure security in the systems you develop?</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-behavioral-questions"><span class="toc-nav-number">1.1.0.5.</span> <span class="toc-nav-text">4. Behavioral Questions</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-company-fit-questions"><span class="toc-nav-number">1.1.0.6.</span> <span class="toc-nav-text">5. Company Fit Questions</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#6-questions-for-the-employer"><span class="toc-nav-number">1.1.0.7.</span> <span class="toc-nav-text">6. Questions for the Employer</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#technical-questions"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">Technical Questions:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#problem-solving-amp-algorithm-questions"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Problem-Solving &amp; Algorithm Questions:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#behavioral-questions"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">Behavioral Questions:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#system-design-questions"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">System Design Questions:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#引用资料"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -300,8 +368,6 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
-                        
                     </div>
                 </section>
                 
