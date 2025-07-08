@@ -352,13 +352,6 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/Vuex/</loc>
-        <lastmod>2025-07-07T08:47:13.987Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://niziming.github.io/tags/Windows/</loc>
         <lastmod>2025-07-07T08:47:13.987Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -367,6 +360,13 @@
 
     <url>
         <loc>https://niziming.github.io/tags/Windows%25E7%25AB%25AF%25E5%258F%25A3/</loc>
+        <lastmod>2025-07-07T08:47:13.987Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/tags/Vuex/</loc>
         <lastmod>2025-07-07T08:47:13.987Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
