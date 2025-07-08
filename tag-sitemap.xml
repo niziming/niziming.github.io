@@ -352,13 +352,6 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/Vuex/</loc>
-        <lastmod>2025-07-07T08:47:13.987Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://niziming.github.io/tags/Windows/</loc>
         <lastmod>2025-07-07T08:47:13.987Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -373,6 +366,13 @@
     </url>
 
     <url>
+        <loc>https://niziming.github.io/tags/Vuex/</loc>
+        <lastmod>2025-07-07T08:47:13.987Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://niziming.github.io/tags/Blog/</loc>
         <lastmod>2025-07-07T08:47:13.992Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -380,14 +380,14 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/WSA/</loc>
+        <loc>https://niziming.github.io/tags/windows/</loc>
         <lastmod>2025-07-07T08:47:14.008Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/windows/</loc>
+        <loc>https://niziming.github.io/tags/WSA/</loc>
         <lastmod>2025-07-07T08:47:14.008Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -478,15 +478,22 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/Doris/</loc>
+        <loc>https://niziming.github.io/tags/SpirngCloud/</loc>
         <lastmod>2025-07-08T09:31:59.560Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/SpirngCloud/</loc>
-        <lastmod>2025-07-08T09:31:59.560Z</lastmod>
+        <loc>https://niziming.github.io/tags/Doris/</loc>
+        <lastmod>2025-07-08T09:35:37.985Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/tags/Observer/</loc>
+        <lastmod>2025-07-08T09:35:37.985Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

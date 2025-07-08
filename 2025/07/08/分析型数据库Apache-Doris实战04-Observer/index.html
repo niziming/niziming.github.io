@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          分析型数据库Apache-Doris实战04-Observer - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2025/07/08/分析型数据库Apache-Doris实战04-Observer/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Doris" title="Doris">Doris</a>
+                            
+                              <a class="tag" href="/tags/#Observer" title="Observer">Observer</a>
+                            
+                        </div>
+                        <h1>分析型数据库Apache-Doris实战04-Observer</h1>
+                        <h2 class="subheading">分析型数据库Apache-Doris实战04-Observer</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2025-07-08
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3><span id="observer-和-be-fe-的本质区别">Observer 和 BE / FE 的本质区别</span></h3>
+<p>我们用一张表格来清晰地对比这三者的定位和职责：</p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>核心定位</th>
+<th>存储什么数据？</th>
+<th>主要职责</th>
+<th>能否独立工作？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FE</strong> (Frontend)</td>
+<td><strong>大脑/管理层</strong></td>
+<td><strong>元数据</strong> (数据库/表结构、权限、BE节点列表等)</td>
+<td>SQL解析优化、任务调度、元数据管理、高可用选举</td>
+<td><strong>不能</strong>。必须有BE来存储数据和执行任务。</td>
+</tr>
+<tr>
+<td><strong>BE</strong> (Backend)</td>
+<td><strong>身体/劳动力</strong></td>
+<td><strong>用户数据</strong> (你存入的所有真实数据)</td>
+<td>存储数据分片(Tablets)、执行FE下发的计算任务</td>
+<td><strong>不能</strong>。必须有FE来指挥它工作。</td>
+</tr>
+<tr>
+<td><strong>Observer</strong></td>
+<td><strong>FE的“只读副本”</strong></td>
+<td><strong>元数据</strong> (和FE完全一样)</td>
+<td><strong>只处理读请求</strong> (SQL解析优化、任务调度)，<strong>不参与元数据写入和选举</strong></td>
+<td><strong>不能</strong>。它本质上是一种特殊类型的FE，同样需要BE来存储数据。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>简单来说：</strong></p>
+<ul>
+<li><strong>FE vs BE</strong>: 这是最根本的区别。FE是<strong>管理者</strong>，BE是<strong>执行者</strong>。一个管脑力活，一个管体力活。</li>
+<li><strong>Observer vs FE (Master/Follower)</strong>: 这两者是<strong>同类</strong>，都是FE，都是“管理者”。区别在于<strong>职权不同</strong>。
+<ul>
+<li>Master/Follower是<strong>核心决策层</strong>，能拍板、能投票。</li>
+<li>Observer是<strong>顾问/助理</strong>，能看报告、能分担查询分析工作，但不能拍板、不能投票。</li>
+</ul>
+</li>
+<li><strong>Observer vs BE</strong>: 这是完全不同的物种。Observer是<strong>管理者</strong>（一种FE），不存用户数据；BE是<strong>执行者</strong>，存储所有用户数据。<strong>你永远不会用Observer来替换BE，或者反过来。</strong></li>
+</ul>
+<p><strong>一个关键点：增加BE是为了增加数据存储容量和计算能力；增加Observer是为了增加SQL接入和查询优化的并发处理能力。</strong></p>
+<hr>
+<h3><span id="observer-是如何部署的">Observer 是如何部署的</span></h3>
+<p>部署一个Observer节点，和你部署一个Follower节点的过程几乎完全一样，只是在最后一步的配置和注册上有所不同。</p>
+<p>下面是详细的部署步骤，我们以给你的集群增加一个Observer为例：</p>
+<h4><span id="部署场景">部署场景</span></h4>
+<ul>
+<li><strong>现有集群</strong>:
+<ul>
+<li>1个FE (Master): 172.22.0.10</li>
+<li>1个BE: 172.22.0.11</li>
+</ul>
+</li>
+<li><strong>目标</strong>: 增加一个Observer FE节点。
+<ul>
+<li>我们为它规划一个新的IP地址: 172.22.0.12</li>
+</ul>
+</li>
+</ul>
+<h4><span id="步骤1-修改现有fe的配置-feconf">步骤1: 修改现有FE的配置 (fe.conf)</span></h4>
+<p>为了让整个集群知道即将有新成员加入，你需要先告诉现有的Master FE。</p>
+<ol>
+<li></li>
+<li>
+<p><strong>登录到Master FE容器</strong>:</p>
+<p>Generated bash</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -<span class="keyword">it</span> doris-fe bash</span><br></pre></td></tr></table></figure>
+<p>content_copydownload</p>
+<p>Use code <a target="_blank" rel="noopener" href="https://support.google.com/legal/answer/13505487">with caution</a>.Bash</p>
+</li>
+<li>
+<p><strong>修改fe.conf文件</strong>:<br>
+在Doris 2.1版本及以后，不再需要手动修改fe.conf的FE_SERVERS。我们通过SQL命令来动态添加。</p>
+</li>
+</ol>
+<h4><span id="步骤2-准备新的observer节点环境">步骤2: 准备新的Observer节点环境</span></h4>
+<p>你需要为新的Observer节点准备一台新的服务器或一个新的Docker容器。我们以Docker为例，修改 docker-compose.yml 文件。</p>
+<p>Generated yaml</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">services:</span></span><br><span class="line">  <span class="meta"># --- 现有的 fe1 (Master) ---</span></span><br><span class="line"><span class="symbol">  fe1:</span></span><br><span class="line"><span class="symbol">    image:</span> apache/doris:doris-fe<span class="number">-2.1</span><span class="number">.7</span></span><br><span class="line"><span class="symbol">    container_name:</span> doris-fe-master</span><br><span class="line"><span class="symbol">    hostname:</span> fe1</span><br><span class="line"><span class="symbol">    ports:</span></span><br><span class="line">      - <span class="string">&quot;8030:8030&quot;</span></span><br><span class="line">      - <span class="string">&quot;9030:9030&quot;</span></span><br><span class="line"><span class="symbol">    volumes:</span></span><br><span class="line">      - <span class="keyword">/home/</span>doris<span class="keyword">/fe1/</span>data:<span class="keyword">/opt/</span>doris<span class="keyword">/fe/</span>doris-meta</span><br><span class="line"><span class="symbol">    networks:</span></span><br><span class="line">      doris-net:</span><br><span class="line"><span class="symbol">        ipv4_address:</span> <span class="number">172.22</span><span class="number">.0</span><span class="number">.10</span></span><br><span class="line"><span class="symbol">    environment:</span></span><br><span class="line">      <span class="meta"># FE_SERVERS 现在需要列出所有 FE 成员</span></span><br><span class="line">      - FE_SERVERS=fe1:<span class="number">172.22</span><span class="number">.0</span><span class="number">.10</span>:<span class="number">9010</span>,fe2:<span class="number">172.22</span><span class="number">.0</span><span class="number">.12</span>:<span class="number">9010</span></span><br><span class="line">      - FE_ID=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="meta"># --- 新增的 fe-observer ---</span></span><br><span class="line">  fe-observer:</span><br><span class="line"><span class="symbol">    image:</span> apache/doris:doris-fe<span class="number">-2.1</span><span class="number">.7</span></span><br><span class="line"><span class="symbol">    container_name:</span> doris-fe-observer</span><br><span class="line"><span class="symbol">    hostname:</span> fe2</span><br><span class="line">    <span class="meta"># Observer 通常不需要对外暴露端口，除非你想直接连它</span></span><br><span class="line">    <span class="meta"># ports:</span></span><br><span class="line">    <span class="meta">#   - <span class="string">&quot;8031:8030&quot;</span></span></span><br><span class="line">    <span class="meta">#   - <span class="string">&quot;9031:9030&quot;</span></span></span><br><span class="line"><span class="symbol">    volumes:</span></span><br><span class="line">      - <span class="keyword">/home/</span>doris<span class="keyword">/fe-observer/</span>data:<span class="keyword">/opt/</span>doris<span class="keyword">/fe/</span>doris-meta</span><br><span class="line"><span class="symbol">    networks:</span></span><br><span class="line">      doris-net:</span><br><span class="line"><span class="symbol">        ipv4_address:</span> <span class="number">172.22</span><span class="number">.0</span><span class="number">.12</span></span><br><span class="line"><span class="symbol">    environment:</span></span><br><span class="line">      <span class="meta"># FE_SERVERS 必须和所有 FE 成员保持一致</span></span><br><span class="line">      - FE_SERVERS=fe1:<span class="number">172.22</span><span class="number">.0</span><span class="number">.10</span>:<span class="number">9010</span>,fe2:<span class="number">172.22</span><span class="number">.0</span><span class="number">.12</span>:<span class="number">9010</span></span><br><span class="line">      - FE_ID=<span class="number">2</span> <span class="meta"># 每个FE必须有唯一的ID</span></span><br><span class="line"></span><br><span class="line">  <span class="meta"># --- 现有的 be1 ---</span></span><br><span class="line"><span class="symbol">  be1:</span></span><br><span class="line"><span class="symbol">    image:</span> apache/doris:doris-be<span class="number">-2.1</span><span class="number">.7</span></span><br><span class="line">    <span class="meta"># ... be1 的配置保持不变 ...</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">networks:</span></span><br><span class="line">  doris-net:</span><br><span class="line"><span class="symbol">    driver:</span> bridge</span><br><span class="line"><span class="symbol">    ipam:</span></span><br><span class="line"><span class="symbol">      config:</span></span><br><span class="line">        - subnet: <span class="number">172.22</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p>content_copydownload</p>
+<p>Use code <a target="_blank" rel="noopener" href="https://support.google.com/legal/answer/13505487">with caution</a>.Yaml</p>
+<p><strong>注意</strong>: 在实际部署中，我们不再通过环境变量来配置BE，而是通过ADD BACKEND命令。这里为了简化，我们假设BE配置不变。</p>
+<h4><span id="步骤3-使用sql命令添加observer-最关键的一步">步骤3: 使用SQL命令添加Observer (最关键的一步)</span></h4>
+<p>在启动新的 fe-observer 容器<strong>之前或之后</strong>，你需要连接到<strong>现有的Master FE</strong>，然后执行一条SQL命令，告诉集群新成员的角色。</p>
+<ol>
+<li>
+<p><strong>连接到Master FE的MySQL端口</strong>:</p>
+<p>Generated bash</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysql</span> -h <span class="number">127.0.0.1</span> -P <span class="number">9030</span> -u root</span><br></pre></td></tr></table></figure>
+<p>content_copydownload</p>
+<p>Use code <a target="_blank" rel="noopener" href="https://support.google.com/legal/answer/13505487">with caution</a>.Bash</p>
+</li>
+<li>
+<p><strong>执行添加Observer的命令</strong>:</p>
+<p>Generated sql</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">ADD</span> OBSERVER &quot;172.22.0.12:9010&quot;;</span><br></pre></td></tr></table></figure>
+<p>content_copydownload</p>
+<p>Use code <a target="_blank" rel="noopener" href="https://support.google.com/legal/answer/13505487">with caution</a>.SQL</p>
+<ul>
+<li>ADD OBSERVER 这个关键词明确地告诉了Doris，新加入的 172.22.0.12:9010 这个FE节点是<strong>观察者角色</strong>。</li>
+<li>如果想添加一个Follower，命令就是 ALTER SYSTEM ADD FOLLOWER “ip:port”;。</li>
+</ul>
+</li>
+</ol>
+<h4><span id="步骤4-启动并验证">步骤4: 启动并验证</span></h4>
+<ol>
+<li>
+<p>执行 docker-compose up -d 来启动包括新Observer在内的所有服务。</p>
+</li>
+<li>
+<p>等待几分钟，让Observer从Master同步元数据。</p>
+</li>
+<li>
+<p>连接到任何一个FE节点，执行 SHOW FRONTENDS;。</p>
+<p>Generated sql</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysql</span> -h <span class="number">127.0.0.1</span> -P <span class="number">9030</span> -u root -e <span class="string">&quot;SHOW FRONTENDS;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>content_copydownload</p>
+<p>Use code <a target="_blank" rel="noopener" href="https://support.google.com/legal/answer/13505487">with caution</a>.SQL</p>
+<p>在输出结果中，你会看到两行：</p>
+<ul>
+<li>一行是 fe1，它的 Role 是 MASTER。</li>
+<li>另一行是 fe2，它的 Role 将是 <strong>OBSERVER</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote></blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2025/07/08/分析型数据库Apache-Doris实战03-Spring微服务中应用/" data-toggle="tooltip" data-placement="top" title="分析型数据库Apache-Doris实战03-Spring微服务中应用">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Observer 和 BE &#x2F; FE 的本质区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Observer 是如何部署的</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">部署场景</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">步骤1: 修改现有FE的配置 (fe.conf)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">步骤2: 准备新的Observer节点环境</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">步骤3: 使用SQL命令添加Observer (最关键的一步)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">步骤4: 启动并验证</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number"></span> <span class="toc-nav-text">引用资料</span></a>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Doris" title="Doris">Doris</a>
+                        
+                          <a class="tag" href="/tags/#Observer" title="Observer">Observer</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
