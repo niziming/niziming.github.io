@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          如何ubuntu上创建git仓库 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2021/04/21/如何ubuntu上创建git仓库/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#git" title="git">git</a>
+                            
+                        </div>
+                        <h1>如何ubuntu上创建git仓库</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2021-04-21
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="如何ubuntu上创建git仓库">如何ubuntu上创建git仓库</span></h1>
+<h3><span id="服务端">服务端</span></h3>
+<ul>
+<li>安装git</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@admin</span> ~]<span class="comment"># apt-get install -y git        #执行该命令进行Git安装</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:~</span><span class="variable">$ </span>git version</span><br><span class="line">git version <span class="number">2.7</span>.<span class="number">4</span>   <span class="comment"># 查看是否安装成功</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>linux服务器端创建新用户来管理git仓库</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home</span><span class="variable">$ </span>sudo useradd git</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home</span><span class="variable">$ </span>sudo passwd git</span><br><span class="line"><span class="title class_">Enter</span> new <span class="title class_">UNIX</span> <span class="symbol">password:</span> </span><br><span class="line"><span class="title class_">Retype</span> new <span class="title class_">UNIX</span> <span class="symbol">password:</span> </span><br><span class="line"><span class="symbol">passwd:</span> password updated successfully</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建git仓库，并且将管理者变成新创建的git用户</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在git用户目录下创建仓库目录repositroy，并且创建gittest.git项目</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home</span><span class="variable">$ </span>sudo mkdir -p ./git/rep/gcp.git</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home</span><span class="variable">$ </span>ls 		<span class="comment">#查看/home/目录下有哪些用户目录</span></span><br><span class="line">git  jermainenee  me  ubuntu  ziming  zimingnee</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home</span><span class="variable">$ </span>cd git 	<span class="comment">#进入git用户目录</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>ls	<span class="comment">#查看git用户目录下有哪些目录/文件</span></span><br><span class="line">rep</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>cd rep/	<span class="comment">#进入repository仓库目录</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/rep</span><span class="variable">$ </span>ls	<span class="comment">#查看仓库目录下的项目目录</span></span><br><span class="line">gcp.git</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/rep</span><span class="variable">$ </span>git init --bare ./gcp.git	<span class="comment">#这步很重要，初始化项目测试目录</span></span><br><span class="line">/home/git/rep/gcp.git/<span class="symbol">refs:</span> <span class="title class_">Permission</span> denied</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/rep</span><span class="variable">$ </span>sudo git init --bare ./gcp.git</span><br><span class="line"><span class="title class_">Initialized</span> empty <span class="title class_">Git</span> repository <span class="keyword">in</span> /home/git/rep/gcp.git/</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/rep</span><span class="variable">$ </span>cd ..</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>ll <span class="comment">#查看gittest.git项目文件夹的拥有者</span></span><br><span class="line">total <span class="number">12</span></span><br><span class="line">drwxr-xr-x <span class="number">3</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">8</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> ../</span><br><span class="line">drwxr-xr-x <span class="number">3</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> rep/</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>sudo chown -R <span class="symbol">git:</span>git rep</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>ll 	<span class="comment">#再次查看gittest.git项目文件夹的拥有者</span></span><br><span class="line">total <span class="number">12</span></span><br><span class="line">drwxr-xr-x <span class="number">3</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">8</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> ../	</span><br><span class="line">drwxr-xr-x <span class="number">3</span> git  git  <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> rep/  	<span class="comment"># 拥有者是git用户</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装SSH服务</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ziming</span>@zm-gcp-vm-ubuntu16-tw-<span class="number">8</span>:/home/git$ sudo apt-get install openssh-server </span><br><span class="line"><span class="attribute">Reading</span> package lists... Done</span><br><span class="line"><span class="attribute">Building</span> dependency tree       </span><br><span class="line"><span class="attribute">Reading</span> state information... Done</span><br><span class="line"><span class="attribute">openssh</span>-server is already the newest version (<span class="number">1</span>:<span class="number">7</span>.<span class="number">2</span>p2-<span class="number">4</span>ubuntu2.<span class="number">10</span>).</span><br><span class="line"><span class="attribute">0</span> upgraded, <span class="number">0</span> newly installed, <span class="number">0</span> to remove and <span class="number">13</span> not upgraded.</span><br></pre></td></tr></table></figure>
+<h3><span id="客户端">客户端</span></h3>
+<ul>
+<li>在client端新建文件夹拉取git项目</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ziming@Mechrev MINGW64 /d/development/WebStormProjects</span><br><span class="line">$ <span class="built_in">mkdir</span> gcp</span><br><span class="line"></span><br><span class="line">ziming@Mechrev MINGW64 /d/development/WebStormProjects</span><br><span class="line">$ <span class="built_in">cd</span> gcp/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>本地拉取服务器项目</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone git<span class="variable">@35</span>.<span class="number">236.130</span>.<span class="number">209</span><span class="symbol">:</span><span class="number">22</span>/<span class="symbol">:/home/git/rep/gcp</span>.git</span><br><span class="line"><span class="title class_">Cloning</span> into <span class="string">&#x27;gcp&#x27;</span>...</span><br><span class="line">git<span class="variable">@35</span>.<span class="number">236.130</span>.<span class="number">209</span>: <span class="title class_">Permission</span> denied (publickey). <span class="comment"># 无权限</span></span><br><span class="line"><span class="symbol">fatal:</span> <span class="title class_">Could</span> <span class="keyword">not</span> read from remote repository.</span><br><span class="line"></span><br><span class="line"><span class="title class_">Please</span> make sure you have the correct access rights</span><br><span class="line"><span class="keyword">and</span> the repository exists.</span><br></pre></td></tr></table></figure>
+<h3><span id="解决权限问题创建sshkey">解决权限问题创建sshkey</span></h3>
+<h3><span id="服务端">服务端</span></h3>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo sshd_config</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo vim sshd_config</span><br><span class="line"><span class="comment"># 添加三行 如果已有注释就可以放开</span></span><br><span class="line"><span class="title class_">PubkeyAuthentication</span> yes</span><br><span class="line"><span class="title class_">RSAAuthentication</span> yes</span><br><span class="line"><span class="title class_">AuthorizedKeysFile</span> .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo sshd_config</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo vim sshd_config</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo service sshd restart <span class="comment"># 重启</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换文件所有者</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>sudo chown -R <span class="symbol">git:</span>git .ssh</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>ll</span><br><span class="line">total <span class="number">16</span></span><br><span class="line">drwxr-xr-x <span class="number">4</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">23</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">8</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> ../</span><br><span class="line">drwxr-xr-x <span class="number">3</span> git  git  <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> rep/</span><br><span class="line">drwxr-xr-x <span class="number">2</span> git  git  <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">23</span> .ssh/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>客户端导入公匙</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<ul>
+<li>服务端导入</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入pub key</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/</span>.ssh<span class="variable">$ </span>sudo vim authorized_keys</span><br><span class="line"><span class="comment"># 查看是否导入</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/</span>.ssh<span class="variable">$ </span>cat authorized_keys </span><br><span class="line">sh-rsa </span><br><span class="line"><span class="comment"># 修改权限</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/</span>.ssh<span class="variable">$ </span>sudo chmod <span class="number">600</span> authorized_keys </span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/</span>.ssh<span class="variable">$ </span>sudo chmod <span class="number">700</span> ../.ssh/</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git/</span>.ssh$</span><br></pre></td></tr></table></figure>
+<p>再次拉取即可</p>
+<p><img src="/2021/04/21/%E5%A6%82%E4%BD%95ubuntu%E4%B8%8A%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93/image-20210530173736429.png" alt="image-20210530173736429"></p>
+<blockquote>
+<p>在Ubuntu上搭建git服务器<br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_38661691/article/details/88658033">https://blog.csdn.net/baidu_38661691/article/details/88658033</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2021/10/08/SpringCloud微服务系列01-初始项目搭建/" data-toggle="tooltip" data-placement="top" title="SpringCloud微服务系列01-初始项目搭建">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2021/04/20/2021五一重庆游/" data-toggle="tooltip" data-placement="top" title="2021五一重庆游">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">如何ubuntu上创建git仓库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">客户端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">解决权限问题创建sshkey</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">服务端</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#git" title="git">git</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

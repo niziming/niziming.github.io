@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Docker-Registry学习1-Docker部署镜像 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/10/27/Docker-Registry学习1-Docker部署镜像/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                        </div>
+                        <h1>Docker-Registry学习1-Docker部署镜像</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-10-27
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="docker-registry学习1-docker部署镜像">Docker-Registry学习1-Docker部署镜像</span></h1>
+<h2><span id="重新克隆一个虚拟机用于部署">重新克隆一个虚拟机用于部署</span></h2>
+<p><img src="/2019/10/27/Docker-Registry%E5%AD%A6%E4%B9%A01-Docker%E9%83%A8%E7%BD%B2%E9%95%9C%E5%83%8F/2.png" alt></p>
+<h2><span id="修改daemonjson">修改daemon.json</span></h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ vim <span class="regexp">/etc/</span>docker/daemon.json </span><br></pre></td></tr></table></figure>
+<p>内容如下:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://87xm9zvi.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">  <span class="string">&quot;insecure-registries&quot;</span>: [<span class="string">&quot;192.168.115.138:5000&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启docker</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ systemctl <span class="built_in">restart</span> docker  </span><br></pre></td></tr></table></figure>
+<p>查看docker信息是否成功</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ docker info</span><br><span class="line"><span class="params">Client:</span></span><br><span class="line"> Debug <span class="params">Mode:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="params">Server:</span></span><br><span class="line"> <span class="params">Containers:</span> <span class="number">1</span></span><br><span class="line">  <span class="params">Running:</span> <span class="number">0</span></span><br><span class="line">  <span class="params">Paused:</span> <span class="number">0</span></span><br><span class="line">  <span class="params">Stopped:</span> <span class="number">1</span></span><br><span class="line"> <span class="params">Images:</span> <span class="number">1</span></span><br><span class="line"> Server <span class="params">Version:</span> <span class="number">19.03</span>.<span class="number">4</span></span><br><span class="line"> Storage <span class="params">Driver:</span> overlay2</span><br><span class="line">  Backing <span class="params">Filesystem:</span> extfs</span><br><span class="line">  Supports <span class="params">d_type:</span> <span class="literal">true</span></span><br><span class="line">  Native Overlay <span class="params">Diff:</span> <span class="literal">true</span></span><br><span class="line"> Logging <span class="params">Driver:</span> json-file</span><br><span class="line"> Cgroup <span class="params">Driver:</span> cgroupfs</span><br><span class="line"> <span class="params">Plugins:</span></span><br><span class="line">  <span class="params">Volume:</span> local</span><br><span class="line">  <span class="params">Network:</span> bridge host ipvlan macvlan <span class="literal">null</span> overlay</span><br><span class="line">  <span class="params">Log:</span> awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog</span><br><span class="line"> <span class="params">Swarm:</span> inactive</span><br><span class="line"> <span class="params">Runtimes:</span> runc</span><br><span class="line"> Default <span class="params">Runtime:</span> runc</span><br><span class="line"> Init <span class="params">Binary:</span> docker-init</span><br><span class="line"> containerd <span class="params">version:</span> b34a5c8af56e510852c35414db4c1f4fa6172339</span><br><span class="line"> runc <span class="params">version:</span> <span class="number">3</span>e425f80a8c931f88e6d94a8c831b9d5aa481657</span><br><span class="line"> init <span class="params">version:</span> fec3683</span><br><span class="line"> Security <span class="params">Options:</span></span><br><span class="line">  apparmor</span><br><span class="line">  seccomp</span><br><span class="line">   <span class="params">Profile:</span> default</span><br><span class="line"> Kernel <span class="params">Version:</span> <span class="number">4.15</span>.<span class="number">0</span><span class="operator">-</span><span class="number">6</span>6-generic</span><br><span class="line"> Operating <span class="params">System:</span> Ubuntu <span class="number">18.04</span>.<span class="number">2</span> LTS</span><br><span class="line"> <span class="params">OSType:</span> linux</span><br><span class="line"> <span class="params">Architecture:</span> x86_64</span><br><span class="line"> <span class="params">CPUs:</span> <span class="number">2</span></span><br><span class="line"> Total <span class="params">Memory:</span> <span class="number">1.924</span>GiB</span><br><span class="line"> <span class="params">Name:</span> ubuntu</span><br><span class="line"> <span class="params">ID:</span> UC5I:QDEG:QVOJ:UKQ7:XC2C:NDC6:UBV3:Y6ZU:JLXZ:O3QJ:NK4C:YWQF</span><br><span class="line"> Docker Root <span class="params">Dir:</span> <span class="symbol">/var/lib/docker</span></span><br><span class="line"> Debug <span class="params">Mode:</span> <span class="literal">false</span></span><br><span class="line"> <span class="params">Registry:</span> https:<span class="operator">//</span>index.docker.io<span class="operator">/</span>v1<span class="symbol">/</span></span><br><span class="line"> <span class="params">Labels:</span></span><br><span class="line"> <span class="params">Experimental:</span> <span class="literal">false</span></span><br><span class="line"> Insecure <span class="params">Registries:</span></span><br><span class="line">  <span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span></span><br><span class="line">  <span class="number">127.0</span>.<span class="number">0.0</span><span class="symbol">/8</span></span><br><span class="line"> Registry <span class="params">Mirrors:</span></span><br><span class="line">  https:<span class="operator">//</span><span class="number">87</span>xm9zvi.mirror.aliyuncs.com<span class="symbol">/</span></span><br><span class="line"> Live Restore <span class="params">Enabled:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>发现成功</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">WARNING:</span> No swap limit support</span><br><span class="line">➜  ~ docker pull tomcat</span><br><span class="line">Using default <span class="params">tag:</span> latest</span><br><span class="line"><span class="params">latest:</span> Pulling from library<span class="symbol">/tomcat</span></span><br><span class="line"><span class="number">9</span><span class="params">a0b0ce99936:</span> Pull complete </span><br><span class="line"><span class="params">db3b6004c61a:</span> Pull complete </span><br><span class="line"><span class="params">f8f075920295:</span> Pull complete </span><br><span class="line"><span class="number">6</span><span class="params">ef14aff1139:</span> Pull complete </span><br><span class="line"><span class="number">962785</span><span class="params">d3b7f9:</span> Pull complete </span><br><span class="line"><span class="number">631589572</span><span class="params">f9b:</span> Pull complete </span><br><span class="line"><span class="params">c55a0c6f4c7b:</span> Pull complete </span><br><span class="line"><span class="number">379605</span><span class="params">d88e88:</span> Pull complete </span><br><span class="line"><span class="params">e056aa10ded8:</span> Pull complete </span><br><span class="line"><span class="number">6349</span><span class="params">a1c98d85:</span> Pull complete </span><br><span class="line"><span class="params">Digest:</span> sha256:<span class="number">77</span>e41dbdf7854f03b9a933510e8852c99d836d42ae85cba4b3bc04e8710dc0f7</span><br><span class="line"><span class="params">Status:</span> Downloaded newer image for tomcat:latest</span><br><span class="line">docker.io<span class="operator">/</span>library<span class="operator">/</span>tomcat:latest</span><br><span class="line">➜  ~ docker tag tomcat <span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span><span class="symbol">/MyTomcat</span></span><br><span class="line">Error parsing <span class="params">reference:</span> <span class="string">&quot;192.168.115.138:5000/MyTomcat&quot;</span> is not a valid repository<span class="operator">/</span><span class="params">tag:</span> invalid reference <span class="params">format:</span> repository name must be lowercase</span><br><span class="line">➜  ~ docker tag tomcat <span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span><span class="symbol">/tomcat</span></span><br><span class="line">➜  ~ docker push <span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span><span class="symbol">/tomcat</span></span><br><span class="line">The push refers to repository [<span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span><span class="operator">/</span>tomcat]</span><br><span class="line"><span class="number">65</span><span class="params">e5e74a1404:</span> Pushed </span><br><span class="line"><span class="number">38</span><span class="params">d8d468142f:</span> Pushed </span><br><span class="line"><span class="number">08579474</span><span class="params">bb30:</span> Pushed </span><br><span class="line"><span class="params">a8902d6047fe:</span> Pushed </span><br><span class="line"><span class="number">99557920</span><span class="params">a7c5:</span> Pushed </span><br><span class="line"><span class="number">7</span><span class="params">e3c900343d0:</span> Pushed </span><br><span class="line"><span class="params">b8f8aeff56a8:</span> Pushed </span><br><span class="line"><span class="number">687890749166</span>: Pushed </span><br><span class="line"><span class="number">2</span><span class="params">f77733e9824:</span> Pushed </span><br><span class="line"><span class="number">97041</span><span class="params">f29baff:</span> Pushed </span><br><span class="line"><span class="params">latest:</span> <span class="params">digest:</span> sha256:<span class="number">8</span>aee1001456a722358557b9b1f6ee8eecad675b36e4be10f9238ccd8293bc856 <span class="params">size:</span> <span class="number">2422</span></span><br><span class="line">➜  ~ docker images</span><br><span class="line">REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"><span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span><span class="symbol">/tomcat</span>   latest              <span class="number">882487</span>b8be1d        <span class="number">8</span> days ago          <span class="number">507</span>MB</span><br><span class="line">tomcat                        latest              <span class="number">882487</span>b8be1d        <span class="number">8</span> days ago          <span class="number">507</span>MB</span><br><span class="line">hello-world                   latest              fce289e99eb9        <span class="number">9</span> months ago        <span class="number">1.84</span>kB</span><br><span class="line">➜  ~ docker images</span><br><span class="line">REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"><span class="number">192.168</span>.<span class="number">115.138</span>:<span class="number">5000</span><span class="symbol">/tomcat</span>   latest              <span class="number">882487</span>b8be1d        <span class="number">8</span> days ago          <span class="number">507</span>MB</span><br><span class="line">tomcat                        latest              <span class="number">882487</span>b8be1d        <span class="number">8</span> days ago          <span class="number">507</span>MB</span><br><span class="line">hello-world                   latest              fce289e99eb9        <span class="number">9</span> months ago        <span class="number">1.84</span>kB</span><br></pre></td></tr></table></figure>
+<h2><span id="查看结果">查看结果</span></h2>
+<p><img src="/2019/10/27/Docker-Registry%E5%AD%A6%E4%B9%A01-Docker%E9%83%A8%E7%BD%B2%E9%95%9C%E5%83%8F/1.png" alt></p>
+<h1><span id="参考资料">参考资料</span></h1>
+<blockquote></blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/10/27/Docker-Registry学习3-配置WebUI与客户端/" data-toggle="tooltip" data-placement="top" title="Docker-Registry学习3-配置WebUI与客户端">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/10/27/Docker-Registry学习2-简介与安装/" data-toggle="tooltip" data-placement="top" title="Docker-Registry学习2-简介与安装">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker-Registry学习1-Docker部署镜像</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">重新克隆一个虚拟机用于部署</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">修改daemon.json</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">查看结果</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

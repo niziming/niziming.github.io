@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Linux使用ubuntu22.04_LTS_初始化 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2023/12/24/Linux使用ubuntu22-04-LTS-初始化/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                            
+                        </div>
+                        <h1>Linux使用ubuntu22.04_LTS_初始化</h1>
+                        <h2 class="subheading">ubuntu22.04_LTS_初始化</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2023-12-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="linux使用ubuntu2204_lts_初始化">Linux使用ubuntu22.04_LTS_初始化</span></h1>
+<h2><span id="简介">简介</span></h2>
+<p>Linux操作系有许多初始配置的操作,有了这些操作，可以更方便的对Linux操作系统进行工作.</p>
+<h2><span id="准备工作">准备工作</span></h2>
+<p>安装Linux 22.04 LTS版本。</p>
+<h2><span id="linux换源">Linux换源</span></h2>
+<p>查看当前的源。</p>
+<p><code>vim /etc/apt/sources.list</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">deb http://archive.ubuntu.com/ubuntu/ jammy universe</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://archive.ubuntu.com/ubuntu/ jammy universe</span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://archive.ubuntu.com/ubuntu/ jammy-updates universe</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># team, and may not be under a free licence. Please satisfy yourself as to</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># your rights to use the software. Also, please note that software in</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># multiverse WILL NOT receive any review or updates from the Ubuntu</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># security team.</span></span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ jammy multiverse</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://archive.ubuntu.com/ubuntu/ jammy multiverse</span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ jammy-updates multiverse</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://archive.ubuntu.com/ubuntu/ jammy-updates multiverse</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># N.B. software from this repository may not have been tested as</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># extensively as that contained in the main release, although it includes</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># newer versions of some applications which may provide useful features.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Also, please note that software in backports WILL NOT receive any review</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># or updates from the Ubuntu security team.</span></span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted</span></span><br><span class="line">deb http://security.ubuntu.com/ubuntu/ jammy-security universe</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://security.ubuntu.com/ubuntu/ jammy-security universe</span></span><br><span class="line">deb http://security.ubuntu.com/ubuntu/ jammy-security multiverse</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">deb-src http://security.ubuntu.com/ubuntu/ jammy-security multiverse</span></span><br></pre></td></tr></table></figure>
+<p>根据当前元的显示，可以看到是ubuntu原生的，但是这个东西在中国大陆是没办法使用的，我们需要将其进行更换。我们先把当前文件进行一个行一个，完了以后再另外生成一个清华源的，给他替换掉就可以了。</p>
+<p>这里我并没有用root账户进行。而是使用的自己的账户在需要权限的地方给上sudo。</p>
+<p><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code></p>
+<h2><span id="更新源">更新源</span></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get upgrade</span><br><span class="line"><span class="built_in">sudo</span> apt-get </span><br></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse</span></span><br><span class="line"># deb-src https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse</span></span><br><span class="line">deb https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span></span><br><span class="line"># deb-src https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span></span><br><span class="line">deb https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line"># deb-src https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"># deb https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"># # deb-src https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http:<span class="comment">//security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"># deb-src http:<span class="comment">//security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br><span class="line"># # deb-src https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+<h2><span id="ssh服务的安装">SSH服务的安装</span></h2>
+<p><code>sudo apt install openssh-server</code>进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ziming@Surface-Pro9:~$ <span class="built_in">sudo</span> apt install openssh-server</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree... Done</span><br><span class="line">Reading state information... Done</span><br><span class="line">openssh-server is already the newest version (1:8.9p1-3ubuntu0.5).</span><br><span class="line">0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.</span><br></pre></td></tr></table></figure>
+<p><strong>第二步：检查服务器状态</strong></p>
+<p>当你下载并安装完包后，SSH 服务器应该已经运行了，但是为了确保万无一失我们需要检查一下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh status</span><br></pre></td></tr></table></figure>
+<p>你还可以使用 <code>systemctl</code> 命令：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ziming@Surface-Pro9:~$ sudo systemctl status ssh</span><br><span class="line">● ssh.service - OpenBSD Secure Shell server</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Sun 2023-12-24 13:25:15 CST; 4min 11s ago</span><br><span class="line">       Docs: man:sshd(8)</span><br><span class="line">             man:sshd_config(5)</span><br><span class="line">   Main PID: 4590 (sshd)</span><br><span class="line">      Tasks: 1 (limit: 4589)</span><br><span class="line">     Memory: 1.7M</span><br><span class="line">     CGroup: /system.slice/ssh.service</span><br><span class="line">             └─4590 &quot;sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups&quot;</span><br><span class="line"></span><br><span class="line">Dec 24 13:25:15 Surface-Pro9 systemd[1]: Starting OpenBSD Secure Shell server...</span><br><span class="line">Dec 24 13:25:15 Surface-Pro9 sshd[4590]: Server listening on 0.0.0.0 port 22.</span><br><span class="line">Dec 24 13:25:15 Surface-Pro9 sshd[4590]: Server listening on :: port 22.</span><br><span class="line">Dec 24 13:25:15 Surface-Pro9 systemd[1]: Started OpenBSD Secure Shell server.</span><br></pre></td></tr></table></figure>
+<p>如果你的结果中 SSH 服务没有运行，使用这个命令运行它：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable --now ssh</span><br></pre></td></tr></table></figure>
+<p><strong>第三步：允许 SSH 通过防火墙</strong></p>
+<p>Ubuntu 带有名为 <a href="https://link.zhihu.com/?target=https%3A//itsfoss.com/set-up-firewall-gufw/">UFW</a>（<em>简单的防火墙(Uncomplicated Firewall)</em>）的防火墙，这是管理网络规则的 <code>iptables</code> 的一个接口。如果启动了防火墙，它可能会阻止你连接服务器。</p>
+<p>想要配置 UFW 允许你的接入，你需要运行如下命令：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow ssh</span><br><span class="line"></span><br><span class="line">ziming@Surface-Pro9:~$ sudo ufw allow ssh</span><br><span class="line">Rules updated</span><br><span class="line">Rules updated (v6)</span><br></pre></td></tr></table></figure>
+<p>UFW 的运行状态可以通过运行 <code>sudo ufw status</code> 来检查。</p>
+<p>现在，我们的 SSH 服务器已经开始运行了，在等待来自客户端的连接。</p>
+<h2><span id="连接远程服务器">连接远程服务器</span></h2>
+<p>你本地的 Linux 系统已经安装了 SSH 客户端。如果没有，你可以在 Ubuntu 中使用如下命令安装：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-client</span><br></pre></td></tr></table></figure>
+<p>要连接你的 Ubuntu 系统，你需要知道它的 IP 地址，然后使用 <code>ssh</code> 命令，就像这样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@address</span><br></pre></td></tr></table></figure>
+<p>将 <strong>用户名</strong>（<code>username</code>）改为你的系统上的实际用户名，并将 <strong>地址</strong>（<code>address</code>）改为你服务器的 IP 地址。</p>
+<p>如果你 <a href="https://link.zhihu.com/?target=https%3A//itsfoss.com/check-ip-address-ubuntu/">不知道 IP 地址</a>，可以在服务器的终端输入 <code>ip a</code> 查看结果。应该会看到这样的结果：</p>
+<p>可以看到我的 IP 地址是 <code>192.168.1.111</code>。让我们使用 <code>username@address</code> 格式进行连接。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh team@192.168.1.111</span><br></pre></td></tr></table></figure>
+<p>这是你第一次连接到该 SSH 服务器，它会请求添加主机。输入 <code>yes</code> 并回车即可。</p>
+<h2><span id="zsh安装">zsh安装</span></h2>
+<p><code>apt install zsh</code></p>
+<h3><span id="oh-my-zsh">oh-my-zsh</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(wget https://gitee.com/niziming/general_linux_tools/raw/master/install/oh-my-zsh.sh -O -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<p><code>git clone https://gitee.com/niziming/ohmyzsh.git</code></p>
+<p>进入里面</p>
+<p><code>sh ./ohmyzsh/tools/install.sh</code></p>
+<p><em># 查看当前系统支持哪些shell</em>  <code>cat /etc/shells</code></p>
+<h2><span id="docker-安装-confluence">docker 安装 confluence</span></h2>
+<p>数据库创建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE confdb CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE USER &#x27;confuser&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;confuser&#x27;;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; GRANT ALL ON confdb.* TO &#x27;confuser&#x27;@&#x27;%&#x27;;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>docker pull atlassian/confluence-server:7.15.1</code></p>
+<p><code>mkdir -p /usr/local/docker/confluence7</code></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker</span> run <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>-d <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>--name confluence <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>--restart=always <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>--privileged=true <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>-p <span class="number">8090</span>:<span class="number">8090</span> <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>-p <span class="number">8091</span>:<span class="number">8091</span> <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>-v /usr/local/docker/confluence7:/var/atlassian/application-data/confluence <span class="punctuation">\</span></span><br><span class="line"><span class="punctuation"></span>atlassian/confluence-server:<span class="number">7</span>.<span class="number">15</span>.<span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2023/12/24/Linux%E4%BD%BF%E7%94%A8ubuntu22-04-LTS-%E5%88%9D%E5%A7%8B%E5%8C%96/image-20231224181304998.png" alt="image-20231224181304998"></p>
+<p><img src="/2023/12/24/Linux%E4%BD%BF%E7%94%A8ubuntu22-04-LTS-%E5%88%9D%E5%A7%8B%E5%8C%96/image-20231224181528019.png" alt="image-20231224181528019"></p>
+<p><img src="/2023/12/24/Linux%E4%BD%BF%E7%94%A8ubuntu22-04-LTS-%E5%88%9D%E5%A7%8B%E5%8C%96/image-20231224181637065.png" alt="image-20231224181637065"></p>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/577082732">在 Ubuntu 中配置 SSH 的完整指南 | Linux 中国 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2023/12/28/Curl指令详解/" data-toggle="tooltip" data-placement="top" title="Curl指令详解">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/12/24/windows-subsystem-for-linux-01-wsl安装/" data-toggle="tooltip" data-placement="top" title="windows subsystem for linux 01-wsl安装">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Linux使用ubuntu22.04_LTS_初始化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Linux换源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">更新源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">SSH服务的安装</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">连接远程服务器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">zsh安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">oh-my-zsh</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">docker 安装 confluence</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

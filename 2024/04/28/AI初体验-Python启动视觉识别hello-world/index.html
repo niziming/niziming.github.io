@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          AI初体验-Python启动视觉识别hello_world - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2024/04/28/AI初体验-Python启动视觉识别hello-world/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#AI" title="AI">AI</a>
+                            
+                        </div>
+                        <h1>AI初体验-Python启动视觉识别hello_world</h1>
+                        <h2 class="subheading">AI初体验-Python启动视觉识别hello_world</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2024-04-28
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="python启动视觉识别hello_world">Python启动视觉识别hello_world</span></h1>
+<h2><span id="简介">简介</span></h2>
+<p>我们声称人工智能很有趣，但是我们还没有描述它是什么。历史上研究人员研究过几种不同版本的人工智能。有些根据对人类行为的复刻来定义智能，而另一些更喜欢用“<strong>理性</strong>”（rationality）来抽象正式地定义智能，直观上的理解是做“正确的事情”。智能主题的本身也各不相同：一些人将智能视为内部思维过程和推理的属性，而另一些人则关注智能的外部特征，也就是智能行为。[[1]](javascript:void(0))</p>
+<h2><span id="准备工作">准备工作</span></h2>
+<ul>
+<li>
+<p>python3.9</p>
+</li>
+<li>
+<p>显卡:本人是3060ti</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-11.0-download-archive?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exelocal">CUDA Toolkit 11.0 Download | NVIDIA Developer</a></p>
+<ul>
+<li>我最开始安装V12版本cuda发现没有任何效果, 改为11</li>
+</ul>
+</li>
+<li>
+<p>一个小小的hello_world demo</p>
+</li>
+</ul>
+<ol>
+<li><strong>导入 TensorFlow 库</strong>：首先，通过 <code>import tensorflow as tf</code> 导入 TensorFlow 库。</li>
+<li><strong>导入 MNIST 数据集</strong>：然后，通过 <code>from tensorflow.keras.datasets import mnist</code> 导入 MNIST 数据集。这个数据集包含了 60,000 个训练样本和 10,000 个测试样本，每个样本都是一个手写数字的灰度图像。</li>
+<li><strong>数据预处理</strong>：接着，对加载的数据进行预处理。通过将像素值缩放到 0 到 1 之间，将输入特征归一化。</li>
+<li><strong>定义模型</strong>：定义了一个简单的神经网络模型，使用了 Sequential 模型，并添加了 Flatten 层（用于将二维图像数据展平为一维），一个全连接层（Dense），一个 Dropout 层（用于防止过拟合），以及一个输出层。这个模型的结构是：输入层（28x28）-&gt; Flatten 层 -&gt; 全连接层（128个神经元，ReLU 激活函数）-&gt; Dropout 层 -&gt; 输出层（10个神经元，softmax 激活函数）。</li>
+<li><strong>编译模型</strong>：使用 <code>compile</code> 方法来编译模型，指定优化器（这里使用 Adam 优化器）、损失函数（这里使用 sparse_categorical_crossentropy，因为标签是整数）、以及评估指标（这里使用准确率）。</li>
+<li><strong>训练模型</strong>：使用 <code>fit</code> 方法来训练模型，传入训练集的特征和标签，以及训练的迭代次数（epochs）。</li>
+<li><strong>评估模型</strong>：使用 <code>evaluate</code> 方法来评估模型的性能，传入测试集的特征和标签。</li>
+</ol>
+<ul>
+<li>
+<p>pip换源<code>pip config set global.index-url https://pypi.mirrors.ustc.edu.cn/simple</code></p>
+<ul>
+<li>
+<p>查看是否生效<code>pip config list</code></p>
+</li>
+<li>
+<pre><code>C:\Users\Jermaine&gt;pip config list
+globa1.index-ur1='https://pypi.mirrors.ustc.edu.cn/simple/'
+</code></pre>
+</li>
+<li>
+<p>安装依赖测试</p>
+</li>
+<li>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428153752365.png" alt="image-20240428153752365"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>注意: 运行以下代码需要 <code>pip install tensorflow</code> 安装必须的依赖</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载 MNIST 数据集</span></span><br><span class="line">(x_train, y_train), (x_test, y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据预处理</span></span><br><span class="line">x_train, x_test = x_train / <span class="number">255.0</span>, x_test / <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line">model = tf.keras.models.Sequential([</span><br><span class="line">    tf.keras.layers.Flatten(input_shape=(<span class="number">28</span>, <span class="number">28</span>)),</span><br><span class="line">    tf.keras.layers.Dense(<span class="number">128</span>, activation=<span class="string">&#x27;relu&#x27;</span>),</span><br><span class="line">    tf.keras.layers.Dropout(<span class="number">0.2</span>),</span><br><span class="line">    tf.keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译模型</span></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>,</span><br><span class="line">              loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>,</span><br><span class="line">              metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">model.fit(x_train, y_train, epochs=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 评估模型</span></span><br><span class="line">loss, accuracy = model.evaluate(x_test, y_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Test Loss:&quot;</span>, loss)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Test Accuracy:&quot;</span>, accuracy)</span><br></pre></td></tr></table></figure>
+<h4><span id="运行以上代码报错">运行以上代码报错</span></h4>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428152338100.png" alt="image-20240428152338100"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&quot;D:\Program Files\Python39\python.exe&quot; E:\PycharmProjects\Python-Learing\src\DiscriminateNumber.py </span><br><span class="line">2024-04-28 15:15:58.803235: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#x27;cudart64_110.dll&#x27;; dlerror: cudart64_110.dll not found</span><br><span class="line">2024-04-28 15:15:58.803414: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;E:\PycharmProjects\Python-Learing\src\DiscriminateNumber.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    import tensorflow as tf</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\__init__.py&quot;, line 41, in &lt;module&gt;</span><br><span class="line">    from tensorflow.python.tools import module_util as _module_util</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\python\__init__.py&quot;, line 41, in &lt;module&gt;</span><br><span class="line">    from tensorflow.python.eager import context</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\python\eager\context.py&quot;, line 33, in &lt;module&gt;</span><br><span class="line">    from tensorflow.core.framework import function_pb2</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\core\framework\function_pb2.py&quot;, line 16, in &lt;module&gt;</span><br><span class="line">    from tensorflow.core.framework import attr_value_pb2 as tensorflow_dot_core_dot_framework_dot_attr__value__pb2</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\core\framework\attr_value_pb2.py&quot;, line 16, in &lt;module&gt;</span><br><span class="line">    from tensorflow.core.framework import tensor_pb2 as tensorflow_dot_core_dot_framework_dot_tensor__pb2</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\core\framework\tensor_pb2.py&quot;, line 16, in &lt;module&gt;</span><br><span class="line">    from tensorflow.core.framework import resource_handle_pb2 as tensorflow_dot_core_dot_framework_dot_resource__handle__pb2</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\core\framework\resource_handle_pb2.py&quot;, line 16, in &lt;module&gt;</span><br><span class="line">    from tensorflow.core.framework import tensor_shape_pb2 as tensorflow_dot_core_dot_framework_dot_tensor__shape__pb2</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\tensorflow\core\framework\tensor_shape_pb2.py&quot;, line 36, in &lt;module&gt;</span><br><span class="line">    _descriptor.FieldDescriptor(</span><br><span class="line">  File &quot;D:\Program Files\Python39\lib\site-packages\google\protobuf\descriptor.py&quot;, line 621, in __new__</span><br><span class="line">    _message.Message._CheckCalledFromGeneratedFile()</span><br><span class="line">TypeError: Descriptors cannot be created directly.</span><br><span class="line">If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc &gt;= 3.19.0.</span><br><span class="line">If you cannot immediately regenerate your protos, some other possible workarounds are:</span><br><span class="line"> 1. Downgrade the protobuf package to 3.20.x or lower.</span><br><span class="line"> 2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).</span><br><span class="line"></span><br><span class="line">More information: https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates</span><br><span class="line"></span><br><span class="line">Process finished with exit code 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>你可以在 NVIDIA 的官方网站上找到 CUDA Toolkit 的安装包和相关文档。以下是一些步骤，以便你能够在 NVIDIA 网站上找到适合你系统的 CUDA 安装包：</p>
+<ol>
+<li><strong>打开 NVIDIA 官方网站</strong>：打开浏览器，访问 NVIDIA 的官方网站 <a target="_blank" rel="noopener" href="https://www.nvidia.com/">https://www.nvidia.com</a>。</li>
+<li><strong>导航到 CUDA 页面</strong>：在网站上方的搜索框中输入 “CUDA”，然后选择相关的页面或者在导航菜单中找到 CUDA Toolkit 页面。通常，CUDA Toolkit 的下载页面会被列在 “开发者” 或者 “产品” 等菜单项下。</li>
+<li><strong>选择适合你系统的版本</strong>：在 CUDA Toolkit 的下载页面上，你会看到列出了各种版本的 CUDA Toolkit，包括不同的操作系统和 GPU 架构的版本。选择适合你系统的版本，并确保与你的 GPU 兼容。</li>
+<li><strong>下载安装包</strong>：点击选择的 CUDA 版本，然后在下载页面上找到适合你系统的安装包，并点击下载链接。</li>
+<li><strong>阅读文档</strong>：在下载安装包之前，建议你阅读 CUDA Toolkit 的相关文档和安装说明，以确保你了解如何正确地安装和配置 CUDA Toolkit。</li>
+</ol>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428152416059.png" alt="image-20240428152416059"></p>
+<h2><span id="问题">问题</span></h2>
+<h4><span id="nvidia安装cuda在安装阶段提示nvidia安装程序失败">NVIDIA安装CUDA在安装阶段提示NVIDIA安装程序失败</span></h4>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428151943111.png" alt="image-20240428151943111"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47274607/article/details/134878276">【DL-遇错】NVIDIA安装CUDA在安装阶段提示NVIDIA安装程序失败_cuda程序安装失败12.4-CSDN博客</a></p>
+<p>在自定义安装选项这一步只选择CUDA这一项，其他选项全部不勾选，然后继续后面步骤即可安装成功</p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/90a1dfc368fd4adfa3e57f834967e226.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428152628849.png" alt="image-20240428152628849"></p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428152638898.png" alt="image-20240428152638898"></p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428152812492.png" alt="image-20240428152812492"></p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428152836079.png" alt="image-20240428152836079"></p>
+<h3><span id="运行结果">运行结果</span></h3>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;D:<span class="char escape_">\P</span>rogram Files<span class="char escape_">\P</span>ython39<span class="char escape_">\p</span>ython.exe&quot;</span> E:\PycharmProjects\Python-Learing\src\DiscriminateNumber.py </span><br><span class="line"><span class="number">202</span>4-<span class="number">0</span>4-<span class="number">29</span> <span class="number">09</span>:<span class="number">18</span>:<span class="number">43.679530</span>: W tensorflow<span class="operator">/</span>stream_executor<span class="operator">/</span>platform<span class="operator">/</span>default<span class="operator">/</span>dso_loader.cc:<span class="number">64</span>] Could not load dynamic library &#x27;cudnn64_8.dll&#x27;; <span class="params">dlerror:</span> cudnn64_8.dll not found</span><br><span class="line"><span class="number">202</span>4-<span class="number">0</span>4-<span class="number">29</span> <span class="number">09</span>:<span class="number">18</span>:<span class="number">43.679746</span>: W tensorflow<span class="operator">/</span>core<span class="operator">/</span>common_runtime<span class="operator">/</span>gpu<span class="operator">/</span>gpu_device.cc:<span class="number">1850</span>] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly <span class="keyword">if</span> you would like to use GPU. Follow the guide at https:<span class="symbol">//www.tensorflow.org/install/gpu</span> for how to download and setup the required libraries for your platform.</span><br><span class="line">Skipping registering GPU devices...</span><br><span class="line"><span class="number">202</span>4-<span class="number">0</span>4-<span class="number">29</span> <span class="number">09</span>:<span class="number">18</span>:<span class="number">43.680698</span>: I tensorflow<span class="operator">/</span>core<span class="operator">/</span>platform<span class="operator">/</span>cpu_feature_guard.cc:<span class="number">151</span>] This TensorFlow binary is optimized <span class="keyword">with</span> oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions <span class="keyword">in</span> performance-critical <span class="params">operations:</span>  AVX AVX2</span><br><span class="line">To enable them <span class="keyword">in</span> other operations, rebuild TensorFlow <span class="keyword">with</span> the appropriate compiler flags.</span><br><span class="line">Epoch <span class="number">1</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">3</span>s <span class="number">2</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.2950</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9139</span></span><br><span class="line">Epoch <span class="number">2</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">3</span>s <span class="number">2</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.1440</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9578</span></span><br><span class="line">Epoch <span class="number">3</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">3</span>s <span class="number">2</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.1072</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9677</span></span><br><span class="line">Epoch <span class="number">4</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">2</span>s <span class="number">910</span>us<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.0871</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9734</span></span><br><span class="line">Epoch <span class="number">5</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">1</span>s <span class="number">742</span>us<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.0765</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9762</span></span><br><span class="line"><span class="number">313</span><span class="symbol">/313</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">0</span>s <span class="number">781</span>us<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.0723</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9795</span></span><br><span class="line">Test <span class="params">Loss:</span> <span class="number">0.07231290638446808</span></span><br><span class="line">Test <span class="params">Accuracy:</span> <span class="number">0.9794999957084656</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>没有使用显卡</p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092110138-1714353671179-1.png" alt="image-20240429092110138"></p>
+<h4><span id="原因">原因</span></h4>
+<ol>
+<li>缺少 cudnn64_8.dll：这个警告是因为缺少了 cuDNN 库文件。cuDNN 是用于加速深度神经网络计算的 NVIDIA 库。如果你希望在 GPU 上运行 TensorFlow，并且获得最佳性能，你需要安装并配置 cuDNN。你可以按照 TensorFlow 官方文档提供的指南进行安装和配置：<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/gpu">在 GPU 上安装 TensorFlow</a>。</li>
+<li>GPU 设备注册跳过：由于缺少 GPU 库文件，TensorFlow 未能注册 GPU 设备。</li>
+<li>优化的 TensorFlow 二进制文件：这个消息说明你的 TensorFlow 二进制文件使用了 oneAPI Deep Neural Network Library (oneDNN) 来优化 CPU 上的性能。</li>
+</ol>
+<h4><span id="解决">解决</span></h4>
+<ol>
+<li>
+<p><strong>下载 cuDNN</strong>：</p>
+<ul>
+<li>访问 NVIDIA 的<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cudnn">官方网站</a>并注册（如果尚未注册），然后下载适用于你的系统的 cuDNN。确保选择与你安装的 CUDA 版本兼容的 cuDNN 版本。<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cudnn-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exe_local">cuDNN 9.1.0 Downloads | NVIDIA Developer</a></li>
+<li><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092243209.png" alt="image-20240429092243209"></li>
+</ul>
+</li>
+<li>
+<p><strong>安装 cuDNN</strong>：<img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429091349891.png" alt="image-20240429091349891"></p>
+<ul>
+<li>解压下载的 cuDNN 压缩文件，并按照 NVIDIA 的安装说明进行安装。<a target="_blank" rel="noopener" href="https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/windows-x86_64/">Index of /compute/cudnn/redist/cudnn/windows-x86_64 (nvidia.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html">1. Introduction — Installation Guide Windows 12.4 documentation (nvidia.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/latest/installation/windows.html">Installing cuDNN on Windows — NVIDIA cuDNN v9.1.0 documentation</a></li>
+<li><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092428567.png" alt="image-20240429092428567"></li>
+<li>我的cuda版本是<img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092501185.png" alt="image-20240429092501185"></li>
+</ul>
+</li>
+<li>
+<p><strong>NVIDIA官方操作</strong>：<img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092558902.png" alt="image-20240429092558902"></p>
+</li>
+<li>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092735965.png" alt="image-20240429092735965"></p>
+</li>
+</ol>
+<ol start="5">
+<li>
+<p><strong>重新运行代码</strong>：everything查找缺失的文件已找到</p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240429092822579.png" alt="image-20240429092822579"></p>
+</li>
+<li>
+<ul>
+<li>完成以上步骤后，重新运行你的代码，你应该不会再收到缺少 cudnn64_8.dll 的错误。</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;D:<span class="char escape_">\P</span>rogram Files<span class="char escape_">\P</span>ython39<span class="char escape_">\p</span>ython.exe&quot;</span> E:\PycharmProjects\Python-Learing\src\DiscriminateNumber.py </span><br><span class="line"><span class="number">202</span>4-<span class="number">0</span>4-<span class="number">29</span> <span class="number">09</span>:<span class="number">28</span>:<span class="number">31.471368</span>: I tensorflow<span class="operator">/</span>core<span class="operator">/</span>platform<span class="operator">/</span>cpu_feature_guard.cc:<span class="number">151</span>] This TensorFlow binary is optimized <span class="keyword">with</span> oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions <span class="keyword">in</span> performance-critical <span class="params">operations:</span>  AVX AVX2</span><br><span class="line">To enable them <span class="keyword">in</span> other operations, rebuild TensorFlow <span class="keyword">with</span> the appropriate compiler flags.</span><br><span class="line"><span class="number">202</span>4-<span class="number">0</span>4-<span class="number">29</span> <span class="number">09</span>:<span class="number">28</span>:<span class="number">31.848419</span>: I tensorflow<span class="operator">/</span>core<span class="operator">/</span>common_runtime<span class="operator">/</span>gpu<span class="operator">/</span>gpu_device.cc:<span class="number">1525</span>] Created device <span class="operator">/</span>job:localhost<span class="operator">/</span>replica:<span class="number">0</span><span class="operator">/</span>task:<span class="number">0</span><span class="operator">/</span>device:GPU:<span class="number">0</span> <span class="keyword">with</span> <span class="number">5480</span> MB <span class="params">memory:</span>  <span class="operator">-&gt;</span> <span class="params">device:</span> <span class="number">0</span>, <span class="params">name:</span> NVIDIA GeForce RTX <span class="number">3060</span> Ti, pci bus <span class="params">id:</span> <span class="number">0000</span>:<span class="number">01</span>:<span class="number">00.0</span>, compute <span class="params">capability:</span> <span class="number">8.6</span></span><br><span class="line">Epoch <span class="number">1</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">202</span>4-<span class="number">0</span>4-<span class="number">29</span> <span class="number">09</span>:<span class="number">28</span>:<span class="number">33.321392</span>: I tensorflow<span class="operator">/</span>stream_executor<span class="operator">/</span>cuda<span class="operator">/</span>cuda_blas.cc:<span class="number">1774</span>] TensorFloat-<span class="number">32</span> will be used for the matrix multiplication. This will only be logged once.</span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">4</span>s <span class="number">1</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.2982</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9136</span></span><br><span class="line">Epoch <span class="number">2</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">2</span>s <span class="number">1</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.1459</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9565</span></span><br><span class="line">Epoch <span class="number">3</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">3</span>s <span class="number">2</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.1081</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9668</span></span><br><span class="line">Epoch <span class="number">4</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">3</span>s <span class="number">1</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.0886</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9728</span></span><br><span class="line">Epoch <span class="number">5</span><span class="symbol">/5</span></span><br><span class="line"><span class="number">1875</span><span class="symbol">/1875</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">3</span>s <span class="number">1</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.0745</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9764</span></span><br><span class="line"><span class="number">313</span><span class="symbol">/313</span> [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span>] <span class="operator">-</span> <span class="number">0</span>s <span class="number">1</span>ms<span class="symbol">/step</span> <span class="operator">-</span> <span class="params">loss:</span> <span class="number">0.0735</span> <span class="operator">-</span> <span class="params">accuracy:</span> <span class="number">0.9779</span></span><br><span class="line">Test <span class="params">Loss:</span> <span class="number">0.07349233329296112</span></span><br><span class="line">Test <span class="params">Accuracy:</span> <span class="number">0.9779000282287598</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>成功解决了缺少 cuDNN 的问题，并且你的代码在 GPU 上成功运行，并且在 MNIST 数据集上获得了相当不错的准确率（约为 97.8%）。</p>
+<p>现在TensorFlow 已经配置好了 GPU 支持，并且在 GPU 上运行 TensorFlow 时能够获得更好的性能。</p>
+</li>
+</ol>
+<h3><span id="廖雪峰版本demo">廖雪峰版本demo</span></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageOps</span><br><span class="line"><span class="keyword">from</span> model <span class="keyword">import</span> NeuralNetwork</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">device = <span class="string">&#x27;cuda&#x27;</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&#x27;cpu&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;using <span class="subst">&#123;device&#125;</span>&#x27;</span>)</span><br><span class="line">model = NeuralNetwork().to(device)</span><br><span class="line">path = <span class="string">&#x27;./mnist.pth&#x27;</span></span><br><span class="line">model.load_state_dict(torch.load(path))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;loaded model from <span class="subst">&#123;path&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(model)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">path</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;test <span class="subst">&#123;path&#125;</span>...&#x27;</span>)</span><br><span class="line">    image = Image.<span class="built_in">open</span>(path).convert(<span class="string">&#x27;RGB&#x27;</span>).resize((<span class="number">28</span>, <span class="number">28</span>))</span><br><span class="line">    image = ImageOps.invert(image)</span><br><span class="line"></span><br><span class="line">    trans = transforms.Compose([</span><br><span class="line">        transforms.Grayscale(<span class="number">1</span>),</span><br><span class="line">        transforms.ToTensor()</span><br><span class="line">    ])</span><br><span class="line">    image_tensor = trans(image).unsqueeze(<span class="number">0</span>).to(device)</span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        output = model(image_tensor)</span><br><span class="line">        probs = torch.nn.functional.softmax(output[<span class="number">0</span>], <span class="number">0</span>)</span><br><span class="line">    predict = torch.argmax(probs).item()</span><br><span class="line">    <span class="keyword">return</span> predict, probs[predict], probs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        predict, prob, probs = test(<span class="string">f&#x27;./input/test-<span class="subst">&#123;i&#125;</span>.png&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;expected <span class="subst">&#123;i&#125;</span>, actual <span class="subst">&#123;predict&#125;</span>, <span class="subst">&#123;prob&#125;</span>, <span class="subst">&#123;probs&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>拉取廖雪峰博客的demo</p>
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/article/1543329456062498#0">零基础AI入门指南 - 廖雪峰的官方网站 (liaoxuefeng.com)</a></p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428161748178.png" alt="image-20240428161748178"></p>
+<p>启动在5000端口,</p>
+<p>测试数字识别模型</p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428161834967.png" alt="image-20240428161834967"></p>
+<p>2</p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428161843171.png" alt="image-20240428161843171"></p>
+<p><img src="/2024/04/28/AI%E5%88%9D%E4%BD%93%E9%AA%8C-Python%E5%90%AF%E5%8A%A8%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%ABhello-world/image-20240428162116883.png" alt="image-20240428162116883"></p>
+<h4><span id="核心代码">核心代码</span></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">trans = transforms.Compose([</span><br><span class="line">    transforms.Grayscale(<span class="number">1</span>),</span><br><span class="line">    transforms.ToTensor()</span><br><span class="line">])</span><br><span class="line">image_tensor = trans(image).unsqueeze(<span class="number">0</span>).to(device)</span><br><span class="line">model.<span class="built_in">eval</span>()</span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    output = model(image_tensor)</span><br><span class="line">    probs = torch.nn.functional.softmax(output[<span class="number">0</span>], <span class="number">0</span>)</span><br><span class="line">predict = torch.argmax(probs).item()</span><br></pre></td></tr></table></figure>
+<p>调用torch框架的识别模型, 本地配置了模型参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NeuralNetwork</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(in_features=<span class="number">64</span> * <span class="number">5</span> * <span class="number">5</span>, out_features=<span class="number">128</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc2 = nn.Linear(in_features=<span class="number">128</span>, out_features=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = nn.functional.relu(<span class="variable language_">self</span>.conv1(x))</span><br><span class="line">        x = nn.functional.max_pool2d(x, kernel_size=<span class="number">2</span>)</span><br><span class="line">        x = nn.functional.relu(<span class="variable language_">self</span>.conv2(x))</span><br><span class="line">        x = nn.functional.max_pool2d(x, kernel_size=<span class="number">2</span>)</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">64</span> * <span class="number">5</span> * <span class="number">5</span>)</span><br><span class="line">        x = nn.functional.relu(<span class="variable language_">self</span>.fc1(x))</span><br><span class="line">        x = <span class="variable language_">self</span>.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47274607/article/details/134878276">【DL-遇错】NVIDIA安装CUDA在安装阶段提示NVIDIA安装程序失败_cuda程序安装失败12.4-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://chat.openai.com/c/bff96407-2472-4eaf-aea1-cf9a55e2b41f">Game AI Development Guide (openai.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/faq/631330.html">pip怎么更换源_pip更换源的方法有哪些-Python教程-PHP中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/article/1543329456062498#0">https://www.liaoxuefeng.com/article/1543329456062498#0</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cudnn-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exe_local">cuDNN 9.1.0 Downloads | NVIDIA Developer</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/latest/installation/windows.html">Installing cuDNN on Windows — NVIDIA cuDNN v9.1.0 documentation</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/07/21/Docker20-docker默认路径修改/" data-toggle="tooltip" data-placement="top" title="Docker20-docker默认路径修改">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2024/04/09/Docker学习19-Docker-安装mysql/" data-toggle="tooltip" data-placement="top" title="Docker学习19-Docker-安装mysql">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Python启动视觉识别hello_world</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.2.0.1.</span> <span class="toc-nav-text">运行以上代码报错</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.3.0.1.</span> <span class="toc-nav-text">NVIDIA安装CUDA在安装阶段提示NVIDIA安装程序失败</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">运行结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">原因</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">解决</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">廖雪峰版本demo</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">核心代码</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#AI" title="AI">AI</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

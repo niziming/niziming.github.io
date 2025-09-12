@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          本地部署大型语音模型-LM Studio-01 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2024/08/18/本地部署大型语音模型-LM-Studio-01/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#LM Studio" title="LM Studio">LM Studio</a>
+                            
+                        </div>
+                        <h1>本地部署大型语音模型-LM Studio-01</h1>
+                        <h2 class="subheading">大型语音模型-LM Studio01</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2024-08-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="本地部署大型语音模型-lm-studio-01">本地部署大型语音模型-LM Studio-01</span></h1>
+<p>🚀 LM Studio 的亮点功能<br>
+🌍 模型的多样性与灵活性<br>
+借助 LM Studio，你可以轻松获取和管理当今最受欢迎的各种大型语言模型，包括：</p>
+<p>🦙 Llama 3 ：Meta 出品，拥有更强的性能与可靠性，是对话生成任务的绝佳选择。</p>
+<p>🦁 Phi 3 ：Phi 根据大量自然语言和编程数据训练而成，致力于适用于多样化的语言生成任务。</p>
+<p>🦅 Falcon ：以高性能和快速响应为亮点，适合需要快速生成的应用场景。</p>
+<p>🌊 Mistral ：强大的多任务型语言模型，支持多种语言理解与生成任务。</p>
+<p>✨ StarCoder ：特别设计用于编程任务的模型，代码生成、补全的得力助手。</p>
+<p>💎 Gemma ：适用于翻译、对话生成等用途的通用型大型语言模型。</p>
+<p>以下是 LM Studio 的本地部署安装步骤：</p>
+<h3><span id="1-准备环境">1. 准备环境</span></h3>
+<ul>
+<li><strong>操作系统</strong>：确保你的系统是 Ubuntu 22.04 或 Windows 11。
+<ul>
+<li>这里使用window11</li>
+</ul>
+</li>
+<li><strong>硬件需求</strong>：建议使用至少 8GB RAM 和具备 CUDA 支持的 NVIDIA GPU，以便更好地运行。</li>
+</ul>
+<h3><span id="2-安装依赖">2. 安装依赖</span></h3>
+<p><strong>LM Studio 安装教程</strong></p>
+<ol>
+<li><strong>下载 LM Studio</strong> 访问官方网站 <a target="_blank" rel="noopener" href="http://www.lmstudio.ai">www.lmstudio.ai</a>并点击 “Download” 按钮，选择合适的操作系统（Windows 或 macOS）。</li>
+</ol>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818103048956.png" alt="image-20240818103048956"></p>
+<ol>
+<li><strong>保存文件</strong> 将下载好的安装包保存到您的计算机上，例如桌面或下载文件夹。</li>
+<li><strong>运行安装程序</strong> 双击打开安装包，然后单击 “Run” 按钮以启动安装过程。</li>
+</ol>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818103103411.png" alt="image-20240818103103411"></p>
+<ol>
+<li><strong>选择语言</strong> 在安装界面中，您需要选择语言（英语或其他语言）。请根据您的需求进行选择。</li>
+<li><strong>同意协议</strong> 阅读并接受 LM Studio 的使用条款和隐私政策。</li>
+<li><strong>选择安装路径</strong> 您可以选择安装 LM Studio 到计算机上的任何目录。建议将其安装到桌面或一个易于访问的文件夹中。</li>
+<li><strong>开始安装</strong> 单击 “Install” 按钮以开始安装过程。这可能需要一些时间，取决于您的计算机性能和网络速度。</li>
+<li><strong>完成安装</strong> 安装完成后，您会看到 LM Studio 的 logo 和一条成功信息。 Congratulations! 您已经成功地安装了 LM Studio。</li>
+</ol>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818102939824.png" alt="image-20240818102939824"></p>
+<h3><span id="3换源">3*换源</span></h3>
+<p>LM-Studio 安装目录</p>
+<p>C:\Users{username}\AppData\Local\LM-Studio</p>
+<p><a target="_blank" rel="noopener" href="http://xn--huggingface-xg3rp82t.co">修改huggingface.co</a></p>
+<p><code>findstr /s /i /m /c:&quot;huggingface.co&quot; *.*</code></p>
+<p>查找结果</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">PS</span> C:\Users\xueql\AppData\Local\LM-Studio&gt; findstr /s /i /m /c:<span class="string">&quot;huggingface.co&quot;</span> *.*</span><br><span class="line"><span class="attribute">app</span>-<span class="number">0</span>.<span class="number">2</span>.<span class="number">31</span>\resources\app\.webpack\lms.exe</span><br><span class="line"><span class="attribute">app</span>-<span class="number">0</span>.<span class="number">2</span>.<span class="number">31</span>\resources\app\.webpack\main\index.js</span><br><span class="line"><span class="attribute">app</span>-<span class="number">0</span>.<span class="number">2</span>.<span class="number">31</span>\resources\app\.webpack\main\llmworker.js</span><br><span class="line"><span class="attribute">app</span>-<span class="number">0</span>.<span class="number">2</span>.<span class="number">31</span>\resources\app\.webpack\main\worker.js</span><br><span class="line"><span class="attribute">app</span>-<span class="number">0</span>.<span class="number">2</span>.<span class="number">31</span>\resources\app\.webpack\renderer\main_window\index.js</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111054238.png" alt="image-20240818111054238"></p>
+<p>在找到的所有文件中进行查找替换 <a target="_blank" rel="noopener" href="http://xn--huggingface-xe9vq1ap47bpy8c.xn--cohf-mirror-jx8vs9j8rqer7m.com">把所有的huggingface.co都替换成hf-mirror.com</a></p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111258058.png" alt="image-20240818111258058"></p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111316625.png" alt="image-20240818111316625"></p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111401184.png" alt="image-20240818111401184"></p>
+<h3><span id="4-lm-studio使用gpu">4 LM-Studio使用GPU</span></h3>
+<p>LM-Studio可以使用GPU加速计算，以下是一些基本的设置步骤：</p>
+<ol>
+<li>安装CUDA</li>
+<li>在LM-Studio中设置GPU</li>
+<li>在模型文件中添加 <code>--use_gpu</code> 选项</li>
+</ol>
+<p>具体步骤如下：<br>
+首先下载并安装CUDA（<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads%EF%BC%89%EF%BC%8C%E7%84%B6%E5%90%8E%E5%9C%A8LM-Studio%E7%9A%84%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E4%B8%AD%EF%BC%8C%E9%80%89%E6%8B%A9%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84GPU%EF%BC%8C%E5%B9%B6%E5%B0%86">https://developer.nvidia.com/cuda-downloads），然后在LM-Studio的偏好设置中，选择要使用的GPU，并将</a> <code>use_gpu</code> 选项添加到模型文件中。</p>
+<p>这样，你的LM-Studio就可以使用GPU加速计算了！</p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818120914291.png" alt="image-20240818120914291"></p>
+<p>这里的GPU选项可以使用离线gpu加速</p>
+<p>Translation:<br>
+How to let LM-Studio use GPU?<br>
+LM-Studio can accelerate computation using GPU, and here are the basic setup steps:</p>
+<ol>
+<li>Install CUDA</li>
+<li>Set up GPU in LM-Studio</li>
+<li>Add <code>--use_gpu</code> option to model file</li>
+</ol>
+<p>Specific steps are as follows</p>
+<h3><span id="注意事项">注意事项</span></h3>
+<ul>
+<li>确保你已正确配置 GPU 支持，以获得最佳性能。</li>
+<li>如果没有 GPU，可以配置 CPU 模式，但可能会显著降低性能。</li>
+</ul>
+<p>这样，你就可以在本地成功部署 LM Studio 了。</p>
+<h3><span id="遇到的问题及解决方案">遇到的问题及解决方案</span></h3>
+<h4><span id="lm-studio无法搜索以及下载失败的问题对策">LM-Studio无法搜索以及下载失败的问题对策</span></h4>
+<ul>
+<li>更改下载配置</li>
+</ul>
+<p>用everything 搜索 “cache\lm-studio”找到目录，</p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818104954941.png" alt="image-20240818104954941"></p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818105042395.png" alt="image-20240818105042395"></p>
+<ul>
+<li>sublime 格式化json</li>
+</ul>
+<p>sublime 格式化json需要借助工具包pretty json. 具体步骤如下：</p>
+<p>打开sublime，使用快捷键<code>shift+cmd+P</code>打开输入框，然后输入<code>install</code>，选择<code>install Package</code></p>
+<p>Sublime如何快速格式化JSON文件</p>
+<p>然后输入：pretty，我们可以看到很多的格式化语言，选择JSON即可：</p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818105911812.png" alt="image-20240818105911812"></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;<span class="string">&quot;keys&quot;</span>:[<span class="string">&quot;ctrl+shift+j&quot;</span>], <span class="string">&quot;command&quot;</span>: <span class="string">&quot;pretty_json&quot;</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>打开download.json <code>ctrl+shift+j</code> 格式化json</p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818110028737.png" alt="image-20240818110028737"></p>
+<ul>
+<li>
+<h3><span id="更改下载地址">更改下载地址</span></h3>
+</li>
+</ul>
+<p>用编辑器打开，我喜欢vscode</p>
+<p><a target="_blank" rel="noopener" href="http://xn--hf-mirror-u17v.xn--comhuggingface-7732a363b.co">用hf-mirror.com替换huggingface.co</a> 如下：</p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818110311818.png" alt="image-20240818110311818"></p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818110321104.png" alt="image-20240818110321104"></p>
+<ul>
+<li>重启动软件，</li>
+</ul>
+<p>点击Resume就可以了</p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818110437238.png" alt="image-20240818110437238"></p>
+<p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818114016839.png" alt="image-20240818114016839"></p>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/robinfoxnan/article/details/139336901">LM-Studio无法搜索以及下载失败的问题对策_lmstudio无法下载模型-CSDN博客</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/08/25/香港旅游攻略/" data-toggle="tooltip" data-placement="top" title="香港旅游攻略">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2024/08/17/GPT4ALL-v3-2-1-大模型语言本地部署01/" data-toggle="tooltip" data-placement="top" title="GPT4ALL-v3.2.1-大语言模型本地部署01">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">本地部署大型语音模型-LM Studio-01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1. 准备环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2. 安装依赖</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3*换源</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4 LM-Studio使用GPU</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">注意事项</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">遇到的问题及解决方案</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.1.</span> <span class="toc-nav-text">LM-Studio无法搜索以及下载失败的问题对策</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">更改下载地址</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#LM Studio" title="LM Studio">LM Studio</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

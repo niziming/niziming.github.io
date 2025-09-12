@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Curl指令详解 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2023/12/28/Curl指令详解/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#curl" title="curl">curl</a>
+                            
+                        </div>
+                        <h1>Curl指令详解</h1>
+                        <h2 class="subheading">Curl指令</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2023-12-28
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="curl指令详解">Curl指令详解</span></h1>
+<p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。</p>
+<h2><span id="简介">简介</span></h2>
+<p>它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。</p>
+<p>如果在一个curl命令中不指定具体的方法，那么默认的就是使用GET方法。对于其它的方法，可以在curl命令中指定：</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td>-d或-F</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>-I</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>-T</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="语法">语法：</span></h3>
+<p>curl [option] [url]<br>
+常见选项：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-A<span class="symbol">/--user-agent</span> <span class="symbol">&lt;string&gt;</span>             设置用户代理发送给服务器</span><br><span class="line"><span class="operator">-</span>b<span class="symbol">/--cookie</span> <span class="operator">&lt;</span>name<span class="operator">=</span>string<span class="operator">/</span>file<span class="operator">&gt;</span>    	 cookie字符串或文件读取位置</span><br><span class="line"><span class="operator">-</span>c<span class="symbol">/--cookie-jar</span> <span class="symbol">&lt;file&gt;</span>               操作结束后把cookie写入到这个文件中</span><br><span class="line"><span class="operator">-</span>C<span class="symbol">/--continue-at</span> <span class="symbol">&lt;offset&gt;</span>            断点续转</span><br><span class="line"><span class="operator">-</span>D<span class="symbol">/--dump-header</span> <span class="symbol">&lt;file&gt;</span>              把header信息写入到该文件中</span><br><span class="line"><span class="operator">-</span>e<span class="symbol">/--referer</span>                         来源网址</span><br><span class="line"><span class="operator">-</span>f<span class="symbol">/--fail</span>                            连接失败时不显示http错误</span><br><span class="line"><span class="operator">-</span>o<span class="symbol">/--output</span>                          把输出写到该文件中</span><br><span class="line"><span class="operator">-</span>O<span class="symbol">/--remote-name</span>                     把输出写到该文件中，保留远程文件的文件名</span><br><span class="line"><span class="operator">-</span>r<span class="symbol">/--range</span> <span class="symbol">&lt;range&gt;</span>                   检索来自HTTP<span class="operator">/</span><span class="number">1.1</span>或FTP服务器字节范围</span><br><span class="line"><span class="operator">-</span>s<span class="symbol">/--silent</span>                          静音模式。不输出任何东西</span><br><span class="line"><span class="operator">-</span>T<span class="symbol">/--upload-file</span> <span class="symbol">&lt;file&gt;</span>              上传文件</span><br><span class="line"><span class="operator">-</span>u<span class="symbol">/--user</span> <span class="operator">&lt;</span>user[:password]<span class="operator">&gt;</span>          设置服务器的用户和密码</span><br><span class="line"><span class="operator">-</span>w<span class="symbol">/--write-out</span> [format]              什么输出完成后</span><br><span class="line"><span class="operator">-</span>x<span class="symbol">/--proxy</span> <span class="operator">&lt;</span>host[:port]<span class="operator">&gt;</span>             在给定的端口上使用HTTP代理</span><br><span class="line"><span class="operator">-</span><span class="comment">#/--progress-bar                    进度条显示当前的传送状态</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3><span id="curl支持协议">Curl支持协议:</span></h3>
+<blockquote>
+<p>cURL支持的通信协议有：<br>
+FTP、FTPS、HTTP、HTTPS、TFTP、SFTP、Gopher、SCP、Telnet、DICT、FILE、LDAP、LDAPS、IMAP、POP3、SMTP和RTSP。</p>
+<p>curl还支持SSL认证、HTTP POST、HTTP PUT、FTP上传,</p>
+<p>HTTP form based upload、proxies、HTTP/2、cookies、用户名+密码认证(Basic, Plain, Digest, CRAM-MD5, NTLM,</p>
+<p>Negotiate and Kerberos)、file transfer resume、proxy tunneling。</p>
+</blockquote>
+<h2><span id="如何使用">如何使用</span></h2>
+<p><code>curl https://gitee.com/niziming/general_linux_tools/raw/master/install/get-docker.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">zm@R7000K:/root$ curl https://gitee.com/niziming/general_linux_tools/raw/master/install/get-docker.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/sh</span></span><br><span class="line">set -e</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Docker Engine <span class="keyword">for</span> Linux installation script.</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># This script is intended as a convenient way to configure docker&#x27;s package</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">repositories and to install Docker Engine, This script is not recommended</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="keyword">for</span> production environments. Before running this script, make yourself familiar</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">with potential risks and limitations, and refer to the installation manual</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">at https://docs.docker.com/engine/install/ <span class="keyword">for</span> alternative installation methods.</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># The script:</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># - Requires `root` or `sudo` privileges to run.</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">- Attempts to detect your Linux distribution and version and configure your</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">  package management system <span class="keyword">for</span> you.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">- Doesn<span class="string">&#x27;t allow you to customize most installation parameters.</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">- Installs dependencies and recommendations without asking for confirmation.</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">- Installs the latest stable release (by default) of Docker CLI, Docker Engine,</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">  Docker Buildx, Docker Compose, containerd, and runc. When using this script</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">  to provision a machine, this may result in unexpected major version upgrades</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">  of these packages. Always test upgrades in a test environment before</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">  deploying to your production systems.</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">- Isn&#x27;</span>t designed to upgrade an existing Docker installation. When using the</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">  script to update an existing installation, dependencies may not be updated</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">  to the expected version, resulting <span class="keyword">in</span> outdated versions.</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># Source code is available at https://github.com/docker/docker-install/</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># Usage</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">==============================================================================</span></span><br></pre></td></tr></table></figure>
+<h4><span id="保存访问的网页">保存访问的网页</span></h4>
+<h5><span id="使用linux的重定向功能保存">使用linux的重定向功能保存</span></h5>
+<p><code>curl URL &gt;&gt; filename.html</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">zm@R7000K:/root$ sudo su</span><br><span class="line">[sudo] password for zm:</span><br><span class="line">root@R7000K:~# curl -fsSL https://gitee.com/niziming/general_linux_tools/raw/master/install/get-docker.sh -o get-docker.sh &gt;&gt; /home/get-docker.sh</span><br><span class="line">root@R7000K:~# cd /home/</span><br><span class="line">root@R7000K:/home# ll</span><br><span class="line">total 12</span><br><span class="line">drwxr-xr-x  3 root root 4096 Dec 28 12:48 ./</span><br><span class="line">drwxr-xr-x 19 root root 4096 Dec 28 11:38 ../</span><br><span class="line">-rw-r--r--  1 root root    0 Dec 28 12:48 get-docker.sh</span><br><span class="line">drwxr-x---  2 zm   zm   4096 Dec 28 11:58 zm/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Lakers2015/article/details/128627020">curl 命令详解_curl命令-CSDN博客</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2023/12/28/windows10-subsystem-for-android-02-安卓子系统/" data-toggle="tooltip" data-placement="top" title="windows10-subsystem-for-android-02-安卓子系统">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/12/24/Linux使用ubuntu22-04-LTS-初始化/" data-toggle="tooltip" data-placement="top" title="Linux使用ubuntu22.04_LTS_初始化">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Curl指令详解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">语法：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Curl支持协议:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">如何使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.2.0.1.</span> <span class="toc-nav-text">保存访问的网页</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link"><span class="toc-nav-number">1.2.0.1.1.</span> <span class="toc-nav-text">使用linux的重定向功能保存</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#curl" title="curl">curl</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

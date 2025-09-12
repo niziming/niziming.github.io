@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Docker学习10-部署数据库 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/09/24/Docker学习10-部署数据库/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                        </div>
+                        <h1>Docker学习10-部署数据库</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-09-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="docker部署数据库">Docker部署数据库</span></h1>
+<p>容器化部署的持久化</p>
+<h2><span id="拉取mysql">拉取MySQL</span></h2>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ docker pull mysql</span><br><span class="line">Using default <span class="params">tag:</span> latest</span><br><span class="line">Got permission denied while trying to connect to the Dock<span class="operator">/</span>docker.<span class="params">sock:</span> Post http:<span class="operator">//</span>%<span class="number">2</span>Fvar%<span class="number">2</span>Frun%<span class="number">2</span>Fdocker.sock<span class="operator">/</span>v1.<span class="number">4</span><span class="operator">=</span><span class="params">latest:</span> dial unix <span class="operator">/</span>var<span class="operator">/</span>run<span class="operator">/</span>docker.<span class="params">sock:</span> <span class="params">connect:</span> permiss</span><br><span class="line">➜  ~ sudo docker pull mysql</span><br><span class="line">Using default <span class="params">tag:</span> latest</span><br><span class="line"><span class="params">latest:</span> Pulling from library<span class="symbol">/mysql</span></span><br><span class="line"><span class="number">8</span><span class="params">f91359f1fff:</span> Pull complete</span><br><span class="line"><span class="number">6</span><span class="params">bbb1c853362:</span> Pull complete</span><br><span class="line"><span class="params">e6e554c0af6f:</span> Pull complete</span><br><span class="line"><span class="params">f391c1a77330:</span> Pull complete</span><br><span class="line"><span class="number">414</span><span class="params">a8a88eabc:</span> Pull complete</span><br><span class="line"><span class="params">fee78658f4dd:</span> Pull complete</span><br><span class="line"><span class="number">9568</span><span class="params">f6bff01b:</span> Pull complete</span><br><span class="line"><span class="number">5</span><span class="params">a026d8bbe50:</span> Pull complete</span><br><span class="line"><span class="number">07</span><span class="params">f193b54ae1:</span> Pull complete</span><br><span class="line"><span class="number">1</span><span class="params">e404375a275:</span> Pull complete</span><br><span class="line"><span class="params">b81b2ef0e430:</span> Pull complete</span><br><span class="line"><span class="number">2</span><span class="params">f499f36bd40:</span> Pull complete</span><br><span class="line"><span class="params">Digest:</span> sha256:<span class="number">6</span>d95fa56e008425121e24d2c01b76ebbf51ca1df0bafb1edbe1a46937f4a149d</span><br><span class="line"><span class="params">Status:</span> Downloaded newer image for mysql:latest</span><br><span class="line">docker.io<span class="operator">/</span>library<span class="operator">/</span>mysql:latest</span><br></pre></td></tr></table></figure>
+<p>可以看到最新的mysql是8.0,这个版本取消了MyISAM 支持实务,效率低<br>
+支持InnoDB支持实务,效率也提高了<br>
+互联网企业的开发技能真正需要的技能,微服务架构,也就是分布式系统开发,数据库要支持分布式,目前的大多数企业是通过第三方方案支持,也就是互联网企业的需要原生分布式.<br>
+8.0的MySQL支持原生分布式数据库的解决方案</p>
+<h2><span id="本博客使用57版本">本博客使用5.7版本</span></h2>
+<p>5.7的mysql 支持NoSQL 效率方面是比之前版本快的.<br>
+<code>➜ ~ sudo docker pull mysql:5.7.22</code></p>
+<h2><span id="运行容器">运行容器</span></h2>
+<p>如果这里直接启动mysql是启动的latest版本的mysql也就是8.0以上的.但是这样是启动不了的,因为最新版的启动方式已经改变.所有我们需要启动的是5.7版本的mysql.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -p <span class="number">3307</span>:<span class="number">3306</span> --name mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/conf:/</span>etc/mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/logs:/</span><span class="keyword">var</span><span class="regexp">/log/</span>mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/data:/</span><span class="keyword">var</span><span class="regexp">/lib/</span>mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d <span class="attr">mysql:</span><span class="number">5.7</span><span class="number">.22</span></span><br><span class="line"><span class="number">68161</span>a1af1760cac2ca7eea5a5c71489b79b34eb834ca9cbae233b5c2daa2244</span><br></pre></td></tr></table></figure>
+<h3><span id="命令参数">命令参数：</span></h3>
+<ul>
+<li>p 3307:3306：将容器的 3306 端口映射到主机的 3307 端口</li>
+<li>v /usr/local/docker/mysql/conf:/etc/mysql：将主机当前目录下的 conf 挂载到容器的 /etc/mysql</li>
+<li>v /usr/local/docker/mysql/logs:/var/log/mysql：将主机当前目录下的 logs 目录挂载到容器的 /var/log/mysql</li>
+<li>v /usr/local/docker/mysql/data:/var/lib/mysql：将主机当前目录下的 data 目录挂载到容器的 /var/lib/mysql</li>
+<li>e MYSQL_ROOT_PASSWORD=root：初始化 root 用户的密码</li>
+<li>d 守护态运行</li>
+</ul>
+<h3><span id="ecs服务器开放端口">ECS服务器开放端口</span></h3>
+<p>3306-3316开放10个端口供给docker容器使用<br>
+<img src="/2019/09/24/Docker%E5%AD%A6%E4%B9%A010-%E9%83%A8%E7%BD%B2%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt></p>
+<h3><span id="查看容器启动情况">查看容器启动情况</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">sudo</span> docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">f352fd16f729        mysql:5.7.22        <span class="string">&quot;docker-entrypoint.s…&quot;</span>   14 seconds ago      Up 13 seconds       0.0.0.0:3307-&gt;3306/tcp   mysql</span><br><span class="line">e74b9cc8e192        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        16 hours ago        Up 16 hours         0.0.0.0:8084-&gt;8080/tcp   volumeDemo1</span><br><span class="line">a569649fcc5a        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        17 hours ago        Up 17 hours         0.0.0.0:8083-&gt;8080/tcp   volumeDemo</span><br><span class="line">d53272c36764        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        19 hours ago        Up 19 hours         0.0.0.0:8082-&gt;8080/tcp   mytomcat2</span><br><span class="line">849e5b576998        myproject           <span class="string">&quot;catalina.sh run&quot;</span>        23 hours ago        Up 19 hours         0.0.0.0:8081-&gt;8080/tcp   elastic_panini</span><br></pre></td></tr></table></figure>
+<h2><span id="使用客户端工具连接-mysql">使用客户端工具连接 MySQL</span></h2>
+<p>测试连接成功</p>
+<p><img src="/2019/09/24/Docker%E5%AD%A6%E4%B9%A010-%E9%83%A8%E7%BD%B2%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt></p>
+<p>查看数据库<br>
+<img src="/2019/09/24/Docker%E5%AD%A6%E4%B9%A010-%E9%83%A8%E7%BD%B2%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" alt></p>
+<h2><span id="查看docker目录下的文件">查看docker目录下的文件</span></h2>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜  docker <span class="keyword">ls</span></span><br><span class="line">mysql  tomcat</span><br><span class="line">➜  mysql <span class="keyword">ls</span></span><br><span class="line"><span class="keyword">conf</span>  data  logs</span><br><span class="line">➜  mysql <span class="keyword">conf</span></span><br><span class="line">➜  <span class="keyword">conf</span> <span class="keyword">ls</span></span><br><span class="line">➜  <span class="keyword">conf</span> <span class="keyword">cd</span> ..</span><br><span class="line">➜  mysql <span class="keyword">cd</span> data</span><br><span class="line">➜  data <span class="keyword">ls</span></span><br><span class="line">auto.<span class="keyword">cnf</span>          ib_buffer_pool  performance_schema</span><br><span class="line"><span class="keyword">ca</span>-key.pem        ibdata1         private_key.pem</span><br><span class="line"><span class="keyword">ca</span>.pem            ib_logfile0     public_key.pem</span><br><span class="line">client-cert.pem   ib_logfile1     server-cert.pem</span><br><span class="line">client-key.pem    ibtmp1          server-key.pem</span><br><span class="line">f352fd16f729.pid  mysql           sys</span><br></pre></td></tr></table></figure>
+<p>docker帮我创建了mysql文件夹,和window和linux下的目录一样的.</p>
+<h3><span id="一点小问题">一点小问题</span></h3>
+<ul>
+<li>以交互方式启动docker</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">➜  data sudo docker run -it --rm <span class="symbol">mysql:</span><span class="number">5.7</span>.<span class="number">22</span> bash</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/</span><span class="comment"># </span></span><br><span class="line">➜  data sudo docker run -it --rm <span class="symbol">mysql:</span><span class="number">5.7</span>.<span class="number">22</span> bash</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/</span><span class="comment"># ls</span></span><br><span class="line">bin			    etc    mnt	 sbin  var</span><br><span class="line">boot			    home   opt	 srv</span><br><span class="line">dev			    lib    proc  sys</span><br><span class="line">docker-entrypoint-initdb.d  lib64  root  tmp</span><br><span class="line">entrypoint.sh		    media  run	 usr</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/</span><span class="comment"># whereis mysql</span></span><br><span class="line"><span class="symbol">mysql:</span> /usr/bin/mysql /usr/lib/mysql /etc/mysql /usr/share/mysql</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/</span><span class="comment"># cd /etc/mysql/</span></span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql</span><span class="comment"># ls</span></span><br><span class="line">conf.d	my.cnf.fallback  mysql.conf.d</span><br><span class="line">my.cnf	mysql.cnf</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql</span><span class="comment"># ll</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置文件</span></span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql</span><span class="comment"># cd mysql.conf.d/</span></span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/mysql</span>.conf.d<span class="comment"># ls</span></span><br><span class="line">mysqld.cnf</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/mysql</span>.conf.d<span class="comment"># cat mysqld.cnf</span></span><br><span class="line"><span class="comment"># 配置文件详细</span></span><br><span class="line">[mysqld]</span><br><span class="line">pid-file	= /var/run/mysqld/mysqld.pid</span><br><span class="line">socket		= /var/run/mysqld/mysqld.sock</span><br><span class="line">datadir		= /var/lib/mysql</span><br><span class="line"><span class="comment">#log-error	= /var/log/mysql/error.log</span></span><br><span class="line"><span class="comment"># By default we only accept connections from localhost</span></span><br><span class="line"><span class="comment">#bind-address	= 127.0.0.1</span></span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=<span class="number">0</span></span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/mysql</span>.conf.d<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>之前启动时候的参数</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -p <span class="number">3307</span>:<span class="number">3306</span> --name mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/conf:/</span>etc/mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/logs:/</span><span class="keyword">var</span><span class="regexp">/log/</span>mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/data:/</span><span class="keyword">var</span><span class="regexp">/lib/</span>mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d <span class="attr">mysql:</span><span class="number">5.7</span><span class="number">.22</span></span><br><span class="line"><span class="number">68161</span>a1af1760cac2ca7eea5a5c71489b79b34eb834ca9cbae233b5c2daa2244</span><br></pre></td></tr></table></figure>
+<p>与启动后的mysql的配置文件一对比,就发现相同之处了.</p>
+<h2><span id="导入数据库数据">导入数据库数据</span></h2>
+<p>mysql默认情况下可导入的数据库大小为: 16MB</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql</span><span class="comment"># ls -a</span></span><br><span class="line">.   conf.d  my.cnf.fallback  mysql.conf.d</span><br><span class="line">..  my.cnf  mysql.cnf</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql</span><span class="comment"># cd conf.d/</span></span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/conf</span>.d<span class="comment"># ls -al</span></span><br><span class="line">total <span class="number">20</span></span><br><span class="line">drwxr-xr-x <span class="number">2</span> root root <span class="number">4096</span> <span class="title class_">Jul</span> <span class="number">27</span>  <span class="number">2018</span> .</span><br><span class="line">drwxr-xr-x <span class="number">4</span> root root <span class="number">4096</span> <span class="title class_">Jul</span> <span class="number">27</span>  <span class="number">2018</span> ..</span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root   <span class="number">43</span> <span class="title class_">Jul</span> <span class="number">27</span>  <span class="number">2018</span> docker.cnf</span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root    <span class="number">8</span> <span class="title class_">Jul</span>  <span class="number">9</span>  <span class="number">2016</span> mysql.cnf</span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root   <span class="number">55</span> <span class="title class_">Jul</span>  <span class="number">9</span>  <span class="number">2016</span> mysqldump.cnf</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/conf</span>.d<span class="comment"># cat mysqldump.cnf</span></span><br><span class="line">[mysqldump]</span><br><span class="line">quick</span><br><span class="line"><span class="keyword">quote</span>-names</span><br><span class="line"><span class="comment"># 数据库初始时可设置的文件大小</span></span><br><span class="line">max_allowed_packet	= <span class="number">16</span>M</span><br><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/conf</span>.d<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>实际上需要把<code>max_allowed_packet = 16M</code> 这个配置放到</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@fc1072850e62</span><span class="symbol">:/etc/mysql/mysql</span>.conf.d<span class="comment"># ls</span></span><br><span class="line">mysqld.cnf</span><br></pre></td></tr></table></figure>
+<p>mysql.cnf下.</p>
+<p>但是这个容器如果删除掉,这个配置文件也会消失,所以需要使用数据卷将这个配置文件做成共享文件.这样就算这个mysql容器被销毁,下一次新建mysql容器时也会共享数据卷里面的mysql.cnf文件</p>
+<h2><span id="数据卷共享mysqlcnf">数据卷共享mysql.cnf</span></h2>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  mysql <span class="keyword">cd</span> <span class="keyword">conf</span></span><br><span class="line">➜  <span class="keyword">conf</span> <span class="keyword">pwd</span></span><br><span class="line">/usr/<span class="keyword">local</span>/docker/mysql/<span class="keyword">conf</span></span><br><span class="line">➜  <span class="keyword">conf</span> <span class="keyword">ls</span></span><br><span class="line">➜  <span class="keyword">conf</span> ll</span><br><span class="line"><span class="keyword">total</span> 0</span><br></pre></td></tr></table></figure>
+<p>退出容器后进入conf目录发现没有任何文件,需要拉取配置文件到这里</p>
+<h3><span id="停止删除原先的容器">停止删除原先的容器</span></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">➜  conf <span class="built_in">sudo</span> docker ps</span><br><span class="line">[<span class="built_in">sudo</span>] password <span class="keyword">for</span> ziming:</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">f352fd16f729        mysql:5.7.22        <span class="string">&quot;docker-entrypoint.s…&quot;</span>   25 minutes ago      Up 25 minutes       0.0.0.0:3307-&gt;3306/tcp   mysql</span><br><span class="line">e74b9cc8e192        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        17 hours ago        Up 17 hours         0.0.0.0:8084-&gt;8080/tcp   volumeDemo1</span><br><span class="line">a569649fcc5a        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        17 hours ago        Up 17 hours         0.0.0.0:8083-&gt;8080/tcp   volumeDemo</span><br><span class="line">d53272c36764        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        19 hours ago        Up 19 hours         0.0.0.0:8082-&gt;8080/tcp   mytomcat2</span><br><span class="line">849e5b576998        myproject           <span class="string">&quot;catalina.sh run&quot;</span>        23 hours ago        Up 19 hours         0.0.0.0:8081-&gt;8080/tcp   elastic_panini</span><br><span class="line">➜  conf <span class="built_in">sudo</span> docker stop f352</span><br><span class="line">f352</span><br><span class="line">➜  conf <span class="built_in">sudo</span> docker <span class="built_in">rm</span> f352</span><br><span class="line">f352</span><br></pre></td></tr></table></figure>
+<h3><span id="修改原先启动配置">修改原先启动配置</span></h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -p <span class="number">3307</span>:<span class="number">3306</span> --name mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/logs:/</span><span class="keyword">var</span><span class="regexp">/log/</span>mysql \</span><br><span class="line">-v <span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>mysql<span class="regexp">/data:/</span><span class="keyword">var</span><span class="regexp">/lib/</span>mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-d <span class="attr">mysql:</span><span class="number">5.7</span><span class="number">.22</span></span><br></pre></td></tr></table></figure>
+<p><strong>notice</strong>:<br>
+交互的方式启动容器. run -it<br>
+交互的方式进入容器. exec -it</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  <span class="keyword">conf</span> sudo docker <span class="keyword">run</span> -p 3307:3306 --name mysql \</span><br><span class="line">-v /usr/<span class="keyword">local</span>/docker/mysql/logs:/<span class="keyword">var</span>/<span class="keyword">log</span>/mysql \</span><br><span class="line">-v /usr/<span class="keyword">local</span>/docker/mysql/data:/<span class="keyword">var</span>/lib/mysql \</span><br><span class="line">-<span class="keyword">e</span> MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">-<span class="keyword">d</span> mysql:5.7.22</span><br><span class="line">2fbdec92f87ac3c9fb53801476f31fa1a0a66c31a050f8138daa4d5614e886cf</span><br><span class="line">➜  <span class="keyword">conf</span> sudo docker exec -it mysql bash</span><br><span class="line">root@2fbdec92f87a:/# <span class="keyword">cd</span> /etc/mysql/mysql.<span class="keyword">conf</span>.<span class="keyword">d</span>/</span><br><span class="line">root@2fbdec92f87a:/etc/mysql/mysql.<span class="keyword">conf</span>.<span class="keyword">d</span># <span class="keyword">ls</span> -<span class="keyword">la</span></span><br><span class="line"><span class="keyword">total</span> 12</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul 27  2018 .</span><br><span class="line">drwxr-xr-x 4 root root 4096 Jul 27  2018 ..</span><br><span class="line">-rw-r--r-- 1 root root 1191 Jul 27  2018 mysqld.cnf</span><br></pre></td></tr></table></figure>
+<h3><span id="将文件限制大小追加进次配置文件">将文件限制大小追加进次配置文件</span></h3>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@2fbdec92f87a</span><span class="symbol">:/etc/mysql/mysql</span>.conf.d<span class="comment"># echo &quot;max_allowed_packet      = 128M&quot; &gt;&gt; mysqld.cnf</span></span><br><span class="line">root<span class="variable">@2fbdec92f87a</span><span class="symbol">:/etc/mysql/mysql</span>.conf.d<span class="comment"># cat mysqld.cnf</span></span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">pid-file	= /var/run/mysqld/mysqld.pid</span><br><span class="line">socket		= /var/run/mysqld/mysqld.sock</span><br><span class="line">datadir		= /var/lib/mysql</span><br><span class="line"><span class="comment">#log-error	= /var/log/mysql/error.log</span></span><br><span class="line"><span class="comment"># By default we only accept connections from localhost</span></span><br><span class="line"><span class="comment">#bind-address	= 127.0.0.1</span></span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=<span class="number">0</span></span><br><span class="line">max_allowed_packet      = <span class="number">128</span>M</span><br></pre></td></tr></table></figure>
+<p>追加成功</p>
+<h3><span id="重启docker">重启docker</span></h3>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">➜  conf sudo docker restart mysql</span><br><span class="line">mysql</span><br><span class="line"><span class="section">➜  conf</span></span><br><span class="line"><span class="section">~~~~</span></span><br><span class="line"></span><br><span class="line">### 导入数据库</span><br><span class="line">略</span><br><span class="line"></span><br><span class="line">### 将容器的文件复制到宿主机</span><br><span class="line"><span class="bullet">- </span>新建一个连接进入容器</span><br></pre></td></tr></table></figure>
+<p>[root@MyCentOS]~# docker exec -it mysql bash<br>
+root@2fbdec92f87a:/# cd /e<br>
+<a target="_blank" rel="noopener" href="http://entrypoint.sh">entrypoint.sh</a>  etc/<br>
+root@2fbdec92f87a:/# cd /etc/mysql/<br>
+root@2fbdec92f87a:/etc/mysql# ls -al<br>
+total 36<br>
+drwxr-xr-x 1 root root 4096 Jul 27  2018 .<br>
+drwxr-xr-x 1 root root 4096 Sep 24 02:34 …<br>
+drwxr-xr-x 2 root root 4096 Jul 27  2018 conf.d<br>
+lrwxrwxrwx 1 root root   24 Jul 27  2018 my.cnf -&gt; /etc/alternatives/my.cnf<br>
+-rw-r–r-- 1 root root  839 Jul  9  2016 my.cnf.fallback<br>
+-rw-r–r-- 1 root root  796 Mar  4  2018 mysql.cnf<br>
+drwxr-xr-x 1 root root 4096 Jul 27  2018 mysql.conf.d</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 将容器的文件拷贝出来</span><br><span class="line">`<span class="built_in">sudo</span> docker <span class="built_in">cp</span> mysql:/etc/mysql .`</span><br><span class="line">此时查看拷贝文件已经存在</span><br></pre></td></tr></table></figure>
+<p>➜  conf ls<br>
+mysql<br>
+➜  conf cd mysql<br>
+➜  mysql ls<br>
+conf.d  my.cnf.fallback  mysql.conf.d<br>
+my.cnf  mysql.cnf<br>
+➜  mysql</p>
+<h1><span id="删除mysql文件夹">删除mysql文件夹</span></h1>
+<p>➜  conf sudo rm -fr mysql<br>
+➜  conf ls<br>
+conf.d  my.cnf.fallback  mysql.conf.d<br>
+my.cnf  mysql.cnf</p>
+<h1><span id="退回上一级">退回上一级</span></h1>
+<p>➜  conf cd …</p>
+<h1><span id="停掉mysql容器">停掉mysql容器</span></h1>
+<p>mysql sudo docker ps<br>
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES<br>
+2fbdec92f87a        mysql:5.7.22        “docker-entrypoint.s…”   14 minutes ago      Up 9 minutes        0.0.0.0:3307-&gt;3306/tcp   mysql<br>
+e74b9cc8e192        tomcat              “<a target="_blank" rel="noopener" href="http://catalina.sh">catalina.sh</a> run”        17 hours ago        Up 17 hours         0.0.0.0:8084-&gt;8080/tcp   volumeDemo1<br>
+a569649fcc5a        tomcat              “<a target="_blank" rel="noopener" href="http://catalina.sh">catalina.sh</a> run”        17 hours ago        Up 17 hours         0.0.0.0:8083-&gt;8080/tcp   volumeDemo<br>
+d53272c36764        tomcat              “<a target="_blank" rel="noopener" href="http://catalina.sh">catalina.sh</a> run”        20 hours ago        Up 20 hours         0.0.0.0:8082-&gt;8080/tcp   mytomcat2<br>
+849e5b576998        myproject           “<a target="_blank" rel="noopener" href="http://catalina.sh">catalina.sh</a> run”        24 hours ago        Up 20 hours         0.0.0.0:8081-&gt;8080/tcp   elastic_panini<br>
+➜  mysql sudo docker stop 2<br>
+2<br>
+➜  mysql sudo docker rm 2<br>
+2</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 运行带着数据卷的配置命令 </span><br></pre></td></tr></table></figure>
+<p>docker run -p 3307:3306 --name mysql <br>
+-v /usr/local/docker/mysql/conf:/etc/mysql <br>
+-v /usr/local/docker/mysql/logs:/var/log/mysql <br>
+-v /usr/local/docker/mysql/data:/var/lib/mysql <br>
+-e MYSQL_ROOT_PASSWORD=root <br>
+-d mysql:5.7.22</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>再进入/etc/mysql/mysql.conf.d查看文件</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>➜  mysql docker run -p 3307:3306 --name mysql <br>
+-v /usr/local/docker/mysql/conf:/etc/mysql <br>
+-v /usr/local/docker/mysql/logs:/var/log/mysql <br>
+-v /usr/local/docker/mysql/data:/var/lib/mysql <br>
+-e MYSQL_ROOT_PASSWORD=root <br>
+-d mysql:5.7.22<br>
+docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/create?name=mysql: dial unix /var/run/docker.sock: connect: permission denied.<br>
+See ‘docker run --help’.<br>
+➜  mysql sudo docker run -p 3307:3306 --name mysql <br>
+-v /usr/local/docker/mysql/conf:/etc/mysql <br>
+-v /usr/local/docker/mysql/logs:/var/log/mysql <br>
+-v /usr/local/docker/mysql/data:/var/lib/mysql <br>
+-e MYSQL_ROOT_PASSWORD=root <br>
+-d mysql:5.7.22<br>
+00e3d56be3658b26e11ec7d045843638fcba8a938aa2877bd8f9f6e2aa950408<br>
+➜  mysql sudo docker exec -it mysql bash<br>
+root@00e3d56be365:/# cd /etc/mysql/<br>
+root@00e3d56be365:/etc/mysql# ls -la<br>
+total 24<br>
+drwxr-xr-x 4 root root 4096 Sep 24 02:46 .<br>
+drwxr-xr-x 1 root root 4096 Sep 24 02:52 …<br>
+drwxr-xr-x 2 root root 4096 Jul 27  2018 conf.d<br>
+lrwxrwxrwx 1 root root   24 Jul 27  2018 my.cnf -&gt; /etc/alternatives/my.cnf<br>
+-rw-r–r-- 1 root root  839 Jul  9  2016 my.cnf.fallback<br>
+-rw-r–r-- 1 root root  796 Mar  4  2018 mysql.cnf<br>
+drwxr-xr-x 2 root root 4096 Jul 27  2018 mysql.conf.d<br>
+root@00e3d56be365:/etc/mysql# cd mysql.conf.d/<br>
+root@00e3d56be365:/etc/mysql/mysql.conf.d# ls -la<br>
+total 12<br>
+drwxr-xr-x 2 root root 4096 Jul 27  2018 .<br>
+drwxr-xr-x 4 root root 4096 Sep 24 02:46 …<br>
+-rw-r–r-- 1 root root 1222 Sep 24 02:36 mysqld.cnf<br>
+root@00e3d56be365:/etc/mysql/mysql.conf.d# cat mysqld.cnf</p>
+<p>[mysqld]<br>
+pid-file	= /var/run/mysqld/mysqld.pid<br>
+socket		= /var/run/mysqld/mysqld.sock<br>
+datadir		= /var/lib/mysql<br>
+#log-error	= /var/log/mysql/error.log</p>
+<h1><span id="by-default-we-only-accept-connections-from-localhost">By default we only accept connections from localhost</span></h1>
+<p>#bind-address	= 127.0.0.1</p>
+<h1><span id="disabling-symbolic-links-is-recommended-to-prevent-assorted-security-risks">Disabling symbolic-links is recommended to prevent assorted security risks</span></h1>
+<p>symbolic-links=0<br>
+max_allowed_packet      = 128M<br>
+root@00e3d56be365:/etc/mysql/mysql.conf.d#</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">发现配置变化了,追加进去的数据成功.</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>查看宿主机上的数据卷</span><br><span class="line">就算删除了原先的容器,但是里面的数据库数据并不会被删除,因为这些数据都存放在数据卷里面的,数据卷是生效的</span><br></pre></td></tr></table></figure>
+<p>➜  mysql ls<br>
+conf  data  logs<br>
+➜  mysql</p>
+<pre><code>
+以上为数据卷的数据库容器化部署
+
+### 参考资料
+&gt; https://www.bilibili.com/video/av29384041/?p=42
+&gt; https://www.funtl.com/zh/docker/Docker-%E6%9E%84%E5%BB%BA-MySQL.html
+
+
+
+</code></pre>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/09/24/Windows端口占用关闭/" data-toggle="tooltip" data-placement="top" title="Windows端口占用关闭">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/09/23/Docker学习9-Docker数据卷/" data-toggle="tooltip" data-placement="top" title="Docker学习9-Docker数据卷">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker部署数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">拉取MySQL</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">本博客使用5.7版本</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">运行容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">命令参数：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">ECS服务器开放端口</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">查看容器启动情况</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">使用客户端工具连接 MySQL</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">查看docker目录下的文件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">一点小问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">导入数据库数据</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">数据卷共享mysql.cnf</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">停止删除原先的容器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.7.2.</span> <span class="toc-nav-text">修改原先启动配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.7.3.</span> <span class="toc-nav-text">将文件限制大小追加进次配置文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.7.4.</span> <span class="toc-nav-text">重启docker</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">删除mysql文件夹</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">退回上一级</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">停掉mysql容器</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">By default we only accept connections from localhost</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Disabling symbolic-links is recommended to prevent assorted security risks</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Docker学习6-Dockerfile定制镜像1 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/09/18/Docker学习6-Dockerfile定制镜像1/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                              <a class="tag" href="/tags/#Dockerfile" title="Dockerfile">Dockerfile</a>
+                            
+                        </div>
+                        <h1>Docker学习6-Dockerfile定制镜像1</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-09-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="dockerfile">Dockerfile</span></h1>
+<h2><span id="作用">作用</span></h2>
+<p>可以将我们的应用程序打包进镜像,启动镜像的容器,一次编译处处运行.</p>
+<h2><span id="dockerfile是什么">Dockerfile是什么?</span></h2>
+<p>windows的脚本叫bat, linux的脚本叫shell,docker的脚本叫Dockerfile<br>
+如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。<br>
+Dockerfile是一个文本文件,其中包含了一条一条的指令(Instruction),因此每一条指令的内容，就是描述该层应当如何构建.</p>
+<p>这次我将在我的阿里云服务器使用 Dockerfile 来定制tomcat镜像为例.</p>
+<h2><span id="起步">起步</span></h2>
+<ul>
+<li>
+<p>docker拉取tomcat<br>
+<code>docker pull tomcat</code></p>
+</li>
+<li>
+<p>进入docker拉取的tomcat<br>
+<code>docker run -it tomcat bash</code></p>
+</li>
+</ul>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">~ sudo docker run -it tomcat bash</span><br><span class="line">[sudo] password for ziming:</span><br><span class="line">root@071424b6b8ef:/usr/local/tomcat<span class="comment">#</span></span><br><span class="line">root@071424b6b8ef:/usr/local/tomcat<span class="comment"># ls -al</span></span><br><span class="line">total 160</span><br><span class="line">drwxr-sr-x<span class="number"> 1 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 .</span><br><span class="line">drwxrwsr-x<span class="number"> 1 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 15 </span>05:20 ..</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 19534 </span>Aug<span class="number"> 14 </span>22:27 BUILDING.txt</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 5407 </span>Aug<span class="number"> 14 </span>22:27 CONTRIBUTING.md</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 57011 </span>Aug<span class="number"> 14 </span>22:27 LICENSE</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 1726 </span>Aug<span class="number"> 14 </span>22:27 NOTICE</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 3255 </span>Aug<span class="number"> 14 </span>22:27 README.md</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 7139 </span>Aug<span class="number"> 14 </span>22:27 RELEASE-NOTES</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 16262 </span>Aug<span class="number"> 14 </span>22:27 RUNNING.txt</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 bin</span><br><span class="line">drwxr-sr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:27 conf</span><br><span class="line">drwxr-sr-x<span class="number"> 2 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 include</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 lib</span><br><span class="line">drwxrwxrwx<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 logs</span><br><span class="line">drwxr-sr-x<span class="number"> 3 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 native-jni-lib</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 temp</span><br><span class="line">drwxr-xr-x<span class="number"> 7 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 webapps</span><br><span class="line">drwxrwxrwx<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 work</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入webapps/ROOT <code>ls -la</code>查看ROOT下文件</li>
+</ul>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root@071424b6b8ef:/usr/local/tomcat/webapps/ROOT<span class="comment"># ls -la</span></span><br><span class="line">total 192</span><br><span class="line">drwxr-xr-x<span class="number"> 3 </span>root root <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 .</span><br><span class="line">drwxr-xr-x<span class="number"> 7 </span>root root <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 ..</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 7139 </span>Aug<span class="number"> 14 </span>22:27 RELEASE-NOTES.txt</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 WEB-INF</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root<span class="number"> 27235 </span>Aug<span class="number"> 14 </span>22:27 asf-logo-wide.svg</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 713 </span>Aug<span class="number"> 14 </span>22:24 bg-button.png</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 1918 </span>Aug<span class="number"> 14 </span>22:24 bg-middle.png</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 1401 </span>Aug<span class="number"> 14 </span>22:24 bg-nav.png</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 3103 </span>Aug<span class="number"> 14 </span>22:24 bg-upper.png</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root<span class="number"> 21630 </span>Aug<span class="number"> 14 </span>22:24 favicon.ico</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root<span class="number"> 12208 </span>Aug<span class="number"> 14 </span>22:27 index.jsp</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 2376 </span>Aug<span class="number"> 14 </span>22:24 tomcat-power.gif</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 5581 </span>Aug<span class="number"> 14 </span>22:27 tomcat.css</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 2066 </span>Aug<span class="number"> 14 </span>22:24 tomcat.gif</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 5103 </span>Aug<span class="number"> 14 </span>22:24 tomcat.png</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root<span class="number"> 67795 </span>Aug<span class="number"> 14 </span>22:27 tomcat.svg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>查看index.jsp文件<br>
+`cat index.jsp’<br>
+root@071424b6b8ef:/usr/local/tomcat/webapps/ROOT# cat index.jsp</p>
+</li>
+<li>
+<p>追加hello docker tomcat 到 index.jsp中<br>
+root@071424b6b8ef:/usr/local/tomcat/webapps/ROOT# echo “hello docker tomcat” &gt;&gt; index.jsp</p>
+</li>
+<li>
+<p>退出容器<br>
+exit</p>
+</li>
+<li>
+<p>运行docker的tomcat<br>
+因为我的8080端口本身就被宿主机的tomcat占用,所有这里解析到8081<br>
+<code>docker run -p 8081:8080 tomcat</code></p>
+<ul>
+<li>run代表启动一个新容器,相当于new,触发隔离机制</li>
+<li><code>-P</code>(大写P) 参数来指定端口映射标记时，Docker 会随机映射一个端口到内部容器开放的网络端口 (端口范围在 Linux 系统使用的端口之外，一般都过万)</li>
+<li><code>-p</code>(小写p)可以指定要映射的端口，并且在一个指定的端口上只可以绑定一个容器。支持的格式有:IP:HostPort:ContainerPort | IP::ContainerPort | HostPort:ContainerPort</li>
+<li>:之前的表示宿主机的端口</li>
+<li>:之后的表示容器的端口</li>
+<li>:表示映射</li>
+</ul>
+</li>
+<li>
+<p>在web端查看有没有hello docker tomcat<br>
+发现没有<br>
+<strong>notice</strong> docker的沙箱机制隔离机制.这里比较细,需要的搜索下资料.</p>
+</li>
+<li>
+<p>另外登录一个用户查看正在运行的docker容器<br>
+查看正在运行的容器<code>docker ps</code></p>
+</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">beae6fea7aa7</span>        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>   <span class="number">24</span> seconds ago      Up <span class="number">24</span> seconds       <span class="number">0.0.0.0:8081</span>-&gt;<span class="number">8080</span>/tcp   thirsty_jang</span><br></pre></td></tr></table></figure>
+<p>8080端口,宿主机本身的tomcat 版本为7.0.76<br>
+<img src="/2019/09/18/Docker%E5%AD%A6%E4%B9%A06-Dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F1/8080.png" alt></p>
+<p>8081端口,Docker的tomcat容器 版本为8.5.45<br>
+<img src="/2019/09/18/Docker%E5%AD%A6%E4%B9%A06-Dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F1/8081.png" alt></p>
+<ul>
+<li>
+<p>交互的方式启动容器</p>
+<ul>
+<li>docker run -p 8081:8080 tomcat</li>
+</ul>
+</li>
+<li>
+<p>交互的方式进入容器</p>
+<ul>
+<li>docker exec -it 容器id bash</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker exec -it <span class="number">7</span>db bash</span><br><span class="line">root<span class="variable">@7db5c8940e5a</span><span class="symbol">:/usr/local/tomcat</span><span class="comment"># </span></span><br><span class="line">root<span class="variable">@7db5c8940e5a</span><span class="symbol">:/usr/local/tomcat</span><span class="comment"># cd webapps/</span></span><br><span class="line">root<span class="variable">@7db5c8940e5a</span><span class="symbol">:/usr/local/tomcat/webapps</span><span class="comment"># cd ROOT</span></span><br><span class="line">root<span class="variable">@7db5c8940e5a</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># echo &quot;hello docker tomcat&quot; &gt;&gt; index.jsp</span></span><br><span class="line">root<span class="variable">@7db5c8940e5a</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment">#</span></span><br><span class="line">root<span class="variable">@7db5c8940e5a</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># cat index.jsp</span></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">hello docker tomcat</span><br></pre></td></tr></table></figure>
+<p>此时我们看到,hello docker tomcat 已经在文件中了<br>
+打开浏览器查看结果</p>
+<p><img src="/2019/09/18/Docker%E5%AD%A6%E4%B9%A06-Dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F1/hellodocker" alt></p>
+<ul>
+<li>查看所有容器<code>docker ps -a</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">a83388199fb6        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        <span class="number">12</span> minutes ago      Created                                         flamboyant_goldstine</span><br><span class="line">071424b6b8ef        tomcat              <span class="string">&quot;bash&quot;</span>                   <span class="number">33</span> minutes ago      <span class="title function_">Exited</span> <span class="params">(<span class="number">0</span>)</span> <span class="number">17</span> minutes ago                       compassionate_jones</span><br><span class="line">f6007831657c        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        <span class="number">20</span> hours ago        Created                                         wizardly_newton</span><br><span class="line">8191ed8e159c        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        <span class="number">20</span> hours ago        <span class="title function_">Exited</span> <span class="params">(<span class="number">130</span>)</span> <span class="number">20</span> hours ago                       busy_bhabha</span><br><span class="line">7c01da3b0629        nginx:<span class="number">1.16</span><span class="number">.1</span>        <span class="string">&quot;nginx -g &#x27;daemon of…&quot;</span>   <span class="number">3</span> weeks ago         <span class="title function_">Exited</span> <span class="params">(<span class="number">0</span>)</span> <span class="number">24</span> hours ago                         MyNginx</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除正在运行的tomcat容器<br>
+<code>sudo docker rm f6007831657c</code> 后面那串字符是编号</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker ps -<span class="selector-tag">a</span></span><br><span class="line"><span class="attribute">CONTAINER</span> ID        <span class="selector-tag">IMAGE</span>               COMMAND                  CREATED             STATUS   NAMES</span><br><span class="line"><span class="number">7</span>c01da3b0629        nginx:<span class="number">1.16</span>.<span class="number">1</span>        <span class="string">&quot;nginx -g &#x27;daemon of…&quot;</span>   <span class="number">3</span> weeks ago         Exited   MyNginx</span><br></pre></td></tr></table></figure>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/09/19/Docker学习6-Dockerfile定制镜像2/" data-toggle="tooltip" data-placement="top" title="Docker学习6-Dockerfile定制镜像2">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/09/18/Docker学习5-Docker基本指令/" data-toggle="tooltip" data-placement="top" title="Docker学习5-Docker基本指令">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">作用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Dockerfile是什么?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">起步</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                          <a class="tag" href="/tags/#Dockerfile" title="Dockerfile">Dockerfile</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

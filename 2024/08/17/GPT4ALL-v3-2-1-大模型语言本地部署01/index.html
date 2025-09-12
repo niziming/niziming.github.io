@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          GPT4ALL-v3.2.1-大语言模型本地部署01 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2024/08/17/GPT4ALL-v3-2-1-大模型语言本地部署01/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#GPT4ALL" title="GPT4ALL">GPT4ALL</a>
+                            
+                              <a class="tag" href="/tags/#大语言模型" title="大语言模型">大语言模型</a>
+                            
+                        </div>
+                        <h1>GPT4ALL-v3.2.1-大语言模型本地部署01</h1>
+                        <h2 class="subheading">GPT4ALL-v3.2.1-大语言模型本地部署01</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2024-08-17
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="gpt4all-v321-大语言模型本地部署01">GPT4ALL-v3.2.1-大语言模型本地部署01</span></h1>
+<p>GPT4All 是一个旨在为广泛用户群体提供大语言模型（LLMs）能力的开源项目。该项目的核心目标是降低大语言模型的部署和使用门槛，使个人和组织能够在本地环境中运行强大的自然语言处理（NLP）模型，而不需要依赖于云端服务。</p>
+<h3><span id="主要特点">主要特点</span></h3>
+<ol>
+<li><strong>本地部署</strong>：
+<ul>
+<li>GPT4All 专注于本地运行，用户无需担心数据隐私问题，因为所有处理都在本地进行。</li>
+<li>适合资源受限的环境，比如个人电脑或企业内部服务器。</li>
+</ul>
+</li>
+<li><strong>轻量化</strong>：
+<ul>
+<li>GPT4All 通过优化，能够在较低的硬件资源下运行。这意味着即使没有高端 GPU，也可以在 CPU 上运行模型，虽然速度会有所下降。</li>
+</ul>
+</li>
+<li><strong>开源</strong>：
+<ul>
+<li>完全开源，允许开发者自由修改、微调和部署。社区提供了许多模型和优化策略，帮助用户根据特定需求调整模型。</li>
+</ul>
+</li>
+<li><strong>多语言支持</strong>：
+<ul>
+<li>GPT4All 支持多种语言，能够处理各种语言生成和理解任务。</li>
+</ul>
+</li>
+<li><strong>易于使用</strong>：
+<ul>
+<li>提供了简单的接口，易于集成到现有应用中。开发者可以通过 Python API、CLI 工具或 GUI 与模型交互。</li>
+</ul>
+</li>
+</ol>
+<h3><span id="技术背景">技术背景</span></h3>
+<p>GPT4All 是基于 GPT 架构的一个开源衍生项目。它通过结合不同版本的 GPT（如 GPT-3、GPT-J、GPT-NeoX）的技术，创建了适合本地运行的优化版本。它使用了量化技术和其他模型压缩技术来减少计算需求。</p>
+<h3><span id="优势和应用场景">优势和应用场景</span></h3>
+<ul>
+<li><strong>隐私敏感的任务</strong>：适合处理那些对数据隐私要求较高的任务，如企业内部文档处理、医疗数据分析等。</li>
+<li><strong>教育和研究</strong>：GPT4All 为学术研究人员和学生提供了一个研究 NLP 技术的本地化平台。</li>
+<li><strong>开发和测试</strong>：开发者可以快速在本地环境中进行模型的开发、测试和调优，而不依赖外部服务。</li>
+</ul>
+<h3><span id="部署与使用">部署与使用</span></h3>
+<p>GPT4All 提供了多个部署选项，包括通过 Docker 容器、本地 Python 环境或编译后的二进制文件。具体的使用方法取决于用户的需求和技术背景。</p>
+<h3><span id="限制与挑战">限制与挑战</span></h3>
+<ul>
+<li><strong>计算性能</strong>：尽管经过优化，GPT4All 在缺乏强大硬件支持的情况下，推理速度仍不如云端部署的模型。</li>
+<li><strong>模型规模</strong>：为了适应本地运行的需求，模型的规模通常较小，因此在复杂任务上的表现可能不如更大规模的模型。</li>
+<li><strong>社区支持</strong>：尽管是开源项目，社区支持和文档相对较新，可能需要用户具备一定的技术背景。</li>
+</ul>
+<h3><span id="实操">实操</span></h3>
+<p>1.下载地址,下载后安装<a target="_blank" rel="noopener" href="https://www.nomic.ai/gpt4all">GPT4All (nomic.ai) </a>没什么特别的直接下一步下一步</p>
+<p>2.安装后下载目录修改一下，尽量不要C盘即可。<img src="/2024/08/17/GPT4ALL-v3-2-1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B201/image-20240817224027903.png" alt="image-20240817224027903"></p>
+<p>3.lama 3 8b instruct 根据用户自己电脑. 有GPU还是CPU进行配置查询下相关性能影响后部署。</p>
+<p><img src="/2024/08/17/GPT4ALL-v3-2-1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B201/image-20240817224210658.png" alt="image-20240817224210658"></p>
+<p>对话使用<img src="/2024/08/17/GPT4ALL-v3-2-1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B201/image-20240817230900858.png" alt="image-20240817230900858"></p>
+<p>这里把硬件勾选上,因为电脑没有GPU所有选了CPU,默认大预言模型是llma 3</p>
+<p><img src="/2024/08/17/GPT4ALL-v3-2-1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B201/image-20240817231016534.png" alt="image-20240817231016534"></p>
+<h4><span id="开始使用">开始使用</span></h4>
+<p><img src="/2024/08/17/GPT4ALL-v3-2-1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AF%AD%E8%A8%80%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B201/image-20240817231813061.png" alt="image-20240817231813061"></p>
+<h4><span id="下期开始介绍lmstudio">下期开始介绍LMstudio</span></h4>
+<h3><span id="总结">总结</span></h3>
+<p>GPT4All 是一个极具潜力的项目，它让更多的人能够使用和探索大语言模型的能力，同时保持对数据的完全控制。它特别适合那些对数据隐私有要求或希望在本地环境中进行实验的用户。</p>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.nomic.ai/gpt4all">GPT4All (nomic.ai)</a></p>
+<p><a target="_blank" rel="noopener" href="https://chatgpt.com/c/2e1099b5-65c8-46e5-9d46-f6826cae5ad3">Docker Language Model Deployment (chatgpt.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AT42117Ku/?spm_id_from=333.880.my_history.page.click&amp;vd_source=da389cbd3389034c63c1a75ed108ace1">本地部署 Llama3 – 8B/70B 大模型！最简单的3种方法，支持CPU /GPU运行 ！100% 保证成功！！ | 零度解说_哔哩哔哩_bilibili</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/08/18/本地部署大型语音模型-LM-Studio-01/" data-toggle="tooltip" data-placement="top" title="本地部署大型语音模型-LM Studio-01">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2024/07/28/windows-纯净版win10安装/" data-toggle="tooltip" data-placement="top" title="windows-纯净版win10安装">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">GPT4ALL-v3.2.1-大语言模型本地部署01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">主要特点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">技术背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">优势和应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">部署与使用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">限制与挑战</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">实操</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.1.</span> <span class="toc-nav-text">开始使用</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.2.</span> <span class="toc-nav-text">下期开始介绍LMstudio</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">总结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#GPT4ALL" title="GPT4ALL">GPT4ALL</a>
+                        
+                          <a class="tag" href="/tags/#大语言模型" title="大语言模型">大语言模型</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          PEV7.2_all_in_one_虚拟机大全_02_pve安装windows10镜像 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2023/04/02/PEV7-2-all-in-one-虚拟机大全-03-pve安装windows10镜像/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#PVE" title="PVE">PVE</a>
+                            
+                        </div>
+                        <h1>PEV7.2_all_in_one_虚拟机大全_02_pve安装windows10镜像</h1>
+                        <h2 class="subheading">PEV7.2_all_in_one_虚拟机大全_02_pve安装windows10镜像</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2023-04-02
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="pve安装windows10镜像">pve安装windows10镜像</span></h1>
+<h2><span id="简介">简介</span></h2>
+<p>第一章我们下载了windows 精简版, 这里将使用pve安装win10精简版</p>
+<h2><span id="准备工作">准备工作</span></h2>
+<ul>
+<li>下载win10 安装镜像</li>
+<li>将镜像上传至pve</li>
+<li>挂载硬盘
+<ul>
+<li><strong>7.0以后版本有可视化界面可以操作挂载非常方便</strong></li>
+<li>这里将挂载另外一块磁盘</li>
+</ul>
+</li>
+<li>windows 驱动 Windows VirtIO <a target="_blank" rel="noopener" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso</a>
+<ul>
+<li>下载完成后上传到Samsung</li>
+<li><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402111711356.png" alt="image-20230402111711356"></li>
+</ul>
+</li>
+</ul>
+<h2><span id="开始">开始</span></h2>
+<h3><span id="选择三星这块磁盘镜像擦除">选择三星这块磁盘镜像擦除</span></h3>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402094806454.png" alt="image-20230402094806454"></p>
+<ul>
+<li>销毁</li>
+</ul>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095123220.png" alt="image-20230402095123220"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095141712.png" alt="image-20230402095141712"></p>
+<ul>
+<li>
+<p>创建 目录</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095216800.png" alt="image-20230402095216800"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095301548.png" alt="image-20230402095301548"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095309659.png" alt="image-20230402095309659"></p>
+<p>目录就创建完成了</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095325044.png" alt="image-20230402095325044"></p>
+</li>
+</ul>
+<h3><span id="上传镜像">上传镜像</span></h3>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095429545.png" alt="image-20230402095429545"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095435474.png" alt="image-20230402095435474"></p>
+<p>精简版win10仅有1.5GB</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095449287.png" alt="image-20230402095449287"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095454853.png" alt="image-20230402095454853"></p>
+<h3><span id="添加一台虚拟机">添加一台虚拟机</span></h3>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402101728476.png" alt="image-20230402101728476"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402101735310.png" alt="image-20230402101735310"></p>
+<p>选择刚才上传的IOS镜像</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402101835330-1680401916355-1.png" alt="image-20230402101835330"></p>
+<p>系统</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402105823150.png" alt="image-20230402105823150"></p>
+<p>磁盘</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402105811426.png" alt="image-20230402105811426"></p>
+<p>CPU</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402105926387.png" alt="image-20230402105926387"></p>
+<p>内存 16GB</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402110027055.png" alt="image-20230402110027055"></p>
+<p>网络</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402110125721-1680404486706-3.png" alt="image-20230402110125721"></p>
+<p>点击下一步确认<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402110202116.png" alt="image-20230402110202116"></p>
+<p>根据个人需求 重新挂载了几个硬盘上去</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402111942143.png" alt="image-20230402111942143"></p>
+<p>在ISO镜像这儿选择刚刚下载的 Windows VirtIO Drivers 镜像文件</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402111955701.png" alt="image-20230402111955701"></p>
+<p>添加完成后我们则可以看到会有两个 CD/DVD驱动器，一个是我们的win10镜像文件，还有一个则是驱动的镜像文件</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112111415.png" alt="image-20230402112111415"></p>
+<p>安装 win10<br>
+我们选中创建的虚拟机，点击控制台菜单，然后点击启动，开启虚拟机</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112101262.png" alt="image-20230402112101262"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112132449.png" alt="image-20230402112132449"></p>
+<p>点击下一步</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112220226.png" alt="image-20230402112220226"></p>
+<p>选择我们要安装的版本，然后点击下一步</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112257070.png" alt="image-20230402112257070"></p>
+<p>我想将80GB的作为系统盘,所以选择了驱动器0开始分配磁盘</p>
+<p>点击下一步开始安装</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112501324.png" alt="image-20230402112501324"></p>
+<p>等待它自动重启即可</p>
+<p>现在我们等待它加载完成，并完成相应的设置</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112645414.png" alt="image-20230402112645414"></p>
+<p>按照自己需求一步一步设置</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402112830287.png" alt="image-20230402112830287"></p>
+<p>设置完成后进入桌面</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402113010413.png" alt="image-20230402113010413"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402113218792.png" alt="image-20230402113218792"></p>
+<p>可以看到精简版按照后系统盘大小14gb</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402113335134.png" alt="image-20230402113335134"></p>
+<p>然后按照自己需求配置下windows初始设置</p>
+<h3><span id="驱动安装及网络设置">驱动安装及网络设置</span></h3>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402114936293.png" alt="image-20230402114936293"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115019200.png" alt="image-20230402115019200"></p>
+<p>点击下一步安装<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115032574.png" alt="image-20230402115032574"></p>
+<p>网络通了</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115053451.png" alt="image-20230402115053451"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115126766.png" alt="image-20230402115126766"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115136816.png" alt="image-20230402115136816"></p>
+<p>安装个edge 如果商店无法下载 可以上浏览器下载安装</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115223414.png" alt="image-20230402115223414"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115331900.png" alt="image-20230402115331900"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115451807.png" alt="image-20230402115451807"></p>
+<h3><span id="启动引导切换移除cddvd驱动">启动引导切换,移除cd/dvd驱动</span></h3>
+<p>移除cd/dvd驱动</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402120922825.png" alt="image-20230402120922825"></p>
+<p>启动引导改为C盘启动<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402120939152.png" alt="image-20230402120939152"></p>
+<h3><span id="备份">备份<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121001708.png" alt="image-20230402121001708"></span></h3>
+<p>下章将探索如何实现硬件直通及独立显示器和鼠标键盘</p>
+<h3><span id="转换模板">转换模板</span></h3>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121310429.png" alt="image-20230402121310429"></p>
+<h3><span id="克隆">克隆</span></h3>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121331706.png" alt="image-20230402121331706"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121357074.png" alt="image-20230402121357074"></p>
+<h3><span id="安装远程桌面">安装远程桌面</span></h3>
+<p>启动虚拟机</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121414378.png" alt="image-20230402121414378"></p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121432388.png" alt="image-20230402121432388"></p>
+<p>下载安装 todesk</p>
+<p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121819905.png" alt="image-20230402121819905"></p>
+<p>这样就算人没在家也可以控制那台虚拟机了</p>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv18974318">PVE 安装 windows10 - 哔哩哔哩 (bilibili.com)</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2023/04/02/PEV7-2-all-in-one-虚拟机大全-04-pve调整local及local-lvm空间/" data-toggle="tooltip" data-placement="top" title="PEV7.2_all_in_one_虚拟机大全_04_pve调整local及local-lvm空间">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/04/02/PEV7-2-all-in-one-虚拟机大全-02-pve的基本配置/" data-toggle="tooltip" data-placement="top" title="PEV7.2_all_in_one_虚拟机大全_02_pve的基本配置">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pve安装windows10镜像</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">选择三星这块磁盘镜像擦除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">上传镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">添加一台虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">驱动安装及网络设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">启动引导切换,移除cd&#x2F;dvd驱动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">备份</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">转换模板</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">克隆</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">安装远程桌面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#PVE" title="PVE">PVE</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

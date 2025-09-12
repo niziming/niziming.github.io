@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          SpringCloud微服务系列03-Netflix架构05-Zuul - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2021/10/25/SpringCloud微服务系列03-Netflix架构05-Zuul/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+                            
+                              <a class="tag" href="/tags/#Netflix" title="Netflix">Netflix</a>
+                            
+                              <a class="tag" href="/tags/#微服务" title="微服务">微服务</a>
+                            
+                              <a class="tag" href="/tags/#网关" title="网关">网关</a>
+                            
+                              <a class="tag" href="/tags/#Zuul" title="Zuul">Zuul</a>
+                            
+                        </div>
+                        <h1>SpringCloud微服务系列03-Netflix架构05-Zuul</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2021-10-25
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="springcloud微服务系列03-netflix架构05-zuul">SpringCloud微服务系列03-Netflix架构05-Zuul</span></h1>
+<h2><span id="简介">简介</span></h2>
+<p>本篇将介绍API网关的基本概念、<a target="_blank" rel="noopener" href="https://github.com/Netflix/zuul">Zuul</a>网关的功能和工作机制。结合代码介绍如何使用Zuul构建一个简单的网关、介绍Zuul的路由配置方式、了解Filter工作原理并实现一些扩展功能。</p>
+<p>Zuul是Spring Cloud全家桶中的微服务API网关。</p>
+<p>所有从设备或网站来的请求都会经过Zuul到达后端的Netflix应用程序。作为一个边界性质的应用程序，Zuul提供了动态路由、监控、弹性负载和安全功能。Zuul底层利用各种filter实现如下功能：</p>
+<ul>
+<li>认证和安全 识别每个需要认证的资源，拒绝不符合要求的请求。</li>
+<li>性能监测 在服务边界追踪并统计数据，提供精确的生产视图。</li>
+<li>动态路由 根据需要将请求动态路由到后端集群。</li>
+<li>压力测试 逐渐增加对集群的流量以了解其性能。</li>
+<li>负载卸载 预先为每种类型的请求分配容量，当请求超过容量时自动丢弃。</li>
+<li>静态资源处理 直接在边界返回某些响应。</li>
+</ul>
+<h2><span id="准备工作">准备工作</span></h2>
+<p>继续使用之前的服务,然后新建一个zuul服务.</p>
+<h2><span id="新建zuul项目">新建Zuul项目</span></h2>
+<p>xml里面有各个依赖的注释</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Spring-Cloud-Netflix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.zm<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Zuul<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>8<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>8<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--统一依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.zm<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--zuul 依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-zuul<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- eureka client 此包已包含 spring-cloud-netflix-hystrix --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-netflix-hystrix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 导入配置文件处理器，配置文件进行绑定就会有提示 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>yml配置如下:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8706</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">common</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Zuul-8706</span></span><br><span class="line"></span><br><span class="line"><span class="attr">zuul:</span></span><br><span class="line">  <span class="attr">routes:</span></span><br><span class="line">    <span class="attr">api-a:</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/api-a/**</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">ribbon-8703</span></span><br><span class="line">    <span class="attr">api-b:</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/api-b/**</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">service-app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># eureka</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">serviceUrl:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8700/eureka/</span></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">cn.zm:</span> <span class="string">debug</span></span><br></pre></td></tr></table></figure>
+<p>入口applicaton类加上注解@EnableZuulProxy，开启zuul的功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.EnableEurekaClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.zuul.EnableZuulProxy;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 入口applicaton类加上注解@EnableZuulProxy，开启zuul的功能</span></span><br><span class="line"><span class="meta">@EnableZuulProxy</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZuulApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(ZuulApp.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="测试zuul">测试zuul</span></h3>
+<p>启动router中配置的项目</p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025111705645.png" alt="image-20211025111705645"></p>
+<p>测试api网关的a路由转发情况,<a target="_blank" rel="noopener" href="http://localhost:8706/api-a/ribbon%E6%B5%8B%E8%AF%95">http://localhost:8706/api-a/ribbon测试</a></p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025112034361.png" alt="image-20211025112034361"></p>
+<p>测试api网关的b路由转发情况,<a target="_blank" rel="noopener" href="http://localhost:8706/api-b/account/ribbon/service%E6%B5%8B%E8%AF%95">http://localhost:8706/api-b/account/ribbon/service测试</a></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zuul:</span></span><br><span class="line">  <span class="attr">routes:</span></span><br><span class="line">    <span class="attr">api-a:</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/api-a/**</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">ribbon-8703</span></span><br><span class="line">    <span class="attr">api-b:</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/api-b/**</span></span><br><span class="line">      <span class="attr">serviceId:</span> <span class="string">service-app</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025111846900.png" alt="image-20211025111846900"></p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025111918683.png" alt="image-20211025111918683"></p>
+<h2><span id="zuul的过滤功能">Zuul的过滤功能</span></h2>
+<p>新建类继承ZuulFilter重写其过滤方法,各个方法的作用已在注释中写明.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.netflix.zuul.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.netflix.zuul.ZuulFilter;</span><br><span class="line"><span class="keyword">import</span> com.netflix.zuul.context.RequestContext;</span><br><span class="line"><span class="keyword">import</span> com.netflix.zuul.exception.ZuulException;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.Assert;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZuulAppFilter</span> <span class="keyword">extends</span> <span class="title class_">ZuulFilter</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;filterType：返回一个字符串代表过滤器的类型，</span></span><br><span class="line"><span class="comment">     * 在zuul中定义了四种不同生命周期的过滤器类型，具体如下：&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2021/10/25 10:17</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">filterType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// pre：路由之前</span></span><br><span class="line">        <span class="comment">// routing：路由之时</span></span><br><span class="line">        <span class="comment">// post： 路由之后</span></span><br><span class="line">        <span class="comment">// error：发送错误调用</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;pre&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;过滤的顺序&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2021/10/25 10:18</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">filterOrder</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;这里可以写逻辑判断，是否要过滤，本文true,永远过滤。&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2021/10/25 10:18</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> boolean</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">shouldFilter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;过滤器的具体逻辑。可用很复杂，</span></span><br><span class="line"><span class="comment">     * 包括查sql，nosql去判断该请求到底有没有权限访问。&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2021/10/25 10:19</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.Object</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">run</span><span class="params">()</span> <span class="keyword">throws</span> ZuulException &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="测试zuul过滤">测试zuul过滤</span></h3>
+<p>打上断点访问路由 进入断点</p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025112255383.png" alt="image-20211025112255383"></p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025112436921.png" alt="image-20211025112436921"></p>
+<p>写入过滤规则查看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">run</span><span class="params">()</span> <span class="keyword">throws</span> ZuulException &#123;</span><br><span class="line">    <span class="type">RequestContext</span> <span class="variable">ctx</span> <span class="operator">=</span> RequestContext.getCurrentContext();</span><br><span class="line">    <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> ctx.getRequest();</span><br><span class="line">    <span class="type">HttpServletResponse</span> <span class="variable">response</span> <span class="operator">=</span> ctx.getResponse();</span><br><span class="line">    log.info(String.format(<span class="string">&quot;%s &gt;&gt;&gt; %s&quot;</span>, request.getMethod(), request.getRequestURL().toString()));</span><br><span class="line">    <span class="type">Object</span> <span class="variable">accessToken</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="comment">// try &#123;</span></span><br><span class="line">    <span class="comment">//     Assert.notNull(accessToken, &quot;token is empty&quot;);</span></span><br><span class="line">    <span class="comment">// &#125; catch (Exception e) &#123;</span></span><br><span class="line">    <span class="comment">//     resolver.resolveException(request, response, null, e);</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">if</span>(accessToken == <span class="literal">null</span>) &#123;</span><br><span class="line">        log.warn(<span class="string">&quot;token is empty&quot;</span>);</span><br><span class="line">        ctx.setSendZuulResponse(<span class="literal">false</span>);</span><br><span class="line">        ctx.setResponseStatusCode(<span class="number">401</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ctx.getResponse().getWriter().write(<span class="string">&quot;token is empty&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    log.info(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025112612265.png" alt="image-20211025112612265"></p>
+<h3><span id="将过滤器的异常交由统一异常处理器处理">将过滤器的异常交由统一异常处理器处理</span></h3>
+<p>还是在ZuulAppFilter类中,在filter当中引入HandlerExceptionResolver类，通过该类的resolveException方法抛出自定义异常，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier(&quot;handlerExceptionResolver&quot;)</span></span><br><span class="line"><span class="keyword">private</span> HandlerExceptionResolver resolver;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;过滤器的具体逻辑。可用很复杂，</span></span><br><span class="line"><span class="comment">     * 包括查sql，nosql去判断该请求到底有没有权限访问。&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2021/10/25 10:19</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.Object</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">run</span><span class="params">()</span> <span class="keyword">throws</span> ZuulException &#123;</span><br><span class="line">        <span class="type">RequestContext</span> <span class="variable">ctx</span> <span class="operator">=</span> RequestContext.getCurrentContext();</span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> ctx.getRequest();</span><br><span class="line">        <span class="type">HttpServletResponse</span> <span class="variable">response</span> <span class="operator">=</span> ctx.getResponse();</span><br><span class="line">        log.info(String.format(<span class="string">&quot;%s &gt;&gt;&gt; %s&quot;</span>, request.getMethod(), request.getRequestURL().toString()));</span><br><span class="line">        <span class="type">Object</span> <span class="variable">accessToken</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Assert.notNull(accessToken, <span class="string">&quot;token is empty 401 err&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            resolver.resolveException(request, response, <span class="literal">null</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if(accessToken == null) &#123;</span></span><br><span class="line">        <span class="comment">//     log.warn(&quot;token is empty&quot;);</span></span><br><span class="line">        <span class="comment">//     ctx.setSendZuulResponse(false);</span></span><br><span class="line">        <span class="comment">//     ctx.setResponseStatusCode(401);</span></span><br><span class="line">        <span class="comment">//     try &#123;</span></span><br><span class="line">        <span class="comment">//         ctx.getResponse().getWriter().write(&quot;token is empty&quot;);</span></span><br><span class="line">        <span class="comment">//     &#125;catch (Exception e)&#123;&#125;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     return null;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        log.info(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>通过resolveException方法抛出的自定义异常可以被RestControllerAdvice捕获，从而满足我们的需求，最终得到的响应格式：</p>
+<p>再次测试访问, 被全局异常处理类自动拦截并返回json给前端</p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025112914226.png" alt="image-20211025112914226"></p>
+<h2><span id="spring-cloud-zuul集成knife4j">Spring Cloud Zuul集成Knife4j</span></h2>
+<p>在Spring Cloud微服务架构中,各个子服务都是分散的,每个服务集成了Swagger文档,但是接口对接时需要单独分别访问,很麻烦,效率低下,</p>
+<p>而Zuul可以帮助我们解决此难题,将多个微服务的Swagger接口聚合到一个文档中,这样整个微服务架构下只会存在一个文档出口,统一文档口径.</p>
+<h3><span id="统一依赖修改">统一依赖修改</span></h3>
+<p>这个地方就体现了我们开始把common模块当做基本模块的好处了.这样只需要修改基础模块的依赖,其他依赖了common的模块也同时修改了.</p>
+<p>common模块pom,<strong>这里必须依赖2.0.8及其以上版本,这个版本切换分组时才回自动填写base-path</strong>千万注意</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">knife4j.version</span>&gt;</span>2.0.8<span class="tag">&lt;/<span class="name">knife4j.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- knife4j --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--在Spring Cloud的微服务架构下,每个微服务其实并不需要引入前端的Ui资源</span></span><br><span class="line"><span class="comment">,因此在每个微服务的Spring Boot项目下,引入knife4j提供的微服务starter--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaoymin<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>knife4j-micro-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;knife4j.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在网关聚合文档服务下,可以再把前端的ui资源引入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaoymin<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>knife4j-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;knife4j.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>统一配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.common.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.assertj.core.util.Lists;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.annotation.Order;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"><span class="keyword">import</span> springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiKey;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.AuthorizationScope;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.SecurityReference;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.SecurityScheme;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.service.contexts.SecurityContext;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * &lt;Knife4j 配置&gt;</span></span><br><span class="line"><span class="comment"> * 每个微服务都集成Swagger的配置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/10/12 11:23</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger2WebMvc</span></span><br><span class="line"><span class="meta">@Import(BeanValidatorPluginsConfiguration.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Knife4jConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Order(value = 1)</span></span><br><span class="line">    <span class="meta">@Bean(value = &quot;defaultApi2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Docket <span class="title function_">defaultApi2</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(<span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">                        .title(<span class="string">&quot;SpringCloud种子&quot;</span>)</span><br><span class="line">                        .description(<span class="string">&quot;seed&quot;</span>)</span><br><span class="line">                        .version(<span class="string">&quot;1.0&quot;</span>)</span><br><span class="line">                        .build())</span><br><span class="line">                <span class="comment">//分组名称</span></span><br><span class="line">                <span class="comment">// .groupName(&quot;1.0.0版本&quot;)</span></span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">//这里指定Controller扫描包路径</span></span><br><span class="line">                <span class="comment">// .apis(RequestHandlerSelectors.any())</span></span><br><span class="line">                <span class="comment">// .apis(RequestHandlerSelectors.basePackage(&quot;cn.zm.web.rest&quot;))</span></span><br><span class="line">                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build()</span><br><span class="line">                .securityContexts(</span><br><span class="line">                    Lists</span><br><span class="line">                        .newArrayList(</span><br><span class="line">                            securityContext(),</span><br><span class="line">                            securityContext1()</span><br><span class="line">                        ))</span><br><span class="line">                .securitySchemes(</span><br><span class="line">                    Lists</span><br><span class="line">                        .&lt;SecurityScheme&gt;newArrayList(</span><br><span class="line">                            apiKey(),</span><br><span class="line">                            apiKey1()</span><br><span class="line">                    ))</span><br><span class="line">                ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ApiKey <span class="title function_">apiKey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ApiKey</span>(<span class="string">&quot;BearerToken&quot;</span>, <span class="string">&quot;Authorization&quot;</span>, <span class="string">&quot;header&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> ApiKey <span class="title function_">apiKey1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ApiKey</span>(<span class="string">&quot;BearerToken1&quot;</span>, <span class="string">&quot;Authorization-x&quot;</span>, <span class="string">&quot;header&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> SecurityContext <span class="title function_">securityContext</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> SecurityContext.builder()</span><br><span class="line">            .securityReferences(defaultAuth())</span><br><span class="line">            .forPaths(PathSelectors.regex(<span class="string">&quot;/.*&quot;</span>))</span><br><span class="line">            .build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> SecurityContext <span class="title function_">securityContext1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> SecurityContext.builder()</span><br><span class="line">            .securityReferences(defaultAuth1())</span><br><span class="line">            .forPaths(PathSelectors.regex(<span class="string">&quot;/.*&quot;</span>))</span><br><span class="line">            .build();</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;SecurityReference&gt; <span class="title function_">defaultAuth</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">AuthorizationScope</span> <span class="variable">authorizationScope</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AuthorizationScope</span>(<span class="string">&quot;global&quot;</span>, <span class="string">&quot;accessEverything&quot;</span>);</span><br><span class="line">        AuthorizationScope[] authorizationScopes = <span class="keyword">new</span> <span class="title class_">AuthorizationScope</span>[<span class="number">1</span>];</span><br><span class="line">        authorizationScopes[<span class="number">0</span>] = authorizationScope;</span><br><span class="line">        <span class="keyword">return</span> Lists.newArrayList(<span class="keyword">new</span> <span class="title class_">SecurityReference</span>(<span class="string">&quot;BearerToken&quot;</span>, authorizationScopes));</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;SecurityReference&gt; <span class="title function_">defaultAuth1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">AuthorizationScope</span> <span class="variable">authorizationScope</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AuthorizationScope</span>(<span class="string">&quot;global&quot;</span>, <span class="string">&quot;accessEverything&quot;</span>);</span><br><span class="line">        AuthorizationScope[] authorizationScopes = <span class="keyword">new</span> <span class="title class_">AuthorizationScope</span>[<span class="number">1</span>];</span><br><span class="line">        authorizationScopes[<span class="number">0</span>] = authorizationScope;</span><br><span class="line">        <span class="keyword">return</span> Lists.newArrayList(<span class="keyword">new</span> <span class="title class_">SecurityReference</span>(<span class="string">&quot;BearerToken1&quot;</span>, authorizationScopes));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="zuul模块配置">zuul模块配置</span></h3>
+<p>SwaggerResourceConfig.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.netflix.zuul.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.zuul.filters.Route;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.zuul.filters.RouteLocator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Primary;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger.web.SwaggerResource;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger.web.SwaggerResourcesProvider;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SwaggerResourceConfig</span> <span class="keyword">implements</span> <span class="title class_">SwaggerResourcesProvider</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RouteLocator routeLocator;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;SwaggerResource&gt; <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//获取所有router</span></span><br><span class="line">        List&lt;SwaggerResource&gt; resources = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Route&gt; routes = routeLocator.getRoutes();</span><br><span class="line">        log.info(<span class="string">&quot;Route Size:&#123;&#125;&quot;</span>, routes.size());</span><br><span class="line">        <span class="keyword">for</span> (Route route : routes) &#123;</span><br><span class="line">            resources.add(</span><br><span class="line">                swaggerResource(</span><br><span class="line">                    route.getId(),</span><br><span class="line">                    route.getFullPath()</span><br><span class="line">                            .replace(<span class="string">&quot;**&quot;</span>, <span class="string">&quot;v2/api-docs&quot;</span>)</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resources;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SwaggerResource <span class="title function_">swaggerResource</span><span class="params">(String name, String location)</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;name:&#123;&#125;, location:&#123;&#125;&quot;</span>, name, location);</span><br><span class="line">        <span class="type">SwaggerResource</span> <span class="variable">swaggerResource</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SwaggerResource</span>();</span><br><span class="line">        swaggerResource.setName(name);</span><br><span class="line">        swaggerResource.setLocation(location);</span><br><span class="line">        swaggerResource.setSwaggerVersion(<span class="string">&quot;2.0&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> swaggerResource;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="测试">测试</span></h3>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025151607333.png" alt="image-20211025151607333"></p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025151615461.png" alt="image-20211025151615461"></p>
+<p><img src="/2021/10/25/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9703-Netflix%E6%9E%B6%E6%9E%8405-Zuul/image-20211025151627890.png" alt="image-20211025151627890"></p>
+<h2><span id="spring-cloud-zuul集成security">Spring Cloud Zuul集成Security</span></h2>
+<p>保留后续写入</p>
+<h2><span id="参考资料">参考资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27384769/article/details/82991261">https://blog.csdn.net/qq_27384769/article/details/82991261</a></p>
+<p>SpringBoot 过滤器filter当中的自定义异常捕获问题</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37731470/article/details/116754395?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link">https://blog.csdn.net/m0_37731470/article/details/116754395?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2021/10/26/SpringCloud微服务系列03-Netflix架构06-Config/" data-toggle="tooltip" data-placement="top" title="SpringCloud微服务系列03-Netflix架构06-Config">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2021/10/21/SpringCloud微服务系列03-Netflix架构04-Hystrix/" data-toggle="tooltip" data-placement="top" title="SpringCloud微服务系列03-Netflix架构04-Hystrix">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SpringCloud微服务系列03-Netflix架构05-Zuul</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">新建Zuul项目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">测试zuul</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Zuul的过滤功能</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">测试zuul过滤</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">将过滤器的异常交由统一异常处理器处理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Spring Cloud Zuul集成Knife4j</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">统一依赖修改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">zuul模块配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">测试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Spring Cloud Zuul集成Security</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+                        
+                          <a class="tag" href="/tags/#Netflix" title="Netflix">Netflix</a>
+                        
+                          <a class="tag" href="/tags/#微服务" title="微服务">微服务</a>
+                        
+                          <a class="tag" href="/tags/#网关" title="网关">网关</a>
+                        
+                          <a class="tag" href="/tags/#Zuul" title="Zuul">Zuul</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2021/11/18/SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+                            
+                              <a class="tag" href="/tags/#SpringCloudAlibaba" title="SpringCloudAlibaba">SpringCloudAlibaba</a>
+                            
+                              <a class="tag" href="/tags/#Gateway" title="Gateway">Gateway</a>
+                            
+                        </div>
+                        <h1>SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter</h1>
+                        <h2 class="subheading">SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2021-11-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="springcloud微服务系列04-alibaba架构01-gateway-03-filter">SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter</span></h1>
+<p>在上一篇文章详细的介绍了Gateway的Predict，Predict决定了请求由哪一个路由处理，在路由处理之前，需要经过“pre”类型的过滤器处理，处理返回响应之后，可以由“post”类型的过滤器处理。</p>
+<h2><span id="filter的作用和生命周期">filter的作用和生命周期</span></h2>
+<p>由filter工作流程点，可以知道filter有着非常重要的作用，在“pre”类型的过滤器可以做参数校验、权限校验、流量监控、日志输出、协议转换等，在“post”类型的过滤器中可以做响应内容、响应头的修改，日志的输出，流量监控等。首先需要弄清一点为什么需要网关这一层，这就不得不说下filter的作用了。</p>
+<h2><span id="作用">作用</span></h2>
+<p>当我们有很多个服务时，比如下图中的user-service、goods-service、sales-service等服务，客户端请求各个服务的Api时，每个服务都需要做相同的事情，比如鉴权、限流、日志输出等。</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/2279594-1ad11b98829e33e5.png" alt="2279594-1ad11b98829e33e5"></p>
+<p>对于这样重复的工作，有没有办法做的更好，答案是肯定的。在微服务的上一层加一个全局的权限控制、限流、日志输出的Api Gatewat服务，然后再将请求转发到具体的业务服务层。这个Api Gateway服务就是起到一个服务边界的作用，外接的请求访问系统，必须先通过网关层。</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/2279594-8aef2be1eccab3d8.png" alt="2279594-1ad11b98829e33e5"></p>
+<h2><span id="生命周期">生命周期</span></h2>
+<p>Spring Cloud Gateway同zuul类似，有“pre”和“post”两种方式的filter。客户端的请求先经过“pre”类型的filter，然后将请求转发到具体的业务服务，比如上图中的user-service，收到业务服务的响应之后，再经过“post”类型的filter处理，最后返回响应到客户端。</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/2279594-16242cf54a5b82e8.png" alt="3.png"></p>
+<p>与zuul不同的是，filter除了分为“pre”和“post”两种方式的filter外，在Spring Cloud Gateway中，filter从作用范围可分为另外两种，一种是针对于单个路由的gateway filter，它在配置文件中的写法同predict类似；另外一种是针对于所有路由的global gateway filer。现在从作用范围划分的维度来讲解这两种filter。</p>
+<h2><span id="gateway-filter">gateway filter</span></h2>
+<p>过滤器允许以某种方式修改传入的HTTP请求或传出的HTTP响应。过滤器可以限定作用在某些特定请求路径上。 Spring Cloud Gateway包含许多内置的GatewayFilter工厂。</p>
+<p>GatewayFilter工厂同上一篇介绍的Predicate工厂类似，都是在配置文件application.yml中配置，遵循了约定大于配置的思想，只需要在配置文件配置GatewayFilter Factory的名称，而不需要写全部的类名，比如AddRequestHeaderGatewayFilterFactory只需要在配置文件中写AddRequestHeader，而不是全部类名。在配置文件中配置的GatewayFilter Factory最终都会相应的过滤器工厂类处理。</p>
+<p>Spring Cloud Gateway 内置的过滤器工厂一览表如下：</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/2279594-21f95f970275e70f-16378210511281.png" alt="1.png"></p>
+<p>现在挑几个常见的过滤器工厂来讲解，每一个过滤器工厂在官方文档都给出了详细的使用案例，如果不清楚的还可以在org.springframework.cloud.gateway.filter.factory看每一个过滤器工厂的源码。</p>
+<h3><span id="addrequestheader-gatewayfilter-factory">AddRequestHeader GatewayFilter Factory</span></h3>
+<p>配置文件为add_request_header_route，在add_request_header_route配置中，配置了roter的id为add_request_header_route，路由地址为http://httpbin.org:80/get，该router有AfterPredictFactory，有一个filter为AddRequestHeaderGatewayFilterFactory(约定写成AddRequestHeader)，AddRequestHeader过滤器工厂会在请求头加上一对请求头，名称为X-Request-Foo，值为Bar。为了验证AddRequestHeaderGatewayFilterFactory是怎么样工作的，查</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">add_request_header_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">http://httpbin.org:80/get</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">AddRequestHeader=X-Request-Foo,</span> <span class="string">Bar</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">After=2017-01-20T17:42:47.789-07:00[America/Denver]</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">add_request_header_route</span></span><br></pre></td></tr></table></figure>
+<p>访问页面,请求自动加上了<code>&quot;X-Request-Foo&quot;: &quot;Bar&quot;</code></p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211104103201206.png" alt="image-20211104103201206"></p>
+<p>看它的源码，AddRequestHeaderGatewayFilterFactory的源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AddRequestHeaderGatewayFilterFactory</span> <span class="keyword">extends</span> <span class="title class_">AbstractNameValueGatewayFilterFactory</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> GatewayFilter <span class="title function_">apply</span><span class="params">(NameValueConfig config)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (exchange, chain) -&gt; &#123;</span><br><span class="line">			<span class="type">ServerHttpRequest</span> <span class="variable">request</span> <span class="operator">=</span> exchange.getRequest().mutate()</span><br><span class="line">					.header(config.getName(), config.getValue())</span><br><span class="line">					.build();</span><br><span class="line"></span><br><span class="line">			<span class="keyword">return</span> chain.filter(exchange.mutate().request(request).build());</span><br><span class="line">		&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由上面的代码可知，根据旧的ServerHttpRequest创建新的 ServerHttpRequest ，在新的ServerHttpRequest加了一个请求头，然后创建新的 ServerWebExchange ，提交过滤器链继续过滤。</p>
+<h3><span id="rewritepath-gatewayfilter-factory">RewritePath GatewayFilter Factory</span></h3>
+<p>在Nginx服务启中有一个非常强大的功能就是重写路径，Spring Cloud Gateway默认也提供了这样的功能，这个功能是Zuul没有的。在配置文件中加上以下的配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">rewritepath_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://blog.csdn.net</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Path=/foo/**</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">RewritePath=/foo/(?&lt;segment&gt;.*),</span> <span class="string">/$\&#123;segment&#125;</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">rewritepath_route</span></span><br></pre></td></tr></table></figure>
+<p>上面的配置中，所有的/foo/*<em>开始的路径都会命中配置的router，并执行过滤器的逻辑，在本案例中配置了RewritePath过滤器工厂，此工厂将/foo/(?.</em>)重写为{segment}，然后转发到https://blog.csdn.net。比如在网页上请求localhost:8081/foo/forezp，此时会将请求转发到https://blog.csdn.net/forezp的页面，比如在网页上请求localhost:8081/foo/forezp/1，页面显示404，就是因为不存在https://blog.csdn.net/forezp/1这个页面。</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211104103750783.png" alt="image-20211104103750783"></p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211104103801964.png" alt="image-20211104103801964"></p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211104103812611.png" alt="image-20211104103812611"></p>
+<h2><span id="自定义过滤器">自定义过滤器</span></h2>
+<p>Spring Cloud Gateway内置了19种强大的过滤器工厂，能够满足很多场景的需求，那么能不能自定义自己的过滤器呢，当然是可以的。在spring Cloud Gateway中，过滤器需要实现GatewayFilter和Ordered2个接口。写一个RequestTimeFilter，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.gateway.filter;<span class="keyword">import</span> org.springframework.cloud.gateway.filter.GatewayFilter;<span class="keyword">import</span> org.springframework.cloud.gateway.filter.GatewayFilterChain;<span class="keyword">import</span> org.springframework.core.Ordered;<span class="keyword">import</span> org.springframework.web.server.ServerWebExchange;<span class="keyword">import</span> reactor.core.publisher.Mono;<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequestTimeFilter</span> <span class="keyword">implements</span> <span class="title class_">GatewayFilter</span>, Ordered &#123;  <span class="meta">@Override</span>  <span class="keyword">public</span> Mono&lt;Void&gt; <span class="title function_">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span> &#123;    <span class="keyword">return</span> <span class="literal">null</span>;  &#125;  <span class="meta">@Override</span>  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getOrder</span><span class="params">()</span> &#123;    <span class="keyword">return</span> <span class="number">0</span>;  &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，Ordered中的int getOrder()方法是来给过滤器设定优先级别的，值越大则优先级越低。还有有一个filterI(exchange,chain)方法，在该方法中，先记录了请求的开始时间，并保存在ServerWebExchange中，此处是一个“pre”类型的过滤器，然后再chain.filter的内部类中的run()方法中相当于”post”过滤器，在此处打印了请求所消耗的时间。然后将该过滤器注册到router中，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.gateway.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.zm.gateway.filter.RequestTimeFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.route.RouteLocator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * &lt;路由配置&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/11/2 16:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RouteConfig</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL</span> <span class="operator">=</span> <span class="string">&quot;http://httpbin.org&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL1</span> <span class="operator">=</span> <span class="string">&quot;http://www.baidu.com&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL2</span> <span class="operator">=</span> <span class="string">&quot;/error&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">FORWARD</span> <span class="operator">=</span> <span class="string">&quot;/gateway/fallback&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> RouteLocator <span class="title function_">customerRouteLocator</span><span class="params">(RouteLocatorBuilder builder)</span> &#123;</span><br><span class="line">    <span class="comment">// @formatter:off</span></span><br><span class="line">    <span class="keyword">return</span> builder.routes()</span><br><span class="line">      .route(r -&gt; r.path(<span class="string">&quot;/customer/**&quot;</span>)</span><br><span class="line">        .filters(f -&gt; f.filter(<span class="keyword">new</span> <span class="title class_">RequestTimeFilter</span>())</span><br><span class="line">          .addResponseHeader(<span class="string">&quot;X-Response-Default-Foo&quot;</span>, <span class="string">&quot;Default-Bar&quot;</span>))</span><br><span class="line">        .uri(<span class="string">&quot;http://httpbin.org:80/get&quot;</span>)</span><br><span class="line">        .order(<span class="number">0</span>)</span><br><span class="line">        .id(<span class="string">&quot;customer_filter_router&quot;</span>)</span><br><span class="line">      )</span><br><span class="line">      .build();</span><br><span class="line">    <span class="comment">// @formatter:on</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// @Bean</span></span><br><span class="line">  <span class="comment">// public RouteLocator gatewayRoute(RouteLocatorBuilder builder) &#123;</span></span><br><span class="line">  <span class="comment">//   return builder.routes()</span></span><br><span class="line">  <span class="comment">//     .route(p -&gt; p</span></span><br><span class="line">  <span class="comment">//       .path(&quot;/get&quot;)</span></span><br><span class="line">  <span class="comment">//       .filters(f -&gt; f.addRequestHeader(&quot;Hello&quot;, &quot;World&quot;))</span></span><br><span class="line">  <span class="comment">//       .uri(URL))</span></span><br><span class="line">  <span class="comment">//     .route(p -&gt; p</span></span><br><span class="line">  <span class="comment">//       // .host(&quot;*.hystrix.com&quot;)</span></span><br><span class="line">  <span class="comment">//       .path(&quot;/err&quot;)</span></span><br><span class="line">  <span class="comment">//       .filters(f -&gt; f</span></span><br><span class="line">  <span class="comment">//         .hystrix(config -&gt; config</span></span><br><span class="line">  <span class="comment">//           .setName(&quot;mycmd&quot;)</span></span><br><span class="line">  <span class="comment">//           .setFallbackUri(&quot;forward:/fallback&quot;)))</span></span><br><span class="line">  <span class="comment">//       .uri(URL2))</span></span><br><span class="line">  <span class="comment">//     .build();</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器访问测试</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211104104901841.png" alt="image-20211104104901841">日志输出结果如下</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211104104847852.png" alt="image-20211104104847852"></p>
+<h2><span id="自定义过滤器工厂">自定义过滤器工厂</span></h2>
+<p>查看gateway包下filter的factory的依赖关系</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211108110213848.png" alt="image-20211108110213848"></p>
+<p>依赖关系如下</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211108110258247.png" alt="image-20211108110258247"></p>
+<p>顶层接口未GatewayFilterFactory</p>
+<p>抽象类代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.cloud.gateway.filter.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.support.AbstractConfigurable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationEventPublisher;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationEventPublisherAware;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This class is BETA and may be subject to change in a future release.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;C&gt; &#123;<span class="doctag">@link</span> AbstractConfigurable&#125; subtype</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AbstractGatewayFilterFactory</span>&lt;C&gt; <span class="keyword">extends</span> <span class="title class_">AbstractConfigurable</span>&lt;C&gt;</span><br><span class="line">  <span class="keyword">implements</span> <span class="title class_">GatewayFilterFactory</span>&lt;C&gt;, ApplicationEventPublisherAware &#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> ApplicationEventPublisher publisher;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line"> <span class="keyword">public</span> <span class="title function_">AbstractGatewayFilterFactory</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="built_in">super</span>((Class&lt;C&gt;) Object.class);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="title function_">AbstractGatewayFilterFactory</span><span class="params">(Class&lt;C&gt; configClass)</span> &#123;</span><br><span class="line">  <span class="built_in">super</span>(configClass);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">protected</span> ApplicationEventPublisher <span class="title function_">getPublisher</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.publisher;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setApplicationEventPublisher</span><span class="params">(ApplicationEventPublisher publisher)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.publisher = publisher;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">NameConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">   <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RedirectToGatewayFilterFactory类的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright 2013-2020 the original author or authors.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      https://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.cloud.gateway.filter.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.net.URI;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Mono;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.filter.GatewayFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.filter.GatewayFilterChain;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.support.HttpStatusHolder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpHeaders;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.server.reactive.ServerHttpResponse;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.Assert;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.server.ServerWebExchange;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.cloud.gateway.support.GatewayToStringStyler.filterToStringCreator;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.cloud.gateway.support.ServerWebExchangeUtils.setResponseStatus;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Spencer Gibb</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedirectToGatewayFilterFactory</span></span><br><span class="line">  <span class="keyword">extends</span> <span class="title class_">AbstractGatewayFilterFactory</span>&lt;RedirectToGatewayFilterFactory.Config&gt; &#123;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Status key.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">STATUS_KEY</span> <span class="operator">=</span> <span class="string">&quot;status&quot;</span>;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * URL key.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL_KEY</span> <span class="operator">=</span> <span class="string">&quot;url&quot;</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="title function_">RedirectToGatewayFilterFactory</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="built_in">super</span>(Config.class);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">shortcutFieldOrder</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> Arrays.asList(STATUS_KEY, URL_KEY);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> GatewayFilter <span class="title function_">apply</span><span class="params">(Config config)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> apply(config.status, config.url);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> GatewayFilter <span class="title function_">apply</span><span class="params">(String statusString, String urlString)</span> &#123;</span><br><span class="line">  <span class="type">HttpStatusHolder</span> <span class="variable">httpStatus</span> <span class="operator">=</span> HttpStatusHolder.parse(statusString);</span><br><span class="line">  Assert.isTrue(httpStatus.is3xxRedirection(),</span><br><span class="line">    <span class="string">&quot;status must be a 3xx code, but was &quot;</span> + statusString);</span><br><span class="line">  <span class="keyword">final</span> <span class="type">URI</span> <span class="variable">url</span> <span class="operator">=</span> URI.create(urlString);</span><br><span class="line">  <span class="keyword">return</span> apply(httpStatus, url);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> GatewayFilter <span class="title function_">apply</span><span class="params">(HttpStatus httpStatus, URI uri)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> apply(<span class="keyword">new</span> <span class="title class_">HttpStatusHolder</span>(httpStatus, <span class="literal">null</span>), uri);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> GatewayFilter <span class="title function_">apply</span><span class="params">(HttpStatusHolder httpStatus, URI uri)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">GatewayFilter</span>() &#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> Mono&lt;Void&gt; <span class="title function_">filter</span><span class="params">(ServerWebExchange exchange,</span></span><br><span class="line"><span class="params">     GatewayFilterChain chain)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!exchange.getResponse().isCommitted()) &#123;</span><br><span class="line">     setResponseStatus(exchange, httpStatus);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">final</span> <span class="type">ServerHttpResponse</span> <span class="variable">response</span> <span class="operator">=</span> exchange.getResponse();</span><br><span class="line">     response.getHeaders().set(HttpHeaders.LOCATION, uri.toString());</span><br><span class="line">     <span class="keyword">return</span> response.setComplete();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Mono.empty();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">    String status;</span><br><span class="line">    <span class="keyword">if</span> (httpStatus.getHttpStatus() != <span class="literal">null</span>) &#123;</span><br><span class="line">     status = String.valueOf(httpStatus.getHttpStatus().value());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">     status = httpStatus.getStatus().toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> filterToStringCreator(RedirectToGatewayFilterFactory.<span class="built_in">this</span>)</span><br><span class="line">      .append(status, uri).toString();</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Config</span> &#123;</span><br><span class="line"></span><br><span class="line">  String status;</span><br><span class="line"></span><br><span class="line">  String url;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">getStatus</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> status;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStatus</span><span class="params">(String status)</span> &#123;</span><br><span class="line">   <span class="built_in">this</span>.status = status;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">getUrl</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> url;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUrl</span><span class="params">(String url)</span> &#123;</span><br><span class="line">   <span class="built_in">this</span>.url = url;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在模仿RedirectToGatewayFilterFactory实现一个将请求的日志打印出来的工厂类</p>
+<p>在以下代码中 apply(Config config)方法内创建了一个GatewayFilter的匿名类，具体的实现逻辑跟之前一样，只不过加了是否打印请求参数的逻辑，而这个逻辑的开关是config.isWithParams()。静态内部类类Config就是为了接收那个boolean类型的参数服务的，里边的变量名可以随意写，但是要重写List shortcutFieldOrder()这个方法。 。</p>
+<p>需要注意的是，在类的构造器中一定要调用下父类的构造器把Config类型传过去，否则会报ClassCastException</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.gateway.filter.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.logging.Log;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.logging.LogFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.filter.GatewayFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;</span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Mono;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * &lt;将请求的日志打印出来&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/11/8 10:57</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequestTimeGatewayFilterFactory</span> <span class="keyword">extends</span> <span class="title class_">AbstractGatewayFilterFactory</span>&lt;RequestTimeGatewayFilterFactory.Config&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Log</span> <span class="variable">log</span> <span class="operator">=</span> LogFactory.getLog(GatewayFilter.class);</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">REQUEST_TIME_BEGIN</span> <span class="operator">=</span> <span class="string">&quot;requestTimeBegin&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">KEY</span> <span class="operator">=</span> <span class="string">&quot;withParams&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">shortcutFieldOrder</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.asList(KEY);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">RequestTimeGatewayFilterFactory</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(Config.class);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> GatewayFilter <span class="title function_">apply</span><span class="params">(Config config)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (exchange, chain) -&gt; &#123;</span><br><span class="line">      exchange.getAttributes().put(REQUEST_TIME_BEGIN, System.currentTimeMillis());</span><br><span class="line">      <span class="keyword">return</span> chain.filter(exchange).then(</span><br><span class="line">        Mono.fromRunnable(() -&gt; &#123;</span><br><span class="line">          <span class="type">Long</span> <span class="variable">startTime</span> <span class="operator">=</span> exchange.getAttribute(REQUEST_TIME_BEGIN);</span><br><span class="line">          <span class="keyword">if</span> (startTime != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(exchange.getRequest().getURI().getRawPath())</span><br><span class="line">              .append(<span class="string">&quot;: &quot;</span>)</span><br><span class="line">              .append(System.currentTimeMillis() - startTime)</span><br><span class="line">              .append(<span class="string">&quot;ms&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (config.isWithParams()) &#123;</span><br><span class="line">              sb.append(<span class="string">&quot; params:&quot;</span>).append(exchange.getRequest().getQueryParams());</span><br><span class="line">            &#125;</span><br><span class="line">            log.info(sb.toString());</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      );</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Config</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> withParams;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isWithParams</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> withParams;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setWithParams</span><span class="params">(<span class="type">boolean</span> withParams)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.withParams = withParams;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，需要在工程的启动文件Application类中，向Srping Ioc容器注册RequestTimeGatewayFilterFactory类的Bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.gateway.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.zm.gateway.filter.RequestTimeFilter;</span><br><span class="line"><span class="keyword">import</span> cn.zm.gateway.filter.factory.RequestTimeGatewayFilterFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.route.RouteLocator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * &lt;路由配置&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/11/2 16:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RouteConfig</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL</span> <span class="operator">=</span> <span class="string">&quot;http://httpbin.org&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL1</span> <span class="operator">=</span> <span class="string">&quot;http://www.baidu.com&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">URL2</span> <span class="operator">=</span> <span class="string">&quot;/error&quot;</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">FORWARD</span> <span class="operator">=</span> <span class="string">&quot;/gateway/fallback&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> RequestTimeGatewayFilterFactory <span class="title function_">elapsedGatewayFilterFactory</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RequestTimeGatewayFilterFactory</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> RouteLocator <span class="title function_">customerRouteLocator</span><span class="params">(RouteLocatorBuilder builder)</span> &#123;</span><br><span class="line">    <span class="comment">// @formatter:off</span></span><br><span class="line">    <span class="keyword">return</span> builder.routes()</span><br><span class="line">      .route(r -&gt; r.path(<span class="string">&quot;/customer/**&quot;</span>)</span><br><span class="line">        .filters(f -&gt; f.filter(<span class="keyword">new</span> <span class="title class_">RequestTimeFilter</span>())</span><br><span class="line">          .addResponseHeader(<span class="string">&quot;X-Response-Default-Foo&quot;</span>, <span class="string">&quot;Default-Bar&quot;</span>))</span><br><span class="line">        .uri(<span class="string">&quot;http://httpbin.org:80/get&quot;</span>)</span><br><span class="line">        .order(<span class="number">0</span>)</span><br><span class="line">        .id(<span class="string">&quot;customer_filter_router&quot;</span>)</span><br><span class="line">      )</span><br><span class="line">      .build();</span><br><span class="line">    <span class="comment">// @formatter:on</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// @Bean</span></span><br><span class="line">  <span class="comment">// public RouteLocator gatewayRoute(RouteLocatorBuilder builder) &#123;</span></span><br><span class="line">  <span class="comment">//   return builder.routes()</span></span><br><span class="line">  <span class="comment">//     .route(p -&gt; p</span></span><br><span class="line">  <span class="comment">//       .path(&quot;/get&quot;)</span></span><br><span class="line">  <span class="comment">//       .filters(f -&gt; f.addRequestHeader(&quot;Hello&quot;, &quot;World&quot;))</span></span><br><span class="line">  <span class="comment">//       .uri(URL))</span></span><br><span class="line">  <span class="comment">//     .route(p -&gt; p</span></span><br><span class="line">  <span class="comment">//       // .host(&quot;*.hystrix.com&quot;)</span></span><br><span class="line">  <span class="comment">//       .path(&quot;/err&quot;)</span></span><br><span class="line">  <span class="comment">//       .filters(f -&gt; f</span></span><br><span class="line">  <span class="comment">//         .hystrix(config -&gt; config</span></span><br><span class="line">  <span class="comment">//           .setName(&quot;mycmd&quot;)</span></span><br><span class="line">  <span class="comment">//           .setFallbackUri(&quot;forward:/fallback&quot;)))</span></span><br><span class="line">  <span class="comment">//       .uri(URL2))</span></span><br><span class="line">  <span class="comment">//     .build();</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启动项目访问 <a target="_blank" rel="noopener" href="http://localhost:8711/">http://localhost:8711/</a> 查看日志</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">17.396</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-4]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /: <span class="number">617ms</span></span><br><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">17.735</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-4]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /flasgger_static/swagger-ui<span class="selector-class">.css</span>: <span class="number">268ms</span></span><br><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">17.998</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-3]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /flasgger_static/swagger-ui-bundle<span class="selector-class">.js</span>: <span class="number">530ms</span></span><br><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">18.247</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-5]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /flasgger_static/swagger-ui-standalone-preset<span class="selector-class">.js</span>: <span class="number">531ms</span></span><br><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">18.534</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-4]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /flasgger_static/lib/jquery<span class="selector-class">.min</span><span class="selector-class">.js</span>: <span class="number">265ms</span></span><br><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">21.083</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-5]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /static/favicon<span class="selector-class">.ico</span>: <span class="number">269ms</span></span><br><span class="line"><span class="number">2021</span>-<span class="number">11</span>-<span class="number">08</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">21.239</span>  INFO <span class="number">16476</span> --- <span class="selector-attr">[ctor-http-nio-4]</span> o<span class="selector-class">.s</span><span class="selector-class">.cloud</span><span class="selector-class">.gateway</span><span class="selector-class">.filter</span><span class="selector-class">.GatewayFilter</span>   : /spec<span class="selector-class">.json</span>: <span class="number">461ms</span></span><br></pre></td></tr></table></figure>
+<p>/: 617ms 为访问请求的操作</p>
+<p>这个就是之前filterFactory中的编码内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(exchange.getRequest().getURI().getRawPath())</span><br><span class="line">  .append(<span class="string">&quot;: &quot;</span>)</span><br><span class="line">  .append(System.currentTimeMillis() - startTime)</span><br><span class="line">  .append(<span class="string">&quot;ms&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2><span id="global-filter">global filter</span></h2>
+<p>Spring Cloud Gateway根据作用范围划分为GatewayFilter和GlobalFilter，二者区别如下：</p>
+<ul>
+<li>GatewayFilter : 需要通过spring.cloud.routes.filters 配置在具体路由下，只作用在当前路由上或通过spring.cloud.default-filters配置在全局，作用在所有路由上</li>
+<li>GlobalFilter : 全局过滤器，不需要在配置文件中配置，作用在所有的路由上，最终通过GatewayFilterAdapter包装成GatewayFilterChain可识别的过滤器，它为请求业务以及路由的URI转换为真实业务服务的请求地址的核心过滤器，不需要配置，系统初始化时加载，并作用在每个路由上。</li>
+</ul>
+<p>Spring Cloud Gateway框架内置的GlobalFilter如下：</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/GlobalFilter-16378210808913.png" alt="img"></p>
+<p>上图中每一个GlobalFilter都作用在每一个router上，能够满足大多数的需求。但是如果遇到业务上的定制，可能需要编写满足自己需求的GlobalFilter。在下面的案例中将讲述如何编写自己GlobalFilter，该GlobalFilter会校验请求中是否包含了请求参数“token”，如何不包含请求参数“token”则不转发路由，否则执行正常的逻辑。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm.gateway.filter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.filter.OrderedFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.filter.GatewayFilterChain;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.filter.GlobalFilter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.Ordered;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.server.ServerWebExchange;</span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Mono;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * &lt;校验请求头token过滤器&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/11/8 11:20</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TokenFilter</span> <span class="keyword">implements</span> <span class="title class_">GlobalFilter</span>, Ordered &#123;</span><br><span class="line">  <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(TokenFilter.class);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> Mono&lt;Void&gt; <span class="title function_">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> exchange.getRequest().getQueryParams().getFirst(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (token == <span class="literal">null</span> || token.isEmpty()) &#123;</span><br><span class="line">      log.info( <span class="string">&quot;token is empty...&quot;</span> );</span><br><span class="line">      exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);</span><br><span class="line">      <span class="keyword">return</span> exchange.getResponse().setComplete();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> chain.filter(exchange);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** 功能描述: &lt;br&gt;</span></span><br><span class="line"><span class="comment">   * &lt;根据源码可知,越低的值具有越高的优先级&gt;</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> 十渊</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2021/11/8 11:23</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getOrder</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">100</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的TokenFilter需要实现GlobalFilter和Ordered接口，这和实现GatewayFilter很类似。然后根据ServerWebExchange获取ServerHttpRequest，然后根据ServerHttpRequest中是否含有参数token，如果没有则完成请求，终止转发，否则执行正常的逻辑。</p>
+<p>然后需要将TokenFilter在工程的启动类中注入到Spring Ioc容器中，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> TokenFilter <span class="title function_">tokenFilter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TokenFilter</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211108112642643.png" alt="image-20211108112642643"></p>
+<p>进入断点,跑完</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211108112654013-16378210872314.png" alt="image-20211108112654013"></p>
+<p>全库过滤器作用</p>
+<p><img src="/2021/11/18/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8401-Gateway-03-Filter/image-20211108112529707.png" alt="image-20211108112529707"></p>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://spring.io/guides/gs/gateway">https://spring.io/guides/gs/gateway</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.fangzhipeng.com/springcloud/2018/11/06/sc-f-gateway1.html">https://www.fangzhipeng.com/springcloud/2018/11/06/sc-f-gateway1.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md">https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.fangzhipeng.com/springcloud/2018/12/21/sc-f-gatway1.html">https://www.fangzhipeng.com/springcloud/2018/12/21/sc-f-gatway1.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.fangzhipeng.com/springcloud/2018/12/05/sc-f-gateway2.html">https://www.fangzhipeng.com/springcloud/2018/12/05/sc-f-gateway2.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.fangzhipeng.com/springcloud/2018/12/21/sc-f-gatway3.html">https://www.fangzhipeng.com/springcloud/2018/12/21/sc-f-gatway3.html</a></p>
+<p>springcloud之gateway路由熔断</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/guaniuqaq/article/details/88256226">https://blog.csdn.net/guaniuqaq/article/details/88256226</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2021/11/18/SpringCloud微服务系列04-Alibaba架构01-Gateway-04-限流/" data-toggle="tooltip" data-placement="top" title="SpringCloud微服务系列04-Alibaba架构01-Gateway-04-限流">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2021/11/18/SpringCloud微服务系列04-Alibaba架构01-Gateway-02-Predicate/" data-toggle="tooltip" data-placement="top" title="SpringCloud微服务系列04-Alibaba架构01-Gateway-02-Predicate">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">filter的作用和生命周期</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">作用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">生命周期</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">gateway filter</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">AddRequestHeader GatewayFilter Factory</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">RewritePath GatewayFilter Factory</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">自定义过滤器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">自定义过滤器工厂</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">global filter</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+                        
+                          <a class="tag" href="/tags/#SpringCloudAlibaba" title="SpringCloudAlibaba">SpringCloudAlibaba</a>
+                        
+                          <a class="tag" href="/tags/#Gateway" title="Gateway">Gateway</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

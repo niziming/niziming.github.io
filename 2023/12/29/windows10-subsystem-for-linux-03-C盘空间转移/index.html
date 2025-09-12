@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          windows10-subsystem-for-linux-03-C盘空间转移 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2023/12/29/windows10-subsystem-for-linux-03-C盘空间转移/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#wsl" title="wsl">wsl</a>
+                            
+                              <a class="tag" href="/tags/#wsa" title="wsa">wsa</a>
+                            
+                        </div>
+                        <h1>windows10-subsystem-for-linux-03-C盘空间转移</h1>
+                        <h2 class="subheading">windows10 C盘空间转移</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2023-12-29
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="windows10-subsystem-for-linux-03-c盘空间转移">windows10-subsystem-for-linux-03-C盘空间转移</span></h1>
+<p>下载安装的WLS默认在C盘，如果C盘重装就会导致WLS直接受影响，同时因为一般C盘空间有限，如果长期使用，可能会导致系统速度越来越慢，因此选择将WLS迁移到其他盘，我选择的是电脑自带的固态硬盘。</p>
+<h2><span id="简介">简介</span></h2>
+<h3><span id="win10-mklink">Win10 mklink</span></h3>
+<p><strong>mklink 命令是 Windows 自带的命令</strong>，除了在 Win10 系统下使用，在比较早的系统比如 Win 7、Win Vista、Win 8 和 Win 8.1 也都是可以使用的。不过在除了 Win 10 之外的系统里使用，是必须使用管理员权限的，否则会提示“你没有足够的权限执行此操作。”，当然经过我验证，Win 10 有时候也是需要管理员权限的。</p>
+<h3><span id="lxrunoffline">LxRunOffline</span></h3>
+<p>A full-featured utility for managing <em>Windows Subsystem for Linux (WSL)</em>.</p>
+<ul>
+<li>Install any Linux distro to any directory on your computer.</li>
+<li>Move an existing installation to another directory.</li>
+<li>Duplicate(copy) an existing installation.</li>
+<li>Register an existing installation directory. This enables you to install to a USB stick and use it on different computers.</li>
+<li>Run arbitrary Linux commands in a specified installation.</li>
+<li>Configure default user, environment variables and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags">various flags</a>.</li>
+<li>Export configuration to an XML file and import from the file.</li>
+<li>Export an installation to a tar file.</li>
+</ul>
+<h2><span id="准备工作">准备工作</span></h2>
+<ul>
+<li>
+<p>Win10 mklink命令</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline/releases">Releases · DDoSolitary/LxRunOffline (github.com)</a></p>
+</li>
+<li>
+<p>wsl --shutdown 关闭所有子系统</p>
+</li>
+</ul>
+<h2><span id="使用-mklink-连接本地磁盘">使用 mklink 连接本地磁盘</span></h2>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MKLINK [[/D] | [/H] | [/J]] Link Target</span><br><span class="line">        /D        创建目录符号链接。默认为文件符号链接。</span><br><span class="line">        /H        创建硬链接而非符号链接。</span><br><span class="line">        /J        创建目录联接。</span><br><span class="line">        Link      指定新的符号链接名称。</span><br><span class="line">        Target    指定新链接引用的路径(相对或绝对)。</span><br></pre></td></tr></table></figure>
+<p>这个地方我们使用 /J创建一个目录联接 示例:</p>
+<p><code>mklink /J &quot;C:\Users\Jermaine\AppData\Local\Packages&quot; &quot;E:\Users\Jermaine\AppData\Local\Packages&quot;</code></p>
+<p><code>mklink /D &quot;C:\Users\Jermaine\AppData\Local\Packages&quot; &quot;E:\Users\Jermaine\AppData\Local\Packages&quot;</code></p>
+<h3><span id="windows-应用默认存储位置">windows 应用默认存储位置</span></h3>
+<p>C:\Users\Jermaine\AppData &gt; E:\Users\Jermaine\AppData</p>
+<p>将地下的文件直接复制到E盘相同路径</p>
+<p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228170109745.png" alt="image-20231228170109745"></p>
+<h3><span id="wls迁移">WLS迁移</span></h3>
+<h4><span id="下载lxrunoffline">下载LxRunOffline</span></h4>
+<p><a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline/releases">Releases · DDoSolitary/LxRunOffline (github.com)</a></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Supported actions are:</span><br><span class="line">    <span class="keyword">l</span>, <span class="keyword">list</span>            <span class="keyword">List</span> all installed distributions.</span><br><span class="line">    gd, get-default    Get the default distribution, <span class="keyword">which</span> is used <span class="keyword">by</span> bash.exe.</span><br><span class="line">    sd, <span class="keyword">set</span>-default    <span class="keyword">Set</span> the default distribution, <span class="keyword">which</span> is used <span class="keyword">by</span> bash.exe.</span><br><span class="line">    i, install         Install a new distribution.</span><br><span class="line">    ui, uninstall      Uninstall a distribution.</span><br><span class="line">    rg, register       Register <span class="keyword">an</span> existing installation directory.</span><br><span class="line">    ur, unregister     Unregister a distribution but not delete the installation directory.</span><br><span class="line">    <span class="keyword">m</span>, <span class="keyword">move</span>            <span class="keyword">Move</span> a distribution to a new directory.</span><br><span class="line">    <span class="keyword">d</span>, duplicate       Duplicate <span class="keyword">an</span> existing distribution <span class="keyword">in</span> a new directory.</span><br><span class="line">    <span class="keyword">e</span>, export          Export a distribution&#x27;s filesystem to a .tar.gz <span class="keyword">file</span>, <span class="keyword">which</span> can be imported <span class="keyword">by</span> the <span class="string">&quot;install&quot;</span> command.</span><br><span class="line">    r, <span class="keyword">run</span>             <span class="keyword">Run</span> a command <span class="keyword">in</span> a distribution.</span><br><span class="line">    <span class="keyword">di</span>, get-<span class="keyword">dir</span>        Get the installation directory of a distribution.</span><br><span class="line">    gv, get-<span class="keyword">version</span>    Get the filesystem <span class="keyword">version</span> of a distribution.</span><br><span class="line">    <span class="keyword">ge</span>, get-env        Get the default environment variables of a distribution.</span><br><span class="line">    <span class="keyword">se</span>, <span class="keyword">set</span>-env        <span class="keyword">Set</span> the default environment variables of a distribution.</span><br><span class="line">    ae, add-env        Add to the default environment variables of a distribution.</span><br><span class="line">    re, remove-env     Remove from the default environment variables of a distribution.</span><br><span class="line">    gu, get-uid        Get the UID of the default user of a distribution.</span><br><span class="line">    <span class="keyword">su</span>, <span class="keyword">set</span>-uid        <span class="keyword">Set</span> the UID of the default user of a distribution.</span><br><span class="line">    gk, get-kernelcmd  Get the default kernel command <span class="keyword">line</span> of a distribution.</span><br><span class="line">    sk, <span class="keyword">set</span>-kernelcmd  <span class="keyword">Set</span> the default kernel command <span class="keyword">line</span> of a distribution.</span><br><span class="line">    gf, get-flags      Get some flags of a distribution. See https:<span class="comment">//docs.microsoft.com/en-us/previous-versions/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags for details.</span></span><br><span class="line">    sf, <span class="keyword">set</span>-flags      <span class="keyword">Set</span> some flags of a distribution. See https:<span class="comment">//docs.microsoft.com/en-us/previous-versions/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags for details.</span></span><br><span class="line">    s, shortcut        Create a shortcut to launch a distribution.</span><br><span class="line">    ec, export-config  Export configuration of a distribution to <span class="keyword">an</span> XML <span class="keyword">file</span>.</span><br><span class="line">    ic, import-config  Import configuration of a distribution from <span class="keyword">an</span> XML <span class="keyword">file</span>.</span><br><span class="line">    sm, summary        Get general information of a distribution.</span><br><span class="line">    <span class="keyword">version</span>            Get <span class="keyword">version</span> information <span class="keyword">about</span> this LxRunOffline.exe.</span><br></pre></td></tr></table></figure>
+<h4><span id="查看子系统安装位置">查看子系统安装位置</span></h4>
+<p>使用<code>lxrunoffline move</code>进行迁移 ， -n 指定你要迁移的系统名 ，-d 指定你新系统的迁移路径</p>
+<p><code>.\LxRunOffline.exe move -n Ubuntu-22.04 -d E:\Users\Jermaine\AppData\wsl</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Program Files\LxRunOffline-v3.5.0-msvc_2&gt; .\LxRunOffline.exe move -n Ubuntu-22.04 -d E:\Users\Jermaine\AppData\wsl</span><br><span class="line">PS D:\Program Files\LxRunOffline-v3.5.0-msvc_2&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>迁移结果</p>
+<p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228175747428.png" alt="image-20231228175747428"></p>
+<p><code>LxRunOffline.exe get-dir</code>查询系统目录，查看是否迁移成功</p>
+<h2><span id="问题">问题</span></h2>
+<p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228180159205.png" alt="image-20231228180159205"></p>
+<p>是因为文件没有权限</p>
+<p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228180402759.png" alt="image-20231228180402759"></p>
+<p>授权后再打开</p>
+<p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228180351899.png" alt="image-20231228180351899"></p>
+<h2><span id="引用资料">引用资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/659354569">Win10 mklink命令怎么用，mklink使用教程 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145753804">Win10子系统（linux）安装及迁移 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline">DDoSolitary/LxRunOffline: A full-featured utility for managing Windows Subsystem for Linux (WSL) (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline/releases">Releases · DDoSolitary/LxRunOffline (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37178320/article/details/128720616">迁移wsl到D后无法正常启动_无法将磁盘“f:\os\ext4.vhdx”附加到 wsl2: 拒绝访问-CSDN博客</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2024/04/09/windows10-subsystem-for-linux-04-子系统文件导出到windows系统/" data-toggle="tooltip" data-placement="top" title="windows10-subsystem-for-linux-04-子系统文件导出到windows系统">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2023/12/28/Docker19-portainer-Docker图形化工具/" data-toggle="tooltip" data-placement="top" title="Docker19-portainer-Docker图形化工具">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#wsl" title="wsl">wsl</a>
+                        
+                          <a class="tag" href="/tags/#wsa" title="wsa">wsa</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

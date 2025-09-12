@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          VMware虚拟工作站1-安装与使用Linux篇1 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/10/24/VMware虚拟工作站1-安装与使用Linux篇1/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>VMware虚拟工作站1-安装与使用Linux篇1</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-10-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="vmware虚拟工作站1-安装与使用linux篇1">VMware虚拟工作站1-安装与使用Linux篇1</span></h1>
+<h2><span id="安装vmware">安装VMware</span></h2>
+<ul>
+<li>下载
+<ul>
+<li>VMwareworkstation64_15.1.0-13591040</li>
+<li>ubuntu-18.04.2-live-server-amd64.iso</li>
+</ul>
+</li>
+</ul>
+<p>将VMware安装好</p>
+<h2><span id="创建虚拟机">创建虚拟机</span></h2>
+<ol>
+<li>点击创建虚拟机<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/1.png" alt="1"></li>
+<li>点击自定义高级，然后下一步<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/2.png" alt="2"></li>
+<li>硬件界面默认，点击下一步<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/3.png" alt="3"></li>
+<li>新建虚拟机向导，选择稍后安装操作系统<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/4.png" alt="4"><br>
+如果这里选择光盘镜像会自动帮你安装，自动安装的会出问题。</li>
+<li>选择安装系统下一步，我的是64位下载的ubuntu发行版64<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/5.png" alt="5"></li>
+<li>命名虚拟机的名字，然后在磁盘选择一个文件夹放置，然后下一步<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/6.png" alt="6"></li>
+<li>选择处理器的数量，虚拟的<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/7.png" alt="7"></li>
+<li>内存设置，虚拟的，我选的6GB<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/8.png" alt="8"></li>
+<li>网络选择NAT<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/9.png" alt="9"></li>
+<li>I/O控制器，选择logic<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/10.png" alt="10"></li>
+<li>硬盘类型，scsi<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/11.png" alt="11"></li>
+<li>创建新虚拟磁盘，20G就够了<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/12.png" alt="12"></li>
+</ol>
+<p>拆分成多个以后创建虚拟机后，不会直接占用20GB空间，随着虚拟机内容变多后，所占内容会才会慢慢把空间扩大。</p>
+<p><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/13.png" alt="13"></p>
+<p>下一步<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/14.png" alt="14"></p>
+<ol start="13">
+<li>浏览创建参数<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/15.png" alt="15"></li>
+<li>点击完成后<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/16.png" alt="16"></li>
+</ol>
+<h2><span id="启动ubuntu虚拟机">启动ubuntu虚拟机</span></h2>
+<ul>
+<li>点击运行启动，出现弹框，点击确定。<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/17.png" alt="17"></li>
+<li>因为没有插光驱，所以显示没有<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/18.png" alt="18"></li>
+<li>点击停止，然后编辑虚拟机<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/19.png" alt="19"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/20.png" alt="20"></li>
+<li>弹出对话框，然后选择CD/DVD<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/21.png" alt="21"></li>
+<li>将iso文件导入后启动Ubuntu<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/22.png" alt="22"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/23.png" alt="23"></li>
+<li>启动加载ubuntu<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/24.png" alt="24"></li>
+<li>语言选择,选择english,为防止字符编码bug<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/25.png" alt="25"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/26.png" alt="26"></li>
+<li>选择install ubuntu<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/27.png" alt="27"></li>
+<li>网络设置这里我选择DHCP自动分配<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/28.png" alt="28"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/29.png" alt="29"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/30.png" alt="30"></li>
+<li>选择代理,直接选DONE<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/31.png" alt="31"></li>
+<li>选择镜像地址,这里选择阿里云镜像,后面系统会安装东西.这样会快些.<br>
+<code>http://mirrors.aliyun.com/ubuntu</code><br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/32.png" alt="32"></li>
+<li>磁盘挂载,我选择的LVM
+<ul>
+<li>Use An entire Disk-使用整个磁盘</li>
+<li>Use An Entire Disk And Set Up LVM-使用整个磁盘并设置</li>
+<li>Manual-手动</li>
+<li>Back-返回<br>
+LVM是磁盘扩容技术，一定要选择LVM<br>
+500GB C /path<br>
+500GB D /path<br>
+如果没有需那种LVM那么扩容以后无法合并挂载点<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/33.png" alt="33"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/34.png" alt="34"></li>
+</ul>
+</li>
+<li>Filesystem setup   文件系统设置
+<ul>
+<li>FILE SYSTEM SUMMARY    文件系统摘要</li>
+<li>No disk or partitions mounted   未安装磁盘或分区</li>
+<li>AVAILABLE DEVICES  可用设备<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/35.png" alt="35"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/36.png" alt="36"></li>
+</ul>
+</li>
+<li>设置用户名,服务器名称<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/37.png" alt="37"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/38.png" alt="38"></li>
+<li>默认安装openssh<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/39.png" alt="39"></li>
+<li>默认安装插件,不安装<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/40.PNG" alt="40"></li>
+<li>选择重启<br>
+接着是一个安装过程，请耐心等待，安装完成后会在 [View full log] 按钮下多出一个 [Reboot Now] 按钮。<br>
+<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/41.png" alt="41"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/42.png" alt="42"></li>
+</ul>
+<h2><span id="成功启动">成功启动</span></h2>
+<p><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/43.png" alt="43"></p>
+<h2><span id="ubuntu-server-设置-root-密码">Ubuntu server 设置 root 密码</span></h2>
+<p>ubuntu server 安装的时候要你新建一个用户，安装完成后，你需要手动开启 root。<br>
+<code>sudo passwd root</code><br>
+根据提示依次输入:</p>
+<ol>
+<li>输入你当前用户的密码</li>
+<li>输入你希望的 root 用户的密码</li>
+<li>确认密码</li>
+</ol>
+<p>设置完成。</p>
+<h2><span id="安装ssh">安装ssh</span></h2>
+<h3><span id="检查软件是否安装">检查软件是否安装</span></h3>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache policy openssh-<span class="keyword">client</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+<h3><span id="安装服务端">安装服务端</span></h3>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+<h3><span id="安装客户端">安装客户端</span></h3>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install openssh-client</span><br></pre></td></tr></table></figure>
+<p>应该是sshd的设置不允许root用户用密码远程登录</p>
+<ol>
+<li>修改 vim /etc/ssh/sshd_config</li>
+</ol>
+<p>找到# Authentication:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">LoginGraceTime</span> <span class="number">120</span></span><br><span class="line">PermitRootLogin without passwd</span><br><span class="line">StrictModes <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+<p>改成</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Authentication:</span></span><br><span class="line"><span class="attribute">LoginGraceTime</span> <span class="number">120</span></span><br><span class="line">PermitRootLogin <span class="literal">yes</span></span><br><span class="line">StrictModes <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>重启ssh</li>
+</ol>
+<p><code>systemctl restart sshd</code></p>
+<h2><span id="安装zsh-和-oh-my-zsh">安装zsh 和 oh-my-zsh</span></h2>
+<ol>
+<li>
+<p>安装 zsh<br>
+<code>apt install zsh -y</code><br>
+zsh 设为默认 shell<br>
+chsh -s /bin/zsh</p>
+</li>
+<li>
+<p>安装 oh-my-zsh<br>
+sh -c &quot;$(curl -fsSL <a target="_blank" rel="noopener" href="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh">https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</a>)&quot;<br>
+或<br>
+sh -c “$(wget <a target="_blank" rel="noopener" href="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh">https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</a> -O -)”</p>
+</li>
+<li>
+<p>插件<br>
+安装 incr 自动补全插件推荐</p>
+</li>
+</ol>
+<p>cd ~/.oh-my-zsh/plugins/<br>
+mkdir incr &amp;&amp; cd incr<br>
+wget <a target="_blank" rel="noopener" href="http://mimosa-pudica.net/src/incr-0.2.zsh">http://mimosa-pudica.net/src/incr-0.2.zsh</a><br>
+vi ~/.zshrc<br>
+插入下面这条</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> ~<span class="regexp">/.oh-my-zsh/</span>plugins<span class="regexp">/incr/i</span>ncr*.zsh</span><br></pre></td></tr></table></figure>
+<p>source ~/.zshrc</p>
+<h2><span id="参考资料">参考资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ruo_62/article/details/90233501">https://blog.csdn.net/ruo_62/article/details/90233501</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/10/27/Docker-Registry学习2-简介与安装/" data-toggle="tooltip" data-placement="top" title="Docker-Registry学习2-简介与安装">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/10/23/Nexus学习2-Maven仓库介绍/" data-toggle="tooltip" data-placement="top" title="Nexus学习2-Maven仓库介绍">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">VMware虚拟工作站1-安装与使用Linux篇1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">安装VMware</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">创建虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">启动ubuntu虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">成功启动</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Ubuntu server 设置 root 密码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">安装ssh</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">检查软件是否安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">安装服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">安装客户端</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">安装zsh 和 oh-my-zsh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

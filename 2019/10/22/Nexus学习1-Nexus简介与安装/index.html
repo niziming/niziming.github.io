@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Nexus学习00-Nexus简介与安装 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/10/22/Nexus学习1-Nexus简介与安装/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>Nexus学习00-Nexus简介与安装</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-10-22
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="nexus学习00-nexus简介与安装">Nexus学习00-Nexus简介与安装</span></h1>
+<p>Nexus 是一个强大的仓库管理器，极大地简化了内部仓库的维护和外部仓库的访问。<br>
+2016 年 4 月 6 日 Nexus 3.0 版本发布，相较 2.x 版本有了很大的改变：</p>
+<ul>
+<li>对低层代码进行了大规模重构，提升性能，增加可扩展性以及改善用户体验。</li>
+<li>升级界面，极大的简化了用户界面的操作和管理。</li>
+<li>提供新的安装包，让部署更加简单。</li>
+<li>增加对 Docker, NeGet, npm, Bower 的支持。</li>
+<li>提供新的管理接口，以及增强对自动任务的管理。</li>
+</ul>
+<h2><span id="docker-安装nexus3">docker 安装nexus3</span></h2>
+<p>使用<code>docker pull sonatype/nexus3</code>命令拉去nexus3</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]<span class="operator">/</span>usr<span class="operator">/</span>local<span class="operator">/</span>docker<span class="operator">/</span>gitlab<span class="comment"># docker pull sonatype/nexus3</span></span><br><span class="line">Using default <span class="params">tag:</span> latest</span><br><span class="line"><span class="params">latest:</span> Pulling from sonatype<span class="symbol">/nexus3</span></span><br><span class="line"><span class="params">c65691897a4d:</span> Downloading [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">=</span><span class="operator">&gt;</span>                                   ]     <span class="number">22</span>MB<span class="symbol">/71.03MB</span></span><br><span class="line"><span class="number">641</span><span class="params">d7cc5cbc4:</span> Download complete </span><br><span class="line"><span class="params">c508b13320cd:</span> Download complete </span><br><span class="line"><span class="number">79</span><span class="params">e3bf9d3132:</span> Downloading [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">=</span><span class="operator">&gt;</span>                                           ]  <span class="number">31.63</span>MB<span class="operator">/</span><span class="number">212.2</span>MB</span><br></pre></td></tr></table></figure>
+<p>查看latest版本号</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]/usr/local/docker/nexus<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">sonatype/nexus3          latest              8eb898be2a53       <span class="number"> 12 </span>days ago         611MB</span><br><span class="line">myproject                latest              98cdee09487c       <span class="number"> 4 </span>weeks ago         506MB</span><br><span class="line">mydocker                 latest              4691fd38efff       <span class="number"> 4 </span>weeks ago         506MB</span><br><span class="line">mysql                    latest              b8fd9553f1f0       <span class="number"> 5 </span>weeks ago         445MB</span><br><span class="line">1.16.1                   latest              97423576f288       <span class="number"> 7 </span>weeks ago         126MB</span><br><span class="line">tomcat                   latest              96c4e536d0eb       <span class="number"> 2 </span>months ago        506MB</span><br><span class="line">centos                   latest              67fa590cfc1c       <span class="number"> 2 </span>months ago        202MB</span><br><span class="line">nginx                    1.16.1              41e97992fcd8       <span class="number"> 2 </span>months ago        126MB</span><br><span class="line">ubuntu                   16.04               5e13f8dd4c1a       <span class="number"> 3 </span>months ago        120MB</span><br><span class="line">mysql                    5.7.22              6bb891430fb6       <span class="number"> 15 </span>months ago       372MB</span><br><span class="line">twang2218/gitlab-ce-zh   10.5                90543a7ab79b       <span class="number"> 15 </span>months ago       1.58GB</span><br></pre></td></tr></table></figure>
+<h2><span id="docker-composeyml">docker-compose.yml</span></h2>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">version</span><span class="punctuation">:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attribute">services</span><span class="punctuation">:</span></span><br><span class="line">  <span class="attribute">nexus</span><span class="punctuation">:</span></span><br><span class="line">    <span class="attribute">restart</span><span class="punctuation">:</span> <span class="string">always</span></span><br><span class="line">    <span class="attribute">image</span><span class="punctuation">:</span> <span class="string">sonatype/nexus3</span></span><br><span class="line">    <span class="attribute">container_name</span><span class="punctuation">:</span> <span class="string">nexus</span></span><br><span class="line">    <span class="attribute">ports</span><span class="punctuation">:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">8082:8081</span></span><br><span class="line">    <span class="attribute">volumes</span><span class="punctuation">:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/local/docker/nexus/data:/nexus-data</span></span><br><span class="line">~                                                </span><br></pre></td></tr></table></figure>
+<h3><span id="挂在数据权限修改">挂在数据权限修改</span></h3>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># mkdir data</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># ls</span></span><br><span class="line">data  docker-compose.yml</span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># chmod 777 data </span></span><br></pre></td></tr></table></figure>
+<h2><span id="启动nexus">启动Nexus</span></h2>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;nexus_default&quot;</span> <span class="keyword">with</span> the <span class="literal">default</span> driver</span><br><span class="line">Creating nexus ... done</span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line"><span class="number">5e897</span>f337f34        sonatype/nexus3     <span class="string">&quot;sh -c $&#123;SONATYPE_DI…&quot;</span>   <span class="number">30</span> seconds ago      Up <span class="number">2</span> seconds        <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8082</span>-&gt;<span class="number">8081</span>/tcp   nexus</span><br></pre></td></tr></table></figure>
+<h2><span id="登陆nexus">登陆Nexus</span></h2>
+<p>查看admin密码</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">MyCentOS</span>]/usr/local/docker/nexus<span class="comment"># docker exec -it 09b bash</span></span><br><span class="line">bash<span class="literal">-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="built_in">cd</span> /nexus<span class="literal">-data</span>/</span><br><span class="line">bash<span class="literal">-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">admin.password	db	       generated<span class="literal">-bundles</span>  karaf.pid  log     <span class="built_in">restore-from</span><span class="literal">-backup</span></span><br><span class="line">blobs		elasticsearch  instances	  keystores  orient  tmp</span><br><span class="line">cache		etc	       javaprefs	  lock	     port</span><br><span class="line">bash<span class="literal">-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="built_in">cat</span> admin.password </span><br><span class="line"><span class="number">75</span>c4c214<span class="literal">-cdd2-48d0-845c-03c28da34abfbash-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="comment">#  </span></span><br></pre></td></tr></table></figure>
+<h2><span id="查看结果">查看结果</span></h2>
+<p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/1.png" alt></p>
+<h3><span id="查看设置">查看设置</span></h3>
+<p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/2.png" alt></p>
+<h3><span id="用户界面">用户界面</span></h3>
+<p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/3.png" alt></p>
+<h3><span id="admin用户界面">admin用户界面</span></h3>
+<p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/4.png" alt></p>
+<h2><span id="参考资料">参考资料</span></h2>
+<blockquote></blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/10/23/Nexus学习3-在项目中使用maven私库/" data-toggle="tooltip" data-placement="top" title="Nexus学习3-在项目中使用maven私库">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/09/30/GitLab学习2-GitLab的使用/" data-toggle="tooltip" data-placement="top" title="GitLab学习2-GitLab的使用">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nexus学习00-Nexus简介与安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">docker 安装nexus3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">docker-compose.yml</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">挂在数据权限修改</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">启动Nexus</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">登陆Nexus</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">查看结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">查看设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">用户界面</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">admin用户界面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

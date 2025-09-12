@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Docker学习11-部署项目到容器 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/09/25/Docker学习11-部署项目到容器/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                        </div>
+                        <h1>Docker学习11-部署项目到容器</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-09-25
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="部署项目到容器">部署项目到容器</span></h1>
+<h2><span id="打包项目的war包">打包项目的war包</span></h2>
+<p>这里用的是我毕业设计的项目,基于SSM的旅游项目网站.<br>
+`mvn package’<br>
+<img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/1.png" alt></p>
+<h2><span id="在本地测试项目是否可以正常启动">在本地测试项目是否可以正常启动</span></h2>
+<ul>
+<li>
+<p>将项目解压到ROOT中<br>
+<img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/2.png" alt></p>
+</li>
+<li>
+<p>启动tomcat<br>
+<img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/3.png" alt></p>
+</li>
+<li>
+<p>浏览器端查看<br>
+<img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/4.png" alt></p>
+</li>
+<li>
+<p>查看控制台<br>
+<img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/5.png" alt></p>
+</li>
+</ul>
+<h2><span id="server端操作">server端操作</span></h2>
+<h3><span id="上传war到ecs中">上传war到ECS中</span></h3>
+<p><img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/6.png" alt></p>
+<h3><span id="将war移动到root中做数据卷挂载">将war移动到ROOT中做数据卷挂载</span></h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">~</span># cd <span class="operator">/</span>root</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">~</span># ls</span><br><span class="line">authorized_keys</span><br><span class="line">mysql57<span class="operator">-</span>community<span class="operator">-</span><span class="keyword">release</span><span class="operator">-</span>el7<span class="number">-10.</span>noarch.rpm</span><br><span class="line">mysql57<span class="operator">-</span>community<span class="operator">-</span><span class="keyword">release</span><span class="operator">-</span>el7<span class="number">-11.</span>noarch.rpm</span><br><span class="line">mysql<span class="operator">-</span>community<span class="operator">-</span><span class="keyword">release</span><span class="operator">-</span>el7<span class="number">-5.</span>noarch.rpm</span><br><span class="line">mysql<span class="operator">-</span>community<span class="operator">-</span><span class="keyword">release</span><span class="operator">-</span>el7<span class="number">-5.</span>noarch.rpm<span class="number">.1</span></span><br><span class="line">mysql<span class="operator">-</span>community<span class="operator">-</span><span class="keyword">release</span><span class="operator">-</span>el7<span class="number">-5.</span>noarch.rpm<span class="number">.2</span></span><br><span class="line">trip<span class="operator">-</span>web.war</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">~</span># mv trip<span class="operator">-</span>web.war <span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>docker<span class="operator">/</span>tomcat<span class="operator">/</span>ROOT</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">~</span># cd <span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>docker<span class="operator">/</span>tomcat<span class="operator">/</span>ROOT</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>docker<span class="operator">/</span>tomcat<span class="operator">/</span>ROOT# ll</span><br><span class="line">total <span class="number">45080</span></span><br><span class="line"><span class="operator">-</span>rw<span class="operator">-</span>r<span class="comment">--r-- 1 root root      172 Sep 23 16:57 index.html</span></span><br><span class="line"><span class="operator">-</span>rw<span class="operator">-</span>r<span class="comment">--r-- 1 root root 46155747 Sep 25 14:44 trip-web.war</span></span><br><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>docker<span class="operator">/</span>tomcat<span class="operator">/</span>ROOT# rm index.html</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>docker<span class="operator">/</span>tomcat<span class="operator">/</span>ROOT# tar</span><br></pre></td></tr></table></figure>
+<h3><span id="解压并修改数据库端口">解压并修改数据库端口</span></h3>
+<ul>
+<li>解压</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/tomcat/ROOT<span class="meta"># unzip -oq trip-web.war</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/tomcat/ROOT<span class="meta"># ls</span></span><br><span class="line">META-INF  <span class="keyword">static</span>  trip-web.war  WEB-INF</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改</li>
+</ul>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]/usr/local/docker/tomcat/ROOT/WEB<span class="literal">-INF</span>/classes<span class="comment"># ls</span></span><br><span class="line">cn                   mybatis-config.<span class="keyword">xml</span>          <span class="title">spring-context</span>.<span class="keyword">xml</span></span><br><span class="line"><span class="title">generatorConfig</span>.<span class="keyword">xml</span>  <span class="title">rebel</span>.<span class="keyword">xml</span>                   <span class="title">spring-mvc</span>.<span class="keyword">xml</span></span><br><span class="line"><span class="title">log4j</span>.properties     spring-context-druid.<span class="keyword">xml</span>    <span class="title">trip_web_db</span>.sql</span><br><span class="line">mapper               spring-context-mybatis.<span class="keyword">xml</span>  <span class="title">tripweb</span>.properties</span><br><span class="line">[root@MyCentOS]/usr/local/docker/tomcat/ROOT/WEB<span class="literal">-INF</span>/classes<span class="comment"># vim tripweb.properties</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/7.png" alt></p>
+<h3><span id="移走war包">移走war包</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="meta">@MyCentOS</span>]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="regexp">/ROOT/</span><span class="type">WEB</span><span class="operator">-</span><span class="type">INF</span><span class="regexp">/classes# cd ../</span><span class="operator">..</span></span><br><span class="line">[root<span class="meta">@MyCentOS</span>]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="operator">/</span><span class="type">ROOT</span># ls</span><br><span class="line"><span class="type">META</span><span class="operator">-</span><span class="type">INF</span>  <span class="keyword">static</span>  trip<span class="operator">-</span>web.war  <span class="type">WEB</span><span class="operator">-</span><span class="type">INF</span></span><br><span class="line">[root<span class="meta">@MyCentOS</span>]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="regexp">/ROOT# mv trip-web.war /</span>root</span><br><span class="line">[root<span class="meta">@MyCentOS</span>]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="operator">/</span><span class="type">ROOT</span># ls</span><br><span class="line"><span class="type">META</span><span class="operator">-</span><span class="type">INF</span>  <span class="keyword">static</span>  <span class="type">WEB</span><span class="operator">-</span><span class="type">INF</span></span><br><span class="line">[root<span class="meta">@MyCentOS</span>]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="operator">/</span><span class="type">ROOT</span>#</span><br></pre></td></tr></table></figure>
+<h2><span id="docker数据库">docker数据库</span></h2>
+<p><img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/8.png" alt></p>
+<h2><span id="修改项目数据库ip及端口和用户">修改项目数据库ip及端口和用户</span></h2>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># JDBC</span></span><br><span class="line"><span class="comment"># MySQL 8.x: com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="attr">jdbc.driverClass</span>=com.mysql.jdbc.Driver</span><br><span class="line"><span class="attr">jdbc.connectionURL</span>=jdbc:mysql://<span class="number">116.62</span>.<span class="number">110.99</span>:<span class="number">3307</span>/trip_web_db?useUnicode=<span class="literal">true</span>&amp;characterEncoding=UTF-<span class="number">8</span></span><br><span class="line"><span class="attr">jdbc.username</span>=root</span><br><span class="line"><span class="attr">jdbc.password</span>=root</span><br></pre></td></tr></table></figure>
+<h3><span id="挂载数据卷运行">挂载数据卷运行</span></h3>
+<ul>
+<li>挂载数据卷运行<br>
+<code>docker run -p 8080:8080 --name myshop -v /usr/local/docker/tomcat/ROOT/:/usr/local/tomcat/webapps/ROOT -d tomcat</code></li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="meta">@MyCentOS</span>]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="regexp">/ROOT# docker run -p 8086:8080 --name tripweb -v /</span>usr<span class="regexp">/local/</span>docker<span class="regexp">/tomcat/</span><span class="type">ROOT</span><span class="regexp">/:/</span>usr<span class="regexp">/local/</span>tomcat<span class="regexp">/webapps/</span><span class="type">ROOT</span> <span class="operator">-</span>d tomcat</span><br><span class="line">4df4ef7a219385ebbb818f65f238bfdd0d54f1d65249e2afd653394ccdffb901</span><br></pre></td></tr></table></figure>
+<p><code>docker logs myshop</code><br>
+查看docker容器的日志</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">➜  ROOT sudo docker logs myshop</span><br><span class="line">25-Sep-2019 03:11:48.843 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log<span class="built_in"> Server </span>version:        Apache Tomcat/8.5.45</span><br><span class="line">25-Sep-2019 03:11:48.902 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log<span class="built_in"> Server </span>built:          Aug 14 2019 22:21:25 UTC</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log<span class="built_in"> Server </span>number:         8.5.45.0</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            3.10.0-957.27.2.el7.x86_64</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/local/openjdk-8/jre</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_222-b10</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat</span><br><span class="line">25-Sep-2019 03:11:48.903 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.<span class="attribute">file</span>=/usr/local/tomcat/conf/logging.properties</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.<span class="attribute">manager</span>=org.apache.juli.ClassLoaderLogManager</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.<span class="attribute">ephemeralDHKeySize</span>=2048</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.<span class="attribute">pkgs</span>=org.apache.catalina.webresources</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.<span class="attribute">UMASK</span>=0027</span><br><span class="line">25-# JDBC</span><br><span class="line"><span class="comment"># MySQL 8.x: com.mysql.cj.jdbc.Driver</span></span><br><span class="line">jdbc.<span class="attribute">driverClass</span>=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.<span class="attribute">connectionURL</span>=jdbc:mysql://116.62.110.99:3307/trip_web_db?useUnicode=true&amp;characterEncoding=UTF-8</span><br><span class="line">jdbc.<span class="attribute">username</span>=root</span><br><span class="line">jdbc.<span class="attribute">password</span>=rootSep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.<span class="attribute">base</span>=/usr/local/tomcat</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.<span class="attribute">home</span>=/usr/local/tomcat</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.<span class="attribute">tmpdir</span>=/usr/local/tomcat/temp</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.5.2].</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities:<span class="built_in"> IPv6 </span>[<span class="literal">true</span>], sendfile [<span class="literal">true</span>], accept filters [<span class="literal">false</span>], random [<span class="literal">true</span>].</span><br><span class="line">25-Sep-2019 03:11:48.904 <span class="built_in">INFO</span> [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [<span class="literal">false</span>], useOpenSSL [<span class="literal">true</span>]</span><br><span class="line">25-Sep-2019 03:11:48.922 <span class="built_in">INFO</span> [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.1.0k  28 May 2019]</span><br><span class="line">25-Sep-2019 03:11:49.150 <span class="built_in">INFO</span> [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler [<span class="string">&quot;http-nio-8080&quot;</span>]</span><br><span class="line">25-Sep-2019 03:11:49.182 <span class="built_in">INFO</span> [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector <span class="keyword">for</span> servlet write/read</span><br><span class="line">25-Sep-2019 03:11:49.228 <span class="built_in">INFO</span> [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler [<span class="string">&quot;ajp-nio-8009&quot;</span>]</span><br><span class="line">25-Sep-2019 03:11:49.230 <span class="built_in">INFO</span> [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector <span class="keyword">for</span> servlet write/read</span><br><span class="line">25-Sep-2019 03:11:49.237 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.Catalina.load Initialization processed <span class="keyword">in</span> 1809 ms</span><br><span class="line">25-Sep-2019 03:11:49.299 <span class="built_in">INFO</span> [main] org.apache.catalina.core.StandardService.startInternal Starting<span class="built_in"> service </span>[Catalina]</span><br><span class="line">25-Sep-2019 03:11:49.299 <span class="built_in">INFO</span> [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.45</span><br><span class="line">25-Sep-2019 03:11:49.333 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/docs]</span><br><span class="line">25-Sep-2019 03:12:14.400 <span class="built_in">WARNING</span> [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom<span class="built_in"> instance </span><span class="keyword">for</span> session ID generation using [SHA1PRNG] took [24,548] milliseconds.</span><br><span class="line">25-Sep-2019 03:12:14.531 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/docs] has finished <span class="keyword">in</span> [25,197] ms</span><br><span class="line">25-Sep-2019 03:12:14.531 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/manager]</span><br><span class="line">25-Sep-2019 03:12:14.597 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/manager] has finished <span class="keyword">in</span> [66] ms</span><br><span class="line">25-Sep-2019 03:12:14.598 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/host-manager]</span><br><span class="line">25-Sep-2019 03:12:14.637 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/host-manager] has finished <span class="keyword">in</span> [39] ms</span><br><span class="line">25-Sep-2019 03:12:14.637 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/ROOT]</span><br><span class="line">25-Sep-2019 03:12:14.756 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/ROOT] has finished <span class="keyword">in</span> [119] ms</span><br><span class="line">25-Sep-2019 03:12:14.756 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/examples]</span><br><span class="line">25-Sep-2019 03:12:15.189 <span class="built_in">INFO</span> [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/examples] has finished <span class="keyword">in</span> [433] ms</span><br><span class="line">25-Sep-2019 03:12:15.218 <span class="built_in">INFO</span> [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [<span class="string">&quot;http-nio-8080&quot;</span>]</span><br><span class="line">25-Sep-2019 03:12:15.267 <span class="built_in">INFO</span> [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [<span class="string">&quot;ajp-nio-8009&quot;</span>]</span><br><span class="line">25-Sep-2019 03:12:15.270 <span class="built_in">INFO</span> [main] org.apache.catalina.startup.Catalina.start<span class="built_in"> Server </span>startup <span class="keyword">in</span> 26033 ms</span><br></pre></td></tr></table></figure>
+<p>docker logs -f myshop<br>
+会一直监听日志的变化</p>
+<h2><span id="查看项目">查看项目</span></h2>
+<p><img src="/2019/09/25/Docker%E5%AD%A6%E4%B9%A011-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%AE%B9%E5%99%A8/9.png" alt></p>
+<h2><span id="参考资料">参考资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.funtl.com/zh/guide/%E8%B5%B0%E5%90%91%E5%8D%95%E4%BD%93%E5%9C%B0%E7%8B%B1.html#%E8%A7%86%E9%A2%91%E5%90%88%E9%9B%86">https://www.funtl.com/zh/guide/走向单体地狱.html#视频合集</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/09/27/Docker学习12-Docker-Compose-介绍/" data-toggle="tooltip" data-placement="top" title="Docker学习12-Docker-Compose-介绍">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/09/24/Windows端口占用关闭/" data-toggle="tooltip" data-placement="top" title="Windows端口占用关闭">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">部署项目到容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">打包项目的war包</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">在本地测试项目是否可以正常启动</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">server端操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">上传war到ECS中</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">将war移动到ROOT中做数据卷挂载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">解压并修改数据库端口</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">移走war包</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">docker数据库</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">修改项目数据库ip及端口和用户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">挂载数据卷运行</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">查看项目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

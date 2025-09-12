@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/archives/6/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/header_img/home.jpg')
+        /*config*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>十渊</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Jermaine Nee</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+            <!-- USE SIDEBAR -->
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2021/10/18/GitHub推送遇到的连接问题/">
+        <h2 class="post-title">
+            GitHub推送遇到的连接问题
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            遇到的问题
+[ssh: connect to host github.com port 22: Connection refused]
+看问题的秒速应该是连接问题
+本地生成ssh-key
+可以网上搜索相关命令
+配置config文件
+在~/.ssh/下生成此文件
+123456Host github.com  User xxxxx@xx.com  	//注册github的邮箱Hostname s......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-10-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#github" title="github">github</a>
+            
+              <a href="/tags/#git" title="git">git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/10/13/SpringCloud微服务系列03-Netflix架构02-Ribbon/">
+        <h2 class="post-title">
+            SpringCloud微服务系列03-Netflix架构02-Ribbon
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            在微服务架构中，业务都会被拆分成一个独立的服务，服务与服务的通讯是基于http restful的。Spring cloud有两种服务调用方式，一种是ribbon+restTemplate，另一种是feign。在这一篇文章首先讲解下基于ribbon+rest。
+ribbon
+简介:   Spring Cloud Ribbon是一个基于HTTP和TCP的客户端负载均衡工具，它基于Netflix ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-10-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+            
+              <a href="/tags/#Netflix" title="Netflix">Netflix</a>
+            
+              <a href="/tags/#微服务" title="微服务">微服务</a>
+            
+              <a href="/tags/#Ribbon" title="Ribbon">Ribbon</a>
+            
+              <a href="/tags/#负载均衡" title="负载均衡">负载均衡</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/10/11/SpringCloud微服务系列03-Netflix架构01-Eureka/">
+        <h2 class="post-title">
+            SpringCloud微服务系列03-Netflix架构01-Eureka
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Eureka服务注册中心模块
+在这里，我们需要用的的组件上Spring Cloud Netflix的Eureka ,eureka是一个服务注册和发现模块。
+
+下一步-&gt;选择 
+
+启动一个服务注册中心
+12345678910111213141516package cn.zm.eureka;import org.springframework.boot.SpringApplication;......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-10-11
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+            
+              <a href="/tags/#Netflix" title="Netflix">Netflix</a>
+            
+              <a href="/tags/#微服务" title="微服务">微服务</a>
+            
+              <a href="/tags/#Eureka" title="Eureka">Eureka</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/10/11/SpringCloud微服务系列02-公共模块搭建/">
+        <h2 class="post-title">
+            SpringCloud微服务系列02-公共模块搭建
+        </h2>
+        <h3 class="post-subtitle">
+            公共模块搭建
+        </h3>
+        <div class="post-content-preview">
+            全局工具项目Global-Utils
+此模块名字随意,后面也可以更改的,能准确表达此模块的用意即可,此模块方便后续的开发模块依赖,免得每个项目都需要重新依赖一套.
+
+common
+
+druid线程池
+基础配置基本类,基本响应全局异常捕获等
+knife4j
+
+
+netty
+mybatis-plus
+tk-mybatis
+
+整体目录架构图
+
+
+里面包含一些工具类, 持久类框架, ws 服务等
+
+......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-10-11
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+            
+              <a href="/tags/#微服务" title="微服务">微服务</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/10/08/SpringCloud微服务系列01-初始项目搭建/">
+        <h2 class="post-title">
+            SpringCloud微服务系列01-初始项目搭建
+        </h2>
+        <h3 class="post-subtitle">
+            Eureka
+        </h3>
+        <div class="post-content-preview">
+            SpringCloud intro
+Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g. configuration management, service discovery, circuit breakers,......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-10-08
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#SpringCloud" title="SpringCloud">SpringCloud</a>
+            
+              <a href="/tags/#微服务" title="微服务">微服务</a>
+            
+              <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/04/21/如何ubuntu上创建git仓库/">
+        <h2 class="post-title">
+            如何ubuntu上创建git仓库
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            如何ubuntu上创建git仓库
+服务端
+
+安装git
+
+123[root@admin ~]# apt-get install -y git        #执行该命令进行Git安装ziming@zm-gcp-vm-ubuntu16-tw-8:~$ git versiongit version 2.7.4   # 查看是否安装成功
+
+linux服务器端创建新用户来管理git仓库
+
+12345......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-04-21
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Linux" title="Linux">Linux</a>
+            
+              <a href="/tags/#git" title="git">git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/04/20/2021五一重庆游/">
+        <h2 class="post-title">
+            2021五一重庆游
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            2021五一重庆游
+前期准备
+
+高德地图路书工具
+
+
+路书其实就是将我们的每日行程以地图的形式呈现，对于外出游玩的小伙伴来说还是非常有用的，这样就能省去每天规划路线的烦恼
+
+第一天
+利用路书规划路线地理图
+
+第一天路线
+重庆北 -&gt; 九街 -&gt; 观音桥 -&gt; 李子坝 -&gt; 鹅岭二厂 -&gt; 仁爱堂 -&gt; 山城步道 -&gt; 解放碑  -&gt; 八一好吃街......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-04-20
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#生活" title="生活">生活</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/03/21/备忘录/">
+        <h2 class="post-title">
+            备忘录
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            GCP
+nginx 路径: /etc/nginx/
+配置路径: vim nginx.conf
+12
+hexo-blog地址 /usr/share/nginx/hexo-blog;
+nginx 基本指令
+重启: sudo nginx -s reload
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-03-21
+        </p>
+        <div class="tags">
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2021/03/20/GCP上搭建虚拟服务器VPS/">
+        <h2 class="post-title">
+            GCP上搭建虚拟服务器VPS
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            在GCP上搭建虚拟服务器VPS
+GCP注册的准备工作
+
+需要VISA/MasterCard实体信用卡
+在Google cloud platform上申请领取$300促销赠金
+填写账单信息, 可根据谷歌地图查找VPN真实地址相对应
+
+
+促销赠金可用作一种付款方式，减少您应支付的总金额。GCP 免费试用和营销活动赠金归入此类别。
+
+创建一个虚拟服务器
+我注册GCP时使用的香港地区的IP, 这里建......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2021-03-20
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#GCP" title="GCP">GCP</a>
+            
+              <a href="/tags/#VPS" title="VPS">VPS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/12/26/Brook科学上网必备/">
+        <h2 class="post-title">
+            Brook科学上网必备
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            为什么使用Brook
+起因是因为在谷歌云平台使用了SSR科学上网后, 一小时不到IP被识别了…
+查询相关资料后发现Brook是一个比较偏门的技术, 用这个来科学上网应该比较难被GFW甄别出来
+SSR 已经停止更新一段时间了. 相关应该开源已久 GFW团队 也可以针对该技术识别.
+Brook服务搭建前提
+
+一台可连接的墙外服务器 推荐GCP
+
+服务器地点可选, IP成服务可以销毁再新建挂载, ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 十渊 on
+            2020-12-26
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#梯子" title="梯子">梯子</a>
+            
+              <a href="/tags/#Brook" title="Brook">Brook</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/archives/5/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/archives/7/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+            <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+        
+            
+            <a href="/tags/#生活" title="生活" rel="2">生活</a>
+            
+        
+            
+            <a href="/tags/#Axios" title="Axios" rel="2">Axios</a>
+            
+        
+            
+            <a href="/tags/#Vue" title="Vue" rel="8">Vue</a>
+            
+        
+            
+            <a href="/tags/#AI" title="AI" rel="2">AI</a>
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Linux" title="Linux" rel="3">Linux</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Docker" title="Docker" rel="28">Docker</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Gitlab" title="Gitlab" rel="2">Gitlab</a>
+            
+        
+            
+            <a href="/tags/#Docker Compose" title="Docker Compose" rel="5">Docker Compose</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Dockerfile" title="Dockerfile" rel="3">Dockerfile</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#git" title="git" rel="3">git</a>
+            
+        
+            
+            <a href="/tags/#GitLab" title="GitLab" rel="2">GitLab</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#PVE" title="PVE" rel="4">PVE</a>
+            
+        
+            
+            <a href="/tags/#SpringCloud" title="SpringCloud" rel="16">SpringCloud</a>
+            
+        
+            
+            <a href="/tags/#Netflix" title="Netflix" rel="7">Netflix</a>
+            
+        
+            
+            <a href="/tags/#微服务" title="微服务" rel="10">微服务</a>
+            
+        
+            
+            <a href="/tags/#SpringBoot" title="SpringBoot" rel="2">SpringBoot</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#SpringCloudAlibaba" title="SpringCloudAlibaba" rel="5">SpringCloudAlibaba</a>
+            
+        
+            
+            <a href="/tags/#Gateway" title="Gateway" rel="7">Gateway</a>
+            
+        
+            
+            <a href="/tags/#Nacos" title="Nacos" rel="4">Nacos</a>
+            
+        
+            
+            <a href="/tags/#SpringColoudAlibaba" title="SpringColoudAlibaba" rel="2">SpringColoudAlibaba</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Hexo" title="Hexo" rel="2">Hexo</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#wsl" title="wsl" rel="3">wsl</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+    
+        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+    
+</ul>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2025/09/12/Java-8%E5%88%B0Java-21%E7%9A%84%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7/">Java 8到Java 21的重要特性</a>
+        </li>
+      
+        <li>
+          <a href="/2025/09/10/Spring-OAuth2-%E5%AE%9E%E6%88%98-01/">Spring-OAuth2-实战-01</a>
+        </li>
+      
+        <li>
+          <a href="/2025/07/07/%E5%88%86%E6%9E%90%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93Apache-Doris%E5%AE%9E%E6%88%9801-%E7%AE%80%E4%BB%8B/">分析型数据库Apache Doris实战01-简介</a>
+        </li>
+      
+        <li>
+          <a href="/2024/10/14/docker-engin-api-url%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">docker-engin_api_url问题记录</a>
+        </li>
+      
+        <li>
+          <a href="/2024/09/28/2024%E5%B9%B4Ubuntu%E5%AE%89%E8%A3%85docker/">2024年Ubuntu安装docker</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/me.png" />
+        
+
+        
+            <p>Hukuna matata!!!</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com//localhost/">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

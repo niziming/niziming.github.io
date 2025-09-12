@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          GitLab学习2-GitLab的使用 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2019/09/30/GitLab学习2-GitLab的使用/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                            
+                              <a class="tag" href="/tags/#git" title="git">git</a>
+                            
+                              <a class="tag" href="/tags/#GitLab" title="GitLab">GitLab</a>
+                            
+                        </div>
+                        <h1>GitLab学习2-GitLab的使用</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2019-09-30
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="gitlab简介">GitLab简介</span></h1>
+<p>GitLab 是利用 Ruby on Rails 一个开源的版本管理系统，实现一个自托管的 Git 项目仓库，<br>
+可通过 Web 界面进行访问公开的或者私人项目。它拥有与 Github 类似的功能，能够浏览源代码，<br>
+管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。<br>
+团队成员可以利用内置的简单聊天程序 (Wall) 进行交流。<br>
+它还提供一个代码片段收集功能可以轻松实现代码复用，便于日后有需要的时候进行查找。<br>
+<strong>与Github类似.</strong></p>
+<h2><span id="为什么使用gitlab">为什么使用GitLab?</span></h2>
+<ul>
+<li>协同开发</li>
+<li>异地开发</li>
+<li>开源的第三方平台用</li>
+<li>自己架设Git托管平台</li>
+</ul>
+<h2><span id="安装gitlab">安装GitLab</span></h2>
+<p>Docker官网汉化版GitLab<br>
+<a target="_blank" rel="noopener" href="https://hub.docker.com/r/twang2218/gitlab-ce-zh">https://hub.docker.com/r/twang2218/gitlab-ce-zh</a></p>
+<p>拉取GitLab: <code>docker pull twang2218/gitlab-ce-zh:10.5</code></p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]~<span class="meta"># cd /usr/local/docker </span></span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local/docker<span class="meta"># ls</span></span><br><span class="line">mysql  tripweb  volumes</span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local/docker<span class="meta"># mkdir GitLab</span></span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local/docker<span class="meta"># ls</span></span><br><span class="line">GitLab  mysql  tripweb  volumes</span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local/docker<span class="meta"># cd GitLab </span></span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local<span class="keyword">/docker/</span>GitLab<span class="meta"># ls</span></span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local<span class="keyword">/docker/</span>GitLab<span class="meta"># vim docker-compose.yml</span></span><br><span class="line">[root@MyCentOS]<span class="keyword">/usr/</span>local<span class="keyword">/docker/</span>GitLab<span class="meta"># docker pull twang2218/gitlab-ce-zh:10.5</span></span><br><span class="line"><span class="number">10.5</span>: Pulling from twang2218/gitlab-ce-zh</span><br><span class="line"><span class="symbol">d3938036b19c:</span> Pull complete </span><br><span class="line"><span class="symbol">a9b30c108bda:</span> Pull complete </span><br><span class="line"><span class="number">67</span>de21feec18: Pull complete </span><br><span class="line"><span class="number">817</span>da545be2b: Pull complete </span><br><span class="line"><span class="symbol">d967c497ce23:</span> Pull complete </span><br><span class="line"><span class="symbol">a69c22baab05:</span> Pull complete </span><br><span class="line"><span class="symbol">bf709c1867c3:</span> Waiting </span><br><span class="line"><span class="number">89</span>c3c3b9c89c: Waiting </span><br><span class="line"><span class="symbol">eb1d5a08657b:</span> Waiting </span><br><span class="line"><span class="number">6445958f</span>c33d: Waiting </span><br><span class="line"><span class="symbol">bd40a9292cbd:</span> Waiting </span><br><span class="line"><span class="number">6e3</span>fbbdad5bd: Waiting </span><br><span class="line"><span class="number">3647066e74</span>ea: Waiting </span><br><span class="line"><span class="number">11</span>d43d0755c1: Waiting </span><br><span class="line"><span class="symbol">a41004476bab:</span> Waiting </span><br><span class="line"><span class="symbol">e3e643254137:</span> Waiting </span><br><span class="line"><span class="symbol">b81c640d2799:</span> Waiting </span><br><span class="line"><span class="symbol">c19aff5b9429:</span> Waiting </span><br><span class="line"><span class="number">6</span>a28e1c33c11: Waiting </span><br></pre></td></tr></table></figure>
+<h2><span id="docker-compose">docker-compose</span></h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir gitlab</span><br><span class="line">cd gitlab</span><br><span class="line">vim docker-compose.yml</span><br><span class="line"></span><br><span class="line">[root@MyCentOS]<span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="comment"># pwd</span></span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab</span><br></pre></td></tr></table></figure>
+<p>docker-compose.xml</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3&#x27;</span></span><br><span class="line">services:</span><br><span class="line">    gitlab:</span><br><span class="line">      image: <span class="string">&#x27;twang2218/gitlab-ce-zh:10.5&#x27;</span></span><br><span class="line">      restart: always</span><br><span class="line">      hostname: <span class="string">&#x27;116.62.110.99&#x27;</span> <span class="comment"># 主机名ECS的固定ip</span></span><br><span class="line">      environment: <span class="comment"># 环境变量</span></span><br><span class="line">        TZ: <span class="string">&#x27;Asia/Shanghai&#x27;</span></span><br><span class="line">        GITLAB_OMNIBUS_CONFIG: | <span class="comment"># gitlib的初始化操作</span></span><br><span class="line">          external_url <span class="string">&#x27;http://116.62.110.99&#x27;</span> <span class="comment"># web访问地址 可以加端口:</span></span><br><span class="line">          gitlab_rails[<span class="string">&#x27;time_zone&#x27;</span>] = <span class="string">&#x27;Asia/Shanghai&#x27;</span></span><br><span class="line">          gitlab_rails[<span class="string">&#x27;gitlab_shell_ssh_port&#x27;</span>] = <span class="number">2222</span> <span class="comment"># ssh访问原本22已被占用,所以使用2222</span></span><br><span class="line">          unicorn[<span class="string">&#x27;port&#x27;</span>] = <span class="number">8082</span> <span class="comment"># 本身的端口</span></span><br><span class="line">          nginx[<span class="string">&#x27;listen_port&#x27;</span>] = <span class="number">80</span> <span class="comment"># 要与external的端口一致</span></span><br><span class="line">      ports: <span class="comment"># 批量暴露</span></span><br><span class="line">        - <span class="string">&#x27;80:80&#x27;</span></span><br><span class="line">        - <span class="string">&#x27;8443:443&#x27;</span> <span class="comment"># 443是https的端口 改为8443</span></span><br><span class="line">        - <span class="string">&#x27;2222:22&#x27;</span> <span class="comment"># ssh的暴露端口</span></span><br><span class="line">      volumes:</span><br><span class="line">        - <span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="regexp">/config:/</span>etc/gitlab</span><br><span class="line">        - <span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="regexp">/data:/</span>var<span class="regexp">/opt/gi</span>tlab</span><br><span class="line">        - <span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="regexp">/logs:/</span>var<span class="regexp">/log/gi</span>tlab</span><br></pre></td></tr></table></figure>
+<h2><span id="启动">启动</span></h2>
+<p><code>docker-compose up</code>或者守护态运行<code>docker-compose up -d</code><br>
+然后监听日志<code>docker logs -f 容器id或者name</code></p>
+<p>输入这条命令以后会抛出大量的日志,等待即可.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">transactions<span class="comment">&quot;</span></span><br><span class="line">web_1  |     - <span class="keyword">change</span> <span class="keyword">mode</span> from <span class="string">&#x27;&#x27;</span> <span class="keyword">to</span> <span class="string">&#x27;0644&#x27;</span></span><br><span class="line">web_1  |     - <span class="keyword">change</span> owner from <span class="string">&#x27;&#x27;</span> <span class="keyword">to</span> <span class="string">&#x27;gitlab-psql&#x27;</span></span><br><span class="line">web_1  |   * <span class="keyword">execute</span>[/<span class="keyword">opt</span>/gitlab/bin/gitlab-ctl start postgres-exporter] action run</span><br><span class="line">web_1  |     [<span class="keyword">execute</span>] ok: run: postgres-exporter: (pid <span class="number">1149</span>) <span class="number">12</span>s</span><br><span class="line">web_1  |     - <span class="keyword">execute</span> /<span class="keyword">opt</span>/gitlab/bin/gitlab-ctl start postgres-exporter</span><br><span class="line">web_1  | Recipe: gitlab::gitlab-rails</span><br></pre></td></tr></table></figure>
+<h2><span id="查看结果">查看结果</span></h2>
+<p>发现无法访问,因该是ecs的端口安全组策略未开放.</p>
+<p><img src="/2019/09/30/GitLab%E5%AD%A6%E4%B9%A02-GitLab%E7%9A%84%E4%BD%BF%E7%94%A8/1.png" alt></p>
+<p><img src="/2019/09/30/GitLab%E5%AD%A6%E4%B9%A02-GitLab%E7%9A%84%E4%BD%BF%E7%94%A8/2.png" alt></p>
+<p>再次启动后访问,如图所示<br>
+<img src="/2019/09/30/GitLab%E5%AD%A6%E4%B9%A02-GitLab%E7%9A%84%E4%BD%BF%E7%94%A8/3.png" alt></p>
+<h2><span id="解决错误">解决错误</span></h2>
+<h3><span id="交互方式进入容器">交互方式进入容器</span></h3>
+<p><code>sudo docker exec -it f9 bash</code></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">root@<span class="number">116</span>:<span class="operator">/</span><span class="comment"># cd /var/log/gitlab/nginx</span></span><br><span class="line">root@<span class="number">116</span>:<span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>gitlab<span class="operator">/</span>nginx<span class="comment"># ls</span></span><br><span class="line">access.log  config  current  error.log  gitlab_access.log  gitlab_error.log  lock</span><br><span class="line">root@<span class="number">116</span>:<span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>gitlab<span class="operator">/</span>nginx<span class="comment"># vi error.log </span></span><br><span class="line">root@<span class="number">116</span>:<span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>gitlab<span class="operator">/</span>nginx<span class="comment"># ls</span></span><br><span class="line">access.log  config  current  error.log  gitlab_access.log  gitlab_error.log  lock</span><br><span class="line">root@<span class="number">116</span>:<span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>gitlab<span class="operator">/</span>nginx<span class="comment"># vi gitlab_error.log </span></span><br><span class="line">root@<span class="number">116</span>:<span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>gitlab<span class="operator">/</span>nginx<span class="comment"># gitlab-ctl status</span></span><br><span class="line"><span class="params">run:</span> <span class="params">gitaly:</span> (pid <span class="number">436</span>) <span class="number">3751</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">430</span>) <span class="number">3751</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">gitlab-monitor:</span> (pid <span class="number">442</span>) <span class="number">3751</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">427</span>) <span class="number">3751</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">gitlab-workhorse:</span> (pid <span class="number">448</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">443</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">logrotate:</span> (pid <span class="number">5093</span>) <span class="number">151</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">432</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">nginx:</span> (pid <span class="number">438</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">433</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">node-exporter:</span> (pid <span class="number">441</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">434</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">postgres-exporter:</span> (pid <span class="number">440</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">428</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">postgresql:</span> (pid <span class="number">452</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">447</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">prometheus:</span> (pid <span class="number">435</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">429</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">redis:</span> (pid <span class="number">451</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">446</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">redis-exporter:</span> (pid <span class="number">449</span>) <span class="number">3752</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">444</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">sidekiq:</span> (pid <span class="number">5335</span>) <span class="number">5</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">431</span>) <span class="number">3752</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">sshd:</span> (pid <span class="number">24</span>) <span class="number">3762</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">23</span>) <span class="number">3762</span>s</span><br><span class="line"><span class="params">run:</span> <span class="params">unicorn:</span> (pid <span class="number">5283</span>) <span class="number">32</span>s; <span class="params">run:</span> <span class="params">log:</span> (pid <span class="number">445</span>) <span class="number">3752</span>s</span><br><span class="line">root@<span class="number">116</span>:<span class="operator">/</span>var<span class="operator">/</span>log<span class="operator">/</span>gitlab<span class="operator">/</span>nginx<span class="comment"># gitlab-ctl tail unicorn</span></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/unicorn_stdout.log</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line"></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/unicorn_stderr.log</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">43</span>:<span class="number">15.297148</span> <span class="comment">#4587]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">45</span>:<span class="number">33.002415</span> <span class="comment">#4689]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">46</span>:<span class="number">43.812719</span> <span class="comment">#4792]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">47</span>:<span class="number">29.594381</span> <span class="comment">#4856]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">49</span>:<span class="number">13.121405</span> <span class="comment">#4963]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">50</span>:<span class="number">03.751939</span> <span class="comment">#5033]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">51</span>:<span class="number">27.681477</span> <span class="comment">#5137]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">52</span>:<span class="number">25.463628</span> <span class="comment">#5221]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">53</span>:<span class="number">26.002010</span> <span class="comment">#5314]  INFO -- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">54</span>:<span class="number">21.678943</span> <span class="comment">#5399]  INFO -- : Refreshing Gem list</span></span><br><span class="line"></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/current</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">51</span>:<span class="number">24.53737</span> starting new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">52</span>:<span class="number">19.58587</span> master failed to start, check stderr log for details</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">52</span>:<span class="number">21.69616</span> failed to start a new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">52</span>:<span class="number">21.89708</span> starting new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">53</span>:<span class="number">20.58943</span> master failed to start, check stderr log for details</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">53</span>:<span class="number">22.95301</span> failed to start a new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">53</span>:<span class="number">23.14569</span> starting new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">54</span>:<span class="number">17.31323</span> master failed to start, check stderr log for details</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">54</span>:<span class="number">19.23802</span> failed to start a new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">54</span>:<span class="number">19.35571</span> starting new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">55</span>:<span class="number">19.31273</span> master failed to start, check stderr log for details</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">55</span>:<span class="number">21.71564</span> failed to start a new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">55</span>:<span class="number">21.92552</span> starting new unicorn master</span><br><span class="line"></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/unicorn_stderr.log</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">55</span>:<span class="number">24.691724</span> <span class="comment">#5492]  INFO -- : Refreshing Gem list</span></span><br><span class="line"></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/current</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">56</span>:<span class="number">06.09911</span> master failed to start, check stderr log for details</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">56</span>:<span class="number">08.52929</span> failed to start a new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">56</span>:<span class="number">08.74450</span> starting new unicorn master</span><br><span class="line"></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/unicorn_stderr.log</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line">I, [<span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>T05:<span class="number">56</span>:<span class="number">11.797988</span> <span class="comment">#5571]  INFO -- : Refreshing Gem list</span></span><br><span class="line"></span><br><span class="line"><span class="operator">==</span><span class="operator">&gt;</span> <span class="symbol">/var/log/gitlab/unicorn/current</span> <span class="operator">&lt;=</span><span class="operator">=</span></span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">56</span>:<span class="number">55.14527</span> master failed to start, check stderr log for details</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">56</span>:<span class="number">57.66708</span> failed to start a new unicorn master</span><br><span class="line"><span class="number">201</span>9-<span class="number">1</span>0-<span class="number">08</span>_05:<span class="number">56</span>:<span class="number">57.86318</span> starting new unicorn master</span><br><span class="line">^C<span class="operator">/</span>opt<span class="operator">/</span>gitlab<span class="operator">/</span>embedded<span class="operator">/</span>bin<span class="operator">/</span><span class="params">omnibus-ctl:</span> Interrupt</span><br></pre></td></tr></table></figure>
+<p>提示 <code>failed to start a new unicorn master</code></p>
+<h3><span id="查看报错日志">查看报错日志</span></h3>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">root@<span class="number">116</span>:/var/<span class="keyword">log</span>/gitlab/unicorn# vi unicorn_stderr.<span class="keyword">log</span></span><br><span class="line"></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">48</span>:<span class="number">12.284632</span> #<span class="number">556</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br><span class="line">  : msgid <span class="string">&#x27;You are on a read-only GitLab instance.&#x27;</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">49</span>:<span class="number">03.098603</span> #<span class="number">696</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">50</span>:<span class="number">01.069664</span> #<span class="number">912</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">51</span>:<span class="number">26.513453</span> #<span class="number">521</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br><span class="line">  : msgid <span class="string">&#x27;You are on a read-only GitLab instance.&#x27;</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">52</span>:<span class="number">36.836487</span> #<span class="number">693</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br><span class="line">  : msgid <span class="string">&#x27;You are on a read-only GitLab instance.&#x27;</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">53</span>:<span class="number">40.245197</span> #<span class="number">777</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br><span class="line">  : msgid <span class="string">&#x27;You are on a read-only GitLab instance.&#x27;</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">54</span>:<span class="number">42.016154</span> #<span class="number">867</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br><span class="line">  : msgid <span class="string">&#x27;You are on a read-only GitLab instance.&#x27;</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">55</span>:<span class="number">41.475464</span> #<span class="number">948</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br><span class="line">  : msgid <span class="string">&#x27;You are on a read-only GitLab instance.&#x27;</span></span><br><span class="line">I, [<span class="number">2019</span><span class="number">-10</span><span class="number">-08</span>T04:<span class="number">56</span>:<span class="number">41.565244</span> #<span class="number">1031</span>]  <span class="keyword">INFO</span> <span class="comment">-- : Refreshing Gem list</span></span><br><span class="line"><span class="built_in">Warning</span>: fuzzy message was ignored.</span><br></pre></td></tr></table></figure>
+<p>提示: You are on a read-only GitLab instance.</p>
+<h3><span id="授权">授权</span></h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">chmod</span> -R 777 /var/log/gitlab</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gitlab-ctl <span class="built_in">tail</span> unicorn</span></span><br></pre></td></tr></table></figure>
+<h3><span id="重启容器">重启容器</span></h3>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]<span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="comment"># docker start f9   </span></span><br><span class="line">f9</span><br><span class="line">[root@MyCentOS]<span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS                            PORTS                                                             NAMES</span><br><span class="line">f9f24d76019a        twang2218<span class="regexp">/gitlab-ce-zh:10.5   &quot;/</span>assets<span class="regexp">/wrapper&quot;        About an hour ago   Up 5 seconds (health: starting)   0.0.0.0:80-&gt;80/</span>tcp, <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">2222</span>-&gt;<span class="number">22</span><span class="regexp">/tcp, 0.0.0.0:8443-&gt;443/</span>tcp   gitlab_gitlab_1</span><br><span class="line">d473292982f8        tomcat                        <span class="string">&quot;catalina.sh run&quot;</span>        <span class="number">8</span> days ago          Up <span class="number">4</span> hours                        <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">8081</span>-&gt;<span class="number">8080</span>/tcp                                            web</span><br><span class="line"><span class="number">99000</span>feb760b        mysql:<span class="number">5.7</span>.<span class="number">22</span>                  <span class="string">&quot;docker-entrypoint.s…&quot;</span>   <span class="number">8</span> days ago          Up About an hour                  <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">3307</span>-&gt;<span class="number">3306</span>/tcp                                            mysql</span><br><span class="line">[root@MyCentOS]<span class="regexp">/usr/</span>local<span class="regexp">/docker/gi</span>tlab<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+<h2><span id="参考资料">参考资料</span></h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/twang2218/gitlab-ce-zh">https://hub.docker.com/r/twang2218/gitlab-ce-zh</a><br>
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av29384041/?p=48">https://www.bilibili.com/video/av29384041/?p=48</a><br>
+<a target="_blank" rel="noopener" href="https://www.funtl.com/zh/gitlab/%E5%9F%BA%E4%BA%8E-Docker-%E5%AE%89%E8%A3%85-GitLab.html">https://www.funtl.com/zh/gitlab/基于-Docker-安装-GitLab.html</a><br>
+<a target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-2230071.html">http://www.mamicode.com/info-detail-2230071.html</a><br>
+<a target="_blank" rel="noopener" href="http://www.bubuko.com/infodetail-2282456.html">http://www.bubuko.com/infodetail-2282456.html</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/10/22/Nexus学习1-Nexus简介与安装/" data-toggle="tooltip" data-placement="top" title="Nexus学习00-Nexus简介与安装">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/09/30/GitLab学习1-使用git托管代码/" data-toggle="tooltip" data-placement="top" title="GitLab学习1-使用git托管代码">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">GitLab简介</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">为什么使用GitLab?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">安装GitLab</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">docker-compose</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">查看结果</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">解决错误</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">交互方式进入容器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">查看报错日志</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">授权</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.4.</span> <span class="toc-nav-text">重启容器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        
+                          <a class="tag" href="/tags/#git" title="git">git</a>
+                        
+                          <a class="tag" href="/tags/#GitLab" title="GitLab">GitLab</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
