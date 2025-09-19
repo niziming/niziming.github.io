@@ -164,10 +164,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -179,11 +175,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -238,8 +238,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="vmware虚拟工作站1-安装与使用linux篇1">VMware虚拟工作站1-安装与使用Linux篇1</span></h1>
-<h2><span id="安装vmware">安装VMware</span></h2>
+                <h1 id="vmware虚拟工作站1-安装与使用linux篇1">VMware虚拟工作站1-安装与使用Linux篇1</h1>
+<h2 id="安装vmware">安装VMware</h2>
 <ul>
 <li>下载
 <ul>
@@ -249,7 +249,7 @@
 </li>
 </ul>
 <p>将VMware安装好</p>
-<h2><span id="创建虚拟机">创建虚拟机</span></h2>
+<h2 id="创建虚拟机">创建虚拟机</h2>
 <ol>
 <li>点击创建虚拟机<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/1.png" alt="1"></li>
 <li>点击自定义高级，然后下一步<img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/2.png" alt="2"></li>
@@ -275,7 +275,7 @@
 <li>点击完成后<br>
 <img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/16.png" alt="16"></li>
 </ol>
-<h2><span id="启动ubuntu虚拟机">启动ubuntu虚拟机</span></h2>
+<h2 id="启动ubuntu虚拟机">启动ubuntu虚拟机</h2>
 <ul>
 <li>点击运行启动，出现弹框，点击确定。<br>
 <img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/17.png" alt="17"></li>
@@ -331,9 +331,9 @@ LVM是磁盘扩容技术，一定要选择LVM<br>
 接着是一个安装过程，请耐心等待，安装完成后会在 [View full log] 按钮下多出一个 [Reboot Now] 按钮。<br>
 <img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/41.png" alt="41"><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/42.png" alt="42"></li>
 </ul>
-<h2><span id="成功启动">成功启动</span></h2>
+<h2 id="成功启动">成功启动</h2>
 <p><img src="/2019/10/24/VMware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8Linux%E7%AF%871/43.png" alt="43"></p>
-<h2><span id="ubuntu-server-设置-root-密码">Ubuntu server 设置 root 密码</span></h2>
+<h2 id="ubuntu-server-设置-root-密码">Ubuntu server 设置 root 密码</h2>
 <p>ubuntu server 安装的时候要你新建一个用户，安装完成后，你需要手动开启 root。<br>
 <code>sudo passwd root</code><br>
 根据提示依次输入:</p>
@@ -343,12 +343,12 @@ LVM是磁盘扩容技术，一定要选择LVM<br>
 <li>确认密码</li>
 </ol>
 <p>设置完成。</p>
-<h2><span id="安装ssh">安装ssh</span></h2>
-<h3><span id="检查软件是否安装">检查软件是否安装</span></h3>
+<h2 id="安装ssh">安装ssh</h2>
+<h3 id="检查软件是否安装">检查软件是否安装</h3>
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache policy openssh-<span class="keyword">client</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-<h3><span id="安装服务端">安装服务端</span></h3>
+<h3 id="安装服务端">安装服务端</h3>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-<h3><span id="安装客户端">安装客户端</span></h3>
+<h3 id="安装客户端">安装客户端</h3>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install openssh-client</span><br></pre></td></tr></table></figure>
 <p>应该是sshd的设置不允许root用户用密码远程登录</p>
 <ol>
@@ -362,7 +362,7 @@ LVM是磁盘扩容技术，一定要选择LVM<br>
 <li>重启ssh</li>
 </ol>
 <p><code>systemctl restart sshd</code></p>
-<h2><span id="安装zsh-和-oh-my-zsh">安装zsh 和 oh-my-zsh</span></h2>
+<h2 id="安装zsh-和-oh-my-zsh">安装zsh 和 oh-my-zsh</h2>
 <ol>
 <li>
 <p>安装 zsh<br>
@@ -388,7 +388,7 @@ vi ~/.zshrc<br>
 插入下面这条</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> ~<span class="regexp">/.oh-my-zsh/</span>plugins<span class="regexp">/incr/i</span>ncr*.zsh</span><br></pre></td></tr></table></figure>
 <p>source ~/.zshrc</p>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ruo_62/article/details/90233501">https://blog.csdn.net/ruo_62/article/details/90233501</a></p>
 </blockquote>
@@ -430,7 +430,7 @@ vi ~/.zshrc<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">VMware虚拟工作站1-安装与使用Linux篇1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">安装VMware</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">创建虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">启动ubuntu虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">成功启动</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Ubuntu server 设置 root 密码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">安装ssh</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">检查软件是否安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">安装服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">安装客户端</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">安装zsh 和 oh-my-zsh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vmware%E8%99%9A%E6%8B%9F%E5%B7%A5%E4%BD%9C%E7%AB%991-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8linux%E7%AF%871"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">VMware虚拟工作站1-安装与使用Linux篇1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85vmware"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">安装VMware</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">创建虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">启动ubuntu虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%88%90%E5%8A%9F%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">成功启动</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ubuntu-server-%E8%AE%BE%E7%BD%AE-root-%E5%AF%86%E7%A0%81"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Ubuntu server 设置 root 密码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85ssh"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">安装ssh</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A3%80%E6%9F%A5%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">检查软件是否安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">安装服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">安装客户端</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85zsh-%E5%92%8C-oh-my-zsh"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">安装zsh 和 oh-my-zsh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

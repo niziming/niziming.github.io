@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,8 +242,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="docker19-portainer-docker图形化工具">Docker19-portainer-Docker图形化工具</span></h1>
-<h2><span id="简介">简介</span></h2>
+                <h1 id="docker19-portainer-docker图形化工具">Docker19-portainer-Docker图形化工具</h1>
+<h2 id="简介">简介</h2>
 <p>Portainer 是一款轻量级的应用，它提供了图形化界面，用于方便地管理Docker环境，包括单机环境和集群环境。</p>
 <ol>
 <li>
@@ -262,7 +262,7 @@
 <p>这样就完成了 Portainer 2.16.2 的安装和基本配置。你可以通过 Portainer 的 Web 界面管理你的 Docker 容器和镜像。</p>
 <p>重新启动Docker服务：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl start docker</span><br></pre></td></tr></table></figure>
-<h2><span id="一个portainer管理多个服务器的docker">一个portainer管理多个服务器的docker</span></h2>
+<h2 id="一个portainer管理多个服务器的docker">一个portainer管理多个服务器的docker</h2>
 <p>Portainer 是一个流行的开源 Docker 管理 UI，它允许用户通过一个图形化界面来管理 Docker 容器、镜像、网络和卷。如果你想使用 Portainer 来管理多个服务器上的 Docker，可以按照以下步骤操作：</p>
 <ol>
 <li>在一台服务器上安装 Portainer：
@@ -291,7 +291,7 @@
 </ol>
 <p>请注意，开放 Docker API 可能会带来安全风险，因此建议在生产环境中使用更安全的方法，如设置 TLS 和使用 Docker Swarm 模式。此外，确保你的服务器防火墙规则限制了对 Portainer 服务的访问权限。</p>
 <p>在 Portainer 中，如果你想管理多个独立的 Docker 服务器，你不一定需要在每个服务器上部署一个 Portainer Agent。Portainer 可以直接连接到任何 Docker 守护进程的 API，只要你能够通过网络访问到这些 API。</p>
-<h2><span id="portainer-agent-是一个可选组件">Portainer Agent 是一个可选组件</span></h2>
+<h2 id="portainer-agent-是一个可选组件">Portainer Agent 是一个可选组件</h2>
 <p>Portainer Agent 是一个可选组件，它提供了一些额外的功能，比如在没有直接访问 Docker 守护进程 API 的情况下管理 Docker 环境。以下是两种常见的管理多个 Docker 服务器的方法：</p>
 <ol>
 <li><strong>直接连接到 Docker 守护进程 API</strong>：
@@ -313,7 +313,7 @@
 <p>bash</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent</span><br></pre></td></tr></table></figure>
 <p>然后，在 Portainer 的 Web 界面中，你可以通过 “Agents” 部分添加这些 Agent，从而管理这些服务器上的 Docker 环境。</p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote></blockquote>
 
 
@@ -353,7 +353,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker19-portainer-Docker图形化工具</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">一个portainer管理多个服务器的docker</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Portainer Agent 是一个可选组件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#docker19-portainer-docker%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker19-portainer-Docker图形化工具</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E4%B8%AAportainer%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84docker"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">一个portainer管理多个服务器的docker</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#portainer-agent-%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%80%89%E7%BB%84%E4%BB%B6"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Portainer Agent 是一个可选组件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

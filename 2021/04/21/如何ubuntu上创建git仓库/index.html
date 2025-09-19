@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,8 +242,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="如何ubuntu上创建git仓库">如何ubuntu上创建git仓库</span></h1>
-<h3><span id="服务端">服务端</span></h3>
+                <h1 id="如何ubuntu上创建git仓库">如何ubuntu上创建git仓库</h1>
+<h3 id="服务端">服务端</h3>
 <ul>
 <li>安装git</li>
 </ul>
@@ -260,7 +260,7 @@
 <li>安装SSH服务</li>
 </ul>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ziming</span>@zm-gcp-vm-ubuntu16-tw-<span class="number">8</span>:/home/git$ sudo apt-get install openssh-server </span><br><span class="line"><span class="attribute">Reading</span> package lists... Done</span><br><span class="line"><span class="attribute">Building</span> dependency tree       </span><br><span class="line"><span class="attribute">Reading</span> state information... Done</span><br><span class="line"><span class="attribute">openssh</span>-server is already the newest version (<span class="number">1</span>:<span class="number">7</span>.<span class="number">2</span>p2-<span class="number">4</span>ubuntu2.<span class="number">10</span>).</span><br><span class="line"><span class="attribute">0</span> upgraded, <span class="number">0</span> newly installed, <span class="number">0</span> to remove and <span class="number">13</span> not upgraded.</span><br></pre></td></tr></table></figure>
-<h3><span id="客户端">客户端</span></h3>
+<h3 id="客户端">客户端</h3>
 <ul>
 <li>在client端新建文件夹拉取git项目</li>
 </ul>
@@ -269,8 +269,8 @@
 <li>本地拉取服务器项目</li>
 </ul>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone git<span class="variable">@35</span>.<span class="number">236.130</span>.<span class="number">209</span><span class="symbol">:</span><span class="number">22</span>/<span class="symbol">:/home/git/rep/gcp</span>.git</span><br><span class="line"><span class="title class_">Cloning</span> into <span class="string">&#x27;gcp&#x27;</span>...</span><br><span class="line">git<span class="variable">@35</span>.<span class="number">236.130</span>.<span class="number">209</span>: <span class="title class_">Permission</span> denied (publickey). <span class="comment"># 无权限</span></span><br><span class="line"><span class="symbol">fatal:</span> <span class="title class_">Could</span> <span class="keyword">not</span> read from remote repository.</span><br><span class="line"></span><br><span class="line"><span class="title class_">Please</span> make sure you have the correct access rights</span><br><span class="line"><span class="keyword">and</span> the repository exists.</span><br></pre></td></tr></table></figure>
-<h3><span id="解决权限问题创建sshkey">解决权限问题创建sshkey</span></h3>
-<h3><span id="服务端">服务端</span></h3>
+<h3 id="解决权限问题创建sshkey">解决权限问题创建sshkey</h3>
+<h3 id="服务端">服务端</h3>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo sshd_config</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo vim sshd_config</span><br><span class="line"><span class="comment"># 添加三行 如果已有注释就可以放开</span></span><br><span class="line"><span class="title class_">PubkeyAuthentication</span> yes</span><br><span class="line"><span class="title class_">RSAAuthentication</span> yes</span><br><span class="line"><span class="title class_">AuthorizedKeysFile</span> .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo sshd_config</span><br><span class="line"></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo vim sshd_config</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/etc/ssh</span><span class="variable">$ </span>sudo service sshd restart <span class="comment"># 重启</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换文件所有者</span></span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>sudo chown -R <span class="symbol">git:</span>git .ssh</span><br><span class="line">ziming<span class="variable">@zm</span>-gcp-vm-ubuntu16-tw<span class="number">-8</span><span class="symbol">:/home/git</span><span class="variable">$ </span>ll</span><br><span class="line">total <span class="number">16</span></span><br><span class="line">drwxr-xr-x <span class="number">4</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">23</span> ./</span><br><span class="line">drwxr-xr-x <span class="number">8</span> root root <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> ../</span><br><span class="line">drwxr-xr-x <span class="number">3</span> git  git  <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">01</span> rep/</span><br><span class="line">drwxr-xr-x <span class="number">2</span> git  git  <span class="number">4096</span> <span class="title class_">Apr</span> <span class="number">21</span> <span class="number">19</span><span class="symbol">:</span><span class="number">23</span> .ssh/</span><br></pre></td></tr></table></figure>
 <ul>
 <li>客户端导入公匙</li>
@@ -324,7 +324,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">如何ubuntu上创建git仓库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">客户端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">解决权限问题创建sshkey</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">服务端</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95ubuntu%E4%B8%8A%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">如何ubuntu上创建git仓库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">客户端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A7%A3%E5%86%B3%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E5%88%9B%E5%BB%BAsshkey"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">解决权限问题创建sshkey</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">服务端</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

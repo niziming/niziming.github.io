@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,10 +240,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="并发的原子性可见性有序性">并发的原子性,可见性,有序性</span></h1>
+                <h1 id="并发的原子性可见性有序性">并发的原子性,可见性,有序性</h1>
 <p>volatile 这个关键字可能很多朋友都听说过，或许也都用过。在 Java 5 之前，它是一个备受争议的关键字，因为在程序中使用它往往会导致出人意料的结果。在 Java 5 之后，volatile 关键字才得以重获生机。</p>
 <p>volatile 关键字虽然从字面上理解起来比较简单，但是要用好不是一件容易的事情。由于 volatile 关键字是与 Java 的内存模型有关的，因此在讲述 volatile 关键之前，我们先来了解一下与内存模型相关的概念和知识，然后分析了 volatile 关键字的实现原理，最后给出了几个使用 volatile 关键字的场景。</p>
-<h2><span id="目录大纲">目录大纲</span></h2>
+<h2 id="目录大纲">目录大纲</h2>
 <ul>
 <li>内存模型的相关概念</li>
 <li>并发编程中的三个概念</li>
@@ -251,7 +251,7 @@
 <li>深入剖析 volatile 关键字</li>
 <li>使用 volatile 关键字的场景</li>
 </ul>
-<h2><span id="内存模型的相关概念">内存模型的相关概念</span></h2>
+<h2 id="内存模型的相关概念">内存模型的相关概念</h2>
 <p>大家都知道，计算机在执行程序时，每条指令都是在 CPU 中执行的，而执行指令过程中，势必涉及到数据的读取和写入。由于程序运行过程中的临时数据是存放在主存（物理内存）当中的，这时就存在一个问题，由于 CPU 执行速度很快，而从内存读取数据和向内存写入数据的过程跟 CPU 执行指令的速度比起来要慢的多，因此如果任何时候对数据的操作都要通过和内存的交互来进行，会大大降低指令执行的速度。因此在 CPU 里面就有了高速缓存。</p>
 <p>也就是，当程序在运行过程中，会将运算需要的数据从主存复制一份到 CPU 的高速缓存当中，那么 CPU 进行计算时就可以直接从它的高速缓存读取数据和向其中写入数据，当运算结束之后，再将高速缓存中的数据刷新到主存当中。举个简单的例子，比如下面的这段代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = i + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
@@ -269,7 +269,7 @@
 <p>但是上面的方式会有一个问题，由于在锁住总线期间，其他 CPU 无法访问内存，导致效率低下。</p>
 <p>所以就出现了缓存一致性协议。最出名的就是 Intel 的 MESI 协议，MESI 协议保证了每个缓存中使用的共享变量的副本是一致的。它核心的思想是：当 CPU 写数据时，如果发现操作的变量是共享变量，即在其他 CPU 中也存在该变量的副本，会发出信号通知其他 CPU 将该变量的缓存行置为无效状态，因此当其他 CPU 需要读取这个变量时，发现自己缓存中缓存该变量的缓存行是无效的，那么它就会从内存重新读取。</p>
 <p><img src="/2019/09/23/%E5%B9%B6%E5%8F%91%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7-%E5%8F%AF%E8%A7%81%E6%80%A7-%E6%9C%89%E5%BA%8F%E6%80%A7/1.jpg" alt="1"></p>
-<h2><span id="并发编程中的三个概念">并发编程中的三个概念</span></h2>
+<h2 id="并发编程中的三个概念">并发编程中的三个概念</h2>
 <p>在并发编程中，我们通常会遇到以下三个问题：原子性问题，可见性问题，有序性问题。我们先看具体看一下这三个概念：</p>
 <ol>
 <li>原子性</li>
@@ -312,7 +312,7 @@
 <p>上面代码中，由于语句 1 和语句 2 没有数据依赖性，因此可能会被重排序。假如发生了重排序，在线程 1 执行过程中先执行语句 2，而此是线程 2 会以为初始化工作已经完成，那么就会跳出 while 循环，去执行 doSomethingwithconfig (context) 方法，而此时 context 并没有被初始化，就会导致程序出错。</p>
 <p>从上面可以看出，指令重排序不会影响单个线程的执行，但是会影响到线程并发执行的正确性。</p>
 <p>也就是说，要想并发程序正确地执行，必须要保证原子性、可见性以及有序性。只要有一个没有被保证，就有可能会导致程序运行不正确。</p>
-<h2><span id="java-内存模型">Java 内存模型</span></h2>
+<h2 id="java-内存模型">Java 内存模型</h2>
 <p>在前面谈到了一些关于内存模型以及并发编程中可能会出现的一些问题。下面我们来看一下 Java 内存模型，研究一下 Java 内存模型为我们提供了哪些保证以及在 java 中提供了哪些方法和机制来让我们在进行多线程编程时能够保证程序执行的正确性。</p>
 <p>在 Java 虚拟机规范中试图定义一种 Java 内存模型（Java Memory Model，JMM）来屏蔽各个硬件平台和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。那么 Java 内存模型规定了哪些东西呢，它定义了程序中变量的访问规则，往大一点说是定义了程序执行的次序。注意，为了获得较好的执行性能，Java 内存模型并没有限制执行引擎使用处理器的寄存器或者高速缓存来提升指令执行速度，也没有限制编译器对指令进行重排序。也就是说，在 java 内存模型中，也会存在缓存一致性问题和指令重排序的问题。</p>
 <p>Java 内存模型规定所有的变量都是存在主存当中（类似于前面说的物理内存），每个线程都有自己的工作内存（类似于前面的高速缓存）。线程对变量的所有操作都必须在工作内存中进行，而不能直接对主存进行操作。并且每个线程不能访问其他线程的工作内存。</p>
@@ -364,7 +364,7 @@ volatile 变量规则：对一个变量的写操作先行发生于后面对这�
 <p>第二条规则也比较容易理解，也就是说无论在单线程中还是多线程中，同一个锁如果出于被锁定的状态，那么必须先对锁进行了释放操作，后面才能继续进行 lock 操作。</p>
 <p>第三条规则是一条比较重要的规则，也是后文将要重点讲述的内容。直观地解释就是，如果一个线程先去写一个变量，然后一个线程去进行读取，那么写入操作肯定会先行发生于读操作。</p>
 <p>第四条规则实际上就是体现 happens-before 原则具备传递性。</p>
-<h2><span id="参考文档">参考文档</span></h2>
+<h2 id="参考文档">参考文档</h2>
 <blockquote>
 <p>并发之原子性、可见性、有序性<br>
 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanghe/p/9206635.html">https://www.cnblogs.com/guanghe/p/9206635.html</a></p>
@@ -407,7 +407,7 @@ volatile 变量规则：对一个变量的写操作先行发生于后面对这�
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">并发的原子性,可见性,有序性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">目录大纲</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">内存模型的相关概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">并发编程中的三个概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Java 内存模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">参考文档</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%B9%B6%E5%8F%91%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7%E5%8F%AF%E8%A7%81%E6%80%A7%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">并发的原子性,可见性,有序性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%A7%E7%BA%B2"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">目录大纲</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">内存模型的相关概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">并发编程中的三个概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Java 内存模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">参考文档</span></a></li></ol></li></ol>
         
         </div>
       </aside>

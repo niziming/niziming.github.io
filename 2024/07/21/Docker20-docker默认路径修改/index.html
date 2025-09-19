@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,28 +240,28 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="docker-默认路径">docker 默认路径</span></h1>
-<h3><span id="1-停止并删除所有容器">1. 停止并删除所有容器</span></h3>
+                <h1 id="docker-默认路径">docker 默认路径</h1>
+<h3 id="1-停止并删除所有容器">1. 停止并删除所有容器</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止所有容器</span></span><br><span class="line"><span class="built_in">sudo</span> docker ps -a -q | xargs -r <span class="built_in">sudo</span> docker stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有容器</span></span><br><span class="line"><span class="built_in">sudo</span> docker ps -a -q | xargs -r <span class="built_in">sudo</span> docker <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
 <p><code>-r</code>选项确保<code>xargs</code>只在有输入时执行命令。</p>
-<h3><span id="2-删除所有镜像">2. 删除所有镜像</span></h3>
+<h3 id="2-删除所有镜像">2. 删除所有镜像</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除所有镜像</span></span><br><span class="line"><span class="built_in">sudo</span> docker images -q | xargs -r <span class="built_in">sudo</span> docker rmi -f</span><br></pre></td></tr></table></figure>
-<h3><span id="3-删除所有卷">3. 删除所有卷</span></h3>
+<h3 id="3-删除所有卷">3. 删除所有卷</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除所有卷</span></span><br><span class="line"><span class="built_in">sudo</span> docker volume <span class="built_in">ls</span> -q | xargs -r <span class="built_in">sudo</span> docker volume <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
-<h3><span id="4-删除所有网络">4. 删除所有网络</span></h3>
+<h3 id="4-删除所有网络">4. 删除所有网络</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除所有网络（保留默认网络）</span></span><br><span class="line"><span class="built_in">sudo</span> docker network <span class="built_in">ls</span> | grep -v <span class="string">&quot;bridge\|host\|none&quot;</span> | awk <span class="string">&#x27;&#123;if (NR!=1) print $1&#125;&#x27;</span> | xargs -r <span class="built_in">sudo</span> docker network <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
-<h3><span id="5-卸载docker软件包">5. 卸载Docker软件包</span></h3>
+<h3 id="5-卸载docker软件包">5. 卸载Docker软件包</h3>
 <p>根据你的Linux发行版，使用适当的包管理器命令卸载Docker：</p>
-<h4><span id="对于基于debian的系统如ubuntu">对于基于Debian的系统（如Ubuntu）：</span></h4>
+<h4 id="对于基于debian的系统如ubuntu">对于基于Debian的系统（如Ubuntu）：</h4>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> purge -<span class="keyword">y</span> docker-engine docker docker.io docker-<span class="keyword">ce</span> docker-<span class="keyword">ce</span>-cli</span><br><span class="line">sudo apt-<span class="built_in">get</span> autoremove -<span class="keyword">y</span> --purge docker-engine docker docker.io docker-<span class="keyword">ce</span></span><br></pre></td></tr></table></figure>
-<h4><span id="对于基于red-hat的系统如centos">对于基于Red Hat的系统（如CentOS）：</span></h4>
+<h4 id="对于基于red-hat的系统如centos">对于基于Red Hat的系统（如CentOS）：</h4>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">Copy code</span><br><span class="line">sudo yum <span class="built_in">remove</span> docker-<span class="keyword">ce</span> docker-<span class="keyword">ce</span>-cli containerd.io</span><br></pre></td></tr></table></figure>
-<h4><span id="对于基于fedora的系统">对于基于Fedora的系统：</span></h4>
+<h4 id="对于基于fedora的系统">对于基于Fedora的系统：</h4>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo dnf <span class="built_in">remove</span> docker-<span class="keyword">ce</span> docker-<span class="keyword">ce</span>-cli containerd.io</span><br></pre></td></tr></table></figure>
-<h3><span id="6-删除docker相关数据和配置文件">6. 删除Docker相关数据和配置文件</span></h3>
+<h3 id="6-删除docker相关数据和配置文件">6. 删除Docker相关数据和配置文件</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/lib/docker</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /etc/docker</span><br></pre></td></tr></table></figure>
 <p>通过这些步骤，你应该能够完全卸载Docker。</p>
-<h3><span id="安装docker">安装Docker：</span></h3>
+<h3 id="安装docker">安装Docker：</h3>
 <figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
 <p>方法1：确保Docker守护进程已停止<br>
 首先，确保Docker守护进程已完全停止：</p>
@@ -304,7 +304,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">docker 默认路径</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1. 停止并删除所有容器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2. 删除所有镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3. 删除所有卷</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4. 删除所有网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">5. 卸载Docker软件包</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.1.</span> <span class="toc-nav-text">对于基于Debian的系统（如Ubuntu）：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.2.</span> <span class="toc-nav-text">对于基于Red Hat的系统（如CentOS）：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.3.</span> <span class="toc-nav-text">对于基于Fedora的系统：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">6. 删除Docker相关数据和配置文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">安装Docker：</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#docker-%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">docker 默认路径</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%81%9C%E6%AD%A2%E5%B9%B6%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E5%AE%B9%E5%99%A8"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1. 停止并删除所有容器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E9%95%9C%E5%83%8F"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2. 删除所有镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E5%8D%B7"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3. 删除所有卷</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E7%BD%91%E7%BB%9C"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4. 删除所有网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%8D%B8%E8%BD%BDdocker%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">5. 卸载Docker软件包</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%9F%BA%E4%BA%8Edebian%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%A6%82ubuntu"><span class="toc-nav-number">1.0.5.1.</span> <span class="toc-nav-text">对于基于Debian的系统（如Ubuntu）：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%9F%BA%E4%BA%8Ered-hat%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%A6%82centos"><span class="toc-nav-number">1.0.5.2.</span> <span class="toc-nav-text">对于基于Red Hat的系统（如CentOS）：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%9F%BA%E4%BA%8Efedora%E7%9A%84%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.0.5.3.</span> <span class="toc-nav-text">对于基于Fedora的系统：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E5%88%A0%E9%99%A4docker%E7%9B%B8%E5%85%B3%E6%95%B0%E6%8D%AE%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">6. 删除Docker相关数据和配置文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85docker"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">安装Docker：</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

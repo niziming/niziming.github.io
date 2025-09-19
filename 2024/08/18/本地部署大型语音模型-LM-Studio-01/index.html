@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,7 +240,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="本地部署大型语音模型-lm-studio-01">本地部署大型语音模型-LM Studio-01</span></h1>
+                <h1 id="本地部署大型语音模型-lm-studio-01">本地部署大型语音模型-LM Studio-01</h1>
 <p>🚀 LM Studio 的亮点功能<br>
 🌍 模型的多样性与灵活性<br>
 借助 LM Studio，你可以轻松获取和管理当今最受欢迎的各种大型语言模型，包括：</p>
@@ -251,7 +251,7 @@
 <p>✨ StarCoder ：特别设计用于编程任务的模型，代码生成、补全的得力助手。</p>
 <p>💎 Gemma ：适用于翻译、对话生成等用途的通用型大型语言模型。</p>
 <p>以下是 LM Studio 的本地部署安装步骤：</p>
-<h3><span id="1-准备环境">1. 准备环境</span></h3>
+<h3 id="1-准备环境">1. 准备环境</h3>
 <ul>
 <li><strong>操作系统</strong>：确保你的系统是 Ubuntu 22.04 或 Windows 11。
 <ul>
@@ -260,7 +260,7 @@
 </li>
 <li><strong>硬件需求</strong>：建议使用至少 8GB RAM 和具备 CUDA 支持的 NVIDIA GPU，以便更好地运行。</li>
 </ul>
-<h3><span id="2-安装依赖">2. 安装依赖</span></h3>
+<h3 id="2-安装依赖">2. 安装依赖</h3>
 <p><strong>LM Studio 安装教程</strong></p>
 <ol>
 <li><strong>下载 LM Studio</strong> 访问官方网站 <a target="_blank" rel="noopener" href="http://www.lmstudio.ai">www.lmstudio.ai</a>并点击 “Download” 按钮，选择合适的操作系统（Windows 或 macOS）。</li>
@@ -279,7 +279,7 @@
 <li><strong>完成安装</strong> 安装完成后，您会看到 LM Studio 的 logo 和一条成功信息。 Congratulations! 您已经成功地安装了 LM Studio。</li>
 </ol>
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818102939824.png" alt="image-20240818102939824"></p>
-<h3><span id="3换源">3*换源</span></h3>
+<h3 id="3换源">3*换源</h3>
 <p>LM-Studio 安装目录</p>
 <p>C:\Users{username}\AppData\Local\LM-Studio</p>
 <p><a target="_blank" rel="noopener" href="http://xn--huggingface-xg3rp82t.co">修改huggingface.co</a></p>
@@ -291,7 +291,7 @@
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111258058.png" alt="image-20240818111258058"></p>
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111316625.png" alt="image-20240818111316625"></p>
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818111401184.png" alt="image-20240818111401184"></p>
-<h3><span id="4-lm-studio使用gpu">4 LM-Studio使用GPU</span></h3>
+<h3 id="4-lm-studio使用gpu">4 LM-Studio使用GPU</h3>
 <p>LM-Studio可以使用GPU加速计算，以下是一些基本的设置步骤：</p>
 <ol>
 <li>安装CUDA</li>
@@ -312,14 +312,14 @@ LM-Studio can accelerate computation using GPU, and here are the basic setup ste
 <li>Add <code>--use_gpu</code> option to model file</li>
 </ol>
 <p>Specific steps are as follows</p>
-<h3><span id="注意事项">注意事项</span></h3>
+<h3 id="注意事项">注意事项</h3>
 <ul>
 <li>确保你已正确配置 GPU 支持，以获得最佳性能。</li>
 <li>如果没有 GPU，可以配置 CPU 模式，但可能会显著降低性能。</li>
 </ul>
 <p>这样，你就可以在本地成功部署 LM Studio 了。</p>
-<h3><span id="遇到的问题及解决方案">遇到的问题及解决方案</span></h3>
-<h4><span id="lm-studio无法搜索以及下载失败的问题对策">LM-Studio无法搜索以及下载失败的问题对策</span></h4>
+<h3 id="遇到的问题及解决方案">遇到的问题及解决方案</h3>
+<h4 id="lm-studio无法搜索以及下载失败的问题对策">LM-Studio无法搜索以及下载失败的问题对策</h4>
 <ul>
 <li>更改下载配置</li>
 </ul>
@@ -339,7 +339,7 @@ LM-Studio can accelerate computation using GPU, and here are the basic setup ste
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818110028737.png" alt="image-20240818110028737"></p>
 <ul>
 <li>
-<h3><span id="更改下载地址">更改下载地址</span></h3>
+<h3 id="更改下载地址">更改下载地址</h3>
 </li>
 </ul>
 <p>用编辑器打开，我喜欢vscode</p>
@@ -352,7 +352,7 @@ LM-Studio can accelerate computation using GPU, and here are the basic setup ste
 <p>点击Resume就可以了</p>
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818110437238.png" alt="image-20240818110437238"></p>
 <p><img src="/2024/08/18/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-LM-Studio-01/image-20240818114016839.png" alt="image-20240818114016839"></p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/robinfoxnan/article/details/139336901">LM-Studio无法搜索以及下载失败的问题对策_lmstudio无法下载模型-CSDN博客</a></p>
 </blockquote>
@@ -394,7 +394,7 @@ LM-Studio can accelerate computation using GPU, and here are the basic setup ste
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">本地部署大型语音模型-LM Studio-01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1. 准备环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2. 安装依赖</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3*换源</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4 LM-Studio使用GPU</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">注意事项</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">遇到的问题及解决方案</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.6.1.</span> <span class="toc-nav-text">LM-Studio无法搜索以及下载失败的问题对策</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">更改下载地址</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E5%9E%8B%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B-lm-studio-01"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">本地部署大型语音模型-LM Studio-01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1. 准备环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2. 安装依赖</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3%E6%8D%A2%E6%BA%90"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3*换源</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-lm-studio%E4%BD%BF%E7%94%A8gpu"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4 LM-Studio使用GPU</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">注意事项</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">遇到的问题及解决方案</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#lm-studio%E6%97%A0%E6%B3%95%E6%90%9C%E7%B4%A2%E4%BB%A5%E5%8F%8A%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98%E5%AF%B9%E7%AD%96"><span class="toc-nav-number">1.0.6.1.</span> <span class="toc-nav-text">LM-Studio无法搜索以及下载失败的问题对策</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">更改下载地址</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

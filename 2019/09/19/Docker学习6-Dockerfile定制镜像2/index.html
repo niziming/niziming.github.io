@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,21 +242,21 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="docker学习6-dockerfile定制镜像2">Docker学习6-Dockerfile定制镜像2</span></h2>
+                <h2 id="docker学习6-dockerfile定制镜像2">Docker学习6-Dockerfile定制镜像2</h2>
 <ul>
 <li>Docker 停止一个运行的容器<br>
 <code>docker stop &lt;id&gt;</code></li>
 </ul>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7db</span>5c8940e5a        tomcat              <span class="string">&quot;catalina.sh run&quot;</span>        <span class="number">29</span> minutes ago       Up <span class="number">29</span> minutes               <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">8081</span>-&gt;<span class="number">8080</span>/tcp   dreamy_moore</span><br><span class="line">[root@MyCentOS]~<span class="comment"># docker rm 898</span></span><br><span class="line"><span class="number">898</span></span><br><span class="line">[root@MyCentOS]~<span class="comment"># docker stop 7db</span></span><br><span class="line"><span class="number">7db</span></span><br><span class="line">[root@MyCentOS]~<span class="comment">#</span></span><br></pre></td></tr></table></figure>
-<h2><span id="自己配置镜像">自己配置镜像</span></h2>
+<h2 id="自己配置镜像">自己配置镜像</h2>
 <p>这个是用户经常操作的目录所有把文件存放在这里,所有和docker相关的都在里面</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@MyCentOS]</span>~<span class="meta"># cd /usr/local</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span><span class="meta">#</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span><span class="meta"># mkdir docker</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span><span class="meta"># cd docker</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker<span class="meta"># mkdir tomcat</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker<span class="meta"># cd tomcat</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/tomcat<span class="meta"># vi Dockerfile</span></span><br></pre></td></tr></table></figure>
 <p>这个 Dockerfile 很简单，一共就两行。涉及到了两条指令，FROM 和 RUN</p>
-<h1><span id="dockerfile脚本开始">Dockerfile脚本开始</span></h1>
+<h1 id="dockerfile脚本开始">Dockerfile脚本开始</h1>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> tomcat</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&#x27;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#x27;</span> &gt; /usr/local/tomcat/webapps/ROOT/index.jsp</span></span><br><span class="line">~                                                                                        </span><br><span class="line">~                                                                                           </span><br><span class="line">~ </span><br></pre></td></tr></table></figure>
-<h2><span id="from指定基础镜像">FROM指定基础镜像</span></h2>
+<h2 id="from指定基础镜像">FROM指定基础镜像</h2>
 <p>所谓定制镜像，那一定是以一个镜像为基础，在其上进行定制。</p>
-<h2><span id="run-执行命令">RUN 执行命令</span></h2>
+<h2 id="run-执行命令">RUN 执行命令</h2>
 <p>RUN执行命令行命令的命令</p>
 <p>所有的Dockerfile第一行都必须是FROM命令,RUN 指令在定制镜像时是最常用的指令之一</p>
 <ul>
@@ -280,7 +280,7 @@
 <figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo docker run -it --rm tomcat bash</span><br><span class="line">root@14630cb2f338:/usr/local/tomcat<span class="comment"># ls -al</span></span><br><span class="line">total 160</span><br><span class="line">drwxr-sr-x<span class="number"> 1 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 .</span><br><span class="line">drwxrwsr-x<span class="number"> 1 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 15 </span>05:20 ..</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 19534 </span>Aug<span class="number"> 14 </span>22:27 BUILDING.txt</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 5407 </span>Aug<span class="number"> 14 </span>22:27 CONTRIBUTING.md</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 57011 </span>Aug<span class="number"> 14 </span>22:27 LICENSE</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 1726 </span>Aug<span class="number"> 14 </span>22:27 NOTICE</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 3255 </span>Aug<span class="number"> 14 </span>22:27 README.md</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root  <span class="number"> 7139 </span>Aug<span class="number"> 14 </span>22:27 RELEASE-NOTES</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>root root <span class="number"> 16262 </span>Aug<span class="number"> 14 </span>22:27 RUNNING.txt</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 bin</span><br><span class="line">drwxr-sr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:27 conf</span><br><span class="line">drwxr-sr-x<span class="number"> 2 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 include</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 lib</span><br><span class="line">drwxrwxrwx<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 logs</span><br><span class="line">drwxr-sr-x<span class="number"> 3 </span>root staff <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 native-jni-lib</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 22 </span>00:26 temp</span><br><span class="line">drwxr-xr-x<span class="number"> 7 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 webapps</span><br><span class="line">drwxrwxrwx<span class="number"> 2 </span>root root  <span class="number"> 4096 </span>Aug<span class="number"> 14 </span>22:24 work</span><br><span class="line"></span><br><span class="line">root@14630cb2f338:/usr/local/tomcat<span class="comment"># cd webapps/ROOT/</span></span><br><span class="line">root@14630cb2f338:/usr/local/tomcat/webapps/ROOT<span class="comment"># ls</span></span><br><span class="line">RELEASE-NOTES.txt  bg-button.png  bg-upper.png	tomcat-power.gif  tomcat.png</span><br><span class="line">WEB-INF		   bg-middle.png  favicon.ico	tomcat.css	  tomcat.svg</span><br><span class="line">asf-logo-wide.svg  bg-nav.png	  index.jsp	tomcat.gif</span><br><span class="line">root@14630cb2f338:/usr/local/tomcat/webapps/ROOT<span class="comment">#</span></span><br><span class="line"></span><br><span class="line">root@14630cb2f338:/usr/local/tomcat/webapps/ROOT<span class="comment"># pwd</span></span><br><span class="line">/usr/local/tomcat/webapps/ROOT</span><br></pre></td></tr></table></figure>
 <p>查看脚本</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]<span class="regexp">/usr/</span>local<span class="regexp">/docker/</span>tomcat<span class="comment"># cat Dockerfile</span></span><br><span class="line"><span class="comment">## Dockerfile脚本开始</span></span><br><span class="line">FROM tomcat</span><br><span class="line">RUN echo <span class="string">&#x27;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#x27;</span> &gt; <span class="regexp">/usr/</span>local<span class="regexp">/tomcat/</span>webapps<span class="regexp">/ROOT/i</span>ndex.html</span><br></pre></td></tr></table></figure>
-<h2><span id="构建镜像">构建镜像</span></h2>
+<h2 id="构建镜像">构建镜像</h2>
 <ul>
 <li>在 Dockerfile 文件所在目录执行：<br>
 <code>docker build [选项] &lt;上下文路径/URL/-&gt;</code><br>
@@ -310,7 +310,7 @@
 <li>查看index.html</li>
 </ul>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@8de78a99decd</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># cat index.html</span></span><br><span class="line">&lt;h1&gt;<span class="title class_">Hello</span>, <span class="title class_">Docker</span>!&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-<h2><span id="删除indexjsp">删除index.jsp</span></h2>
+<h2 id="删除indexjsp">删除index.jsp</h2>
 <p>但是我不想要index.jsp,所以需要在dockerfile脚本中删除ROOT下所有的东西这样,我暴露8081端口的时候只能看到index.html中的内容</p>
 <ul>
 <li>进入Dockerfile</li>
@@ -375,7 +375,7 @@ sudo docker image rm 12a</li>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker学习6-Dockerfile定制镜像2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">自己配置镜像</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number"></span> <span class="toc-nav-text">Dockerfile脚本开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">FROM指定基础镜像</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">RUN 执行命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">构建镜像</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">删除index.jsp</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker%E5%AD%A6%E4%B9%A06-dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker学习6-Dockerfile定制镜像2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%87%AA%E5%B7%B1%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">自己配置镜像</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dockerfile%E8%84%9A%E6%9C%AC%E5%BC%80%E5%A7%8B"><span class="toc-nav-number"></span> <span class="toc-nav-text">Dockerfile脚本开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#from%E6%8C%87%E5%AE%9A%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">FROM指定基础镜像</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#run-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">RUN 执行命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">构建镜像</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4indexjsp"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">删除index.jsp</span></a></li></ol>
         
         </div>
       </aside>

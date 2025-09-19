@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,7 +242,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="docker-compose-模板文件">Docker-Compose-模板文件</span></h1>
+                <h1 id="docker-compose-模板文件">Docker-Compose-模板文件</h1>
 <p>模板文件是使用 Compose 的核心，涉及到的指令关键字也比较多。但大家不用担心，这里面大部分指令跟 docker run 相关参数的含义都是类似的。</p>
 <p>默认的模板文件名称为 docker-compose.yml，格式为 YAML 格式。</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="params">services:</span></span><br><span class="line">  <span class="params">webapp:</span></span><br><span class="line">    <span class="params">image:</span> examples<span class="symbol">/web</span></span><br><span class="line">    <span class="params">ports:</span></span><br><span class="line">      <span class="operator">-</span> <span class="string">&quot;80:80&quot;</span></span><br><span class="line">    <span class="params">volumes:</span></span><br><span class="line">      <span class="operator">-</span> <span class="string">&quot;/data&quot;</span></span><br></pre></td></tr></table></figure>
@@ -340,7 +340,7 @@ tmpfs:</p>
 <li>/opt/secrets.env<br>
 环境变量文件中每一行必须符合格式，支持 # 开头的注释行。</li>
 </ul>
-<h1><span id="commonenv-set-development-environment">common.env: Set development environment</span></h1>
+<h1 id="commonenv-set-development-environment">common.env: Set development environment</h1>
 <p>PROG_ENV=development<br>
 #environment<br>
 设置环境变量。你可以使用数组或字典两种格式。</p>
@@ -531,7 +531,7 @@ image: &quot;mongo:${MONGO_VERSION}&quot;<br>
 如果执行 MONGO_VERSION=3.2 docker-compose up 则会启动一个 mongo:3.2 镜像的容器；如果执行 MONGO_VERSION=2.8 docker-compose up 则会启动一个 mongo:2.8 镜像的容器。</p>
 <p>若当前目录存在 .env 文件，执行 docker-compose 命令时将从该文件中读取变量。</p>
 <p>在当前目录新建 .env 文件并写入以下内容。</p>
-<h1><span id="支持-号注释">支持 # 号注释</span></h1>
+<h1 id="支持-号注释">支持 # 号注释</h1>
 <p>MONGO_VERSION=3.6<br>
 执行 docker-compose up 则会启动一个 mongo:3.6 镜像的容器。</p>
 
@@ -572,7 +572,7 @@ image: &quot;mongo:${MONGO_VERSION}&quot;<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker-Compose-模板文件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">common.env: Set development environment</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">支持 # 号注释</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#docker-compose-%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker-Compose-模板文件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#commonenv-set-development-environment"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">common.env: Set development environment</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%94%AF%E6%8C%81-%E5%8F%B7%E6%B3%A8%E9%87%8A"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">支持 # 号注释</span></a></li></ol>
         
         </div>
       </aside>

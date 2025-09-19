@@ -164,10 +164,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -179,11 +175,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -238,7 +238,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="nexus学习00-nexus简介与安装">Nexus学习00-Nexus简介与安装</span></h1>
+                <h1 id="nexus学习00-nexus简介与安装">Nexus学习00-Nexus简介与安装</h1>
 <p>Nexus 是一个强大的仓库管理器，极大地简化了内部仓库的维护和外部仓库的访问。<br>
 2016 年 4 月 6 日 Nexus 3.0 版本发布，相较 2.x 版本有了很大的改变：</p>
 <ul>
@@ -248,29 +248,29 @@
 <li>增加对 Docker, NeGet, npm, Bower 的支持。</li>
 <li>提供新的管理接口，以及增强对自动任务的管理。</li>
 </ul>
-<h2><span id="docker-安装nexus3">docker 安装nexus3</span></h2>
+<h2 id="docker-安装nexus3">docker 安装nexus3</h2>
 <p>使用<code>docker pull sonatype/nexus3</code>命令拉去nexus3</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]<span class="operator">/</span>usr<span class="operator">/</span>local<span class="operator">/</span>docker<span class="operator">/</span>gitlab<span class="comment"># docker pull sonatype/nexus3</span></span><br><span class="line">Using default <span class="params">tag:</span> latest</span><br><span class="line"><span class="params">latest:</span> Pulling from sonatype<span class="symbol">/nexus3</span></span><br><span class="line"><span class="params">c65691897a4d:</span> Downloading [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">=</span><span class="operator">&gt;</span>                                   ]     <span class="number">22</span>MB<span class="symbol">/71.03MB</span></span><br><span class="line"><span class="number">641</span><span class="params">d7cc5cbc4:</span> Download complete </span><br><span class="line"><span class="params">c508b13320cd:</span> Download complete </span><br><span class="line"><span class="number">79</span><span class="params">e3bf9d3132:</span> Downloading [<span class="operator">==</span><span class="operator">==</span><span class="operator">==</span><span class="operator">=</span><span class="operator">&gt;</span>                                           ]  <span class="number">31.63</span>MB<span class="operator">/</span><span class="number">212.2</span>MB</span><br></pre></td></tr></table></figure>
 <p>查看latest版本号</p>
 <figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@MyCentOS]/usr/local/docker/nexus<span class="comment"># docker images</span></span><br><span class="line">REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">sonatype/nexus3          latest              8eb898be2a53       <span class="number"> 12 </span>days ago         611MB</span><br><span class="line">myproject                latest              98cdee09487c       <span class="number"> 4 </span>weeks ago         506MB</span><br><span class="line">mydocker                 latest              4691fd38efff       <span class="number"> 4 </span>weeks ago         506MB</span><br><span class="line">mysql                    latest              b8fd9553f1f0       <span class="number"> 5 </span>weeks ago         445MB</span><br><span class="line">1.16.1                   latest              97423576f288       <span class="number"> 7 </span>weeks ago         126MB</span><br><span class="line">tomcat                   latest              96c4e536d0eb       <span class="number"> 2 </span>months ago        506MB</span><br><span class="line">centos                   latest              67fa590cfc1c       <span class="number"> 2 </span>months ago        202MB</span><br><span class="line">nginx                    1.16.1              41e97992fcd8       <span class="number"> 2 </span>months ago        126MB</span><br><span class="line">ubuntu                   16.04               5e13f8dd4c1a       <span class="number"> 3 </span>months ago        120MB</span><br><span class="line">mysql                    5.7.22              6bb891430fb6       <span class="number"> 15 </span>months ago       372MB</span><br><span class="line">twang2218/gitlab-ce-zh   10.5                90543a7ab79b       <span class="number"> 15 </span>months ago       1.58GB</span><br></pre></td></tr></table></figure>
-<h2><span id="docker-composeyml">docker-compose.yml</span></h2>
+<h2 id="docker-composeyml">docker-compose.yml</h2>
 <figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">version</span><span class="punctuation">:</span> <span class="string">&#x27;3.1&#x27;</span></span><br><span class="line"><span class="attribute">services</span><span class="punctuation">:</span></span><br><span class="line">  <span class="attribute">nexus</span><span class="punctuation">:</span></span><br><span class="line">    <span class="attribute">restart</span><span class="punctuation">:</span> <span class="string">always</span></span><br><span class="line">    <span class="attribute">image</span><span class="punctuation">:</span> <span class="string">sonatype/nexus3</span></span><br><span class="line">    <span class="attribute">container_name</span><span class="punctuation">:</span> <span class="string">nexus</span></span><br><span class="line">    <span class="attribute">ports</span><span class="punctuation">:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">8082:8081</span></span><br><span class="line">    <span class="attribute">volumes</span><span class="punctuation">:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/usr/local/docker/nexus/data:/nexus-data</span></span><br><span class="line">~                                                </span><br></pre></td></tr></table></figure>
-<h3><span id="挂在数据权限修改">挂在数据权限修改</span></h3>
+<h3 id="挂在数据权限修改">挂在数据权限修改</h3>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># mkdir data</span></span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># ls</span></span><br><span class="line">data  docker-compose.yml</span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># chmod 777 data </span></span><br></pre></td></tr></table></figure>
-<h2><span id="启动nexus">启动Nexus</span></h2>
+<h2 id="启动nexus">启动Nexus</h2>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># docker-compose up -d</span></span><br><span class="line">Creating network <span class="string">&quot;nexus_default&quot;</span> <span class="keyword">with</span> the <span class="literal">default</span> driver</span><br><span class="line">Creating nexus ... done</span><br><span class="line">[root<span class="symbol">@MyCentOS]</span>/usr/<span class="keyword">local</span>/docker/nexus<span class="meta"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line"><span class="number">5e897</span>f337f34        sonatype/nexus3     <span class="string">&quot;sh -c $&#123;SONATYPE_DI…&quot;</span>   <span class="number">30</span> seconds ago      Up <span class="number">2</span> seconds        <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8082</span>-&gt;<span class="number">8081</span>/tcp   nexus</span><br></pre></td></tr></table></figure>
-<h2><span id="登陆nexus">登陆Nexus</span></h2>
+<h2 id="登陆nexus">登陆Nexus</h2>
 <p>查看admin密码</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">MyCentOS</span>]/usr/local/docker/nexus<span class="comment"># docker exec -it 09b bash</span></span><br><span class="line">bash<span class="literal">-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="built_in">cd</span> /nexus<span class="literal">-data</span>/</span><br><span class="line">bash<span class="literal">-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">admin.password	db	       generated<span class="literal">-bundles</span>  karaf.pid  log     <span class="built_in">restore-from</span><span class="literal">-backup</span></span><br><span class="line">blobs		elasticsearch  instances	  keystores  orient  tmp</span><br><span class="line">cache		etc	       javaprefs	  lock	     port</span><br><span class="line">bash<span class="literal">-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="built_in">cat</span> admin.password </span><br><span class="line"><span class="number">75</span>c4c214<span class="literal">-cdd2-48d0-845c-03c28da34abfbash-4</span>.<span class="number">4</span><span class="variable">$</span> <span class="comment">#  </span></span><br></pre></td></tr></table></figure>
-<h2><span id="查看结果">查看结果</span></h2>
+<h2 id="查看结果">查看结果</h2>
 <p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/1.png" alt></p>
-<h3><span id="查看设置">查看设置</span></h3>
+<h3 id="查看设置">查看设置</h3>
 <p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/2.png" alt></p>
-<h3><span id="用户界面">用户界面</span></h3>
+<h3 id="用户界面">用户界面</h3>
 <p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/3.png" alt></p>
-<h3><span id="admin用户界面">admin用户界面</span></h3>
+<h3 id="admin用户界面">admin用户界面</h3>
 <p><img src="/2019/10/22/Nexus%E5%AD%A6%E4%B9%A01-Nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/4.png" alt></p>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote></blockquote>
 
 
@@ -310,7 +310,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nexus学习00-Nexus简介与安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">docker 安装nexus3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">docker-compose.yml</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">挂在数据权限修改</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">启动Nexus</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">登陆Nexus</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">查看结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">查看设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">用户界面</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">admin用户界面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#nexus%E5%AD%A6%E4%B9%A000-nexus%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nexus学习00-Nexus简介与安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker-%E5%AE%89%E8%A3%85nexus3"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">docker 安装nexus3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker-composeyml"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">docker-compose.yml</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%82%E5%9C%A8%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90%E4%BF%AE%E6%94%B9"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">挂在数据权限修改</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8nexus"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">启动Nexus</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%99%BB%E9%99%86nexus"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">登陆Nexus</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%BB%93%E6%9E%9C"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">查看结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">查看设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">用户界面</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#admin%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">admin用户界面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,10 +240,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="pve安装windows10镜像">pve安装windows10镜像</span></h1>
-<h2><span id="简介">简介</span></h2>
+                <h1 id="pve安装windows10镜像">pve安装windows10镜像</h1>
+<h2 id="简介">简介</h2>
 <p>第一章我们下载了windows 精简版, 这里将使用pve安装win10精简版</p>
-<h2><span id="准备工作">准备工作</span></h2>
+<h2 id="准备工作">准备工作</h2>
 <ul>
 <li>下载win10 安装镜像</li>
 <li>将镜像上传至pve</li>
@@ -260,8 +260,8 @@
 </ul>
 </li>
 </ul>
-<h2><span id="开始">开始</span></h2>
-<h3><span id="选择三星这块磁盘镜像擦除">选择三星这块磁盘镜像擦除</span></h3>
+<h2 id="开始">开始</h2>
+<h3 id="选择三星这块磁盘镜像擦除">选择三星这块磁盘镜像擦除</h3>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402094806454.png" alt="image-20230402094806454"></p>
 <ul>
 <li>销毁</li>
@@ -278,13 +278,13 @@
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095325044.png" alt="image-20230402095325044"></p>
 </li>
 </ul>
-<h3><span id="上传镜像">上传镜像</span></h3>
+<h3 id="上传镜像">上传镜像</h3>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095429545.png" alt="image-20230402095429545"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095435474.png" alt="image-20230402095435474"></p>
 <p>精简版win10仅有1.5GB</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095449287.png" alt="image-20230402095449287"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402095454853.png" alt="image-20230402095454853"></p>
-<h3><span id="添加一台虚拟机">添加一台虚拟机</span></h3>
+<h3 id="添加一台虚拟机">添加一台虚拟机</h3>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402101728476.png" alt="image-20230402101728476"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402101735310.png" alt="image-20230402101735310"></p>
 <p>选择刚才上传的IOS镜像</p>
@@ -328,7 +328,7 @@
 <p>可以看到精简版按照后系统盘大小14gb</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402113335134.png" alt="image-20230402113335134"></p>
 <p>然后按照自己需求配置下windows初始设置</p>
-<h3><span id="驱动安装及网络设置">驱动安装及网络设置</span></h3>
+<h3 id="驱动安装及网络设置">驱动安装及网络设置</h3>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402114936293.png" alt="image-20230402114936293"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115019200.png" alt="image-20230402115019200"></p>
 <p>点击下一步安装<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115032574.png" alt="image-20230402115032574"></p>
@@ -340,25 +340,25 @@
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115223414.png" alt="image-20230402115223414"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115331900.png" alt="image-20230402115331900"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402115451807.png" alt="image-20230402115451807"></p>
-<h3><span id="启动引导切换移除cddvd驱动">启动引导切换,移除cd/dvd驱动</span></h3>
+<h3 id="启动引导切换移除cddvd驱动">启动引导切换,移除cd/dvd驱动</h3>
 <p>移除cd/dvd驱动</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402120922825.png" alt="image-20230402120922825"></p>
 <p>启动引导改为C盘启动<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402120939152.png" alt="image-20230402120939152"></p>
-<h3><span id="备份">备份<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121001708.png" alt="image-20230402121001708"></span></h3>
+<h3 id="备份">备份<img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121001708.png" alt="image-20230402121001708"></h3>
 <p>下章将探索如何实现硬件直通及独立显示器和鼠标键盘</p>
-<h3><span id="转换模板">转换模板</span></h3>
+<h3 id="转换模板">转换模板</h3>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121310429.png" alt="image-20230402121310429"></p>
-<h3><span id="克隆">克隆</span></h3>
+<h3 id="克隆">克隆</h3>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121331706.png" alt="image-20230402121331706"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121357074.png" alt="image-20230402121357074"></p>
-<h3><span id="安装远程桌面">安装远程桌面</span></h3>
+<h3 id="安装远程桌面">安装远程桌面</h3>
 <p>启动虚拟机</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121414378.png" alt="image-20230402121414378"></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121432388.png" alt="image-20230402121432388"></p>
 <p>下载安装 todesk</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-03-pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F/image-20230402121819905.png" alt="image-20230402121819905"></p>
 <p>这样就算人没在家也可以控制那台虚拟机了</p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv18974318">PVE 安装 windows10 - 哔哩哔哩 (bilibili.com)</a></p>
 </blockquote>
@@ -400,7 +400,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pve安装windows10镜像</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">选择三星这块磁盘镜像擦除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">上传镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">添加一台虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">驱动安装及网络设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">启动引导切换,移除cd&#x2F;dvd驱动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">备份</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">转换模板</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">克隆</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">安装远程桌面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pve%E5%AE%89%E8%A3%85windows10%E9%95%9C%E5%83%8F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pve安装windows10镜像</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%89%E6%8B%A9%E4%B8%89%E6%98%9F%E8%BF%99%E5%9D%97%E7%A3%81%E7%9B%98%E9%95%9C%E5%83%8F%E6%93%A6%E9%99%A4"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">选择三星这块磁盘镜像擦除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">上传镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B7%BB%E5%8A%A0%E4%B8%80%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">添加一台虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">驱动安装及网络设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC%E5%88%87%E6%8D%A2%E7%A7%BB%E9%99%A4cddvd%E9%A9%B1%E5%8A%A8"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">启动引导切换,移除cd&#x2F;dvd驱动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%87%E4%BB%BD"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">备份</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%A8%A1%E6%9D%BF"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">转换模板</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%8B%E9%9A%86"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">克隆</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">安装远程桌面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

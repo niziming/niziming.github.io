@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,12 +242,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="windows10-subsystem-for-linux-03-c盘空间转移">windows10-subsystem-for-linux-03-C盘空间转移</span></h1>
+                <h1 id="windows10-subsystem-for-linux-03-c盘空间转移">windows10-subsystem-for-linux-03-C盘空间转移</h1>
 <p>下载安装的WLS默认在C盘，如果C盘重装就会导致WLS直接受影响，同时因为一般C盘空间有限，如果长期使用，可能会导致系统速度越来越慢，因此选择将WLS迁移到其他盘，我选择的是电脑自带的固态硬盘。</p>
-<h2><span id="简介">简介</span></h2>
-<h3><span id="win10-mklink">Win10 mklink</span></h3>
+<h2 id="简介">简介</h2>
+<h3 id="win10-mklink">Win10 mklink</h3>
 <p><strong>mklink 命令是 Windows 自带的命令</strong>，除了在 Win10 系统下使用，在比较早的系统比如 Win 7、Win Vista、Win 8 和 Win 8.1 也都是可以使用的。不过在除了 Win 10 之外的系统里使用，是必须使用管理员权限的，否则会提示“你没有足够的权限执行此操作。”，当然经过我验证，Win 10 有时候也是需要管理员权限的。</p>
-<h3><span id="lxrunoffline">LxRunOffline</span></h3>
+<h3 id="lxrunoffline">LxRunOffline</h3>
 <p>A full-featured utility for managing <em>Windows Subsystem for Linux (WSL)</em>.</p>
 <ul>
 <li>Install any Linux distro to any directory on your computer.</li>
@@ -259,7 +259,7 @@
 <li>Export configuration to an XML file and import from the file.</li>
 <li>Export an installation to a tar file.</li>
 </ul>
-<h2><span id="准备工作">准备工作</span></h2>
+<h2 id="准备工作">准备工作</h2>
 <ul>
 <li>
 <p>Win10 mklink命令</p>
@@ -271,33 +271,33 @@
 <p>wsl --shutdown 关闭所有子系统</p>
 </li>
 </ul>
-<h2><span id="使用-mklink-连接本地磁盘">使用 mklink 连接本地磁盘</span></h2>
+<h2 id="使用-mklink-连接本地磁盘">使用 mklink 连接本地磁盘</h2>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MKLINK [[/D] | [/H] | [/J]] Link Target</span><br><span class="line">        /D        创建目录符号链接。默认为文件符号链接。</span><br><span class="line">        /H        创建硬链接而非符号链接。</span><br><span class="line">        /J        创建目录联接。</span><br><span class="line">        Link      指定新的符号链接名称。</span><br><span class="line">        Target    指定新链接引用的路径(相对或绝对)。</span><br></pre></td></tr></table></figure>
 <p>这个地方我们使用 /J创建一个目录联接 示例:</p>
 <p><code>mklink /J &quot;C:\Users\Jermaine\AppData\Local\Packages&quot; &quot;E:\Users\Jermaine\AppData\Local\Packages&quot;</code></p>
 <p><code>mklink /D &quot;C:\Users\Jermaine\AppData\Local\Packages&quot; &quot;E:\Users\Jermaine\AppData\Local\Packages&quot;</code></p>
-<h3><span id="windows-应用默认存储位置">windows 应用默认存储位置</span></h3>
+<h3 id="windows-应用默认存储位置">windows 应用默认存储位置</h3>
 <p>C:\Users\Jermaine\AppData &gt; E:\Users\Jermaine\AppData</p>
 <p>将地下的文件直接复制到E盘相同路径</p>
 <p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228170109745.png" alt="image-20231228170109745"></p>
-<h3><span id="wls迁移">WLS迁移</span></h3>
-<h4><span id="下载lxrunoffline">下载LxRunOffline</span></h4>
+<h3 id="wls迁移">WLS迁移</h3>
+<h4 id="下载lxrunoffline">下载LxRunOffline</h4>
 <p><a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline/releases">Releases · DDoSolitary/LxRunOffline (github.com)</a></p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Supported actions are:</span><br><span class="line">    <span class="keyword">l</span>, <span class="keyword">list</span>            <span class="keyword">List</span> all installed distributions.</span><br><span class="line">    gd, get-default    Get the default distribution, <span class="keyword">which</span> is used <span class="keyword">by</span> bash.exe.</span><br><span class="line">    sd, <span class="keyword">set</span>-default    <span class="keyword">Set</span> the default distribution, <span class="keyword">which</span> is used <span class="keyword">by</span> bash.exe.</span><br><span class="line">    i, install         Install a new distribution.</span><br><span class="line">    ui, uninstall      Uninstall a distribution.</span><br><span class="line">    rg, register       Register <span class="keyword">an</span> existing installation directory.</span><br><span class="line">    ur, unregister     Unregister a distribution but not delete the installation directory.</span><br><span class="line">    <span class="keyword">m</span>, <span class="keyword">move</span>            <span class="keyword">Move</span> a distribution to a new directory.</span><br><span class="line">    <span class="keyword">d</span>, duplicate       Duplicate <span class="keyword">an</span> existing distribution <span class="keyword">in</span> a new directory.</span><br><span class="line">    <span class="keyword">e</span>, export          Export a distribution&#x27;s filesystem to a .tar.gz <span class="keyword">file</span>, <span class="keyword">which</span> can be imported <span class="keyword">by</span> the <span class="string">&quot;install&quot;</span> command.</span><br><span class="line">    r, <span class="keyword">run</span>             <span class="keyword">Run</span> a command <span class="keyword">in</span> a distribution.</span><br><span class="line">    <span class="keyword">di</span>, get-<span class="keyword">dir</span>        Get the installation directory of a distribution.</span><br><span class="line">    gv, get-<span class="keyword">version</span>    Get the filesystem <span class="keyword">version</span> of a distribution.</span><br><span class="line">    <span class="keyword">ge</span>, get-env        Get the default environment variables of a distribution.</span><br><span class="line">    <span class="keyword">se</span>, <span class="keyword">set</span>-env        <span class="keyword">Set</span> the default environment variables of a distribution.</span><br><span class="line">    ae, add-env        Add to the default environment variables of a distribution.</span><br><span class="line">    re, remove-env     Remove from the default environment variables of a distribution.</span><br><span class="line">    gu, get-uid        Get the UID of the default user of a distribution.</span><br><span class="line">    <span class="keyword">su</span>, <span class="keyword">set</span>-uid        <span class="keyword">Set</span> the UID of the default user of a distribution.</span><br><span class="line">    gk, get-kernelcmd  Get the default kernel command <span class="keyword">line</span> of a distribution.</span><br><span class="line">    sk, <span class="keyword">set</span>-kernelcmd  <span class="keyword">Set</span> the default kernel command <span class="keyword">line</span> of a distribution.</span><br><span class="line">    gf, get-flags      Get some flags of a distribution. See https:<span class="comment">//docs.microsoft.com/en-us/previous-versions/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags for details.</span></span><br><span class="line">    sf, <span class="keyword">set</span>-flags      <span class="keyword">Set</span> some flags of a distribution. See https:<span class="comment">//docs.microsoft.com/en-us/previous-versions/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags for details.</span></span><br><span class="line">    s, shortcut        Create a shortcut to launch a distribution.</span><br><span class="line">    ec, export-config  Export configuration of a distribution to <span class="keyword">an</span> XML <span class="keyword">file</span>.</span><br><span class="line">    ic, import-config  Import configuration of a distribution from <span class="keyword">an</span> XML <span class="keyword">file</span>.</span><br><span class="line">    sm, summary        Get general information of a distribution.</span><br><span class="line">    <span class="keyword">version</span>            Get <span class="keyword">version</span> information <span class="keyword">about</span> this LxRunOffline.exe.</span><br></pre></td></tr></table></figure>
-<h4><span id="查看子系统安装位置">查看子系统安装位置</span></h4>
+<h4 id="查看子系统安装位置">查看子系统安装位置</h4>
 <p>使用<code>lxrunoffline move</code>进行迁移 ， -n 指定你要迁移的系统名 ，-d 指定你新系统的迁移路径</p>
 <p><code>.\LxRunOffline.exe move -n Ubuntu-22.04 -d E:\Users\Jermaine\AppData\wsl</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Program Files\LxRunOffline-v3.5.0-msvc_2&gt; .\LxRunOffline.exe move -n Ubuntu-22.04 -d E:\Users\Jermaine\AppData\wsl</span><br><span class="line">PS D:\Program Files\LxRunOffline-v3.5.0-msvc_2&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>迁移结果</p>
 <p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228175747428.png" alt="image-20231228175747428"></p>
 <p><code>LxRunOffline.exe get-dir</code>查询系统目录，查看是否迁移成功</p>
-<h2><span id="问题">问题</span></h2>
+<h2 id="问题">问题</h2>
 <p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228180159205.png" alt="image-20231228180159205"></p>
 <p>是因为文件没有权限</p>
 <p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228180402759.png" alt="image-20231228180402759"></p>
 <p>授权后再打开</p>
 <p><img src="/2023/12/29/windows10-subsystem-for-linux-03-C%E7%9B%98%E7%A9%BA%E9%97%B4%E8%BD%AC%E7%A7%BB/image-20231228180351899.png" alt="image-20231228180351899"></p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/659354569">Win10 mklink命令怎么用，mklink使用教程 - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145753804">Win10子系统（linux）安装及迁移 - 知乎 (zhihu.com)</a></p>

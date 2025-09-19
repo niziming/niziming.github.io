@@ -170,10 +170,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -185,11 +181,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -244,10 +244,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="springcloud微服务系列04-alibaba架构02-nacos-03-gateway作为服务网关">SpringCloud微服务系列04-Alibaba架构02-Nacos-03-gateway作为服务网关</span></h1>
+                <h1 id="springcloud微服务系列04-alibaba架构02-nacos-03-gateway作为服务网关">SpringCloud微服务系列04-Alibaba架构02-Nacos-03-gateway作为服务网关</h1>
 <p>Spring Cloud Gateway是Spring Cloud官方推出的第二代网关框架，取代Zuul网关。网关作为流量的，在微服务系统中有着非常作用，网关常见的功能有路由转发、权限校验、限流控制等作用。</p>
 <p>将Gateway整合进nacos项目</p>
-<h2><span id="准备工作">准备工作</span></h2>
+<h2 id="准备工作">准备工作</h2>
 <ul>
 <li>Nacos服务</li>
 <li>前面章节的provider项目</li>
@@ -255,7 +255,7 @@
 </ul>
 <p>目录结构如下</p>
 <p><img src="/2021/12/02/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8402-Nacos-03-gateway%E4%BD%9C%E4%B8%BA%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3/image-20211202133713422.png" alt="image-20211202133713422"></p>
-<h3><span id="快速开始">快速开始</span></h3>
+<h3 id="快速开始">快速开始</h3>
 <p>nacos-gateway 项目配置 xml</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--nacos--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--config--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Spring-Cloud-Alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.2.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--gateway 网关--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>bootstrap.yml</p>
@@ -264,7 +264,7 @@
 <p><img src="/2021/12/02/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-Alibaba%E6%9E%B6%E6%9E%8402-Nacos-03-gateway%E4%BD%9C%E4%B8%BA%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3/image-20211202133926266.png" alt="image-20211202133926266"></p>
 <p>启动类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.zm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.client.discovery.EnableDiscoveryClient;</span><br><span class="line"></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NacosGatewayApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(NacosGatewayApp.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="测试">测试</span></h3>
+<h3 id="测试">测试</h3>
 <p>启动</p>
 <p>NacosGatewayApp :8717/<br>
 NacosProviderApp :8714/</p>
@@ -277,7 +277,7 @@ NacosProviderApp :8714/</p>
 <p>gateway的日志显示</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2021</span><span class="number">-12</span><span class="number">-02</span> <span class="number">13</span>:<span class="number">43</span>:<span class="number">21.579</span>  <span class="keyword">INFO</span> <span class="number">2128</span> <span class="comment">--- [ctor-http-nio-2] c.n.l.DynamicServerListLoadBalancer      : DynamicServerListLoadBalancer for client nacos-provider-8714 initialized: DynamicServerListLoadBalancer:&#123;NFLoadBalancer:name=nacos-provider-8714,current list of Servers=[192.168.13.14:8714],Load balancer stats=Zone stats: &#123;unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]</span></span><br><span class="line">&#125;,<span class="keyword">Server</span> stats: [[<span class="keyword">Server</span>:<span class="number">192.168</span><span class="number">.13</span><span class="number">.14</span>:<span class="number">8714</span>;	<span class="type">Zone</span>:<span class="type">UNKNOWN</span>;	Total Requests:<span class="number">0</span>;	Successive <span class="keyword">connection</span> failure:<span class="number">0</span>;	Total blackout seconds:<span class="number">0</span>;	Last <span class="keyword">connection</span> made:Thu Jan <span class="number">01</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">1970</span>;	First <span class="keyword">connection</span> made: Thu Jan <span class="number">01</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">1970</span>;	Active Connections:<span class="number">0</span>;	total failure count <span class="keyword">in</span> last (<span class="number">1000</span>) msecs:<span class="number">0</span>;	average resp <span class="type">time</span>:<span class="number">0.0</span>;	<span class="number">90</span> percentile resp <span class="type">time</span>:<span class="number">0.0</span>;	<span class="number">95</span> percentile resp <span class="type">time</span>:<span class="number">0.0</span>;	min resp <span class="type">time</span>:<span class="number">0.0</span>;	max resp <span class="type">time</span>:<span class="number">0.0</span>;	stddev resp <span class="type">time</span>:<span class="number">0.0</span>]</span><br><span class="line">]&#125;ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@<span class="number">1</span>a4fb33c</span><br><span class="line"><span class="number">2021</span><span class="number">-12</span><span class="number">-02</span> <span class="number">13</span>:<span class="number">43</span>:<span class="number">22.572</span>  <span class="keyword">INFO</span> <span class="number">2128</span> <span class="comment">--- [erListUpdater-0] c.netflix.config.ChainedDynamicProperty  : Flipping property: nacos-provider-8714.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>路由成功</p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.fangzhipeng.com/springcloud/2021/04/03/sc-2020-gateway.html">https://www.fangzhipeng.com/springcloud/2021/04/03/sc-2020-gateway.html</a></p>
 <p>项目所有的文件</p>
@@ -321,7 +321,7 @@ NacosProviderApp :8714/</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SpringCloud微服务系列04-Alibaba架构02-Nacos-03-gateway作为服务网关</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">准备工作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">快速开始</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">测试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#springcloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%9704-alibaba%E6%9E%B6%E6%9E%8402-nacos-03-gateway%E4%BD%9C%E4%B8%BA%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SpringCloud微服务系列04-Alibaba架构02-Nacos-03-gateway作为服务网关</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">准备工作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">快速开始</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">测试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

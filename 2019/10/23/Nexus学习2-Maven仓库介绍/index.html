@@ -164,10 +164,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -179,11 +175,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -238,8 +238,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="nexus学习2-maven仓库介绍">Nexus学习2-Maven仓库介绍</span></h1>
-<h2><span id="代理仓库proxy-repository">代理仓库（Proxy Repository）</span></h2>
+                <h1 id="nexus学习2-maven仓库介绍">Nexus学习2-Maven仓库介绍</h1>
+<h2 id="代理仓库proxy-repository">代理仓库（Proxy Repository）</h2>
 <p>-意为第三方仓库，如：<br>
 -maven-central<br>
 -nuget.org-proxy<br>
@@ -250,7 +250,7 @@
 -布局策略（Layout Policy）：<br>
 -Strict：严格<br>
 -Permissive：宽松</p>
-<h2><span id="宿主仓库hosted-repository">宿主仓库（Hosted Repository）</span></h2>
+<h2 id="宿主仓库hosted-repository">宿主仓库（Hosted Repository）</h2>
 <p>存储本地上传的组件和资源的，如：</p>
 <ul>
 <li>
@@ -273,14 +273,14 @@
 <p>Read-Only：只读</p>
 </li>
 </ul>
-<h2><span id="仓库组repository-group">仓库组（Repository Group）</span></h2>
+<h2 id="仓库组repository-group">仓库组（Repository Group）</h2>
 <p>通常包含了多个代理仓库和宿主仓库，在项目中只要引入仓库组就可以下载到代理仓库和宿主仓库中的包，如：</p>
 <ul>
 <li>maven-public</li>
 <li>nuget-group</li>
 </ul>
 <p><img src="/2019/10/23/Nexus%E5%AD%A6%E4%B9%A02-Maven%E4%BB%93%E5%BA%93%E4%BB%8B%E7%BB%8D/1.png" alt="1"></p>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.funtl.com/zh/nexus/%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-Maven-%E7%A7%81%E6%9C%8D.html#%E9%85%8D%E7%BD%AE%E8%AE%A4%E8%AF%81%E4%BF%A1%E6%81%AF">https://www.funtl.com/zh/nexus/在项目中使用-Maven-私服.html#配置认证信息</a><br>
 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av29384041/?p=53&amp;t=106">https://www.bilibili.com/video/av29384041/?p=53&amp;t=106</a></p>
@@ -323,7 +323,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nexus学习2-Maven仓库介绍</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">代理仓库（Proxy Repository）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">宿主仓库（Hosted Repository）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">仓库组（Repository Group）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#nexus%E5%AD%A6%E4%B9%A02-maven%E4%BB%93%E5%BA%93%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nexus学习2-Maven仓库介绍</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%A3%E7%90%86%E4%BB%93%E5%BA%93proxy-repository"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">代理仓库（Proxy Repository）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%BF%E4%B8%BB%E4%BB%93%E5%BA%93hosted-repository"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">宿主仓库（Hosted Repository）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%93%E5%BA%93%E7%BB%84repository-group"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">仓库组（Repository Group）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,7 +240,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="安装mysql">安装mysql</span></h1>
+                <h1 id="安装mysql">安装mysql</h1>
 <p>docker 安装mysql</p>
 <p>要在Docker中安装MySQL，您可以使用官方的MySQL镜像。以下是安装MySQL的步骤和示例命令：</p>
 <ol>
@@ -258,16 +258,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag</span><br></pre></td></tr></table></figure>
 <p>在这里，<code>/my/own/datadir</code>是宿主机上的目录，用于存储MySQL数据。</p>
 <p>以上步骤会启动一个新的MySQL容器。您可以通过<code>docker ps</code>查看正在运行的容器，通过<code>docker logs some-mysql</code>查看容器日志以确认MySQL是否成功运行。</p>
-<h3><span id="问题记录">问题记录</span></h3>
-<h5><span id="1251-client-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client">1251 - Client does not support authentication protocol requested by server; consider upgrading MySQL client</span></h5>
+<h3 id="问题记录">问题记录</h3>
+<h5 id="1251-client-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client">1251 - Client does not support authentication protocol requested by server; consider upgrading MySQL client</h5>
 <p><img src="/2024/04/09/Docker%E5%AD%A6%E4%B9%A019-Docker-%E5%AE%89%E8%A3%85mysql/a18cbf8fb8884e3f8520ea89af9f6687.png" alt="在这里插入图片描述"></p>
 <p><code>alter user 'root'@'%' identified with mysql_native_password by '你的密码';</code></p>
 <p><img src="/2024/04/09/Docker%E5%AD%A6%E4%B9%A019-Docker-%E5%AE%89%E8%A3%85mysql/51135f4f73554f83b0f1c4963cb04597.png" alt="在这里插入图片描述"></p>
-<h3><span id="方法二">方法二</span></h3>
+<h3 id="方法二">方法二</h3>
 <p>添加用户,同时设置登陆加密方式为mysql_native_password,并且给它远程访问权限,完成后这个用户也可以访问.</p>
 <p>添加远程登录用户</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;mjh&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">&#x27;mjh&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote></blockquote>
 
 
@@ -307,7 +307,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">安装mysql</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">问题记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.0.1.</span> <span class="toc-nav-text">1251 - Client does not support authentication protocol requested by server; consider upgrading MySQL client</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">方法二</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">安装mysql</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">问题记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1251-client-does-not-support-authentication-protocol-requested-by-server-consider-upgrading-mysql-client"><span class="toc-nav-number">1.0.1.0.1.</span> <span class="toc-nav-text">1251 - Client does not support authentication protocol requested by server; consider upgrading MySQL client</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">方法二</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

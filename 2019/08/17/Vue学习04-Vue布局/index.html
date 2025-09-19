@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,20 +240,20 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="vue学习记录">Vue学习记录</span></h1>
+                <h1 id="vue学习记录">Vue学习记录</h1>
 <p>这边博客为自己学习vue的记录.开始篇幅较大,如果基础好的同学可以直接点击vue内容开始浏览.</p>
-<h2><span id="vue布局">Vue布局</span></h2>
-<h3><span id="表单输出">表单输出</span></h3>
+<h2 id="vue布局">Vue布局</h2>
+<h3 id="表单输出">表单输出</h3>
 <p>什么是双向数据绑定<br>
 Vue.js 是一个 MVVM 框架，即数据双向绑定，即当数据发生变化的时候，视图也就发生变化，当视图发生变化的时候，数据也会跟着同步变化。这也算是 Vue.js 的精髓之处了。值得注意的是，我们所说的数据双向绑定，一定是对于 UI 控件来说的，非 UI 控件不会涉及到数据双向绑定。单向数据绑定是使用状态管理工具的前提。如果我们使用 vuex，那么数据流也是单项的，这时就会和双向数据绑定有冲突。</p>
-<h3><span id="为什么要实现数据的双向绑定">为什么要实现数据的双向绑定</span></h3>
+<h3 id="为什么要实现数据的双向绑定">为什么要实现数据的双向绑定</h3>
 <p>在 Vue.js 中，如果使用 vuex，实际上数据还是单向的，之所以说是数据双向绑定，这是用的 UI 控件来说，对于我们处理表单，Vue.js 的双向数据绑定用起来就特别舒服了。即两者并不互斥，在全局性数据流使用单项，方便跟踪；局部性数据流使用双向，简单易操作。</p>
-<h3><span id="在表单中使用双向数据绑定">在表单中使用双向数据绑定</span></h3>
+<h3 id="在表单中使用双向数据绑定">在表单中使用双向数据绑定</h3>
 <p>你可以用 v-model 指令在表单 <input>、<textarea> 及 </textarea><select> 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 v-model 本质上不过是语法糖。它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。</select></p>
 <p>注意：v-model 会忽略所有表单元素的 value、checked、selected 特性的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 在组件的 data 选项中声明初始值。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;vue&quot;&gt;</span><br><span class="line">    单行文本：&lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&gt;&amp;nbsp;&amp;nbsp;单行文本是：&#123;&#123;message&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &#x27;#vue&#x27;,</span><br><span class="line">        data: &#123;</span><br><span class="line">            message: &quot;Hello Vue&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>输出</strong></p>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote>
 <p>李卫民的教程<br>
 <a target="_blank" rel="noopener" href="https://www.funtl.com/zh/vue-prepare/">https://www.funtl.com/zh/vue-prepare/</a><br>
@@ -299,7 +299,7 @@ Vue官网教程<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue学习记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Vue布局</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">表单输出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">为什么要实现数据的双向绑定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">在表单中使用双向数据绑定</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue学习记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vue%E5%B8%83%E5%B1%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Vue布局</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%A8%E5%8D%95%E8%BE%93%E5%87%BA"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">表单输出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">为什么要实现数据的双向绑定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9C%A8%E8%A1%A8%E5%8D%95%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">在表单中使用双向数据绑定</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

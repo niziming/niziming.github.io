@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,9 +242,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="gitlab部署">Gitlab部署</span></h1>
-<h2><span id="简介">简介</span></h2>
-<h2><span id="准备工作">准备工作</span></h2>
+                <h1 id="gitlab部署">Gitlab部署</h1>
+<h2 id="简介">简介</h2>
+<h2 id="准备工作">准备工作</h2>
 <ul>
 <li>
 <p>portainer</p>
@@ -257,15 +257,15 @@
 </li>
 </ul>
 <figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">version</span><span class="punctuation">:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"><span class="attribute">services</span><span class="punctuation">:</span></span><br><span class="line">  <span class="attribute">gitlab</span><span class="punctuation">:</span></span><br><span class="line">    <span class="attribute">image</span><span class="punctuation">:</span> <span class="string">gitlab/gitlab-ce:latest</span></span><br><span class="line">    <span class="attribute">container_name</span><span class="punctuation">:</span> <span class="string">gitlab</span></span><br><span class="line">    <span class="attribute">restart</span><span class="punctuation">:</span> <span class="string">always</span></span><br><span class="line">    <span class="attribute">environment</span><span class="punctuation">:</span></span><br><span class="line">      <span class="attribute">TZ</span><span class="punctuation">:</span> <span class="string">&#x27;Asia/Shanghai&#x27;</span></span><br><span class="line">      <span class="attribute">GITLAB_OMNIBUS_CONFIG</span><span class="punctuation">:</span> <span class="string">|</span></span><br><span class="line">        external_url &#x27;http://127.0.0.1:9080&#x27;</span><br><span class="line">        <span class="attribute">gitlab_rails[&#x27;gitlab_shell_ssh_port&#x27;] = 9022</span></span><br><span class="line"><span class="attribute">    ports</span><span class="punctuation">:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;9080:9080&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;9443:443&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;9022:22&#x27;</span></span><br><span class="line">    <span class="attribute">volumes</span><span class="punctuation">:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;gitlab_config:/etc/gitlab&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;gitlab_logs:/var/log/gitlab&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;gitlab_data:/var/opt/gitlab&#x27;</span></span><br><span class="line">    <span class="attribute">healthcheck</span><span class="punctuation">:</span></span><br><span class="line">      <span class="attribute">test</span><span class="punctuation">:</span> <span class="string">[&quot;CMD&quot;, &quot;curl&quot;, &quot;--fail&quot;, &quot;http://localhost:9080&quot;]</span></span><br><span class="line">      <span class="attribute">interval</span><span class="punctuation">:</span> <span class="string">5m</span></span><br><span class="line">      <span class="attribute">timeout</span><span class="punctuation">:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attribute">retries</span><span class="punctuation">:</span> <span class="string">5</span></span><br><span class="line">      <span class="attribute">start_period</span><span class="punctuation">:</span> <span class="string">5m</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">volumes</span><span class="punctuation">:</span></span><br><span class="line">  <span class="attribute">gitlab_config</span><span class="punctuation">:</span></span><br><span class="line">  <span class="attribute">gitlab_logs</span><span class="punctuation">:</span></span><br><span class="line">  <span class="attribute">gitlab_data</span><span class="punctuation">:</span></span><br></pre></td></tr></table></figure>
-<h2><span id="执行">执行</span></h2>
+<h2 id="执行">执行</h2>
 <p><img src="/2024/09/13/Docker22-Gitlab%E9%83%A8%E7%BD%B2/image-20240913115615909.png" alt="image-20240913115615909"></p>
 <p><img src="/2024/09/13/Docker22-Gitlab%E9%83%A8%E7%BD%B2/image-20240913115554724.png" alt="image-20240913115554724"></p>
 <p><img src="/2024/09/13/Docker22-Gitlab%E9%83%A8%E7%BD%B2/image-20240913115742517.png" alt="image-20240913115742517"></p>
-<h3><span id="查看初始密码">查看初始密码</span></h3>
+<h3 id="查看初始密码">查看初始密码</h3>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mv gitlab-ce.tar <span class="symbol">/mnt/d</span></span><br><span class="line">➜  ~ docker exec <span class="operator">-</span>it gitlab cat <span class="symbol">/etc/gitlab/initial_root_password</span></span><br><span class="line"><span class="comment"># WARNING: This value is valid only in the following conditions</span></span><br><span class="line"><span class="comment">#          1. If provided manually (either via `GITLAB_ROOT_PASSWORD` environment variable or via `gitlab_rails[&#x27;initial_root_password&#x27;]` setting in `gitlab.rb`, it was provided before database was seeded for the first time (usually, the first reconfigure run).</span></span><br><span class="line"><span class="comment">#          2. Password hasn&#x27;t been changed manually, either via UI or via command line.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#          If the password shown here doesn&#x27;t work, you must reset the admin password following https://docs.gitlab.com/ee/security/reset_user_password.html#reset-your-root-password.</span></span><br><span class="line"></span><br><span class="line"><span class="params">Password:</span> <span class="number">5</span>kiAIcg<span class="operator">+</span>DTZ2e9mneefHyCrEpVX<span class="operator">/</span>cQJ2vwUiDXXMZsI<span class="operator">=</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">NOTE:</span> This file will be automatically deleted in the first reconfigure run after 24 hours.</span></span><br></pre></td></tr></table></figure>
-<h3><span id="登录成功">登录成功</span></h3>
+<h3 id="登录成功">登录成功</h3>
 <p><img src="/2024/09/13/Docker22-Gitlab%E9%83%A8%E7%BD%B2/image-20240913120056010.png" alt="image-20240913120056010"></p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/crhpqbprdij1knp6up0g">Kimi.ai - 帮你看更大的世界 (moonshot.cn)</a></p>
 <p><a href="https://niziming.github.io/2023/12/28/Docker19-portainer-Docker%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7/">🔥 Docker19-portainer-Docker图形化工具 - 十渊 | Blog (niziming.github.io)</a></p>
@@ -308,7 +308,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Gitlab部署</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">执行</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">查看初始密码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">登录成功</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#gitlab%E9%83%A8%E7%BD%B2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Gitlab部署</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%89%A7%E8%A1%8C"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">执行</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">查看初始密码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">登录成功</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

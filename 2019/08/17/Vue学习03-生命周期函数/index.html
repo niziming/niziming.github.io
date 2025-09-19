@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,9 +240,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="vue学习记录">Vue学习记录</span></h1>
+                <h1 id="vue学习记录">Vue学习记录</h1>
 <p>这边博客为自己学习vue的记录.开始篇幅较大,如果基础好的同学可以直接点击vue内容开始浏览.</p>
-<h3><span id="vue生命周期">Vue生命周期</span></h3>
+<h3 id="vue生命周期">Vue生命周期</h3>
 <ul>
 <li>created: 比如钩子可以用来在一个实例被创建之后执行代码：</li>
 <li>mounted</li>
@@ -256,24 +256,24 @@
 <p>也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 mounted、updated 和 destroyed。<br>
 生命周期钩子的 this 上下文指向调用它的 Vue 实例。</p>
 <p>###钩子函数的触发时机</p>
-<h4><span id="beforecreate">beforeCreate</span></h4>
+<h4 id="beforecreate">beforeCreate</h4>
 <p>在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</p>
-<h4><span id="created">created</span></h4>
+<h4 id="created">created</h4>
 <p>实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。</p>
-<h4><span id="beforemount">beforeMount</span></h4>
+<h4 id="beforemount">beforeMount</h4>
 <p>在挂载开始之前被调用：相关的 render 函数首次被调用。</p>
-<h4><span id="mounted">mounted</span></h4>
+<h4 id="mounted">mounted</h4>
 <p>el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。</p>
-<h4><span id="beforeupdate">beforeUpdate</span></h4>
+<h4 id="beforeupdate">beforeUpdate</h4>
 <p>数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。</p>
-<h4><span id="updated">updated</span></h4>
+<h4 id="updated">updated</h4>
 <p>由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。</p>
 <p>当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。该钩子在服务器端渲染期间不被调用。</p>
-<h4><span id="beforedestroy">beforeDestroy</span></h4>
+<h4 id="beforedestroy">beforeDestroy</h4>
 <p>实例销毁之前调用。在这一步，实例仍然完全可用。</p>
-<h4><span id="destroyed">destroyed</span></h4>
+<h4 id="destroyed">destroyed</h4>
 <p>Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。</p>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote>
 <p>李卫民的教程<br>
 <a target="_blank" rel="noopener" href="https://www.funtl.com/zh/vue-prepare/">https://www.funtl.com/zh/vue-prepare/</a><br>
@@ -319,7 +319,7 @@ Vue官网教程<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue学习记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">Vue生命周期</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.1.</span> <span class="toc-nav-text">beforeCreate</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.2.</span> <span class="toc-nav-text">created</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.3.</span> <span class="toc-nav-text">beforeMount</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.4.</span> <span class="toc-nav-text">mounted</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.5.</span> <span class="toc-nav-text">beforeUpdate</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.6.</span> <span class="toc-nav-text">updated</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.7.</span> <span class="toc-nav-text">beforeDestroy</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.8.</span> <span class="toc-nav-text">destroyed</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue学习记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">Vue生命周期</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#beforecreate"><span class="toc-nav-number">1.0.1.1.</span> <span class="toc-nav-text">beforeCreate</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#created"><span class="toc-nav-number">1.0.1.2.</span> <span class="toc-nav-text">created</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#beforemount"><span class="toc-nav-number">1.0.1.3.</span> <span class="toc-nav-text">beforeMount</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mounted"><span class="toc-nav-number">1.0.1.4.</span> <span class="toc-nav-text">mounted</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#beforeupdate"><span class="toc-nav-number">1.0.1.5.</span> <span class="toc-nav-text">beforeUpdate</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#updated"><span class="toc-nav-number">1.0.1.6.</span> <span class="toc-nav-text">updated</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#beforedestroy"><span class="toc-nav-number">1.0.1.7.</span> <span class="toc-nav-text">beforeDestroy</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#destroyed"><span class="toc-nav-number">1.0.1.8.</span> <span class="toc-nav-text">destroyed</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

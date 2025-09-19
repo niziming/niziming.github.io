@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,11 +242,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="为什么使用brook">为什么使用Brook</span></h1>
+                <h1 id="为什么使用brook">为什么使用Brook</h1>
 <p>起因是因为在谷歌云平台使用了SSR科学上网后, 一小时不到IP被识别了…</p>
 <p>查询相关资料后发现Brook是一个比较偏门的技术, 用这个来科学上网应该比较难被GFW甄别出来</p>
 <p>SSR 已经停止更新一段时间了. 相关应该开源已久 GFW团队 也可以针对该技术识别.</p>
-<h1><span id="brook服务搭建前提">Brook服务搭建前提</span></h1>
+<h1 id="brook服务搭建前提">Brook服务搭建前提</h1>
 <ul>
 <li>一台可连接的墙外服务器 推荐GCP
 <ul>
@@ -254,26 +254,26 @@
 </ul>
 </li>
 </ul>
-<h2><span id="brook是什么">Brook是什么</span></h2>
+<h2 id="brook是什么">Brook是什么</h2>
 <p>官方github介绍</p>
 <blockquote>
 <p>Brook is a cross-platform strong encryption and not detectable proxy.<br>
 Brook’s goal is to keep it <strong>simple</strong>, <strong>stupid</strong> and <strong>not detectable</strong>.</p>
 </blockquote>
 <p>跨平台 强加密 无法被检测</p>
-<h2><span id="brook使用">Brook使用</span></h2>
-<h3><span id="命令行安装-brook">命令行安装 brook</span></h3>
-<h3><span id="下载brook">下载Brook</span></h3>
+<h2 id="brook使用">Brook使用</h2>
+<h3 id="命令行安装-brook">命令行安装 brook</h3>
+<h3 id="下载brook">下载Brook</h3>
 <p>命令: <code>$ curl -L https://github.com/txthinking/brook/releases/download/v20200909/brook_linux_amd64 -o /usr/bin/brook $ chmod +x /usr/bin/brook</code></p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">☁  jermainenee  curl -L <span class="symbol">https:</span>/<span class="regexp">/github.com/txthinking</span><span class="regexp">/brook/releases</span><span class="regexp">/download/v</span>20210101/brook_linux_amd64 -o /usr/b</span><br><span class="line"><span class="keyword">in</span>/brook</span><br><span class="line">  % <span class="title class_">Total</span>    % <span class="title class_">Received</span> % <span class="title class_">Xferd</span>  <span class="title class_">Average</span> <span class="title class_">Speed</span>   <span class="title class_">Time</span>    <span class="title class_">Time</span>     <span class="title class_">Time</span>  <span class="title class_">Current</span></span><br><span class="line">                                 <span class="title class_">Dload</span>  <span class="title class_">Upload</span>   <span class="title class_">Total</span>   <span class="title class_">Spent</span>    <span class="title class_">Left</span>  <span class="title class_">Speed</span></span><br><span class="line"><span class="number">100</span>   <span class="number">641</span>  <span class="number">100</span>   <span class="number">641</span>    <span class="number">0</span>     <span class="number">0</span>    <span class="number">981</span>      <span class="number">0</span> --<span class="symbol">:--</span><span class="symbol">:--</span> --<span class="symbol">:--</span><span class="symbol">:--</span> --<span class="symbol">:--</span><span class="symbol">:--</span>   <span class="number">981</span></span><br><span class="line"><span class="number">100</span> <span class="number">10</span>.8M  <span class="number">100</span> <span class="number">10</span>.8M    <span class="number">0</span>     <span class="number">0</span>  3062k      <span class="number">0</span>  <span class="number">0</span><span class="symbol">:</span><span class="number">00</span><span class="symbol">:</span><span class="number">03</span>  <span class="number">0</span><span class="symbol">:</span><span class="number">00</span><span class="symbol">:</span><span class="number">03</span> --<span class="symbol">:--</span><span class="symbol">:--</span> 5206k</span><br><span class="line">☁  jermainenee  chmod +x /usr/bin/brook</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="安装-nami">安装 nami</span></h3>
+<h3 id="安装-nami">安装 nami</h3>
 <p>应该是一个包管理器, 官方推荐使用nami安装</p>
 <p>命令:<code>$ curl -L https://git.io/getnami | bash &amp;&amp; sleep 6 &amp;&amp; exec -l $SHELL</code></p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">☁  jermainenee  nami install github.com/txthinking/brook</span><br><span class="line">zsh: command not found: nami</span><br><span class="line">☁  jermainenee  curl -L https://git.io/getnami | bash &amp;&amp; sleep 6 &amp;&amp; exec -l $SHELL</span><br><span class="line"><span class="code">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span></span><br><span class="line"><span class="code">                                 Dload  Upload   Total   Spent    Left  Speed</span></span><br><span class="line"><span class="code">  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0</span></span><br><span class="line">100  1478  100  1478    0     0    946      0  0:00:01  0:00:01 --:--:--   946</span><br><span class="line"><span class="code">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span></span><br><span class="line"><span class="code">                                 Dload  Upload   Total   Spent    Left  Speed</span></span><br><span class="line">100   642  100   642    0     0    992      0 --:--:-- --:--:-- --:--:--   990</span><br><span class="line"><span class="section">100 11.5M  100 11.5M    0     0  3183k      0  0:00:03  0:00:03 --:--:-- 5304k</span></span><br><span class="line"><span class="section">+-------------------+----------------------------+</span></span><br><span class="line">| Package           | github.com/txthinking/nami |</span><br><span class="line">|                   |                            |</span><br><span class="line">| Installed Version | v20201101                  |</span><br><span class="line"><span class="section">| Installed Files   | nami                       |</span></span><br><span class="line"><span class="section">+-------------------+----------------------------+</span></span><br><span class="line"></span><br><span class="line"><span class="section">☁  jermainenee  nami install github.com/txthinking/nami</span></span><br><span class="line"><span class="section">+-------------------+----------------------------+</span></span><br><span class="line">| Package           | github.com/txthinking/nami |</span><br><span class="line">|                   |                            |</span><br><span class="line">| Installed Version | v20201101                  |</span><br><span class="line"><span class="section">| Installed Files   | nami                       |</span></span><br><span class="line"><span class="section">+-------------------+----------------------------+</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="安装brook">安装brook</span></h3>
+<h3 id="安装brook">安装brook</h3>
 <p>命令: <code>$ nami install github.com/txthinking/brook</code></p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">☁  jermainenee  nami install github.com/txthinking/brook</span></span><br><span class="line"><span class="section">+-------------------+-----------------------------+</span></span><br><span class="line">| Package           | github.com/txthinking/brook |</span><br><span class="line">|                   |                             |</span><br><span class="line">| Installed Version | v20210101                   |</span><br><span class="line"><span class="section">| Installed Files   | brook                       |</span></span><br><span class="line"><span class="section">+-------------------+-----------------------------+</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="brook的使用">Brook的使用</span></h3>
+<h3 id="brook的使用">Brook的使用</h3>
 <p>命令: <code>brook server -l :9999 -p hello</code></p>
 <p>:9999 是端口暴露</p>
 <p>-p hello 是密码</p>
@@ -283,28 +283,28 @@ Brook’s goal is to keep it <strong>simple</strong>, <strong>stupid</strong> an
 <p>网速测试</p>
 <p><img src="/2020/12/26/Brook%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%BF%85%E5%A4%87/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201226221856.png" alt="微信图片_20201226221856"></p>
 <p>这里一旦关掉terminal的话brook服务就会停止, 所以按照官方文档开启守护进程</p>
-<h3><span id="安装joker-开启守护进程">安装joker 开启守护进程</span></h3>
+<h3 id="安装joker-开启守护进程">安装joker 开启守护进程</h3>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">☁  jermainenee  nami install github.com/txthinking/joker</span></span><br><span class="line"><span class="section">+-------------------+-----------------------------+</span></span><br><span class="line">| Package           | github.com/txthinking/joker |</span><br><span class="line">|                   |                             |</span><br><span class="line">| Installed Version | v20200902                   |</span><br><span class="line"><span class="section">| Installed Files   | joker                       |</span></span><br><span class="line"><span class="section">+-------------------+-----------------------------+</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="配置brook">配置brook</span></h3>
+<h3 id="配置brook">配置brook</h3>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">☁  jermainenee  joker brook<span class="built_in"> server </span>-l :8004 -p ziming</span><br><span class="line">☁  jermainenee  joker list</span><br><span class="line">17298 pts/0    Sl     0:00 brook<span class="built_in"> server </span>-l :8004 -p ziming</span><br><span class="line">☁  jermainenee  </span><br><span class="line">☁  jermainenee  ./shadowsocks-all.sh uninstall</span><br><span class="line">Which Shadowsocks<span class="built_in"> server </span>you want <span class="keyword">to</span> uninstall?</span><br><span class="line">1) Shadowsocks-Python</span><br><span class="line">2) ShadowsocksR</span><br><span class="line">3) Shadowsocks-Go</span><br><span class="line">4) Shadowsocks-libev</span><br><span class="line">Please enter a number [1-4]:2</span><br><span class="line"></span><br><span class="line">You choose = ShadowsocksR</span><br><span class="line"></span><br><span class="line">Are you sure uninstall ShadowsocksR? [y/n]</span><br><span class="line">(default: n):y<span class="built_in"></span></span><br><span class="line"><span class="built_in">IPv6 </span>support</span><br><span class="line">2020-12-26 21:45:02 <span class="built_in">INFO</span>     shell.py:74 ShadowsocksR SSRR 3.2.2 2018-05-22</span><br><span class="line">stopped</span><br><span class="line">Stopping ShadowsocksR success</span><br><span class="line">[<span class="built_in">Info</span>] ShadowsocksR uninstall success</span><br></pre></td></tr></table></figure>
-<h3><span id="windows-client-brook客户端下载">windows client Brook客户端下载</span></h3>
+<h3 id="windows-client-brook客户端下载">windows client Brook客户端下载</h3>
 <blockquote>
 <p>下载地址</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/txthinking/brook/releases">https://github.com/txthinking/brook/releases</a></p>
 </blockquote>
-<h3><span id="ios-移动端-下载">IOS 移动端 下载</span></h3>
+<h3 id="ios-移动端-下载">IOS 移动端 下载</h3>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/brook-undetectable-proxy-vpn/id1216002642">https://apps.apple.com/us/app/brook-undetectable-proxy-vpn/id1216002642</a></p>
 </blockquote>
 <p>目前还是免费的,而且是官方开发的app</p>
 <p><img src="/2020/12/26/Brook%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%BF%85%E5%A4%87/IMG_4987.PNG" alt></p>
-<h3><span id="总结">总结</span></h3>
+<h3 id="总结">总结</h3>
 <p>brook 的配置十分简单, 使用起来比ssr服务还要简单.</p>
 <p>brook 总共4总协议, 新的协议名称为server,这里采用server协议</p>
 <p><img src="/2020/12/26/Brook%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%BF%85%E5%A4%87/QQ%E6%88%AA%E5%9B%BE20201226223632.png" alt="QQ截图20201226223632"></p>
 <p>打开YouTube</p>
 <p><img src="/2020/12/26/Brook%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%BF%85%E5%A4%87/QQ%E6%88%AA%E5%9B%BE20201226223743.png" alt="QQ截图20201226223743"></p>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://txthinking.github.io/brook/#/">https://txthinking.github.io/brook/#/</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/txthinking/brook">https://github.com/txthinking/brook</a></p>
@@ -347,7 +347,7 @@ Brook’s goal is to keep it <strong>simple</strong>, <strong>stupid</strong> an
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">为什么使用Brook</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Brook服务搭建前提</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Brook是什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Brook使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">命令行安装 brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">下载Brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">安装 nami</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">安装brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.5.</span> <span class="toc-nav-text">Brook的使用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.6.</span> <span class="toc-nav-text">安装joker 开启守护进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.7.</span> <span class="toc-nav-text">配置brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.8.</span> <span class="toc-nav-text">windows client Brook客户端下载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.9.</span> <span class="toc-nav-text">IOS 移动端 下载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.10.</span> <span class="toc-nav-text">总结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8brook"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">为什么使用Brook</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#brook%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%89%8D%E6%8F%90"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Brook服务搭建前提</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#brook%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Brook是什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#brook%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Brook使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85-brook"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">命令行安装 brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8B%E8%BD%BDbrook"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">下载Brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85-nami"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">安装 nami</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85brook"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">安装brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#brook%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">2.2.5.</span> <span class="toc-nav-text">Brook的使用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85joker-%E5%BC%80%E5%90%AF%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">2.2.6.</span> <span class="toc-nav-text">安装joker 开启守护进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%85%8D%E7%BD%AEbrook"><span class="toc-nav-number">2.2.7.</span> <span class="toc-nav-text">配置brook</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#windows-client-brook%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD"><span class="toc-nav-number">2.2.8.</span> <span class="toc-nav-text">windows client Brook客户端下载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ios-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E4%B8%8B%E8%BD%BD"><span class="toc-nav-number">2.2.9.</span> <span class="toc-nav-text">IOS 移动端 下载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">2.2.10.</span> <span class="toc-nav-text">总结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

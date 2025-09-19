@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,11 +242,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="dockerfile指令详解">Dockerfile指令详解</span></h1>
+                <h1 id="dockerfile指令详解">Dockerfile指令详解</h1>
 <p>我们已经介绍了 FROM，RUN，还提及了 COPY, ADD，其实 Dockerfile 功能很强大，它提供了十多个指令。下面我们继续讲解其他的指令。</p>
-<h2><span id="练习过程">练习过程</span></h2>
+<h2 id="练习过程">练习过程</h2>
 <p>将index.html打包成project.tar,使用dockerfile将project.tar部署到镜像,解压project.tar,并删除project.tar后,开启容器访问</p>
-<h3><span id="使用dockerfile将压缩包导入镜像">使用Dockerfile将压缩包导入镜像</span></h3>
+<h3 id="使用dockerfile将压缩包导入镜像">使用Dockerfile将压缩包导入镜像</h3>
 <ol>
 <li>准备压缩包里面的html</li>
 </ol>
@@ -274,7 +274,7 @@
 </ol>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@MyCentOS</span>]/usr/local/docker/tomcat<span class="comment"># docker build -t myproject .</span></span><br><span class="line"><span class="title class_">Sending</span> build context to <span class="title class_">Docker</span> daemon   <span class="number">12.8</span>kB</span><br><span class="line"><span class="title class_">Step</span> <span class="number">1</span>/<span class="number">4</span> : <span class="title class_">FROM</span> tomcat</span><br><span class="line"> ---&gt; <span class="number">96</span>c4e536d0eb</span><br><span class="line"><span class="title class_">Step</span> <span class="number">2</span>/<span class="number">4</span> : <span class="title class_">WORKDIR</span> /usr/local/tomcat/webapps/<span class="title class_">ROOT</span>/</span><br><span class="line"> ---&gt; <span class="title class_">Using</span> cache</span><br><span class="line"> ---&gt; <span class="number">9350</span>deb03d0d</span><br><span class="line"><span class="title class_">Step</span> <span class="number">3</span>/<span class="number">4</span> : <span class="title class_">RUN</span> rm -fr *</span><br><span class="line"> ---&gt; <span class="title class_">Using</span> cache</span><br><span class="line"> ---&gt; f6814fab3fe4</span><br><span class="line"><span class="title class_">Step</span> <span class="number">4</span>/<span class="number">4</span> : <span class="title class_">COPY</span> project.tar .</span><br><span class="line"> ---&gt; <span class="number">3</span>be1d6707ad0</span><br><span class="line"><span class="title class_">Successfully</span> built <span class="number">3</span>be1d6707ad0</span><br><span class="line"><span class="title class_">Successfully</span> tagged <span class="symbol">myproject:</span>latest</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]/usr/local/docker/tomcat<span class="comment"># docker run -it myproject bash</span></span><br><span class="line">root<span class="variable">@3ea53b2ca71a</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># ls</span></span><br><span class="line">project.tar</span><br><span class="line">root<span class="variable">@3ea53b2ca71a</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>构建镜像成功,并且交互查看镜像路径下的tar文件存在.</p>
-<h3><span id="使用dockerfile指令解压打包的tar包并且删除tar包">使用Dockerfile指令,解压打包的tar包并且删除tar包</span></h3>
+<h3 id="使用dockerfile指令解压打包的tar包并且删除tar包">使用Dockerfile指令,解压打包的tar包并且删除tar包</h3>
 <ol>
 <li>Dockerfile脚本</li>
 </ol>
@@ -303,7 +303,7 @@
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@MyCentOS</span>]/usr/local/docker/tomcat<span class="comment"># docker build -t myproject .</span></span><br><span class="line"><span class="title class_">Sending</span> build context to <span class="title class_">Docker</span> daemon   <span class="number">12.8</span>kB</span><br><span class="line"><span class="title class_">Step</span> <span class="number">1</span>/<span class="number">6</span> : <span class="title class_">FROM</span> tomcat</span><br><span class="line"> ---&gt; <span class="number">96</span>c4e536d0eb</span><br><span class="line"><span class="title class_">Step</span> <span class="number">2</span>/<span class="number">6</span> : <span class="title class_">WORKDIR</span> /usr/local/tomcat/webapps/<span class="title class_">ROOT</span>/</span><br><span class="line"> ---&gt; <span class="title class_">Using</span> cache</span><br><span class="line"> ---&gt; <span class="number">9350</span>deb03d0d</span><br><span class="line"><span class="title class_">Step</span> <span class="number">3</span>/<span class="number">6</span> : <span class="title class_">RUN</span> rm -fr *</span><br><span class="line"> ---&gt; <span class="title class_">Using</span> cache</span><br><span class="line"> ---&gt; f6814fab3fe4</span><br><span class="line"><span class="title class_">Step</span> <span class="number">4</span>/<span class="number">6</span> : <span class="title class_">COPY</span> project.tar .</span><br><span class="line"> ---&gt; <span class="number">2</span>b0dfa7fb134</span><br><span class="line"><span class="title class_">Step</span> <span class="number">5</span>/<span class="number">6</span> : <span class="title class_">RUN</span> tar -xf project.tar</span><br><span class="line"> ---&gt; <span class="title class_">Running</span> <span class="keyword">in</span> <span class="number">48</span>de494adfe6</span><br><span class="line"><span class="title class_">Removing</span> intermediate container <span class="number">48</span>de494adfe6</span><br><span class="line"> ---&gt; <span class="number">4</span>ae473e72609</span><br><span class="line"><span class="title class_">Step</span> <span class="number">6</span>/<span class="number">6</span> : <span class="title class_">RUN</span> rm project.tar</span><br><span class="line"> ---&gt; <span class="title class_">Running</span> <span class="keyword">in</span> cb057261565c</span><br><span class="line"><span class="title class_">Removing</span> intermediate container cb057261565c</span><br><span class="line"> ---&gt; <span class="number">98</span>cdee09487c</span><br><span class="line"><span class="title class_">Successfully</span> built <span class="number">98</span>cdee09487c</span><br><span class="line"><span class="title class_">Successfully</span> tagged <span class="symbol">myproject:</span>latest</span><br><span class="line">[root<span class="variable">@MyCentOS</span>]/usr/local/docker/tomcat<span class="comment"># docker run -it --rm myproject bash</span></span><br><span class="line">root<span class="variable">@fff6dea62b52</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># ls</span></span><br><span class="line">index.html</span><br><span class="line">root<span class="variable">@fff6dea62b52</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># vi</span></span><br><span class="line"><span class="symbol">bash:</span> <span class="symbol">vi:</span> command <span class="keyword">not</span> found</span><br><span class="line">root<span class="variable">@fff6dea62b52</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># vi index.html</span></span><br><span class="line"><span class="symbol">bash:</span> <span class="symbol">vi:</span> command <span class="keyword">not</span> found</span><br><span class="line">root<span class="variable">@fff6dea62b52</span><span class="symbol">:/usr/local/tomcat/webapps/ROOT</span><span class="comment"># cat index.html</span></span><br><span class="line">&lt;!<span class="title class_">DOCTYPE</span> html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;<span class="title class_">Docker</span>文件测试&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h1&gt;<span class="title class_">Hello</span> <span class="title class_">Docker</span>&lt;/h1&gt;</span><br><span class="line">	&lt;h2&gt;我是压缩后的文件&lt;/h2&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>查看结果:</p>
 <p><img src="/2019/09/23/Docker%E5%AD%A6%E4%B9%A06-Dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F4-Dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/2.png" alt></p>
-<h2><span id="指令列表">指令列表</span></h2>
+<h2 id="指令列表">指令列表</h2>
 <ul>
 <li>COPY</li>
 <li>ADD</li>
@@ -314,7 +314,7 @@
 <li>EXPOSE</li>
 <li>WORKDIR</li>
 </ul>
-<h2><span id="copy">COPY</span></h2>
+<h2 id="copy">COPY</h2>
 <p>格式：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="language-bash"> &lt;源路径&gt;... &lt;目标路径&gt;</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> [<span class="string">&quot;&lt;源路径1&gt;&quot;</span>,... <span class="string">&quot;&lt;目标路径&gt;&quot;</span>]</span></span><br></pre></td></tr></table></figure>
 <p>和 RUN 指令一样，也有两种格式，一种类似于命令行，一种类似于函数调用。</p>
@@ -325,7 +325,7 @@
 COPY hom?.txt /mydir/<br>
 &lt;目标路径&gt; 可以是容器内的绝对路径，也可以是相对于工作目录的相对路径（工作目录可以用 WORKDIR 指令来指定）。目标路径不需要事先创建，如果目录不存在会在复制文件前先行创建缺失目录。</p>
 <p>此外，还需要注意一点，使用 COPY 指令，源文件的各种元数据都会保留。比如读、写、执行权限、文件变更时间等。这个特性对于镜像定制很有用。特别是构建相关文件都在使用 Git 进行管理的时候。</p>
-<h2><span id="add">ADD</span></h2>
+<h2 id="add">ADD</h2>
 <p>ADD 指令和 COPY 的格式和性质基本一致。但是在 COPY 基础上增加了一些功能。</p>
 <p>比如 &lt;源路径&gt; 可以是一个 URL，这种情况下，Docker 引擎会试图去下载这个链接的文件放到 &lt;目标路径&gt; 去。下载后的文件权限自动设置为 600，如果这并不是想要的权限，那么还需要增加额外的一层 RUN 进行权限调整，另外，如果下载的是个压缩包，需要解压缩，也一样还需要额外的一层 RUN 指令进行解压缩。所以不如直接使用 RUN 指令，然后使用 wget 或者 curl 工具下载，处理权限、解压缩、然后清理无用文件更合理。因此，这个功能其实并不实用，而且不推荐使用。</p>
 <p>如果 &lt;源路径&gt; 为一个 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，ADD 指令将会自动解压缩这个压缩文件到 &lt;目标路径&gt; 去。</p>
@@ -337,7 +337,7 @@ ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /<br>
 <p>在 Docker 官方的 Dockerfile 最佳实践文档 中要求，尽可能的使用 COPY，因为 COPY 的语义很明确，就是复制文件而已，而 ADD 则包含了更复杂的功能，其行为也不一定很清晰。最适合使用 ADD 的场合，就是所提及的需要自动解压缩的场合。</p>
 <p>另外需要注意的是，ADD 指令会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。</p>
 <p>因此在 COPY 和 ADD 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 COPY 指令，仅在需要自动解压缩的场合使用 ADD。</p>
-<h2><span id="cmd">CMD</span></h2>
+<h2 id="cmd">CMD</h2>
 <p>CMD 指令的格式和 RUN 相似，也是两种格式：</p>
 <p>shell 格式：CMD &lt;命令&gt;<br>
 exec 格式：CMD [“可执行文件”, “参数1”, “参数2”…]<br>
@@ -359,13 +359,13 @@ exec 格式：CMD [“可执行文件”, “参数1”, “参数2”…]<br>
 <p>而使用 service nginx start 命令，则是希望 upstart 来以后台守护进程形式启动 nginx 服务。而刚才说了 CMD service nginx start 会被理解为 CMD [ “sh”, “-c”, “service nginx start”]，因此主进程实际上是 sh。那么当 service nginx start 命令结束后，sh 也就结束了，sh 作为主进程退出了，自然就会令容器退出。</p>
 <p>正确的做法是直接执行 nginx 可执行文件，并且要求以前台形式运行。比如：</p>
 <p>CMD [“nginx”, “-g”, “daemon off;”]</p>
-<h2><span id="entrypoint">ENTRYPOINT</span></h2>
+<h2 id="entrypoint">ENTRYPOINT</h2>
 <p>ENTRYPOINT 的格式和 RUN 指令格式一样，分为 exec 格式和 shell 格式。</p>
 <p>ENTRYPOINT 的目的和 CMD 一样，都是在指定容器启动程序及参数。ENTRYPOINT 在运行时也可以替代，不过比 CMD 要略显繁琐，需要通过 docker run 的参数 --entrypoint 来指定。</p>
 <p>当指定了 ENTRYPOINT 后，CMD 的含义就发生了改变，不再是直接的运行其命令，而是将 CMD 的内容作为参数传给 ENTRYPOINT 指令，换句话说实际执行时，将变为：</p>
 <p><entrypoint> &quot;<cmd>&quot;<br>
 那么有了 CMD 后，为什么还要有 ENTRYPOINT 呢？这种 <entrypoint> “<cmd>” 有什么好处么？让我们来看几个场景。</cmd></entrypoint></cmd></entrypoint></p>
-<h2><span id="场景一让镜像变成像命令一样使用">场景一：让镜像变成像命令一样使用</span></h2>
+<h2 id="场景一让镜像变成像命令一样使用">场景一：让镜像变成像命令一样使用</h2>
 <p>假设我们需要一个得知自己当前公网 IP 的镜像，那么可以先用 CMD 来实现：</p>
 <p>FROM ubuntu:16.04<br>
 RUN apt-get update <br>
@@ -405,7 +405,7 @@ Via: 1.1 cache-2:80, 1.1 proxy-2_6:8006<br>
 Connection: keep-alive</p>
 <p>当前 IP：61.148.226.66 来自：北京市 联通<br>
 可以看到，这次成功了。这是因为当存在 ENTRYPOINT 后，CMD 的内容将会作为参数传给 ENTRYPOINT，而这里 -i 就是新的 CMD，因此会作为参数传给 curl，从而达到了我们预期的效果。</p>
-<h2><span id="场景二应用运行前的准备工作">场景二：应用运行前的准备工作</span></h2>
+<h2 id="场景二应用运行前的准备工作">场景二：应用运行前的准备工作</h2>
 <p>启动容器就是启动主进程，但有些时候，启动主进程前，需要一些准备工作。</p>
 <p>比如 mysql 类的数据库，可能需要一些数据库配置、初始化的工作，这些工作要在最终的 mysql 服务器运行之前解决。</p>
 <p>此外，可能希望避免使用 root 用户去启动服务，从而提高安全性，而在启动服务前还需要以 root 身份执行一些必要的准备工作，最后切换到服务用户身份启动服务。或者除了服务外，其它命令依旧可以使用 root 身份执行，方便调试等。</p>
@@ -418,12 +418,12 @@ ENTRYPOINT [“<a target="_blank" rel="noopener" href="http://docker-entrypoint.
 <p>EXPOSE 6379<br>
 CMD [ “redis-server” ]<br>
 可以看到其中为了 redis 服务创建了 redis 用户，并在最后指定了 ENTRYPOINT 为 <a target="_blank" rel="noopener" href="http://docker-entrypoint.sh">docker-entrypoint.sh</a> 脚本。</p>
-<h2><span id="binsh">!/bin/sh</span></h2>
+<h2 id="binsh">!/bin/sh</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># allow the container to be started with `--user`</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&#x27;redis-server&#x27;</span> -a <span class="string">&quot;<span class="subst">$(id -u)</span>&quot;</span> = <span class="string">&#x27;0&#x27;</span> ]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">chown</span> -R redis .</span><br><span class="line">	<span class="built_in">exec</span> su-exec redis <span class="string">&quot;<span class="variable">$0</span>&quot;</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>
 <p>该脚本的内容就是根据 CMD 的内容来判断，如果是 redis-server 的话，则切换到 redis 用户身份启动服务器，否则依旧使用 root 身份执行。比如：</p>
 <p>$ docker run -it redis id<br>
 uid=0(root) gid=0(root) groups=0(root)</p>
-<h2><span id="env">ENV</span></h2>
+<h2 id="env">ENV</h2>
 <p>格式有两种：</p>
 <p>ENV <key> <value><br>
 ENV <key1>=<value1> <key2>=<value2>…<br>
@@ -443,7 +443,7 @@ NAME=&quot;Happy Feet&quot;<br>
 在这里先定义了环境变量 NODE_VERSION，其后的 RUN 这层里，多次使用 $NODE_VERSION 来进行操作定制。可以看到，将来升级镜像构建版本的时候，只需要更新 7.2.0 即可，Dockerfile 构建维护变得更轻松了。</p>
 <p>下列指令可以支持环境变量展开： ADD、COPY、ENV、EXPOSE、LABEL、USER、WORKDIR、VOLUME、STOPSIGNAL、ONBUILD。</p>
 <p>可以从这个指令列表里感觉到，环境变量可以使用的地方很多，很强大。通过环境变量，我们可以让一份 Dockerfile 制作更多的镜像，只需使用不同的环境变量即可。</p>
-<h2><span id="volume">VOLUME</span></h2>
+<h2 id="volume">VOLUME</h2>
 <p>格式为：</p>
 <p>VOLUME [&quot;&lt;路径1&gt;&quot;, “&lt;路径2&gt;”…]<br>
 VOLUME &lt;路径&gt;<br>
@@ -452,12 +452,12 @@ VOLUME &lt;路径&gt;<br>
 这里的 /data 目录就会在运行时自动挂载为匿名卷，任何向 /data 中写入的信息都不会记录进容器存储层，从而保证了容器存储层的无状态化。当然，运行时可以覆盖这个挂载设置。比如：</p>
 <p>docker run -d -v mydata:/data xxxx<br>
 在这行命令中，就使用了 mydata 这个命名卷挂载到了 /data 这个位置，替代了 Dockerfile 中定义的匿名卷的挂载配置。</p>
-<h2><span id="expose">EXPOSE</span></h2>
+<h2 id="expose">EXPOSE</h2>
 <p>格式为 EXPOSE &lt;端口1&gt; [&lt;端口2&gt;…]。</p>
 <p>EXPOSE 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务。在 Dockerfile 中写入这样的声明有两个好处，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个用处则是在运行时使用随机端口映射时，也就是 docker run -P 时，会自动随机映射 EXPOSE 的端口。</p>
 <p>此外，在早期 Docker 版本中还有一个特殊的用处。以前所有容器都运行于默认桥接网络中，因此所有容器互相之间都可以直接访问，这样存在一定的安全性问题。于是有了一个 Docker 引擎参数 --icc=false，当指定该参数后，容器间将默认无法互访，除非互相间使用了 --links 参数的容器才可以互通，并且只有镜像中 EXPOSE 所声明的端口才可以被访问。这个 --icc=false 的用法，在引入了 docker network 后已经基本不用了，通过自定义网络可以很轻松的实现容器间的互联与隔离。</p>
 <p>要将 EXPOSE 和在运行时使用 -p &lt;宿主端口&gt;:&lt;容器端口&gt; 区分开来。-p，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 EXPOSE 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。</p>
-<h2><span id="workdir">WORKDIR</span></h2>
+<h2 id="workdir">WORKDIR</h2>
 <p>格式为 WORKDIR &lt;工作目录路径&gt;。</p>
 <p>使用 WORKDIR 指令可以来指定工作目录（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如该目录不存在，WORKDIR 会帮你建立目录。</p>
 <p>之前提到一些初学者常犯的错误是把 Dockerfile 等同于 Shell 脚本来书写，这种错误的理解还可能会导致出现下面这样的错误：</p>
@@ -466,7 +466,7 @@ RUN echo “hello” &gt; world.txt<br>
 如果将这个 Dockerfile 进行构建镜像运行后，会发现找不到 /app/world.txt 文件，或者其内容不是 hello。原因其实很简单，在 Shell 中，连续两行是同一个进程执行环境，因此前一个命令修改的内存状态，会直接影响后一个命令；而在 Dockerfile 中，这两行 RUN 命令的执行环境根本不同，是两个完全不同的容器。这就是对 Dockerfile 构建分层存储的概念不了解所导致的错误。</p>
 <p>之前说过每一个 RUN 都是启动一个容器、执行命令、然后提交存储层文件变更。第一层 RUN cd /app 的执行仅仅是当前进程的工作目录变更，一个内存上的变化而已，其结果不会造成任何文件变更。而到第二层的时候，启动的是一个全新的容器，跟第一层的容器更完全没关系，自然不可能继承前一层构建过程中的内存变化。</p>
 <p>因此如果需要改变以后各层的工作目录的位置，那么应该使用 WORKDIR 指令。</p>
-<h2><span id="参考文档">参考文档</span></h2>
+<h2 id="参考文档">参考文档</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av29384041/?p=37">https://www.bilibili.com/video/av29384041/?p=37</a><br>
 <a target="_blank" rel="noopener" href="https://www.funtl.com/zh/docker/Docker-%E6%93%8D%E4%BD%9C-Docker-%E5%AE%B9%E5%99%A8.html">https://www.funtl.com/zh/docker/Docker-操作-Docker-容器.html</a></p>
@@ -509,7 +509,7 @@ RUN echo “hello” &gt; world.txt<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile指令详解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">练习过程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">使用Dockerfile将压缩包导入镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">使用Dockerfile指令,解压打包的tar包并且删除tar包</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">指令列表</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">COPY</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">ADD</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">CMD</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">ENTRYPOINT</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">场景一：让镜像变成像命令一样使用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">场景二：应用运行前的准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">!&#x2F;bin&#x2F;sh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">ENV</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">VOLUME</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">EXPOSE</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">WORKDIR</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.14.</span> <span class="toc-nav-text">参考文档</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dockerfile%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile指令详解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%83%E4%B9%A0%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">练习过程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8dockerfile%E5%B0%86%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">使用Dockerfile将压缩包导入镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8dockerfile%E6%8C%87%E4%BB%A4%E8%A7%A3%E5%8E%8B%E6%89%93%E5%8C%85%E7%9A%84tar%E5%8C%85%E5%B9%B6%E4%B8%94%E5%88%A0%E9%99%A4tar%E5%8C%85"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">使用Dockerfile指令,解压打包的tar包并且删除tar包</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">指令列表</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#copy"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">COPY</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#add"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">ADD</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#cmd"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">CMD</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#entrypoint"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">ENTRYPOINT</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%80%E8%AE%A9%E9%95%9C%E5%83%8F%E5%8F%98%E6%88%90%E5%83%8F%E5%91%BD%E4%BB%A4%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">场景一：让镜像变成像命令一样使用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%8C%E5%BA%94%E7%94%A8%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">场景二：应用运行前的准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#binsh"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">!&#x2F;bin&#x2F;sh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#env"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">ENV</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#volume"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">VOLUME</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#expose"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">EXPOSE</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#workdir"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">WORKDIR</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-nav-number">1.14.</span> <span class="toc-nav-text">参考文档</span></a></li></ol></li></ol>
         
         </div>
       </aside>

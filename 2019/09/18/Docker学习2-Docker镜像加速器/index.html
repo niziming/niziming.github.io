@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,8 +240,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="docker学习2-docker镜像加速器">Docker学习2-Docker镜像加速器</span></h1>
-<h2><span id="docker学习01-docker镜像加速器">Docker学习01-Docker镜像加速器</span></h2>
+                <h1 id="docker学习2-docker镜像加速器">Docker学习2-Docker镜像加速器</h1>
+<h2 id="docker学习01-docker镜像加速器">Docker学习01-Docker镜像加速器</h2>
 <p>对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）</p>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://registry.docker-cn.com&quot;</span></span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意，一定要保证该文件符合 json 规范，否则 Docker 将不能启动。<br>
@@ -251,7 +251,7 @@ $ sudo systemctl restart docker</p>
 <p>命令行执行<code>docker info</code><br>
 查看内容</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Insecure <span class="params">Registries:</span></span><br><span class="line"> <span class="number">127.0</span>.<span class="number">0.0</span><span class="symbol">/8</span></span><br><span class="line">Registry <span class="params">Mirrors:</span></span><br><span class="line"> https:<span class="operator">//</span>registry.docker-cn.com<span class="symbol">/</span></span><br><span class="line">Live Restore <span class="params">Enabled:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote></blockquote>
 
 
@@ -291,7 +291,7 @@ $ sudo systemctl restart docker</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker学习2-Docker镜像加速器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Docker学习01-Docker镜像加速器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#docker%E5%AD%A6%E4%B9%A02-docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker学习2-Docker镜像加速器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker%E5%AD%A6%E4%B9%A001-docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Docker学习01-Docker镜像加速器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

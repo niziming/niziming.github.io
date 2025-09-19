@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,14 +240,14 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="pev72_all_in_one_虚拟机大全_02_pve的基本配置">PEV7.2_all_in_one_虚拟机大全_02_pve的基本配置</span></h1>
-<h2><span id="简介">简介</span></h2>
+                <h1 id="pev72_all_in_one_虚拟机大全_02_pve的基本配置">PEV7.2_all_in_one_虚拟机大全_02_pve的基本配置</h1>
+<h2 id="简介">简介</h2>
 <p>pve是基于debain操作系统的它的扩展性和自由度是非常大的</p>
-<h2><span id="准备工作">准备工作</span></h2>
+<h2 id="准备工作">准备工作</h2>
 <p>安装一个终端</p>
 <p>这里安装的是xshell</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-02-pve%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/image-20230402093426152.png" alt="image-20230402093426152"></p>
-<h2><span id="开始">开始</span></h2>
+<h2 id="开始">开始</h2>
 <p>PVE 默认的软件源是用的国外服务器，所以我们的环境下进行软件更新、安装的时候都会比较慢。现在国内已经有许多的镜像仓库供我们使用。</p>
 <p>删除 PVE 自己的软件源<br>
 PVE 本身也有自己的软件软，但是都是收费的。我们需要将其删除，不然在软件安装时会提示一些 401 的认证错误</p>
@@ -268,7 +268,7 @@ PVE 本身也有自己的软件软，但是都是收费的。我们需要将其�
 <p>粘贴完成后按 ctrl + x</p>
 <p>会提示是否保存，我们输入（不区分大小写） y 进行保存</p>
 <p>更新<code>apt-get update</code></p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p>可以看到就已经是使用的我们修改过后的软件源了 作者：过气的村支书 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv18982499">https://www.bilibili.com/read/cv18982499</a> 出处：bilibili</p>
 </blockquote>
@@ -310,7 +310,7 @@ PVE 本身也有自己的软件软，但是都是收费的。我们需要将其�
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">PEV7.2_all_in_one_虚拟机大全_02_pve的基本配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pev72_all_in_one_%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8_02_pve%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">PEV7.2_all_in_one_虚拟机大全_02_pve的基本配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

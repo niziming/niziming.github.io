@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,8 +240,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="两个不同版本gitlab代码迁移">两个不同版本Gitlab代码迁移</span></h1>
-<h2><span id="迁移gitlab代码仓库通常有几种方法">迁移GitLab代码仓库通常有几种方法</span></h2>
+                <h1 id="两个不同版本gitlab代码迁移">两个不同版本Gitlab代码迁移</h1>
+<h2 id="迁移gitlab代码仓库通常有几种方法">迁移GitLab代码仓库通常有几种方法</h2>
 <p>包括命令行操作和使用GitLab的导出导入功能。以下是一些步骤和注意事项：</p>
 <ol>
 <li>
@@ -292,7 +292,7 @@
 </ul>
 </li>
 </ol>
-<h2><span id="gitlab-rake">gitlab-rake</span></h2>
+<h2 id="gitlab-rake">gitlab-rake</h2>
 <p>要对部署在Docker容器中的GitLab进行全量备份并迁移，你可以按照以下步骤操作：</p>
 <ol>
 <li>
@@ -361,9 +361,9 @@
 </li>
 </ol>
 <p>请注意，以上步骤需要根据你的实际情况进行调整，例如容器名称、备份文件名、宿主机路径等。同时，确保在操作过程中，你有足够的权限来执行这些命令。在执行恢复操作之前，最好先在测试环境中进行验证，以确保不会影响生产环境的服务。</p>
-<h2><span id="简介">简介</span></h2>
-<h2><span id="准备工作">准备工作</span></h2>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="简介">简介</h2>
+<h2 id="准备工作">准备工作</h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote></blockquote>
 
 
@@ -403,7 +403,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">两个不同版本Gitlab代码迁移</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">迁移GitLab代码仓库通常有几种方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">gitlab-rake</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%A4%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%ACgitlab%E4%BB%A3%E7%A0%81%E8%BF%81%E7%A7%BB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">两个不同版本Gitlab代码迁移</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%81%E7%A7%BBgitlab%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E9%80%9A%E5%B8%B8%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">迁移GitLab代码仓库通常有几种方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#gitlab-rake"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">gitlab-rake</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

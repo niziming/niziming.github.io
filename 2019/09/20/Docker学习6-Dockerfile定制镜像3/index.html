@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,8 +240,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="dockerfile定制镜像03">Dockerfile定制镜像03</span></h1>
-<h2><span id="镜像构建上下文context">镜像构建上下文(Context)</span></h2>
+                <h1 id="dockerfile定制镜像03">Dockerfile定制镜像03</h1>
+<h2 id="镜像构建上下文context">镜像构建上下文(Context)</h2>
 <p><code>docker build -t &lt;name&gt; .</code><br>
 这里的点表示当前目录</p>
 <p>如果注意，会看到 docker build 命令最后有一个 .。. 表示当前目录，而 Dockerfile 就在当前目录，因此不少初学者以为这个路径是在指定 Dockerfile 所在路径，这么理解其实是不准确的。如果对应上面的命令格式，你可能会发现，这是在指定上下文路径。那么什么是上下文呢？</p>
@@ -260,9 +260,9 @@
 <p>因此，COPY 这类指令中的源文件的路径都是相对路径。这也是初学者经常会问的为什么 COPY …/package.json /app 或者 COPY /opt/xxxx /app 无法工作的原因，因为这些路径已经超出了上下文的范围，Docker 引擎无法获得这些位置的文件。如果真的需要那些文件，应该将它们复制到上下文目录中去。</p>
 <p>现在就可以理解刚才的命令 docker build -t nginx:v3 . 中的这个 .，实际上是在指定上下文的目录，docker build 命令会将该目录下的内容打包交给 Docker 引擎以帮助构建镜像。</p>
 <p>实际上,dockerfile在打包过程中也说明了镜像构建的上下文</p>
-<h2><span id="在tomcat下新建一个indexhtml文件">在tomcat下新建一个index.html文件</span></h2>
+<h2 id="在tomcat下新建一个indexhtml文件">在tomcat下新建一个index.html文件</h2>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Docker<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2><span id="重新写dockerfile脚本">重新写dockerfile脚本</span></h2>
+<h2 id="重新写dockerfile脚本">重新写dockerfile脚本</h2>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dockerfile脚本开始</span></span><br><span class="line"><span class="keyword">FROM</span> tomcat</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /usr/local/tomcat/webapps/ROOT/</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">rm</span> -fr *</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> index.html /usr/local/tomcat/webapps/ROOT</span></span><br><span class="line">tomcat sudo docker build -t test .</span><br><span class="line">Sending build context to Docker daemon  <span class="number">15.87</span>kB</span><br><span class="line">这里的context就已经构建到docker的守护进程中</span><br><span class="line">Step <span class="number">1</span>/<span class="number">4</span> : <span class="keyword">FROM</span> tomcat</span><br><span class="line"> ---&gt; <span class="number">96</span>c4e536d0eb</span><br><span class="line">Step <span class="number">2</span>/<span class="number">4</span> : <span class="keyword">WORKDIR</span><span class="language-bash"> /usr/local/tomcat/webapps/ROOT/</span></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; <span class="number">9350</span>deb03d0d</span><br><span class="line">Step <span class="number">3</span>/<span class="number">4</span> : <span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">rm</span> -fr *</span></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; f6814fab3fe4</span><br><span class="line">Step <span class="number">4</span>/<span class="number">4</span> : <span class="keyword">COPY</span><span class="language-bash"> index.html /usr/local/tomcat/webapps/ROOT</span></span><br><span class="line"> ---&gt; <span class="number">1</span>dbbbda7e1cb</span><br><span class="line">Successfully built <span class="number">1</span>dbbbda7e1cb</span><br><span class="line">Successfully tagged test:latest</span><br><span class="line">➜  tomcat sudo docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">test                latest              <span class="number">1</span>dbbbda7e1cb        <span class="number">13</span> seconds ago      <span class="number">506</span>MB</span><br><span class="line">mydocker            latest              <span class="number">4691</span>fd38efff        <span class="number">2</span> hours ago         <span class="number">506</span>MB</span><br><span class="line"><span class="number">1.16</span>.<span class="number">1</span>              latest              <span class="number">97423576</span>f288        <span class="number">3</span> weeks ago         <span class="number">126</span>MB</span><br><span class="line">tomcat              latest              <span class="number">96</span>c4e536d0eb        <span class="number">4</span> weeks ago         <span class="number">506</span>MB</span><br><span class="line">nginx               <span class="number">1.16</span>.<span class="number">1</span>              <span class="number">41</span>e97992fcd8        <span class="number">5</span> weeks ago         <span class="number">126</span>MB</span><br><span class="line">ubuntu              <span class="number">16.04</span>               <span class="number">5</span>e13f8dd4c1a        <span class="number">8</span> weeks ago         <span class="number">120</span>MB</span><br></pre></td></tr></table></figure>
 
 
@@ -302,7 +302,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile定制镜像03</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">镜像构建上下文(Context)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">在tomcat下新建一个index.html文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">重新写dockerfile脚本</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F03"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Dockerfile定制镜像03</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%95%9C%E5%83%8F%E6%9E%84%E5%BB%BA%E4%B8%8A%E4%B8%8B%E6%96%87context"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">镜像构建上下文(Context)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9C%A8tomcat%E4%B8%8B%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAindexhtml%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">在tomcat下新建一个index.html文件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%87%8D%E6%96%B0%E5%86%99dockerfile%E8%84%9A%E6%9C%AC"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">重新写dockerfile脚本</span></a></li></ol></li></ol>
         
         </div>
       </aside>

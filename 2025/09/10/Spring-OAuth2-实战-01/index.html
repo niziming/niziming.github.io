@@ -170,10 +170,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -185,11 +181,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -244,8 +244,8 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="spring-oauth2-实战-01">Spring-OAuth2-实战-01</span></h1>
-<h2><span id="简介">简介</span></h2>
+                <h1 id="spring-oauth2-实战-01">Spring-OAuth2-实战-01</h1>
+<h2 id="简介">简介</h2>
 <p>Spring Security 提供全面的 OAuth 2.0 支持。本节讨论如何将 OAuth 2.0 集成到基于 Servlet 的应用程序中。</p>
 <p>Spring Security 的 OAuth 2.0 支持由两个主要功能集组成：</p>
 <ul>
@@ -253,19 +253,19 @@
 <li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html#oauth2-client">OAuth2 Client | OAuth2 客户端</a></li>
 </ul>
 <p>这些功能集涵盖了 <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc6749#section-1.1">OAuth 2.0 授权框架</a>中定义的<em>资源服务器</em>和<em>客户端</em>角色，而<em>授权服务器</em>角色则由 <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-authorization-server/reference/index.html">Spring Authorization Server 覆盖，Spring Authorization Server</a> 是一个基于 <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-security/reference/index.html">Spring Security</a> 构建的单独项目。</p>
-<h2><span id="准备工作">准备工作</span></h2>
+<h2 id="准备工作">准备工作</h2>
 <p>若要开始，请将依赖项添加到项目中。使用 Spring Boot 时，添加以下启动器： <code>spring-security-oauth2-resource-server</code></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-oauth2-resource-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>以下示例使用 Spring Boot 配置属性配置 bean：<code>JwtDecoder</code></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">security:</span></span><br><span class="line">    <span class="attr">oauth2:</span></span><br><span class="line">      <span class="attr">resourceserver:</span></span><br><span class="line">        <span class="attr">jwt:</span></span><br><span class="line">          <span class="attr">issuer-uri:</span> <span class="string">https://my-auth-server.com</span></span><br></pre></td></tr></table></figure>
 <p>使用 Spring Boot 时，只需这样做即可。Spring Boot 提供的默认排列方式相当于以下内容：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> SecurityFilterChain <span class="title function_">securityFilterChain</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		http</span><br><span class="line">			.authorizeHttpRequests((authorize) -&gt; authorize</span><br><span class="line">				.anyRequest().authenticated()</span><br><span class="line">			)</span><br><span class="line">			.oauth2ResourceServer((oauth2) -&gt; oauth2</span><br><span class="line">				.jwt(Customizer.withDefaults())</span><br><span class="line">			);</span><br><span class="line">		<span class="keyword">return</span> http.build();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> JwtDecoder <span class="title function_">jwtDecoder</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> JwtDecoders.fromIssuerLocation(<span class="string">&quot;https://my-auth-server.com&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="opaque-token-support-不透明令牌支持">Opaque Token Support 不透明令牌支持</span></h4>
+<h4 id="opaque-token-support-不透明令牌支持">Opaque Token Support 不透明令牌支持</h4>
 <p>以下示例使用 Spring Boot 配置属性配置 bean：<code>OpaqueTokenIntrospector</code></p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">spring:</span></span><br><span class="line">  <span class="params">security:</span></span><br><span class="line">    <span class="params">oauth2:</span></span><br><span class="line">      <span class="params">resourceserver:</span></span><br><span class="line">        <span class="params">opaquetoken:</span></span><br><span class="line">          <span class="params">introspection-uri:</span> https:<span class="symbol">//my-auth-server.com/oauth2/introspect</span></span><br><span class="line">          <span class="params">client-id:</span> my-client-id</span><br><span class="line">          <span class="params">client-secret:</span> my-client-secret</span><br></pre></td></tr></table></figure>
 <p>使用 Spring Boot 时，只需这样做即可。Spring Boot 提供的默认排列方式相当于以下内容：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> SecurityFilterChain <span class="title function_">securityFilterChain</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		http</span><br><span class="line">			.authorizeHttpRequests((authorize) -&gt; authorize</span><br><span class="line">				.anyRequest().authenticated()</span><br><span class="line">			)</span><br><span class="line">			.oauth2ResourceServer((oauth2) -&gt; oauth2</span><br><span class="line">				.opaqueToken(Customizer.withDefaults())</span><br><span class="line">			);</span><br><span class="line">		<span class="keyword">return</span> http.build();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> OpaqueTokenIntrospector <span class="title function_">opaqueTokenIntrospector</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SpringOpaqueTokenIntrospector</span>(</span><br><span class="line">			<span class="string">&quot;https://my-auth-server.com/oauth2/introspect&quot;</span>, <span class="string">&quot;my-client-id&quot;</span>, <span class="string">&quot;my-client-secret&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="核心比喻身份证-vs-酒店房卡">核心比喻：身份证 vs 酒店房卡</span></h3>
+<h3 id="核心比喻身份证-vs-酒店房卡">核心比喻：身份证 vs 酒店房卡</h3>
 <ul>
 <li><strong>透明令牌 (Transparent Token)</strong> 就像你的<strong>身份证</strong>。<strong>自包含信息</strong>：身份证上直接印着你的姓名、年龄、住址、身份证号等所有关键信息。<strong>可离线验证</strong>：任何一个懂规则的“验证方”（比如警察、银行职员）拿到你的身份证，不需要联网去公安局数据库查询，只通过查看防伪标识（比如水印、芯片），就能当场确认这张证件的真伪和你的身份。<strong>最典型的例子</strong>：<strong>JWT (JSON Web Token)</strong>。</li>
 <li><strong>不透明令牌 (Opaque Token)</strong> 就像一张<strong>酒店房卡</strong>。<strong>无意义的引用</strong>：房卡本身就是一串加密的、无意义的磁条数据。你看着它，完全不知道它对应哪个房间、有效期到什么时候。它只是一个<strong>引用</strong>或<strong>指针</strong>。<strong>必须在线验证</strong>：你必须拿着这张房卡去刷门锁。门锁会通过内部网络，实时地向酒店的<strong>中央管理系统</strong>发起一个查询：“这张卡号为XYZ的房卡，现在有效吗？能开这间房吗？”。只有中央系统返回“确认”后，门才会打开。<strong>最典型的例子</strong>：一串随机生成的、长长的字符串。</li>
@@ -316,7 +316,7 @@
 </tr>
 </tbody>
 </table>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html">OAuth2 :: Spring Security</a></p>
 </blockquote>
@@ -358,7 +358,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Spring-OAuth2-实战-01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.2.0.1.</span> <span class="toc-nav-text">Opaque Token Support 不透明令牌支持</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">核心比喻：身份证 vs 酒店房卡</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#spring-oauth2-%E5%AE%9E%E6%88%98-01"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Spring-OAuth2-实战-01</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#opaque-token-support-%E4%B8%8D%E9%80%8F%E6%98%8E%E4%BB%A4%E7%89%8C%E6%94%AF%E6%8C%81"><span class="toc-nav-number">1.2.0.1.</span> <span class="toc-nav-text">Opaque Token Support 不透明令牌支持</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A0%B8%E5%BF%83%E6%AF%94%E5%96%BB%E8%BA%AB%E4%BB%BD%E8%AF%81-vs-%E9%85%92%E5%BA%97%E6%88%BF%E5%8D%A1"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">核心比喻：身份证 vs 酒店房卡</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

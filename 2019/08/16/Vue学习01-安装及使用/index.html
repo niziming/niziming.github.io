@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,9 +240,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="vue学习记录">Vue学习记录</span></h1>
+                <h1 id="vue学习记录">Vue学习记录</h1>
 <p>这边博客为自己学习vue的记录.开始篇幅较大,如果基础好的同学可以直接点击vue内容开始浏览.</p>
-<h3><span id="什么是vuejs">什么是Vue.js</span></h3>
+<h3 id="什么是vuejs">什么是Vue.js</h3>
 <ul>
 <li>
 <p>Vue.js 是目前最火的前端框架,Vue.js也是可以进行手机app开发的需要借助于Weex</p>
@@ -260,7 +260,7 @@
 <p>前端工作 为mvc的view层</p>
 </li>
 </ul>
-<h1><span id="vue的学习">Vue的学习</span></h1>
+<h1 id="vue的学习">Vue的学习</h1>
 <p><strong>Vue学习的内容开始.</strong><br>
 Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的<strong>渐进式框架</strong>，<br>
 发布于 2014 年 2 月。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。<br>
@@ -280,7 +280,7 @@ Vue 的核心库只<strong>关注视图层</strong>，不仅易于上手，还�
 <p>Vuex 状态管理框架;</p>
 </li>
 </ul>
-<h3><span id="为什么要使用-vuejs">为什么要使用 Vue.js</span></h3>
+<h3 id="为什么要使用-vuejs">为什么要使用 Vue.js</h3>
 <ul>
 <li>轻量级，体积小是一个重要指标。Vue.js 压缩后有只有 20多kb （Angular 压缩后 56kb+，React 压缩后 44kb+）</li>
 <li>移动优先。更适合移动端，比如移动端的 Touch 事件</li>
@@ -288,15 +288,15 @@ Vue 的核心库只<strong>关注视图层</strong>，不仅易于上手，还�
 <li>吸取了 Angular（模块化）和 React（虚拟 DOM）的长处，并拥有自己独特的功能，如：计算属性</li>
 <li>开源，社区活跃度高</li>
 </ul>
-<h2><span id="vuejs-的两大核心要素">Vue.js 的两大核心要素</span></h2>
-<h3><span id="数据驱动">数据驱动</span></h3>
+<h2 id="vuejs-的两大核心要素">Vue.js 的两大核心要素</h2>
+<h3 id="数据驱动">数据驱动</h3>
 <p><img src="/2019/08/16/Vue%E5%AD%A6%E4%B9%A001-%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/dataDriver.png" alt="dataDriver"><br>
 当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty<br>
 把这些属性全部转为 getter/setter。Object.defineProperty 是 ES5 中一个无法 shim 的特性，<br>
 这也就是为什么 Vue 不支持 IE8 以及更低版本浏览器。</p>
 <p>每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知<br>
 watcher 重新计算，从而致使它关联的组件得以更新。</p>
-<h2><span id="安装">安装</span></h2>
+<h2 id="安装">安装</h2>
 <ul>
 <li>如果想快速上手,直接引入生产环境的Vue,然后开始测试学习.</li>
 </ul>
@@ -306,17 +306,17 @@ watcher 重新计算，从而致使它关联的组件得以更新。</p>
 利用npm 安装vue</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">最新稳定版</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install vue</span></span><br></pre></td></tr></table></figure>
-<h3><span id="命令行工具-cli">命令行工具 (CLI)</span></h3>
+<h3 id="命令行工具-cli">命令行工具 (CLI)</h3>
 <p><code>待完善</code></p>
-<h3><span id="组件化">组件化</span></h3>
+<h3 id="组件化">组件化</h3>
 <ul>
 <li>页面上每个独立的可交互的区域视为一个组件</li>
 <li>每个组件对应一个工程目录，组件所需的各种资源在这个目录下就近维护</li>
 <li>页面不过是组件的容器，组件可以嵌套自由组合（复用）形成完整的页面</li>
 </ul>
-<h2><span id="第一个vue程序">第一个Vue程序</span></h2>
+<h2 id="第一个vue程序">第一个Vue程序</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;my-vue&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">      &#123;&#123;a&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- built files will be auto injected --&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      var vm = new Vue(&#123;</span><br><span class="line">        el:&quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">          a: &quot;test&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<h2><span id="参考资料">参考资料</span></h2>
+<h2 id="参考资料">参考资料</h2>
 <blockquote>
 <p>李卫民的教程<br>
 <a target="_blank" rel="noopener" href="https://www.funtl.com/zh/vue-prepare/">https://www.funtl.com/zh/vue-prepare/</a><br>
@@ -362,7 +362,7 @@ Vue官网教程<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue学习记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">什么是Vue.js</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Vue的学习</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text">为什么要使用 Vue.js</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Vue.js 的两大核心要素</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">数据驱动</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">命令行工具 (CLI)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">组件化</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">第一个Vue程序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue学习记录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFvuejs"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">什么是Vue.js</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vue%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Vue的学习</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-vuejs"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text">为什么要使用 Vue.js</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vuejs-%E7%9A%84%E4%B8%A4%E5%A4%A7%E6%A0%B8%E5%BF%83%E8%A6%81%E7%B4%A0"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Vue.js 的两大核心要素</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">数据驱动</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7-cli"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">命令行工具 (CLI)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">组件化</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAvue%E7%A8%8B%E5%BA%8F"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">第一个Vue程序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>

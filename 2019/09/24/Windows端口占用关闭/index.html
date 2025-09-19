@@ -168,10 +168,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -183,11 +179,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -242,7 +242,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="windows端口占用关闭">Windows端口占用关闭</span></h1>
+                <h1 id="windows端口占用关闭">Windows端口占用关闭</h1>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看端口占用pid</span></span><br><span class="line">C:\Users\ziming&gt;netstat -ano|findstr 8080</span><br><span class="line">  TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       8912</span><br><span class="line">  TCP    [::]:8080              [::]:0                 LISTENING       8912</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">杀死pid</span></span><br><span class="line">C:\Users\ziming&gt;taskkill/pid 8912 /F</span><br><span class="line">成功: 已终止 PID 为 8912 的进程。</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">再次查看</span></span><br><span class="line">C:\Users\ziming&gt;netstat -ano|findstr 8080</span><br></pre></td></tr></table></figure>
 
 
@@ -282,7 +282,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Windows端口占用关闭</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#windows%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E5%85%B3%E9%97%AD"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Windows端口占用关闭</span></a></li></ol>
         
         </div>
       </aside>

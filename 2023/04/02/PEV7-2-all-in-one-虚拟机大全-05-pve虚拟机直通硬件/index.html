@@ -166,10 +166,6 @@
                     
 
                         
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
                     
 
                         
@@ -181,11 +177,15 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
                         
                     
                     
@@ -240,9 +240,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="pve虚拟机直通硬件">pve虚拟机直通硬件</span></h1>
-<h2><span id="简介">简介</span></h2>
-<h2><span id="准备工作">准备工作</span></h2>
+                <h1 id="pve虚拟机直通硬件">pve虚拟机直通硬件</h1>
+<h2 id="简介">简介</h2>
+<h2 id="准备工作">准备工作</h2>
 <ul>
 <li>查询自己的cpu是否支持硬件直通
 <ul>
@@ -254,8 +254,8 @@
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402130607173.png" alt="image-20230402130607173"></p>
 <p>进入bios开启相关选项</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402130657885.png" alt="image-20230402130657885"></p>
-<h2><span id="开始">开始</span></h2>
-<h3><span id="启用iommu功能"><strong>启用IOMMU功能</strong></span></h3>
+<h2 id="开始">开始</h2>
+<h3 id="启用iommu功能"><strong>启用IOMMU功能</strong></h3>
 <p>用网页端的 PVE shell 或 ssh 连接至 PVE，输入以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/default/grub</span><br></pre></td></tr></table></figure>
 <p>在文档中找到 “GRUB_CMDLINE_LINUX_DEFAULT=”quiet””一行，</p>
@@ -266,7 +266,7 @@
 <p>修改完成后，按 Ctrl+O 保存，按 Ctrl+X 退出文本编辑器。</p>
 <p>然后输入下一行命令更新 Grub：<code>update-grub</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[1]+  Stopped                 nano /etc/default/grub</span><br><span class="line">root@pve:~# nano /etc/default/grub</span><br><span class="line">root@pve:~# nano /etc/default/grub</span><br><span class="line">root@pve:~# update-grub</span><br><span class="line">Generating grub configuration file ...</span><br><span class="line">Found linux image: /boot/vmlinuz-5.15.30-2-pve</span><br><span class="line">Found initrd image: /boot/initrd.img-5.15.30-2-pve</span><br><span class="line">Found memtest86+ image: /boot/memtest86+.bin</span><br><span class="line">Found memtest86+ multiboot image: /boot/memtest86+_multiboot.bin</span><br><span class="line">Warning: os-prober will not be executed to detect other bootable partitions.</span><br><span class="line">Systems on them will not be added to the GRUB boot configuration.</span><br><span class="line">Check GRUB_DISABLE_OS_PROBER documentation entry.</span><br><span class="line">Adding boot menu entry <span class="keyword">for</span> UEFI Firmware Settings ...</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="加载相应的内核模块"><strong>加载相应的内核模块</strong></span></h3>
+<h3 id="加载相应的内核模块"><strong>加载相应的内核模块</strong></h3>
 <p>在命令行中输入以下命令：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo vfio &gt;&gt; /etc/modules</span><br><span class="line">echo vfio_iommu_type1 &gt;&gt; /etc/modules</span><br><span class="line">echo vfio_pci &gt;&gt; /etc/modules</span><br><span class="line">echo vfio_virqfd &gt;&gt; /etc/modules</span><br></pre></td></tr></table></figure>
 <p>然后输入<code>update-initramfs -k all -u</code></p>
@@ -284,13 +284,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /sys/kernel/iommu_groups/ -<span class="built_in">type</span> l</span><br></pre></td></tr></table></figure>
 <p>如果有类似于下图回显，就代表成功：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root@pve:~# find /sys/kernel/iommu_groups/ -type l</span><br><span class="line">/sys/kernel/iommu_groups/7/devices/0000:00:17.0</span><br><span class="line">/sys/kernel/iommu_groups/5/devices/0000:00:15.2</span><br><span class="line">/sys/kernel/iommu_groups/5/devices/0000:00:15.0</span><br><span class="line">/sys/kernel/iommu_groups/3/devices/0000:00:14.2</span><br><span class="line">/sys/kernel/iommu_groups/3/devices/0000:00:14.0</span><br><span class="line">/sys/kernel/iommu_groups/11/devices/0000:02:00.0</span><br><span class="line">/sys/kernel/iommu_groups/1/devices/0000:00:01.0</span><br><span class="line">/sys/kernel/iommu_groups/8/devices/0000:00:1d.0</span><br><span class="line">/sys/kernel/iommu_groups/6/devices/0000:00:16.0</span><br><span class="line">/sys/kernel/iommu_groups/4/devices/0000:00:14.3</span><br><span class="line">/sys/kernel/iommu_groups/12/devices/0000:03:00.0</span><br><span class="line">/sys/kernel/iommu_groups/2/devices/0000:00:06.0</span><br><span class="line">/sys/kernel/iommu_groups/10/devices/0000:01:00.0</span><br><span class="line">/sys/kernel/iommu_groups/10/devices/0000:01:00.1</span><br><span class="line">/sys/kernel/iommu_groups/0/devices/0000:00:00.0</span><br><span class="line">/sys/kernel/iommu_groups/9/devices/0000:00:1f.0</span><br><span class="line">/sys/kernel/iommu_groups/9/devices/0000:00:1f.5</span><br><span class="line">/sys/kernel/iommu_groups/9/devices/0000:00:1f.3</span><br><span class="line">/sys/kernel/iommu_groups/9/devices/0000:00:1f.4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3><span id="显卡直通"><strong>显卡直通</strong></span></h3>
+<h3 id="显卡直通"><strong>显卡直通</strong></h3>
 <p>注意</p>
 <p><strong>一般地，不推荐将显卡直通给特定虚拟机，有些命令执行不好会造成不可挽回的损失。建议将直通显卡的虚拟机不要勾选“开机自启动”，以便出现问题还可以用命令行救回。</strong></p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402132713409.png" alt="image-20230402132713409"></p>
 <p>依据自己显卡型号，在命令行输入以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">直通 AMD 显卡，请使用下面命令</span></span><br><span class="line"></span><br><span class="line">echo &quot;blacklist radeon&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line">echo &quot;blacklist amdgpu&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">直通 Nvidia 显卡，请使用下面命令</span></span><br><span class="line"></span><br><span class="line">echo &quot;blacklist nouveau&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line">echo &quot;blacklist nvidia&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line">echo &quot;blacklist nvidiafb&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">直通 Intel 核显，请使用下面命令</span></span><br><span class="line"></span><br><span class="line">echo &quot;blacklist snd_hda_intel&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line">echo &quot;blacklist snd_hda_codec_hdmi&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line">echo &quot;blacklist i915&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br></pre></td></tr></table></figure>
-<h3><span id="将显卡绑定至-vfio-pci">将显卡绑定至 vfio-pci:</span></h3>
+<h3 id="将显卡绑定至-vfio-pci">将显卡绑定至 vfio-pci:</h3>
 <p>使用 <code>lspci</code> 命令，查看自己显卡的 pci id：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@pve:~# lspci</span><br><span class="line">00:00.0 Host bridge: Intel Corporation Device 4c53 (rev 01)</span><br><span class="line">00:01.0 PCI bridge: Intel Corporation Device 4c01 (rev 01)</span><br><span class="line">00:06.0 PCI bridge: Intel Corporation Device 4c09 (rev 01)</span><br><span class="line">00:14.0 USB controller: Intel Corporation Device 43ed (rev 11)</span><br><span class="line">00:14.2 RAM memory: Intel Corporation Device 43ef (rev 11)</span><br><span class="line">00:14.3 Network controller: Intel Corporation Device 43f0 (rev 11)</span><br><span class="line">00:15.0 Serial bus controller [0c80]: Intel Corporation Device 43e8 (rev 11)</span><br><span class="line">00:15.2 Serial bus controller [0c80]: Intel Corporation Device 43ea (rev 11)</span><br><span class="line">00:16.0 Communication controller: Intel Corporation Device 43e0 (rev 11)</span><br><span class="line">00:17.0 SATA controller: Intel Corporation Device 43d2 (rev 11)</span><br><span class="line">00:1d.0 PCI bridge: Intel Corporation Device 43b0 (rev 11)</span><br><span class="line">00:1f.0 ISA bridge: Intel Corporation Device 4387 (rev 11)</span><br><span class="line">00:1f.3 Audio device: Intel Corporation Device 43c8 (rev 11)</span><br><span class="line">00:1f.4 SMBus: Intel Corporation Device 43a3 (rev 11)</span><br><span class="line">00:1f.5 Serial bus controller [0c80]: Intel Corporation Device 43a4 (rev 11)</span><br><span class="line">01:00.0 VGA compatible controller: NVIDIA Corporation Device 2489 (rev a1)</span><br><span class="line">01:00.1 Audio device: NVIDIA Corporation GA104 High Definition Audio Controller (rev a1)</span><br><span class="line">02:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller PM9A1/980PRO</span><br><span class="line">03:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 15)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>01:00.0 VGA compatible controller: NVIDIA Corporation Device 2489 (rev a1)</p>
@@ -309,8 +309,8 @@
 <p>注意 : 对于 <strong>Nvidia 显卡</strong>，需要再输入一条命令更新内核：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;options kvm ignore_msrs=1&quot;</span> &gt; /etc/modprobe.d/kvm.conf</span><br></pre></td></tr></table></figure>
 <p>随后重启 PVE。</p>
-<h3><span id="开启直通">开启直通</span></h3>
-<h4><span id="添加pci设备">添加PCI设备</span></h4>
+<h3 id="开启直通">开启直通</h3>
+<h4 id="添加pci设备">添加PCI设备</h4>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402134009277.png" alt="image-20230402134009277"></p>
 <p>然后开始显卡在 PVE 虚拟机里的直通，在硬件里添加“PCI 设备”，设备选择自己显卡型号，勾选 PCI-Express，<strong>注意千万不要勾选“主 GPU”</strong>。若不能勾选 PCI-Express，将机器类型<strong>更改为 q35</strong>：</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402134128659.png" alt="image-20230402134128659"></p>
@@ -318,7 +318,7 @@
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402135359376.png" alt="image-20230402135359376"></p>
 <p>PVE 的硬件直通是一个道阻且长的过程，建议在非生产环境中执行，并在执行前对相关配置及系统进行备份。受系统更新影响，本篇文章可能不适用于最新系统。</p>
 <p><img src="/2023/04/02/PEV7-2-all-in-one-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%A4%A7%E5%85%A8-05-pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6/image-20230402135641603.png" alt="image-20230402135641603"></p>
-<h2><span id="引用资料">引用资料</span></h2>
+<h2 id="引用资料">引用资料</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://never666.uk/1631/">在 PVE 7 中启用硬件直通功能 – 拾梦纪 (never666.uk)</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.31du.cn/blog/no-etc-kernel-proxmox-boot-uuids-found-skipping-esp-sync.html">可無視 No /etc/kernel/proxmox-boot-uuids found, skipping ESP sync.錯誤_三十一度 (31du.cn)</a></p>
@@ -361,7 +361,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pve虚拟机直通硬件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">启用IOMMU功能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">加载相应的内核模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">显卡直通</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">将显卡绑定至 vfio-pci:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">开启直通</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.3.5.1.</span> <span class="toc-nav-text">添加PCI设备</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pve%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9B%B4%E9%80%9A%E7%A1%AC%E4%BB%B6"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pve虚拟机直通硬件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">准备工作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%AF%E7%94%A8iommu%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">启用IOMMU功能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%BA%94%E7%9A%84%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">加载相应的内核模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%98%BE%E5%8D%A1%E7%9B%B4%E9%80%9A"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">显卡直通</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%86%E6%98%BE%E5%8D%A1%E7%BB%91%E5%AE%9A%E8%87%B3-vfio-pci"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">将显卡绑定至 vfio-pci:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%80%E5%90%AF%E7%9B%B4%E9%80%9A"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">开启直通</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%B7%BB%E5%8A%A0pci%E8%AE%BE%E5%A4%87"><span class="toc-nav-number">1.3.5.1.</span> <span class="toc-nav-text">添加PCI设备</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>
