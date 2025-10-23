@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Win10安装WSL不依赖微软商店 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2025/10/23/win10安装swl不依赖微软商店/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#WSL" title="WSL">WSL</a>
+                            
+                        </div>
+                        <h1>Win10安装WSL不依赖微软商店</h1>
+                        <h2 class="subheading">win10安装swl不依赖微软商店</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2025-10-23
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="win10安装swl不依赖微软商店">win10安装swl不依赖微软商店</h1>
+<p>好的，完全没有问题。在 Windows 上安装适用于 Linux 的 Windows 子系统 (WSL) 和 Ubuntu 发行版，完全可以不依赖微软商店。您可以通过命令行（PowerShell 或命令提示符）来完成所有操作，这种方式甚至更受开发者欢迎，因为它更直接、更可控。</p>
+<p>以下是详细的步骤，引导您完成整个过程：</p>
+<h3 id="通过命令行安装-wsl-和-ubuntu-2204"><strong>通过命令行安装 WSL 和 Ubuntu 22.04</strong></h3>
+<p>这个过程主要分为两步：首先安装 WSL 核心组件，然后手动下载并安装 Ubuntu。</p>
+<h4 id="第-1-步以管理员身份打开-powershell"><strong>第 1 步：以管理员身份打开 PowerShell</strong></h4>
+<p>这是所有操作的前提。</p>
+<ol>
+<li></li>
+<li>点击“开始”按钮。</li>
+<li>输入 PowerShell。</li>
+<li>在搜索结果中，右键点击“Windows PowerShell”，然后选择“以管理员身份运行”。</li>
+</ol>
+<h4 id="第-2-步启用-wsl-功能"><strong>第 2 步：启用 WSL 功能</strong></h4>
+<p>在 PowerShell 中，您需要运行一个命令来启用 WSL。这个命令会自动处理所有必需的 Windows 功能（如“虚拟机平台”和“适用于 Linux 的 Windows 子系统”）。</p>
+<ul>
+<li></li>
+<li>复制并粘贴以下命令到 PowerShell 窗口，然后按回车： code Powershelldownloadcontent_copyexpand_less<code>wsl --install</code></li>
+<li><strong>注意</strong>：这个命令执行后，通常需要<strong>重启您的计算机</strong>来完成组件的安装。请根据提示操作。</li>
+</ul>
+<p>这个命令默认会从微软商店的源头安装最新版本的 Ubuntu。由于您的目标是绕开商店并安装特定版本，我们可以继续下一步。如果该命令自动开始下载 Ubuntu，您可以按 Ctrl + C 终止它，然后执行后续步骤。</p>
+<h4 id="第-3-步手动下载-ubuntu-22045-lts"><strong>第 3 步：手动下载 Ubuntu 22.04.5 LTS</strong></h4>
+<p>您需要手动下载 Ubuntu 发行版的 .appx 安装包。幸运的是，微软为此提供了官方的下载链接。</p>
+<ol>
+<li></li>
+<li><strong>打开浏览器</strong>，或者您也可以在 PowerShell 中使用 curl 命令来下载。</li>
+<li><strong>使用以下链接下载 Ubuntu 22.04.5</strong>：<a target="_blank" rel="noopener" href="https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Faka.ms%2Fwslubuntu2204">点击这里直接下载 Ubuntu 22.04.5 LTS 的 .appx 包</a>如果您想使用 PowerShell 下载（推荐），可以将文件下载到您的“下载”文件夹中。请在 <strong>管理员 PowerShell</strong> 中运行以下命令： code Powershelldownloadcontent_copyexpand_less<code>curl.exe -L -o D:\Downloads\Ubuntu-22.04.5.appx https://aka.ms/wslubuntu2204</code><em>(您可以将 D:\Downloads 替换为您希望保存文件的任何路径)</em></li>
+</ol>
+<h4 id="第-4-步手动安装-ubuntu"><strong>第 4 步：手动安装 Ubuntu</strong></h4>
+<p>下载完成后，您就可以在指定的路径下找到 Ubuntu-22.04.5.appx 这个文件了。</p>
+<ol>
+<li></li>
+<li><strong>导航到文件所在的目录</strong>。如果您将文件下载到了 D:\Downloads，请在 PowerShell 中运行： code Powershelldownloadcontent_copyexpand_less<code>cd D:\Downloads</code></li>
+<li><strong>运行安装命令</strong>。使用 Add-AppxPackage 命令来安装您刚刚下载的包： code Powershelldownloadcontent_copyexpand_less<code>Add-AppxPackage .\Ubuntu-22.04.5.appx</code></li>
+</ol>
+<p>安装过程会很快完成。</p>
+<h4 id="第-5-步初始化-ubuntu"><strong>第 5 步：初始化 Ubuntu</strong></h4>
+<ol>
+<li></li>
+<li>安装完成后，点击“开始”菜单，您应该能看到一个新安装的“Ubuntu”应用程序图标。</li>
+<li><strong>首次启动 Ubuntu</strong>。点击该图标，会打开一个终端窗口。第一次启动时，系统会提示您“Installing, this may take a few minutes…”。这个过程完成后，您需要为您的 Ubuntu 系统设置一个<strong>用户名</strong>和<strong>密码</strong>。请注意，这个用户名和密码是独立于您的 Windows 账户的，并且输入密码时屏幕上不会显示任何字符。</li>
+</ol>
+<p>设置完成后，您就进入了 Ubuntu 的命令行环境。至此，您已成功在不使用微软商店的情况下安装了 Ubuntu 22.04.5 LTS 子系统。</p>
+<p>以后，您可以随时通过点击开始菜单的 Ubuntu 图标，或在任何终端（CMD 或 PowerShell）中输入 wsl 或 ubuntu 来启动它。</p>
+<h2 id="引用资料">引用资料</h2>
+<blockquote>
+<p>：<a target="_blank" rel="noopener" href="https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Faka.ms%2Fwslubuntu2204">点击这里直接下载 Ubuntu 22.04.5 LTS 的 .appx 包</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2025/09/12/Java-8到Java-21的重要特性/" data-toggle="tooltip" data-placement="top" title="Java 8到Java 21的重要特性">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#win10%E5%AE%89%E8%A3%85swl%E4%B8%8D%E4%BE%9D%E8%B5%96%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">win10安装swl不依赖微软商店</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85-wsl-%E5%92%8C-ubuntu-2204"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">通过命令行安装 WSL 和 Ubuntu 22.04</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC-1-%E6%AD%A5%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E6%89%93%E5%BC%80-powershell"><span class="toc-nav-number">1.0.1.1.</span> <span class="toc-nav-text">第 1 步：以管理员身份打开 PowerShell</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC-2-%E6%AD%A5%E5%90%AF%E7%94%A8-wsl-%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">1.0.1.2.</span> <span class="toc-nav-text">第 2 步：启用 WSL 功能</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC-3-%E6%AD%A5%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD-ubuntu-22045-lts"><span class="toc-nav-number">1.0.1.3.</span> <span class="toc-nav-text">第 3 步：手动下载 Ubuntu 22.04.5 LTS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC-4-%E6%AD%A5%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85-ubuntu"><span class="toc-nav-number">1.0.1.4.</span> <span class="toc-nav-text">第 4 步：手动安装 Ubuntu</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC-5-%E6%AD%A5%E5%88%9D%E5%A7%8B%E5%8C%96-ubuntu"><span class="toc-nav-number">1.0.1.5.</span> <span class="toc-nav-text">第 5 步：初始化 Ubuntu</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#WSL" title="WSL">WSL</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2025
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
