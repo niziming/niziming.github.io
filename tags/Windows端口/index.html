@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/tags/Windows端口/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/header_img/archives-widget.png')
+        /*page*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>十渊</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Simeon Ngai</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+            <!-- USE SIDEBAR -->
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+                
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 归档列表 -->
+            
+            
+
+             <!-- 归档列表 -->
+
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2026">
+                    <span class="tag-text">2026</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2026/03/24/Spec模式开发/" style="color: #0085a1">
+                        <span>
+                            Spec模式开发
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2025">
+                    <span class="tag-text">2025</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2025/10/23/Win10安装WSL不依赖微软商店/" style="color: #0085a1">
+                        <span>
+                            Win10安装WSL不依赖微软商店
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-12
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2025/09/12/Java-8到Java-21的重要特性/" style="color: #0085a1">
+                        <span>
+                            Java 8到Java 21的重要特性
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-10
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2025/09/10/Spring-OAuth2-实战-01/" style="color: #0085a1">
+                        <span>
+                            Spring-OAuth2-实战-01
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    07-07
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2025/07/07/分析型数据库Apache-Doris实战01-简介/" style="color: #0085a1">
+                        <span>
+                            分析型数据库Apache Doris实战01-简介
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2024">
+                    <span class="tag-text">2024</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-14
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/10/14/docker-engin-api-url问题记录/" style="color: #0085a1">
+                        <span>
+                            docker-engin_api_url问题记录
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/09/28/2024年Ubuntu安装docker/" style="color: #0085a1">
+                        <span>
+                            2024年Ubuntu安装docker
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-13
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/09/13/Gitlab代码仓库迁移-两个不同版本Gitlab代码迁移/" style="color: #0085a1">
+                        <span>
+                            Gitlab代码仓库迁移-两个不同版本Gitlab代码迁移
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-13
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/09/13/Docker22-Gitlab部署/" style="color: #0085a1">
+                        <span>
+                            Docker22-Gitlab部署
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-25
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/08/25/香港旅游攻略/" style="color: #0085a1">
+                        <span>
+                            香港旅游攻略
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/08/18/本地部署大型语音模型-LM-Studio-01/" style="color: #0085a1">
+                        <span>
+                            本地部署大型语音模型-LM Studio-01
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-17
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/08/17/GPT4ALL-v3-2-1-大模型语言本地部署01/" style="color: #0085a1">
+                        <span>
+                            GPT4ALL-v3.2.1-大语言模型本地部署01
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    07-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/07/28/windows-纯净版win10安装/" style="color: #0085a1">
+                        <span>
+                            windows-纯净版win10安装
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    07-27
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/07/27/Docker21-docker迁移/" style="color: #0085a1">
+                        <span>
+                            Docker21-docker迁移
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    07-21
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/07/21/Docker20-docker默认路径修改/" style="color: #0085a1">
+                        <span>
+                            Docker20-docker默认路径修改
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/04/28/AI初体验-Python启动视觉识别hello-world/" style="color: #0085a1">
+                        <span>
+                            AI初体验-Python启动视觉识别hello_world
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-09
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/04/09/Docker学习19-Docker-安装mysql/" style="color: #0085a1">
+                        <span>
+                            Docker学习19-Docker-安装mysql
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-09
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2024/04/09/windows10-subsystem-for-linux-04-子系统文件导出到windows系统/" style="color: #0085a1">
+                        <span>
+                            windows10-subsystem-for-linux-04-子系统文件导出到windows系统
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2023">
+                    <span class="tag-text">2023</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/12/29/windows10-subsystem-for-linux-03-C盘空间转移/" style="color: #0085a1">
+                        <span>
+                            windows10-subsystem-for-linux-03-C盘空间转移
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/12/28/Docker19-portainer-Docker图形化工具/" style="color: #0085a1">
+                        <span>
+                            Docker19-portainer-Docker图形化工具
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/12/28/windows10-subsystem-for-android-02-安卓子系统/" style="color: #0085a1">
+                        <span>
+                            windows10-subsystem-for-android-02-安卓子系统
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/12/28/Curl指令详解/" style="color: #0085a1">
+                        <span>
+                            Curl指令详解
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/12/24/Linux使用ubuntu22-04-LTS-初始化/" style="color: #0085a1">
+                        <span>
+                            Linux使用ubuntu22.04_LTS_初始化
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/12/24/windows-subsystem-for-linux-01-wsl安装/" style="color: #0085a1">
+                        <span>
+                            windows subsystem for linux 01-wsl安装
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    06-12
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/06/12/科学上网clash/" style="color: #0085a1">
+                        <span>
+                            科学上网clash
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    05-20
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/05/20/成都漫花庄园/" style="color: #0085a1">
+                        <span>
+                            成都漫花庄园
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-02
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/04/02/PEV7-2-all-in-one-虚拟机大全-05-pve虚拟机直通硬件/" style="color: #0085a1">
+                        <span>
+                            PEV7.2_all_in_one_虚拟机大全_05_pve虚拟机直通硬件
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-02
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/04/02/PEV7-2-all-in-one-虚拟机大全-04-pve调整local及local-lvm空间/" style="color: #0085a1">
+                        <span>
+                            PEV7.2_all_in_one_虚拟机大全_04_pve调整local及local-lvm空间
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-02
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/04/02/PEV7-2-all-in-one-虚拟机大全-03-pve安装windows10镜像/" style="color: #0085a1">
+                        <span>
+                            PEV7.2_all_in_one_虚拟机大全_02_pve安装windows10镜像
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-02
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/04/02/PEV7-2-all-in-one-虚拟机大全-02-pve的基本配置/" style="color: #0085a1">
+                        <span>
+                            PEV7.2_all_in_one_虚拟机大全_02_pve的基本配置
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-01
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2023/04/01/PEV7-2-all-in-one-虚拟机大全-01-pve的下载与安装/" style="color: #0085a1">
+                        <span>
+                            PEV7.2_all_in_one_虚拟机大全_01_pve的下载与安装
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2021">
+                    <span class="tag-text">2021</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-06
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/12/06/SpringCloud微服务系列04-Alibaba架构03-Sentinel-01-流量控制和熔断降级/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构03-Sentinel-01-流量控制和熔断降级
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-02
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/12/02/SpringCloud微服务系列04-Alibaba架构02-Nacos-03-gateway作为服务网关/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构02-Nacos-03-gateway作为服务网关
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-30
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/30/SpringCloud微服务系列04-Alibaba架构02-Nacos-02-配置中心/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构02-Nacos-02-配置中心
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/24/SpringCloud微服务系列04-Alibaba架构02-Nacos-01-服务注册和发现/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构02-Nacos-01-服务注册和发现
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-22
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/22/SpringBootAdmin-01-快速开始/" style="color: #0085a1">
+                        <span>
+                            SpringBootAdmin-01-快速开始
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-22
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/22/SpringCloud微服务系列04-Alibaba架构01-Gateway-05-配合注册中心简单的使用/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构01-Gateway-05-配合注册中心简单的使用
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/18/SpringCloud微服务系列04-Alibaba架构01-Gateway-04-限流/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构01-Gateway-04-限流
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/18/SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构01-Gateway-03-Filter
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/18/SpringCloud微服务系列04-Alibaba架构01-Gateway-02-Predicate/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构01-Gateway-02-Predicate
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-08
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/08/专题-GitHub-Copilot/" style="color: #0085a1">
+                        <span>
+                            [专题]GitHub Copilot
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-02
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/02/SpringCloud微服务系列04-Alibaba架构01-Gateway-01-intro/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列04-Alibaba架构01-Gateway-01-intro
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    11-01
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/11/01/SpringCloud-SpringBoot-SpringCloudAlibaba稳定版本对应关系/" style="color: #0085a1">
+                        <span>
+                            SpringCloud-SpringBoot-SpringCloudAlibaba稳定版本对应关系
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/29/Spring-Cloud-Netflix系列完结总结/" style="color: #0085a1">
+                        <span>
+                            Spring-Cloud-Netflix微服务系列完结总结
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/29/SpringCloud微服务系列03-Netflix架构09-Turbine/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构09-Turbine
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-28
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/28/SpringCloud微服务系列03-Netflix架构08-Sleuth/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构08-Sleuth
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-27
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/27/SpringCloud微服务系列03-Netflix架构07-Bus/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构07-Bus
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-26
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/26/SpringCloud微服务系列03-RabittMQ消息队列/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-RabittMQ消息队列
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-26
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/26/SpringCloud微服务系列03-Netflix架构06-Config/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构06-Config
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-25
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/25/SpringCloud微服务系列03-Netflix架构05-Zuul/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构05-Zuul
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-21
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/21/SpringCloud微服务系列03-Netflix架构04-Hystrix/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构04-Hystrix
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/18/SpringCloud微服务系列03-Netflix架构03-feign/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构03-Feign
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/18/GitHub推送遇到的连接问题/" style="color: #0085a1">
+                        <span>
+                            GitHub推送遇到的连接问题
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-13
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/13/SpringCloud微服务系列03-Netflix架构02-Ribbon/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构02-Ribbon
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-11
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/11/SpringCloud微服务系列03-Netflix架构01-Eureka/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列03-Netflix架构01-Eureka
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-11
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/11/SpringCloud微服务系列02-公共模块搭建/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列02-公共模块搭建
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-08
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/10/08/SpringCloud微服务系列01-初始项目搭建/" style="color: #0085a1">
+                        <span>
+                            SpringCloud微服务系列01-初始项目搭建
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-21
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/04/21/如何ubuntu上创建git仓库/" style="color: #0085a1">
+                        <span>
+                            如何ubuntu上创建git仓库
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-20
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/04/20/2021五一重庆游/" style="color: #0085a1">
+                        <span>
+                            2021五一重庆游
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-21
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/03/21/备忘录/" style="color: #0085a1">
+                        <span>
+                            备忘录
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-20
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2021/03/20/GCP上搭建虚拟服务器VPS/" style="color: #0085a1">
+                        <span>
+                            GCP上搭建虚拟服务器VPS
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
+                    <span class="tag-text">2020</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    12-26
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2020/12/26/Brook科学上网必备/" style="color: #0085a1">
+                        <span>
+                            Brook科学上网必备
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
+                    <span class="tag-text">2019</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-27
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/27/Docker-Registry学习3-配置WebUI与客户端/" style="color: #0085a1">
+                        <span>
+                            Docker-Registry学习3-配置WebUI与客户端
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-27
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/27/Docker-Registry学习1-Docker部署镜像/" style="color: #0085a1">
+                        <span>
+                            Docker-Registry学习1-Docker部署镜像
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-27
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/27/Docker-Registry学习2-简介与安装/" style="color: #0085a1">
+                        <span>
+                            Docker-Registry学习2-简介与安装
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/24/VMware虚拟工作站1-安装与使用Linux篇1/" style="color: #0085a1">
+                        <span>
+                            VMware虚拟工作站1-安装与使用Linux篇1
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/23/Nexus学习2-Maven仓库介绍/" style="color: #0085a1">
+                        <span>
+                            Nexus学习2-Maven仓库介绍
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/23/Nexus学习3-在项目中使用maven私库/" style="color: #0085a1">
+                        <span>
+                            Nexus学习3-在项目中使用maven私库
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    10-22
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/10/22/Nexus学习1-Nexus简介与安装/" style="color: #0085a1">
+                        <span>
+                            Nexus学习00-Nexus简介与安装
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-30
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/30/GitLab学习2-GitLab的使用/" style="color: #0085a1">
+                        <span>
+                            GitLab学习2-GitLab的使用
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-30
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/30/GitLab学习1-使用git托管代码/" style="color: #0085a1">
+                        <span>
+                            GitLab学习1-使用git托管代码
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/29/Docker学习18-Docker-Compose-YAML配置文件语言/" style="color: #0085a1">
+                        <span>
+                            Docker学习18-Docker-Compose-YAML配置文件语言
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/29/Docker学习17-Docker-Compose-部署项目到容器/" style="color: #0085a1">
+                        <span>
+                            Docker学习17-Docker-Compose-部署项目到容器
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/29/Docker学习16-Docker-Compose-命令说明/" style="color: #0085a1">
+                        <span>
+                            Docker学习16-Docker-Compose命令说明
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/29/Docker学习15-Docker-Compose-模板文件/" style="color: #0085a1">
+                        <span>
+                            Docker学习15-Docker-Compose-模板文件
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/29/Docker学习14-Docker-Compose-的使用/" style="color: #0085a1">
+                        <span>
+                            Docker学习14-Docker-Compose-的使用
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-29
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/29/Docker学习13-Docker-Compose-安装与卸载/" style="color: #0085a1">
+                        <span>
+                            Docker学习13-Docker-Compose-安装与卸载
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-27
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/27/Docker学习12-Docker-Compose-介绍/" style="color: #0085a1">
+                        <span>
+                            Docker学习12-Docker-Compose-介绍
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-25
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/25/Docker学习11-部署项目到容器/" style="color: #0085a1">
+                        <span>
+                            Docker学习11-部署项目到容器
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/24/Windows端口占用关闭/" style="color: #0085a1">
+                        <span>
+                            Windows端口占用关闭
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-24
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/24/Docker学习10-部署数据库/" style="color: #0085a1">
+                        <span>
+                            Docker学习10-部署数据库
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/23/Docker学习9-Docker数据卷/" style="color: #0085a1">
+                        <span>
+                            Docker学习9-Docker数据卷
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/23/Docker学习8-Docker仓库2-私有仓库/" style="color: #0085a1">
+                        <span>
+                            Docker学习8-Docker仓库2-私有仓库
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/23/Docker学习8-Docker仓库1-Docker-Hub/" style="color: #0085a1">
+                        <span>
+                            Docker学习8-Docker仓库1-Docker-Hub
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/23/Docker学习7-Docker容器/" style="color: #0085a1">
+                        <span>
+                            Docker学习7-Docker容器
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/23/Docker学习6-Dockerfile定制镜像4-Dockerfile指令详解/" style="color: #0085a1">
+                        <span>
+                            Docker学习6-Dockerfile定制镜像4-Dockerfile指令详解
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/23/并发的原子性-可见性-有序性/" style="color: #0085a1">
+                        <span>
+                            并发的原子性,可见性,有序性
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-20
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/20/Docker学习6-Dockerfile定制镜像3/" style="color: #0085a1">
+                        <span>
+                            Docker学习06-Dockerfile定制镜像03
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-19
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/19/Docker学习6-Dockerfile定制镜像2/" style="color: #0085a1">
+                        <span>
+                            Docker学习6-Dockerfile定制镜像2
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/18/Docker学习6-Dockerfile定制镜像1/" style="color: #0085a1">
+                        <span>
+                            Docker学习6-Dockerfile定制镜像1
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/18/Docker学习5-Docker基本指令/" style="color: #0085a1">
+                        <span>
+                            Docker学习5-Docker基本指令
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/18/Docker学习2-Docker镜像加速器/" style="color: #0085a1">
+                        <span>
+                            Docker学习2-Docker镜像加速器
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    09-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/09/18/Docker学习1-Docker是什么/" style="color: #0085a1">
+                        <span>
+                            Docker学习1-Docker是什么
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-26
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/26/Axios学习2-跨域通信/" style="color: #0085a1">
+                        <span>
+                            Axios学习2-跨域通信
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/18/Axios学习1-实现异步通信/" style="color: #0085a1">
+                        <span>
+                            Axios学习1-实现异步通信
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-17
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/17/Vue学习05-Vuex安装及使用/" style="color: #0085a1">
+                        <span>
+                            Vue学习05-Vuex安装及使用
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-17
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/17/Vue学习04-Vue布局/" style="color: #0085a1">
+                        <span>
+                            Vue学习03-生命4ue布局
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-17
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/17/Vue学习03-生命周期函数/" style="color: #0085a1">
+                        <span>
+                            Vue学习03-生命周期函数
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-17
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/17/Vue学习02-Vue语法/" style="color: #0085a1">
+                        <span>
+                            Vue学习02-Vue语法
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-16
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/16/Vue学习01-安装及使用/" style="color: #0085a1">
+                        <span>
+                            Vue学习01-安装及使用
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    08-15
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/08/15/Vue学习00-Vue学习之前需要了解的知识/" style="color: #0085a1">
+                        <span>
+                            Vue学习00-Vue学习之前需要了解的知识
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    06-23
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2019/06/23/博客模板备注/" style="color: #0085a1">
+                        <span>
+                            博客模板备注及使用方法
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
+                    <span class="tag-text">2017</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-18
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2017/03/18/hexo-theme-beantech/" style="color: #0085a1">
+                        <span>
+                            [Hexo] Theme BeanTech
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                </ul>
+            </div>
+            
+
+
+        </div>
+    </div>
+</div>
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+            <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+        
+            
+            <a href="/tags/#生活" title="生活" rel="2">生活</a>
+            
+        
+            
+            <a href="/tags/#Axios" title="Axios" rel="2">Axios</a>
+            
+        
+            
+            <a href="/tags/#Vue" title="Vue" rel="8">Vue</a>
+            
+        
+            
+            <a href="/tags/#AI" title="AI" rel="2">AI</a>
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Linux" title="Linux" rel="3">Linux</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Docker" title="Docker" rel="28">Docker</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Gitlab" title="Gitlab" rel="2">Gitlab</a>
+            
+        
+            
+            <a href="/tags/#Docker Compose" title="Docker Compose" rel="5">Docker Compose</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Dockerfile" title="Dockerfile" rel="3">Dockerfile</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#git" title="git" rel="3">git</a>
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#GitLab" title="GitLab" rel="2">GitLab</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#PVE" title="PVE" rel="4">PVE</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#SpringCloud" title="SpringCloud" rel="16">SpringCloud</a>
+            
+        
+            
+            <a href="/tags/#Netflix" title="Netflix" rel="7">Netflix</a>
+            
+        
+            
+            <a href="/tags/#微服务" title="微服务" rel="10">微服务</a>
+            
+        
+            
+            <a href="/tags/#SpringBoot" title="SpringBoot" rel="2">SpringBoot</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#SpringCloudAlibaba" title="SpringCloudAlibaba" rel="5">SpringCloudAlibaba</a>
+            
+        
+            
+            <a href="/tags/#Gateway" title="Gateway" rel="7">Gateway</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#Nacos" title="Nacos" rel="4">Nacos</a>
+            
+        
+            
+            <a href="/tags/#SpringColoudAlibaba" title="SpringColoudAlibaba" rel="2">SpringColoudAlibaba</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#Hexo" title="Hexo" rel="2">Hexo</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#wsl" title="wsl" rel="3">wsl</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+    
+        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+    
+</ul>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2026/03/24/Spec%E6%A8%A1%E5%BC%8F%E5%BC%80%E5%8F%91/">Spec模式开发</a>
+        </li>
+      
+        <li>
+          <a href="/2025/10/23/Win10%E5%AE%89%E8%A3%85WSL%E4%B8%8D%E4%BE%9D%E8%B5%96%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97/">Win10安装WSL不依赖微软商店</a>
+        </li>
+      
+        <li>
+          <a href="/2025/09/12/Java-8%E5%88%B0Java-21%E7%9A%84%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7/">Java 8到Java 21的重要特性</a>
+        </li>
+      
+        <li>
+          <a href="/2025/09/10/Spring-OAuth2-%E5%AE%9E%E6%88%98-01/">Spring-OAuth2-实战-01</a>
+        </li>
+      
+        <li>
+          <a href="/2025/07/07/%E5%88%86%E6%9E%90%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93Apache-Doris%E5%AE%9E%E6%88%9801-%E7%AE%80%E4%BB%8B/">分析型数据库Apache Doris实战01-简介</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/me.png" />
+        
+
+        
+            <p>Hukuna matata!!!</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com//localhost/">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2026
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

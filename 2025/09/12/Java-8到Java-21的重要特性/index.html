@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Java 8到Java 21的重要特性 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2025/09/12/Java-8到Java-21的重要特性/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java21" title="Java21">Java21</a>
+                            
+                              <a class="tag" href="/tags/#Java17" title="Java17">Java17</a>
+                            
+                              <a class="tag" href="/tags/#Java11" title="Java11">Java11</a>
+                            
+                              <a class="tag" href="/tags/#Java8" title="Java8">Java8</a>
+                            
+                        </div>
+                        <h1>Java 8到Java 21的重要特性</h1>
+                        <h2 class="subheading">Java 8到Java 21的重要特性</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2025-09-12
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="java-8到java-21的重要特性">Java 8到Java 21的重要特性</h1>
+<blockquote>
+<p><strong>Java 8 vs Java 21 特性全面对比与演示</strong></p>
+</blockquote>
+<p>本项目通过实际代码演示Java 8到Java 21的重要特性变化，帮助开发者了解和学习Java语言的演进。</p>
+<h2 id="项目概述">📋 项目概述</h2>
+<h3 id="主要目标">主要目标</h3>
+<ul>
+<li>🔍 <strong>对比展示</strong>：直观对比Java 8与Java 21的特性差异</li>
+<li>🎯 <strong>实用演示</strong>：通过实际可运行的代码展示各种特性</li>
+<li>📚 <strong>学习资源</strong>：为Java开发者提供版本升级参考</li>
+<li>🏷️ <strong>版本标注</strong>：使用自定义注解清晰标识各特性的Java版本</li>
+</ul>
+<h3 id="技术栈">技术栈</h3>
+<ul>
+<li><strong>Java版本</strong>：Java 21 (兼容展示Java 8特性)</li>
+<li><strong>构建工具</strong>：Maven 3.8+</li>
+<li><strong>测试框架</strong>：JUnit 5</li>
+<li><strong>开发环境</strong>：支持Java 21的IDE (推荐IDEA 2023.2+)</li>
+</ul>
+<h2 id="快速开始">🚀 快速开始</h2>
+<h3 id="环境要求">环境要求</h3>
+<ul>
+<li>✅ Java 21 或更高版本</li>
+<li>✅ Maven 3.8 或更高版本</li>
+<li>✅ 支持Java 21的IDE</li>
+</ul>
+<h3 id="安装运行">安装运行</h3>
+<ol>
+<li>
+<p><strong>克隆项目</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;repository-url&gt;</span><br><span class="line"><span class="built_in">cd</span> Java21FeatureFrom8</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>编译项目</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean compile</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>运行所有演示</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.mainClass=<span class="string">&quot;com.demo.utils.DemoRunner&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>运行特定演示</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行语言特性演示</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.mainClass=<span class="string">&quot;com.demo.utils.DemoRunner&quot;</span> -Dexec.args=<span class="string">&quot;language&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行并发特性演示</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.mainClass=<span class="string">&quot;com.demo.utils.DemoRunner&quot;</span> -Dexec.args=<span class="string">&quot;concurrent&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="项目结构">📂 项目结构</h2>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">src<span class="operator">/</span>main<span class="operator">/</span>java<span class="operator">/</span>com<span class="operator">/</span>demo<span class="symbol">/</span></span><br><span class="line">├── annotations<span class="symbol">/</span>          <span class="comment"># 版本特性标注注解</span></span><br><span class="line">│   ├── Java8Feature.java</span><br><span class="line">│   ├── Java9Feature.java</span><br><span class="line">│   ├── Java11Feature.java</span><br><span class="line">│   ├── Java17Feature.java</span><br><span class="line">│   └── Java21Feature.java</span><br><span class="line">├── language<span class="symbol">/</span>            <span class="comment"># 语言特性增强</span></span><br><span class="line">│   └── LanguageEnhancementsDemo.java</span><br><span class="line">├── collections<span class="symbol">/</span>         <span class="comment"># 集合框架增强</span></span><br><span class="line">│   └── CollectionsDemo.java</span><br><span class="line">├── streams<span class="symbol">/</span>            <span class="comment"># Stream API增强</span></span><br><span class="line">│   └── StreamsDemo.java</span><br><span class="line">├── concurrent<span class="symbol">/</span>         <span class="comment"># 并发编程增强</span></span><br><span class="line">│   └── ConcurrencyDemo.java</span><br><span class="line">├── io<span class="symbol">/</span>                 <span class="comment"># I/O操作增强</span></span><br><span class="line">│   └── IODemo.java</span><br><span class="line">├── text<span class="symbol">/</span>               <span class="comment"># 文本处理增强</span></span><br><span class="line">│   └── TextProcessingDemo.java</span><br><span class="line">├── records<span class="symbol">/</span>            <span class="comment"># Records特性</span></span><br><span class="line">│   └── RecordsDemo.java</span><br><span class="line">├── pattern<span class="symbol">/</span>            <span class="comment"># 模式匹配</span></span><br><span class="line">│   └── PatternMatchingDemo.java</span><br><span class="line">├── sealed<span class="symbol">/</span>             <span class="comment"># 密封类</span></span><br><span class="line">│   └── SealedClassesDemo.java</span><br><span class="line">├── preview<span class="symbol">/</span>            <span class="comment"># 预览特性</span></span><br><span class="line">│   └── PreviewFeaturesDemo.java</span><br><span class="line">└── utils<span class="symbol">/</span>              <span class="comment"># 工具类</span></span><br><span class="line">    └── DemoRunner.java</span><br></pre></td></tr></table></figure>
+<h2 id="特性演示模块">🎯 特性演示模块</h2>
+<h3 id="1-语言特性增强-language">1. 语言特性增强 (<code>language</code>)</h3>
+<p><strong>Java 8 引入的核心特性：</strong></p>
+<ul>
+<li>🔥 <strong>Lambda表达式</strong> - 函数式编程支持</li>
+<li>🔗 <strong>方法引用</strong> - Lambda的简化形式</li>
+<li>📦 <strong>Optional类</strong> - 空值处理</li>
+<li>🎛️ <strong>接口默认方法</strong> - 接口演进支持</li>
+</ul>
+<p><strong>Java 11+ 增强：</strong></p>
+<ul>
+<li>🆚 <strong>var关键字</strong> - 类型推断</li>
+<li>🔍 <strong>instanceof模式匹配</strong> (Java 17)</li>
+<li>🎯 <strong>switch表达式</strong> (Java 17)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java 8: Lambda表达式</span></span><br><span class="line">list.forEach(item -&gt; System.out.println(item));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 11: var关键字</span></span><br><span class="line"><span class="type">var</span> <span class="variable">message</span> <span class="operator">=</span> <span class="string">&quot;Hello Java&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 17: instanceof模式匹配</span></span><br><span class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String str) &#123;</span><br><span class="line">    System.out.println(str.toUpperCase());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-集合框架增强-collections">2. 集合框架增强 (<code>collections</code>)</h3>
+<p><strong>Java 8 特性：</strong></p>
+<ul>
+<li>🎭 <strong>Stream集成</strong> - 函数式数据处理</li>
+<li>🛠️ <strong>便利方法</strong> - forEach, removeIf等</li>
+<li>⚡ <strong>ConcurrentHashMap增强</strong> - 并发安全操作</li>
+</ul>
+<p><strong>Java 9+ 特性：</strong></p>
+<ul>
+<li>🏭 <strong>不可变集合工厂</strong> - List.of(), Set.of(), Map.of()</li>
+<li>🔄 <strong>toArray()增强</strong> (Java 11)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java 9: 不可变集合</span></span><br><span class="line">List&lt;String&gt; languages = List.of(<span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Python&quot;</span>, <span class="string">&quot;JavaScript&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 8: Stream操作</span></span><br><span class="line">Map&lt;String, List&lt;Employee&gt;&gt; byDept = employees.stream()</span><br><span class="line">    .collect(groupingBy(Employee::getDepartment));</span><br></pre></td></tr></table></figure>
+<h3 id="3-stream-api增强-streams">3. Stream API增强 (<code>streams</code>)</h3>
+<p><strong>Java 8 核心功能：</strong></p>
+<ul>
+<li>🌊 <strong>基础Stream操作</strong> - filter, map, reduce</li>
+<li>📊 <strong>收集器</strong> - Collectors的丰富功能</li>
+<li>⚡ <strong>并行Stream</strong> - 多核处理能力</li>
+</ul>
+<p><strong>Java 9+ 增强：</strong></p>
+<ul>
+<li>🎯 <strong>takeWhile/dropWhile</strong> - 条件操作</li>
+<li>📝 <strong>Stream.toList()</strong> (Java 16) - 简化收集</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java 8: 基础操作</span></span><br><span class="line">List&lt;String&gt; result = list.stream()</span><br><span class="line">    .filter(s -&gt; s.length() &gt; <span class="number">3</span>)</span><br><span class="line">    .map(String::toUpperCase)</span><br><span class="line">    .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 16: 简化收集</span></span><br><span class="line">List&lt;String&gt; result = list.stream()</span><br><span class="line">    .filter(s -&gt; s.length() &gt; <span class="number">3</span>)</span><br><span class="line">    .map(String::toUpperCase)</span><br><span class="line">    .toList();</span><br></pre></td></tr></table></figure>
+<h3 id="4-并发编程增强-concurrent">4. 并发编程增强 (<code>concurrent</code>)</h3>
+<p><strong>Java 8 特性：</strong></p>
+<ul>
+<li>🔮 <strong>CompletableFuture</strong> - 异步编程框架</li>
+<li>🍴 <strong>ForkJoinPool</strong> - 工作窃取算法</li>
+<li>⚛️ <strong>原子操作增强</strong> - updateAndGet等</li>
+</ul>
+<p><strong>Java 21 重大突破：</strong></p>
+<ul>
+<li>🚀 <strong>虚拟线程</strong> - Project Loom的核心特性</li>
+<li>🏗️ <strong>结构化并发</strong> (预览) - 任务组管理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java 8: CompletableFuture</span></span><br><span class="line">CompletableFuture&lt;String&gt; future = CompletableFuture</span><br><span class="line">    .supplyAsync(() -&gt; processData())</span><br><span class="line">    .thenApply(String::toUpperCase);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 21: 虚拟线程</span></span><br><span class="line"><span class="type">Thread</span> <span class="variable">virtualThread</span> <span class="operator">=</span> Thread.ofVirtual().start(() -&gt; &#123;</span><br><span class="line">    <span class="comment">// 可以安全地阻塞，成本极低</span></span><br><span class="line">    processLongRunningTask();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="5-records特性-records">5. Records特性 (<code>records</code>)</h3>
+<p><strong>Java 17 重要特性：</strong></p>
+<ul>
+<li>📋 <strong>数据载体类</strong> - 简洁的不可变数据结构</li>
+<li>🔧 <strong>自动生成方法</strong> - 构造器、getter、equals、hashCode、toString</li>
+<li>✅ <strong>紧凑构造器</strong> - 数据验证</li>
+<li>🎯 <strong>泛型支持</strong> - 类型安全</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统类需要20+行代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Person</span><span class="params">(String name, <span class="type">int</span> age, String city)</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动获得所有标准方法</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">25</span>, <span class="string">&quot;北京&quot;</span>);</span><br><span class="line">System.out.println(person.name()); <span class="comment">// 访问字段</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-模式匹配-pattern">6. 模式匹配 (<code>pattern</code>)</h3>
+<p><strong>Java 17 特性：</strong></p>
+<ul>
+<li>🎯 <strong>instanceof模式匹配</strong> - 自动类型转换</li>
+<li>🔄 <strong>switch表达式增强</strong> - 更灵活的分支</li>
+</ul>
+<p><strong>Java 21 预览特性：</strong></p>
+<ul>
+<li>📋 <strong>Record模式匹配</strong> - Record解构</li>
+<li>🏗️ <strong>嵌套模式匹配</strong> - 复杂结构处理</li>
+<li>🛡️ <strong>守卫条件</strong> - when子句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java 17: instanceof模式匹配</span></span><br><span class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String str &amp;&amp; str.length() &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;长字符串: &quot;</span> + str.toUpperCase());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 21 预览: Record模式匹配 (概念)</span></span><br><span class="line"><span class="keyword">switch</span> (person) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(<span class="keyword">var</span> name, <span class="keyword">var</span> age, <span class="string">&quot;工程师&quot;</span>)</span> -&gt; handleEngineer(name, age);</span><br><span class="line">    <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(<span class="keyword">var</span> name, <span class="keyword">var</span> age, <span class="keyword">var</span> job)</span> <span class="keyword">when</span> age &gt; <span class="number">30</span> -&gt; handleSenior(name, job);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-密封类-sealed">7. 密封类 (<code>sealed</code>)</h3>
+<p><strong>Java 17 特性：</strong></p>
+<ul>
+<li>🔒 <strong>继承控制</strong> - 限制类的继承层次</li>
+<li>🎯 <strong>完备性检查</strong> - 编译器保证覆盖所有情况</li>
+<li>🏗️ <strong>类型层次设计</strong> - 更好的API设计</li>
+<li>📋 <strong>与Record结合</strong> - 类型安全的数据结构</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 密封类定义</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Shape</span> </span><br><span class="line">    <span class="keyword">permits</span> Circle, Rectangle, Triangle &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// switch表达式无需default分支</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">switch</span> (shape) &#123;</span><br><span class="line">    <span class="keyword">case</span> Circle c -&gt; Math.PI * c.radius() * c.radius();</span><br><span class="line">    <span class="keyword">case</span> Rectangle r -&gt; r.length() * r.width();</span><br><span class="line">    <span class="keyword">case</span> Triangle t -&gt; calculateTriangleArea(t);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="演示命令">🎮 演示命令</h2>
+<h3 id="运行全部演示">运行全部演示</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn <span class="built_in">exec</span>:java</span><br></pre></td></tr></table></figure>
+<h3 id="运行特定模块">运行特定模块</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语言特性</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;language&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合框架</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;collections&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Stream API</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;streams&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 并发编程 (包括虚拟线程)</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;concurrent&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Records特性</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;records&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 模式匹配</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;pattern&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 密封类</span></span><br><span class="line">mvn <span class="built_in">exec</span>:java -Dexec.args=<span class="string">&quot;sealed&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="特性版本对比表">📊 特性版本对比表</h2>
+<table>
+<thead>
+<tr>
+<th>特性分类</th>
+<th>Java 8</th>
+<th>Java 9-11</th>
+<th>Java 17 LTS</th>
+<th>Java 21 LTS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>语言语法</strong></td>
+<td>Lambda表达式 方法引用 接口默认方法</td>
+<td>var关键字</td>
+<td>instanceof模式匹配 switch表达式 文本块</td>
+<td>字符串模板(预览) 未命名变量(预览)</td>
+</tr>
+<tr>
+<td><strong>数据结构</strong></td>
+<td>Optional Stream API</td>
+<td>不可变集合工厂</td>
+<td><strong>Records</strong> <strong>密封类</strong></td>
+<td>Record模式匹配(预览)</td>
+</tr>
+<tr>
+<td><strong>并发编程</strong></td>
+<td>CompletableFuture 并行Stream</td>
+<td>CompletableFuture增强</td>
+<td>-</td>
+<td><strong>虚拟线程</strong> 结构化并发(预览)</td>
+</tr>
+<tr>
+<td><strong>集合框架</strong></td>
+<td>Stream集成 便利方法</td>
+<td>takeWhile/dropWhile</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>模式匹配</strong></td>
+<td>-</td>
+<td>-</td>
+<td>instanceof switch增强</td>
+<td>Record解构(预览) 守卫条件(预览)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="️-版本标注系统">🏗️ 版本标注系统</h2>
+<p>项目使用自定义注解标识特性的Java版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Java8Feature(value = &quot;Lambda表达式&quot;, description = &quot;函数式编程支持&quot;)</span></span><br><span class="line"><span class="meta">@Java17Feature(value = &quot;Records&quot;, description = &quot;简洁的数据载体类&quot;)</span></span><br><span class="line"><span class="meta">@Java21Feature(value = &quot;虚拟线程&quot;, description = &quot;轻量级线程，支持数百万并发&quot;)</span></span><br></pre></td></tr></table></figure>
+<h2 id="开发配置">🔧 开发配置</h2>
+<h3 id="maven配置要点">Maven配置要点</h3>
+<ul>
+<li><strong>Java版本</strong>: 21</li>
+<li><strong>编译器参数</strong>: <code>--enable-preview</code> (预览特性)</li>
+<li><strong>编码</strong>: UTF-8</li>
+<li><strong>测试框架</strong>: JUnit 5</li>
+</ul>
+<h3 id="ide配置建议">IDE配置建议</h3>
+<ul>
+<li><strong>语言级别</strong>: Java 21</li>
+<li><strong>预览特性</strong>: 启用</li>
+<li><strong>编码</strong>: UTF-8</li>
+<li><strong>代码风格</strong>: 使用现代Java语法</li>
+</ul>
+<h2 id="性能对比">📈 性能对比</h2>
+<h3 id="虚拟线程性能提升">虚拟线程性能提升</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统线程池: 100个线程处理1000个任务</span></span><br><span class="line"><span class="type">ExecutorService</span> <span class="variable">traditional</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">100</span>);</span><br><span class="line"><span class="comment">// 耗时: ~500ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 虚拟线程: 1000个虚拟线程处理1000个任务  </span></span><br><span class="line"><span class="type">ExecutorService</span> <span class="variable">virtual</span> <span class="operator">=</span> Executors.newVirtualThreadPerTaskExecutor();</span><br><span class="line"><span class="comment">// 耗时: ~50ms (10倍性能提升)</span></span><br></pre></td></tr></table></figure>
+<h3 id="代码简洁性对比">代码简洁性对比</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统类: ~25行代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TraditionalPoint</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="comment">// 构造器、getter、equals、hashCode、toString...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Record: 1行代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注意事项">🚨 注意事项</h2>
+<h3 id="java-21预览特性">Java 21预览特性</h3>
+<p>以下特性需要使用 <code>--enable-preview</code> 编译选项：</p>
+<ul>
+<li>字符串模板</li>
+<li>结构化并发</li>
+<li>Record模式匹配</li>
+<li>未命名变量和模式</li>
+</ul>
+<h3 id="兼容性说明">兼容性说明</h3>
+<ul>
+<li>项目需要Java 21运行环境</li>
+<li>展示Java 8特性时保持向后兼容</li>
+<li>预览特性可能在未来版本中发生变化</li>
+</ul>
+<h2 id="贡献指南">🤝 贡献指南</h2>
+<h3 id="添加新特性演示">添加新特性演示</h3>
+<ol>
+<li>在相应模块中添加演示方法</li>
+<li>使用正确的版本注解标注</li>
+<li>添加详细的中文注释</li>
+<li>更新README文档</li>
+<li>添加单元测试</li>
+</ol>
+<h3 id="代码规范">代码规范</h3>
+<ul>
+<li>使用中文注释和文档</li>
+<li>方法名使用英文，注释使用中文</li>
+<li>保持代码简洁易懂</li>
+<li>添加版本特性注解</li>
+</ul>
+<h2 id="学习资源">📚 学习资源</h2>
+<h3 id="官方文档">官方文档</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/21/">Java 21 Documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://openjdk.org/projects/jdk/21/">OpenJDK Java 21</a></li>
+</ul>
+<h3 id="重要jep-java-enhancement-proposal">重要JEP (Java Enhancement Proposal)</h3>
+<ul>
+<li><strong>JEP 444</strong>: 虚拟线程</li>
+<li><strong>JEP 440</strong>: Record模式匹配 (预览)</li>
+<li><strong>JEP 430</strong>: 字符串模板 (预览)</li>
+<li><strong>JEP 409</strong>: 密封类</li>
+<li><strong>JEP 395</strong>: Records</li>
+</ul>
+<h2 id="许可证">📄 许可证</h2>
+<p>本项目仅用于学习和演示目的。</p>
+<hr>
+<p><strong>🎯 开始探索Java的演进之路，体验从Java 8到Java 21的精彩特性！</strong></p>
+<h2 id="项目统计">📊 项目统计</h2>
+<h3 id="已完成的模块">已完成的模块</h3>
+<ul>
+<li>✅ <strong>基础结构</strong> - Maven配置、项目结构</li>
+<li>✅ <strong>版本注解</strong> - 5个Java版本特性标注注解</li>
+<li>✅ <strong>语言特性</strong> - Lambda、Optional、var、instanceof模式匹配等</li>
+<li>✅ <strong>集合框架</strong> - 不可变集合、Stream集成、便利方法等</li>
+<li>✅ <strong>Stream API</strong> - 基础操作、收集器、并行处理等</li>
+<li>✅ <strong>并发编程</strong> - CompletableFuture、虚拟线程、ForkJoinPool等</li>
+<li>✅ <strong>Records特性</strong> - 数据载体类、验证、泛型支持等</li>
+<li>✅ <strong>模式匹配</strong> - instanceof、switch表达式、Record解构(概念)等</li>
+<li>✅ <strong>密封类</strong> - 继承控制、完备性检查、类型安全等</li>
+<li>✅ <strong>演示运行器</strong> - 统一的演示入口和管理</li>
+<li>✅ <strong>详细文档</strong> - 完整的README和使用说明</li>
+</ul>
+<h3 id="代码文件统计">代码文件统计</h3>
+<ul>
+<li><strong>Java文件</strong>: 12个核心演示类</li>
+<li><strong>注解文件</strong>: 5个版本标注注解</li>
+<li><strong>代码行数</strong>: 约2000+行带详细中文注释的代码</li>
+<li><strong>演示方法</strong>: 50+个特性演示方法</li>
+</ul>
+<h2 id="测试结果">🚀 测试结果</h2>
+<h3 id="编译测试">编译测试</h3>
+<ul>
+<li>✅ 所有Java文件编译成功</li>
+<li>✅ 支持Java 21特性（虚拟线程等）</li>
+<li>✅ 代码语法正确无错误</li>
+</ul>
+<h3 id="运行测试">运行测试</h3>
+<ul>
+<li>✅ <strong>语言特性演示</strong> - 成功运行，展示Lambda、Optional、模式匹配等</li>
+<li>✅ <strong>并发编程演示</strong> - 成功运行，虚拟线程性能提升9.34倍！</li>
+</ul>
+<h2 id="重要特性亮点">🎯 重要特性亮点</h2>
+<h3 id="java-21虚拟线程性能对比">Java 21虚拟线程性能对比</h3>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">传统线程池: 1000个任务 = 570ms</span></span><br><span class="line"><span class="section">虚拟线程:   1000个任务 = 61ms</span></span><br><span class="line"><span class="section">性能提升:   9.34倍！</span></span><br></pre></td></tr></table></figure>
+<h3 id="代码简洁性对比">代码简洁性对比</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统类: ~25行代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TraditionalPoint</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="comment">// 构造器、getter、equals、hashCode、toString...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java 17 Record: 1行代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="项目结构">📁 项目结构</h2>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">src<span class="operator">/</span>main<span class="operator">/</span>java<span class="operator">/</span>com<span class="operator">/</span>demo<span class="symbol">/</span></span><br><span class="line">├── annotations<span class="symbol">/</span>         <span class="comment"># Java版本特性标注注解</span></span><br><span class="line">├── language<span class="symbol">/</span>           <span class="comment"># 语言特性增强演示</span></span><br><span class="line">├── collections<span class="symbol">/</span>        <span class="comment"># 集合框架增强演示  </span></span><br><span class="line">├── streams<span class="symbol">/</span>           <span class="comment"># Stream API演示</span></span><br><span class="line">├── concurrent<span class="symbol">/</span>        <span class="comment"># 并发编程演示(含虚拟线程)</span></span><br><span class="line">├── records<span class="symbol">/</span>           <span class="comment"># Records特性演示</span></span><br><span class="line">├── pattern<span class="symbol">/</span>           <span class="comment"># 模式匹配演示</span></span><br><span class="line">├── sealed<span class="symbol">/</span>            <span class="comment"># 密封类演示</span></span><br><span class="line">└── utils<span class="symbol">/</span>             <span class="comment"># 演示运行器</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用方法">🎮 使用方法</h2>
+<h3 id="运行全部演示">运行全部演示</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -<span class="built_in">cp</span> target/classes com.demo.utils.DemoRunner</span><br></pre></td></tr></table></figure>
+<h3 id="运行特定模块">运行特定模块</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -<span class="built_in">cp</span> target/classes com.demo.utils.DemoRunner language    <span class="comment"># 语言特性</span></span><br><span class="line">java -<span class="built_in">cp</span> target/classes com.demo.utils.DemoRunner concurrent  <span class="comment"># 并发编程</span></span><br><span class="line">java -<span class="built_in">cp</span> target/classes com.demo.utils.DemoRunner records     <span class="comment"># Records</span></span><br><span class="line">java -<span class="built_in">cp</span> target/classes com.demo.utils.DemoRunner sealed      <span class="comment"># 密封类</span></span><br></pre></td></tr></table></figure>
+<h2 id="项目特色">🏆 项目特色</h2>
+<ol>
+<li><strong>完整性</strong> - 涵盖Java 8到21的主要特性</li>
+<li><strong>实用性</strong> - 所有代码都可以直接运行和学习</li>
+<li><strong>标注化</strong> - 使用自定义注解清晰标识特性版本</li>
+<li><strong>中文化</strong> - 所有注释和文档都使用中文</li>
+<li><strong>现代化</strong> - 充分展示Java 21的强大特性</li>
+</ol>
+<h2 id="学习价值">📚 学习价值</h2>
+<p>这个项目非常适合：</p>
+<ul>
+<li>Java开发者学习新版本特性</li>
+<li>团队培训和技术分享</li>
+<li>版本升级决策参考</li>
+<li>面试准备和技术储备</li>
+</ul>
+<h2 id="总结">🎊 总结</h2>
+<p>项目创建完全成功！你现在拥有一个功能完整、代码质量高、文档详细的Java版本对比演示项目。特别是Java 21的虚拟线程特性展示了令人印象深刻的性能提升。</p>
+<p><strong>立即开始探索Java的演进之路吧！</strong> 🚀</p>
+<p>项目</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/niziming/Java21FeatureFrom8#">niziming/Java21FeatureFrom8: 自Java8依赖到21的新特性</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2025/10/23/Win10安装WSL不依赖微软商店/" data-toggle="tooltip" data-placement="top" title="Win10安装WSL不依赖微软商店">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2025/09/10/Spring-OAuth2-实战-01/" data-toggle="tooltip" data-placement="top" title="Spring-OAuth2-实战-01">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#java-8%E5%88%B0java-21%E7%9A%84%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java 8到Java 21的重要特性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">📋 项目概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">主要目标</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">技术栈</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">🚀 快速开始</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">环境要求</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">安装运行</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">📂 项目结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E6%80%A7%E6%BC%94%E7%A4%BA%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">🎯 特性演示模块</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E5%A2%9E%E5%BC%BA-language"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">1. 语言特性增强 (language)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E5%A2%9E%E5%BC%BA-collections"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">2. 集合框架增强 (collections)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-stream-api%E5%A2%9E%E5%BC%BA-streams"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">3. Stream API增强 (streams)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%A2%9E%E5%BC%BA-concurrent"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">4. 并发编程增强 (concurrent)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-records%E7%89%B9%E6%80%A7-records"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">5. Records特性 (records)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D-pattern"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">6. 模式匹配 (pattern)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-%E5%AF%86%E5%B0%81%E7%B1%BB-sealed"><span class="toc-nav-number">1.4.7.</span> <span class="toc-nav-text">7. 密封类 (sealed)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%BC%94%E7%A4%BA%E5%91%BD%E4%BB%A4"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">🎮 演示命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%90%E8%A1%8C%E5%85%A8%E9%83%A8%E6%BC%94%E7%A4%BA"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">运行全部演示</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%90%E8%A1%8C%E7%89%B9%E5%AE%9A%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">运行特定模块</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E6%80%A7%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">📊 特性版本对比表</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%EF%B8%8F-%E7%89%88%E6%9C%AC%E6%A0%87%E6%B3%A8%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">🏗️ 版本标注系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">🔧 开发配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#maven%E9%85%8D%E7%BD%AE%E8%A6%81%E7%82%B9"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">Maven配置要点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ide%E9%85%8D%E7%BD%AE%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.8.2.</span> <span class="toc-nav-text">IDE配置建议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">📈 性能对比</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">虚拟线程性能提升</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">代码简洁性对比</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">🚨 注意事项</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#java-21%E9%A2%84%E8%A7%88%E7%89%B9%E6%80%A7"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">Java 21预览特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">兼容性说明</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">🤝 贡献指南</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%89%B9%E6%80%A7%E6%BC%94%E7%A4%BA"><span class="toc-nav-number">1.11.1.</span> <span class="toc-nav-text">添加新特性演示</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-nav-number">1.11.2.</span> <span class="toc-nav-text">代码规范</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">📚 学习资源</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-nav-number">1.12.1.</span> <span class="toc-nav-text">官方文档</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%87%8D%E8%A6%81jep-java-enhancement-proposal"><span class="toc-nav-number">1.12.2.</span> <span class="toc-nav-text">重要JEP (Java Enhancement Proposal)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">📄 许可证</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%9F%E8%AE%A1"><span class="toc-nav-number">1.14.</span> <span class="toc-nav-text">📊 项目统计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%B2%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.14.1.</span> <span class="toc-nav-text">已完成的模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%BB%9F%E8%AE%A1"><span class="toc-nav-number">1.14.2.</span> <span class="toc-nav-text">代码文件统计</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-nav-number">1.15.</span> <span class="toc-nav-text">🚀 测试结果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BC%96%E8%AF%91%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.15.1.</span> <span class="toc-nav-text">编译测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.15.2.</span> <span class="toc-nav-text">运行测试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7%E4%BA%AE%E7%82%B9"><span class="toc-nav-number">1.16.</span> <span class="toc-nav-text">🎯 重要特性亮点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#java-21%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-nav-number">1.16.1.</span> <span class="toc-nav-text">Java 21虚拟线程性能对比</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E7%AE%80%E6%B4%81%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="toc-nav-number">1.16.2.</span> <span class="toc-nav-text">代码简洁性对比</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.17.</span> <span class="toc-nav-text">📁 项目结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.18.</span> <span class="toc-nav-text">🎮 使用方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%90%E8%A1%8C%E5%85%A8%E9%83%A8%E6%BC%94%E7%A4%BA"><span class="toc-nav-number">1.18.1.</span> <span class="toc-nav-text">运行全部演示</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%90%E8%A1%8C%E7%89%B9%E5%AE%9A%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.18.2.</span> <span class="toc-nav-text">运行特定模块</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%89%B9%E8%89%B2"><span class="toc-nav-number">1.19.</span> <span class="toc-nav-text">🏆 项目特色</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E4%BB%B7%E5%80%BC"><span class="toc-nav-number">1.20.</span> <span class="toc-nav-text">📚 学习价值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.21.</span> <span class="toc-nav-text">🎊 总结</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java21" title="Java21">Java21</a>
+                        
+                          <a class="tag" href="/tags/#Java17" title="Java17">Java17</a>
+                        
+                          <a class="tag" href="/tags/#Java11" title="Java11">Java11</a>
+                        
+                          <a class="tag" href="/tags/#Java8" title="Java8">Java8</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2026
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
