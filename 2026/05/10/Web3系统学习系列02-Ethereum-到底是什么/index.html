@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Web3系统学习系列02-Ethereum 到底是什么? - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2026/05/10/Web3系统学习系列02-Ethereum-到底是什么/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Web3" title="Web3">Web3</a>
+                            
+                              <a class="tag" href="/tags/#ETH" title="ETH">ETH</a>
+                            
+                        </div>
+                        <h1>Web3系统学习系列02-Ethereum 到底是什么?</h1>
+                        <h2 class="subheading">Web3系统学习系列02-Ethereum 到底是什么?</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2026-05-10
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="web3系统学习系列02-ethereum-到底是什么">Web3系统学习系列02-Ethereum 到底是什么?</h1>
+<h1 id="一-ethereum-到底是什么">一、Ethereum 到底是什么？</h1>
+<p>可以把 Ethereum 理解成：</p>
+<p><strong>一台全球共享、永不停机、所有人共同维护的状态机。</strong></p>
+<p>它做的事情非常简单：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：交易（<span class="keyword">Transaction</span>）</span><br><span class="line">执行：EVM</span><br><span class="line">输出：新的全局状态</span><br></pre></td></tr></table></figure>
+<p>这和你熟悉的：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求</span><br><span class="line">→ 服务处理</span><br><span class="line">→ <span class="built_in">DB</span>状态更新</span><br></pre></td></tr></table></figure>
+<p>很像。</p>
+<p>区别在于：</p>
+<p>普通后端：</p>
+<ul>
+<li>你的服务器执行</li>
+<li>你的数据库存储</li>
+<li>你可以改数据</li>
+</ul>
+<p>Ethereum：</p>
+<ul>
+<li>全网节点一起执行</li>
+<li>全网共同保存状态</li>
+<li>已确认数据极难修改</li>
+</ul>
+<hr>
+<h2 id="一个直观类比">一个直观类比</h2>
+<p>想象一个银行总账本。</p>
+<p>传统模式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">银行自己维护总账</span><br></pre></td></tr></table></figure>
+<p>区块链：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">全世界一万人各自保存完整账本副本</span><br><span class="line">任何转账必须所有人验证</span><br><span class="line">验证通过才记账</span><br></pre></td></tr></table></figure>
+<p>这就是“去中心化”。</p>
+<hr>
+<h1 id="二-账户accounts">二、账户（Accounts）</h1>
+<p>Ethereum 有两种账户。</p>
+<hr>
+<h2 id="1-eoaexternally-owned-account">1. EOA（Externally Owned Account）</h2>
+<p>外部拥有账户。</p>
+<p>就是普通钱包地址。</p>
+<p>比如你用：</p>
+<p>MetaMask</p>
+<p>创建的钱包。</p>
+<p>特点：</p>
+<ul>
+<li>有私钥</li>
+<li>能主动发交易</li>
+<li>能签名</li>
+</ul>
+<p>类似：</p>
+<p><strong>你的银行卡 + U盾</strong></p>
+<p>你本人授权，才能转账。</p>
+<hr>
+<h3 id="它长这样">它长这样</h3>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x742d35Cc6634C0532925a3b844Bc454e4438f44e</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>它能做：</p>
+<ul>
+<li>转 ETH</li>
+<li>调用智能合约</li>
+<li>部署合约</li>
+</ul>
+<hr>
+<h2 id="2-contract-account合约账户">2. Contract Account（合约账户）</h2>
+<p>智能合约部署后形成的账户。</p>
+<p>特点：</p>
+<ul>
+<li>没私钥</li>
+<li>不能主动发起交易</li>
+<li>只能被调用</li>
+</ul>
+<p>像：</p>
+<p><strong>银行核心系统里的自动结算程序</strong></p>
+<p>它不会自己跑。</p>
+<p>必须有人触发：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户发交易</span><br><span class="line">→ 调用合约</span><br><span class="line">→ 合约执行</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="核心区别">核心区别</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>EOA</th>
+<th>Contract</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有私钥</td>
+<td>有</td>
+<td>无</td>
+</tr>
+<tr>
+<td>主动发交易</td>
+<td>可以</td>
+<td>不行</td>
+</tr>
+<tr>
+<td>存代码</td>
+<td>没有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>用途</td>
+<td>用户身份</td>
+<td>业务逻辑</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="三-transaction交易">三、Transaction（交易）</h1>
+<p>这是最重要概念。</p>
+<p>很多新人以为交易 = 转账。</p>
+<p>不是。</p>
+<p>在 Ethereum：</p>
+<p><strong>Transaction = 请求 EVM 执行一次状态变更</strong></p>
+<p>包括：</p>
+<h3 id="1-普通转账">1. 普通转账</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">A</span> → <span class="selector-tag">B</span> 转 ETH</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-调用合约">2. 调用合约</h3>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">transfer</span>(<span class="params">...</span>)</span></span><br><span class="line"><span class="function"><span class="title">mint</span>(<span class="params">...</span>)</span></span><br><span class="line"><span class="function"><span class="title">swap</span>(<span class="params">...</span>)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="3-部署合约">3. 部署合约</h3>
+<p>把 bytecode 写上链。</p>
+<hr>
+<p>从 Java 视角：</p>
+<p>交易就像：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /<span class="built_in">execute</span></span><br></pre></td></tr></table></figure>
+<p>但它有：</p>
+<ul>
+<li>签名</li>
+<li>nonce</li>
+<li>gas</li>
+<li>不可撤销</li>
+</ul>
+<hr>
+<h2 id="一笔交易包含什么">一笔交易包含什么</h2>
+<hr>
+<h3 id="from">from</h3>
+<p>谁发起</p>
+<hr>
+<h3 id="to">to</h3>
+<p>发给谁</p>
+<hr>
+<h3 id="value">value</h3>
+<p>转多少 ETH</p>
+<hr>
+<h3 id="data">data</h3>
+<p>调用哪个方法 + 参数</p>
+<p>类似：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">transfer</span><span class="params">(<span class="string">&quot;0xabc&quot;</span>, <span class="number">100</span>)</span></span></span><br></pre></td></tr></table></figure>
+<p>编码后会变成十六进制。</p>
+<hr>
+<h3 id="nonce">nonce</h3>
+<p>这个很关键。</p>
+<p>它是：</p>
+<p><strong>账户交易序号</strong></p>
+<p>例如：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第1笔 <span class="attribute">nonce</span>=0</span><br><span class="line">第2笔 <span class="attribute">nonce</span>=1</span><br><span class="line">第3笔 <span class="attribute">nonce</span>=2</span><br></pre></td></tr></table></figure>
+<p>作用：</p>
+<h3 id="防重放">防重放</h3>
+<p>如果没有 nonce：</p>
+<p>攻击者可以重复广播你的一笔交易。</p>
+<p>类似支付系统：</p>
+<p>重复提交订单。</p>
+<hr>
+<h1 id="四-gas最容易搞混">四、Gas（最容易搞混）</h1>
+<p>你一定要彻底理解。</p>
+<hr>
+<h2 id="为什么要-gas">为什么要 Gas？</h2>
+<p>因为执行代码要消耗计算资源。</p>
+<p>比如：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (i<span class="operator">=</span><span class="number">0</span><span class="comment">; i&lt;1000000; i++)</span></span><br></pre></td></tr></table></figure>
+<p>如果免费：</p>
+<p>有人可以写死循环拖垮全网。</p>
+<p>所以必须收费。</p>
+<hr>
+<p>Gas 的作用：</p>
+<h2 id="1-支付算力成本">1. 支付算力成本</h2>
+<p>像云服务器计费。</p>
+<hr>
+<h2 id="2-防止滥用">2. 防止滥用</h2>
+<p>反垃圾机制。</p>
+<hr>
+<h1 id="五-gas-limit-vs-gas-price">五、Gas Limit vs Gas Price</h1>
+<p>这俩是高频面试题。</p>
+<hr>
+<h2 id="gas-limit">Gas Limit</h2>
+<p>你愿意最多消耗多少 gas。</p>
+<p>类似：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接口超时时间</span><br></pre></td></tr></table></figure>
+<p>你设置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最多执行到这里</span><br></pre></td></tr></table></figure>
+<p>如果不够：</p>
+<p>交易失败。</p>
+<p>但已消耗 gas 不退。</p>
+<p>为什么？</p>
+<p>矿工已经帮你算了。</p>
+<p>像：</p>
+<p>数据库执行了复杂 SQL，最后 rollback。</p>
+<p>资源已经用了。</p>
+<hr>
+<h2 id="gas-price">Gas Price</h2>
+<p>每单位 gas 多少钱。</p>
+<p>类似：</p>
+<p>抢占优先队列的竞价。</p>
+<p>你出高价：</p>
+<p>更快打包。</p>
+<hr>
+<h2 id="实际手续费">实际手续费</h2>
+<p>公式：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Fee</span> <span class="operator">=</span> Gas Used × Gas Price</span><br></pre></td></tr></table></figure>
+<hr>
+<p>举例：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Gas Used <span class="operator">=</span> <span class="number">21000</span></span><br><span class="line">Gas Price <span class="operator">=</span> <span class="number">20</span> Gwei</span><br></pre></td></tr></table></figure>
+<p>总手续费：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">420000 </span>Gwei</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="六-区块block">六、区块（Block）</h1>
+<p>交易不会立即上链。</p>
+<p>会先进内存池：</p>
+<p>Mempool</p>
+<p>类似：</p>
+<p>消息队列。</p>
+<p>然后验证者打包：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tx1</span></span><br><span class="line">tx2</span><br><span class="line">tx3</span><br><span class="line">tx4</span><br></pre></td></tr></table></figure>
+<p>形成一个 Block。</p>
+<hr>
+<p>区块包含：</p>
+<ul>
+<li>Block Number</li>
+<li>Parent Hash</li>
+<li>Timestamp</li>
+<li>Transactions</li>
+<li>State Root</li>
+</ul>
+<hr>
+<p>你可以理解成：</p>
+<p>金融系统里的：</p>
+<p><strong>一个批次清算文件</strong></p>
+<hr>
+<h1 id="七-交易生命周期重点">七、交易生命周期（重点）</h1>
+<p>你以后做 indexer 会天天接触。</p>
+<hr>
+<h2 id="第一步创建交易">第一步：创建交易</h2>
+<p>钱包构造：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="built_in">  from,</span></span><br><span class="line"><span class="built_in">  to,</span></span><br><span class="line"><span class="built_in">  data,</span></span><br><span class="line"><span class="built_in">  gas,</span></span><br><span class="line">  nonce</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="第二步签名">第二步：签名</h2>
+<p>用私钥签。</p>
+<p>证明：</p>
+<p>“确实是我发的”</p>
+<hr>
+<h2 id="第三步广播">第三步：广播</h2>
+<p>发给节点。</p>
+<hr>
+<h2 id="第四步进入-mempool">第四步：进入 Mempool</h2>
+<p>等待打包。</p>
+<hr>
+<h2 id="第五步打包进区块">第五步：打包进区块</h2>
+<p>状态发生变化。</p>
+<hr>
+<h2 id="第六步确认confirmations">第六步：确认（Confirmations）</h2>
+<p>后续区块继续追加。</p>
+<p>例如：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">block</span> <span class="number">100</span> ← 交易在这里</span><br><span class="line"><span class="attribute">block</span> <span class="number">101</span></span><br><span class="line"><span class="attribute">block</span> <span class="number">102</span></span><br><span class="line"><span class="attribute">block</span> <span class="number">103</span></span><br></pre></td></tr></table></figure>
+<p>3 confirmations</p>
+<p>通常更安全。</p>
+<hr>
+<p>为什么要确认？</p>
+<p>因为可能发生：</p>
+<p><strong>Reorg（链重组）</strong></p>
+<p>这对你后面做监听非常重要。</p>
+<hr>
+<h1 id="八-evmethereum-virtual-machine">八、EVM（Ethereum Virtual Machine）</h1>
+<p>这是 Ethereum 的执行引擎。</p>
+<p>你可以理解成：</p>
+<p><strong>区块链版 JVM</strong></p>
+<p>对比：</p>
+<table>
+<thead>
+<tr>
+<th>JVM</th>
+<th>EVM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>执行 Java bytecode</td>
+<td>执行 EVM bytecode</td>
+</tr>
+<tr>
+<td>每台机器执行</td>
+<td>全网节点执行</td>
+</tr>
+<tr>
+<td>不收费</td>
+<td>每步收费（Gas）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Solidity：</p>
+<figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(<span class="keyword">uint</span> a, <span class="keyword">uint</span> b)</span></span></span><br></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">PUSH</span></span><br><span class="line"><span class="keyword">ADD</span></span><br><span class="line"><span class="symbol">STORE</span></span><br><span class="line"><span class="symbol">...</span></span><br></pre></td></tr></table></figure>
+<p>EVM 执行。</p>
+<hr>
+<h1 id="九-为什么不可篡改">九、为什么不可篡改？</h1>
+<p>核心不是“绝对不能改”。</p>
+<p>而是：</p>
+<p><strong>修改成本极高。</strong></p>
+<p>如果你改某区块：</p>
+<p>区块 hash 会变。</p>
+<p>后面所有区块引用都会失效。</p>
+<p>要重新生成后续所有区块，并压过全网。</p>
+<p>成本巨大。</p>
+<hr>
+<p>像：</p>
+<p>你改银行流水第 100 页。</p>
+<p>后面 1000 页都得重写，并让所有银行接受。</p>
+<p>几乎做不到。</p>
+<hr>
+<h1 id="十-和你现在的-java-金融经验怎么映射">十、和你现在的 Java 金融经验怎么映射</h1>
+<p>你有巨大优势。</p>
+<table>
+<thead>
+<tr>
+<th>你会的</th>
+<th>Web3 对应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MQ</td>
+<td>Event Logs</td>
+</tr>
+<tr>
+<td>对账</td>
+<td>链上状态校验</td>
+</tr>
+<tr>
+<td>幂等</td>
+<td>nonce</td>
+</tr>
+<tr>
+<td>批处理</td>
+<td>block processing</td>
+</tr>
+<tr>
+<td>checkpoint</td>
+<td>block cursor</td>
+</tr>
+<tr>
+<td>风控规则</td>
+<td>on-chain monitoring</td>
+</tr>
+<tr>
+<td>高并发</td>
+<td>RPC/event ingestion</td>
+</tr>
+</tbody>
+</table>
+<p>所以你转 Web3 Backend，比普通 Java 转要自然得多。</p>
+<h2 id="引用资料">引用资料</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://ethereum.org/zh/developers/docs/intro-to-ether/">以太币技术介绍 | ethereum.org</a></p>
+</blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/03/24/Spec模式开发/" data-toggle="tooltip" data-placement="top" title="Spec模式开发">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#web3%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%9702-ethereum-%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Web3系统学习系列02-Ethereum 到底是什么?</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%80-ethereum-%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">一、Ethereum 到底是什么？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E4%B8%AA%E7%9B%B4%E8%A7%82%E7%B1%BB%E6%AF%94"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">一个直观类比</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BA%8C-%E8%B4%A6%E6%88%B7accounts"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">二、账户（Accounts）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-eoaexternally-owned-account"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">1. EOA（Externally Owned Account）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%83%E9%95%BF%E8%BF%99%E6%A0%B7"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">它长这样</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-contract-account%E5%90%88%E7%BA%A6%E8%B4%A6%E6%88%B7"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">2. Contract Account（合约账户）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">核心区别</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%89-transaction%E4%BA%A4%E6%98%93"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">三、Transaction（交易）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%99%AE%E9%80%9A%E8%BD%AC%E8%B4%A6"><span class="toc-nav-number">4.0.1.</span> <span class="toc-nav-text">1. 普通转账</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E8%B0%83%E7%94%A8%E5%90%88%E7%BA%A6"><span class="toc-nav-number">4.0.2.</span> <span class="toc-nav-text">2. 调用合约</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%90%88%E7%BA%A6"><span class="toc-nav-number">4.0.3.</span> <span class="toc-nav-text">3. 部署合约</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E7%AC%94%E4%BA%A4%E6%98%93%E5%8C%85%E5%90%AB%E4%BB%80%E4%B9%88"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">一笔交易包含什么</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#from"><span class="toc-nav-number">4.1.1.</span> <span class="toc-nav-text">from</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#to"><span class="toc-nav-number">4.1.2.</span> <span class="toc-nav-text">to</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#value"><span class="toc-nav-number">4.1.3.</span> <span class="toc-nav-text">value</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#data"><span class="toc-nav-number">4.1.4.</span> <span class="toc-nav-text">data</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nonce"><span class="toc-nav-number">4.1.5.</span> <span class="toc-nav-text">nonce</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%B2%E9%87%8D%E6%94%BE"><span class="toc-nav-number">4.1.6.</span> <span class="toc-nav-text">防重放</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%9B%9B-gas%E6%9C%80%E5%AE%B9%E6%98%93%E6%90%9E%E6%B7%B7"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">四、Gas（最容易搞混）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81-gas"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">为什么要 Gas？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%94%AF%E4%BB%98%E7%AE%97%E5%8A%9B%E6%88%90%E6%9C%AC"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">1. 支付算力成本</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E9%98%B2%E6%AD%A2%E6%BB%A5%E7%94%A8"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">2. 防止滥用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BA%94-gas-limit-vs-gas-price"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">五、Gas Limit vs Gas Price</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#gas-limit"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">Gas Limit</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#gas-price"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">Gas Price</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E9%99%85%E6%89%8B%E7%BB%AD%E8%B4%B9"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">实际手续费</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%AD-%E5%8C%BA%E5%9D%97block"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">六、区块（Block）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%83-%E4%BA%A4%E6%98%93%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%87%8D%E7%82%B9"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">七、交易生命周期（重点）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%88%9B%E5%BB%BA%E4%BA%A4%E6%98%93"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">第一步：创建交易</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E7%AD%BE%E5%90%8D"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">第二步：签名</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%B9%BF%E6%92%AD"><span class="toc-nav-number">8.3.</span> <span class="toc-nav-text">第三步：广播</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E8%BF%9B%E5%85%A5-mempool"><span class="toc-nav-number">8.4.</span> <span class="toc-nav-text">第四步：进入 Mempool</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%E6%89%93%E5%8C%85%E8%BF%9B%E5%8C%BA%E5%9D%97"><span class="toc-nav-number">8.5.</span> <span class="toc-nav-text">第五步：打包进区块</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%E7%A1%AE%E8%AE%A4confirmations"><span class="toc-nav-number">8.6.</span> <span class="toc-nav-text">第六步：确认（Confirmations）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%AB-evmethereum-virtual-machine"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">八、EVM（Ethereum Virtual Machine）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B9%9D-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%AF%E7%AF%A1%E6%94%B9"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">九、为什么不可篡改？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8D%81-%E5%92%8C%E4%BD%A0%E7%8E%B0%E5%9C%A8%E7%9A%84-java-%E9%87%91%E8%9E%8D%E7%BB%8F%E9%AA%8C%E6%80%8E%E4%B9%88%E6%98%A0%E5%B0%84"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">十、和你现在的 Java 金融经验怎么映射</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E8%B5%84%E6%96%99"><span class="toc-nav-number">11.1.</span> <span class="toc-nav-text">引用资料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Web3" title="Web3">Web3</a>
+                        
+                          <a class="tag" href="/tags/#ETH" title="ETH">ETH</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2026
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
