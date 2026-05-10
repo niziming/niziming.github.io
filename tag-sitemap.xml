@@ -9,6 +9,13 @@
     </url>
 
     <url>
+        <loc>https://niziming.github.io/tags/Axios/</loc>
+        <lastmod>2023-05-20T12:43:10.578Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://niziming.github.io/tags/%25E6%25A2%25AF%25E5%25AD%2590/</loc>
         <lastmod>2023-05-20T12:43:10.578Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,13 +24,6 @@
 
     <url>
         <loc>https://niziming.github.io/tags/Brook/</loc>
-        <lastmod>2023-05-20T12:43:10.578Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://niziming.github.io/tags/Axios/</loc>
         <lastmod>2023-05-20T12:43:10.578Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -296,13 +296,6 @@
     </url>
 
     <url>
-        <loc>https://niziming.github.io/tags/Blog/</loc>
-        <lastmod>2023-05-20T12:43:10.760Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://niziming.github.io/tags/Windows/</loc>
         <lastmod>2023-05-20T12:43:10.760Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -311,6 +304,13 @@
 
     <url>
         <loc>https://niziming.github.io/tags/Windows%25E7%25AB%25AF%25E5%258F%25A3/</loc>
+        <lastmod>2023-05-20T12:43:10.760Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://niziming.github.io/tags/Blog/</loc>
         <lastmod>2023-05-20T12:43:10.760Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
