@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
+    <title>
+        🔥
+        
+          Web3系统学习系列06-Web3j基础 - 十渊 | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://niziming.github.io/2026/05/18/Web3系统学习系列06-Web3j基础/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <!--<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <!--[endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- buttons JavaScript -->
+
+<script src="/js/buttons.js"></script>
+
+
+<script src="/js/html5shiv.js"></script>
+
+
+<script src="/js/respond.min.js"></script>
+
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    
+        background-image: url('/img/article_header/article_bg.jpg')
+        /*post*/
+    
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Web3" title="Web3">Web3</a>
+                            
+                              <a class="tag" href="/tags/#Web3j" title="Web3j">Web3j</a>
+                            
+                        </div>
+                        <h1>Web3系统学习系列06-Web3j基础</h1>
+                        <h2 class="subheading">Web3系统学习系列06-Web3j基础</h2>
+                        <span class="meta">
+                            Posted by 十渊 on
+                            2026-05-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">十渊</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>很好。</p>
+<p>你现在已经完成了：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连接节点</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>调用 RPC</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>查询 ETH 余额</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>调用 ERC20 balanceOf</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>ABI 编码/解码</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>接下来进入：</p>
+<h1 id="web3-真正核心能力">Web3 真正核心能力</h1>
+<h1 id="监听链上事件event">监听链上事件（Event）</h1>
+<p>这是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">绝大多数 Web3 后端系统的核心</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>本质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>充值到账</td>
+<td>监听 Transfer</td>
+</tr>
+<tr>
+<td>DEX Swap</td>
+<td>监听 Swap Event</td>
+</tr>
+<tr>
+<td>NFT Mint</td>
+<td>监听 Transfer</td>
+</tr>
+<tr>
+<td>清算</td>
+<td>监听 Liquidation</td>
+</tr>
+<tr>
+<td>游戏资产变化</td>
+<td>监听 Event</td>
+</tr>
+</tbody>
+</table>
+<p>很多 Web3 公司：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">80% 的后端逻辑</span><br></pre></td></tr></table></figure>
+<p>本质都是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Event Listener</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="一-先彻底理解-ethereum-event">一、先彻底理解 Ethereum Event</h1>
+<p>这个非常重要。</p>
+<hr>
+<h1 id="solidity-event-本质">Solidity Event 本质</h1>
+<p>你以前写过：</p>
+<figure class="highlight plaintext"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">event Transfer(</span><br><span class="line">    address indexed from,</span><br><span class="line">    address indexed to,</span><br><span class="line">    uint256 value</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>很多人以为：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Event = 打日志</span><br></pre></td></tr></table></figure>
+<p>其实不是。</p>
+<p>Ethereum Event 更像：</p>
+<h1 id="链上消息队列">链上消息队列</h1>
+<hr>
+<h1 id="event-的底层本质">Event 的底层本质</h1>
+<p>当智能合约执行：</p>
+<figure class="highlight plaintext"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emit Transfer(...)</span><br></pre></td></tr></table></figure>
+<p>EVM 会生成：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log</span><br></pre></td></tr></table></figure>
+<p>并写入：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Transaction Receipt</span><br></pre></td></tr></table></figure>
+<p>结构类似：</p>
+<figure class="highlight json"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;topics&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0x...&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="为什么-event-非常重要">为什么 Event 非常重要？</h1>
+<p>因为：</p>
+<p>Ethereum 节点允许：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按 Topic 检索日志</span><br></pre></td></tr></table></figure>
+<p>这意味着：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">链本身就像一个可搜索消息系统</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二-transfer-event-长什么样">二、Transfer Event 长什么样？</h1>
+<p>ERC20 标准：</p>
+<figure class="highlight plaintext"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">event Transfer(</span><br><span class="line">    address indexed from,</span><br><span class="line">    address indexed to,</span><br><span class="line">    uint256 value</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indexed</span><br></pre></td></tr></table></figure>
+<p>非常重要。</p>
+<hr>
+<h1 id="indexed-是什么">indexed 是什么？</h1>
+<p>表示：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">进入 Topics</span><br></pre></td></tr></table></figure>
+<p>Ethereum Log：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>topic0</td>
+<td>Event 签名</td>
+</tr>
+<tr>
+<td>topic1</td>
+<td>from</td>
+</tr>
+<tr>
+<td>topic2</td>
+<td>to</td>
+</tr>
+<tr>
+<td>data</td>
+<td>value</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="为什么这么设计">为什么这么设计？</h1>
+<p>因为：</p>
+<p>节点可以：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">快速过滤</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只看某个地址收到的 Transfer</span><br></pre></td></tr></table></figure>
+<p>而不用扫描整个链。</p>
+<hr>
+<h1 id="三-现在开始-java-监听">三、现在开始 Java 监听</h1>
+<hr>
+<h1 id="step-1添加-import">Step 1：添加 Import</h1>
+<p>先加：</p>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io.reactivex.disposables.Disposable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.web3j.abi.EventEncoder;</span><br><span class="line"><span class="keyword">import</span> org.web3j.abi.datatypes.Event;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.web3j.protocol.core.methods.request.EthFilter;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="为什么会出现-rxjava">为什么会出现 RxJava？</h1>
+<p>因为：</p>
+<p>Ethereum 是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">持续产生新区块</span><br></pre></td></tr></table></figure>
+<p>天然是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据流（Stream）</span><br></pre></td></tr></table></figure>
+<p>Web3j 使用：</p>
+<p>RxJava</p>
+<p>处理：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">异步事件流</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="四-定义-transfer-event">四、定义 Transfer Event</h1>
+<p>新增：</p>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Event</span> <span class="variable">transferEvent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Event</span>(</span><br><span class="line">        <span class="string">&quot;Transfer&quot;</span>,</span><br><span class="line">        Arrays.asList(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Address&gt;(<span class="literal">true</span>) &#123;&#125;,</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Address&gt;(<span class="literal">true</span>) &#123;&#125;,</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Uint256&gt;() &#123;&#125;</span><br><span class="line">        )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="这里到底在干什么">这里到底在干什么？</h1>
+<p>你是在告诉 Web3j：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“我要监听 ERC20 Transfer Event”</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="true-的含义非常关键">true 的含义（非常关键）</h1>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Address&gt;(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<p>这个：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">true = indexed</span><br></pre></td></tr></table></figure>
+<p>对应 Solidity：</p>
+<figure class="highlight plaintext"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">address indexed from</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="如果写错会怎样">如果写错会怎样？</h1>
+<p>你后面解析 Topics 时：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">全部错位</span><br></pre></td></tr></table></figure>
+<p>这是 Web3j 新手高频错误。</p>
+<hr>
+<h1 id="五-生成-event-topic">五、生成 Event Topic</h1>
+<p>继续：</p>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">topic</span> <span class="operator">=</span> EventEncoder.encode(transferEvent);</span><br><span class="line"></span><br><span class="line">System.out.println(topic);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="这是什么">这是什么？</h1>
+<p>输出类似：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0xddf252ad...</span><br></pre></td></tr></table></figure>
+<p><img src="/2026/05/18/Web3%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%9706-Web3j%E5%9F%BA%E7%A1%80/image-20260518212603419.png" alt="image-20260518212603419"></p>
+<p>这是：</p>
+<h1 id="event-signature-hash">Event Signature Hash</h1>
+<hr>
+<h1 id="ethereum-如何识别-event">Ethereum 如何识别 Event？</h1>
+<p>不是靠名字：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Transfer</span><br></pre></td></tr></table></figure>
+<p>而是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Keccak256 Hash</span><br></pre></td></tr></table></figure>
+<p>即：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keccak256(</span><br><span class="line"> &quot;Transfer(address,address,uint256)&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="topic0-永远是-event-hash">topic0 永远是 Event Hash</h1>
+<p>Ethereum Log：</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>topic0</td>
+<td>Event Hash</td>
+</tr>
+<tr>
+<td>topic1</td>
+<td>from</td>
+</tr>
+<tr>
+<td>topic2</td>
+<td>to</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="六-创建-filter关键">六、创建 Filter（关键）</h1>
+<p>新增：</p>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">EthFilter</span> <span class="variable">filter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EthFilter</span>(</span><br><span class="line">        DefaultBlockParameterName.LATEST,</span><br><span class="line">        DefaultBlockParameterName.LATEST,</span><br><span class="line">        contractAddress</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">filter.addSingleTopic(topic);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="这里发生了什么">这里发生了什么？</h1>
+<p>你在告诉节点：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">只监听：</span><br><span class="line"></span><br><span class="line">某个合约</span><br><span class="line">+</span><br><span class="line">Transfer Event</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="参数详细解释">参数详细解释</h1>
+<hr>
+<h2 id="1latest">1）LATEST</h2>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DefaultBlockParameterName.LATEST</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从最新区块开始</span><br></pre></td></tr></table></figure>
+<p>只监听未来事件。</p>
+<hr>
+<h2 id="2contractaddress">2）contractAddress</h2>
+<p>表示：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只监听这个 ERC20</span><br></pre></td></tr></table></figure>
+<p>否则全链 Transfer 太多。</p>
+<hr>
+<h2 id="3addsingletopic">3）addSingleTopic()</h2>
+<p>表示：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只接收 Transfer Event</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="七-真正开始订阅">七、真正开始订阅</h1>
+<hr>
+<h1 id="step-2订阅-event-stream">Step 2：订阅 Event Stream</h1>
+<p>新增：</p>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Disposable</span> <span class="variable">subscription</span> <span class="operator">=</span> web3j.ethLogFlowable(filter)</span><br><span class="line">        .subscribe(log -&gt; &#123;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">&quot;Transfer Event:&quot;</span>);</span><br><span class="line">            System.out.println(log);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="ethlogflowable-是什么">ethLogFlowable 是什么？</h1>
+<p>本质：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">持续接收节点推送的日志流</span><br></pre></td></tr></table></figure>
+<p>类似：</p>
+<table>
+<thead>
+<tr>
+<th>Web2</th>
+<th>Web3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kafka Consumer</td>
+<td>Event Listener</td>
+</tr>
+<tr>
+<td>MQ Consumer</td>
+<td>Flowable</td>
+</tr>
+<tr>
+<td>WebSocket Stream</td>
+<td>Log Stream</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="八-为什么现在可能没反应">八、为什么现在可能“没反应”？</h1>
+<p>因为：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有新的 Transfer</span><br></pre></td></tr></table></figure>
+<p>你监听的是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未来新区块</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="九-如何测试">九、如何测试？</h1>
+<p>最简单：</p>
+<h1 id="去-metamask-转一次-token">去 MetaMask 转一次 Token</h1>
+<p>或者：</p>
+<p>自己给自己转。</p>
+<hr>
+<h1 id="十-保持程序不退出">十、保持程序不退出</h1>
+<p>否则：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main 方法结束</span><br><span class="line">JVM 退出</span><br><span class="line">监听终止</span><br></pre></td></tr></table></figure>
+<p>所以加：</p>
+<figure class="highlight java"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(Long.MAX_VALUE);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="十一-现在你会看到什么">十一、现在你会看到什么？</h1>
+<p>当发生 Transfer：</p>
+<figure class="highlight bash"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Transfer Event:</span><br><span class="line">Log&#123;</span><br><span class="line">  removed=<span class="literal">false</span>,</span><br><span class="line">  logIndex=...</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你已经成功监听链上事件</span><br></pre></td></tr></table></figure>
+<p>这是：</p>
+<h1 id="真正-web3-后端核心能力">真正 Web3 后端核心能力</h1>
+<hr>
+<h1 id="十二-下一步真正高级">十二、下一步（真正高级）</h1>
+<p>现在你只是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打印原始 Log</span><br></pre></td></tr></table></figure>
+<p>下一步你会：</p>
+<h1 id="解析-event">解析 Event</h1>
+<p>得到：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from</span><br><span class="line">to</span><br><span class="line">amount</span><br></pre></td></tr></table></figure>
+<p>也就是：</p>
+<figure class="highlight text"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">真正业务数据</span><br></pre></td></tr></table></figure>
+<p>这是下一阶段最关键部分。</p>
+<blockquote></blockquote>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/05/17/Web3系统学习系列05-Web3j基础/" data-toggle="tooltip" data-placement="top" title="Web3系统学习系列05-Web3j基础">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#web3-%E7%9C%9F%E6%AD%A3%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Web3 真正核心能力</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%9B%91%E5%90%AC%E9%93%BE%E4%B8%8A%E4%BA%8B%E4%BB%B6event"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">监听链上事件（Event）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%80-%E5%85%88%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3-ethereum-event"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">一、先彻底理解 Ethereum Event</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#solidity-event-%E6%9C%AC%E8%B4%A8"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Solidity Event 本质</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%93%BE%E4%B8%8A%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">链上消息队列</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#event-%E7%9A%84%E5%BA%95%E5%B1%82%E6%9C%AC%E8%B4%A8"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Event 的底层本质</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-event-%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">为什么 Event 非常重要？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BA%8C-transfer-event-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">二、Transfer Event 长什么样？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#indexed-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">indexed 是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">为什么这么设计？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%89-%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B-java-%E7%9B%91%E5%90%AC"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">三、现在开始 Java 监听</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#step-1%E6%B7%BB%E5%8A%A0-import"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">Step 1：添加 Import</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0-rxjava"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">为什么会出现 RxJava？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%9B%9B-%E5%AE%9A%E4%B9%89-transfer-event"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">四、定义 Transfer Event</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%BF%99%E9%87%8C%E5%88%B0%E5%BA%95%E5%9C%A8%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">这里到底在干什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#true-%E7%9A%84%E5%90%AB%E4%B9%89%E9%9D%9E%E5%B8%B8%E5%85%B3%E9%94%AE"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">true 的含义（非常关键）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A6%82%E6%9E%9C%E5%86%99%E9%94%99%E4%BC%9A%E6%80%8E%E6%A0%B7"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">如果写错会怎样？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BA%94-%E7%94%9F%E6%88%90-event-topic"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">五、生成 Event Topic</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">这是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#event-signature-hash"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">Event Signature Hash</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ethereum-%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%AB-event"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">Ethereum 如何识别 Event？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#topic0-%E6%B0%B8%E8%BF%9C%E6%98%AF-event-hash"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">topic0 永远是 Event Hash</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%AD-%E5%88%9B%E5%BB%BA-filter%E5%85%B3%E9%94%AE"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">六、创建 Filter（关键）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%BF%99%E9%87%8C%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">这里发生了什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">参数详细解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1latest"><span class="toc-nav-number">25.1.</span> <span class="toc-nav-text">1）LATEST</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2contractaddress"><span class="toc-nav-number">25.2.</span> <span class="toc-nav-text">2）contractAddress</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3addsingletopic"><span class="toc-nav-number">25.3.</span> <span class="toc-nav-text">3）addSingleTopic()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B8%83-%E7%9C%9F%E6%AD%A3%E5%BC%80%E5%A7%8B%E8%AE%A2%E9%98%85"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">七、真正开始订阅</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#step-2%E8%AE%A2%E9%98%85-event-stream"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">Step 2：订阅 Event Stream</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ethlogflowable-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">ethLogFlowable 是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%AB-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%8E%B0%E5%9C%A8%E5%8F%AF%E8%83%BD%E6%B2%A1%E5%8F%8D%E5%BA%94"><span class="toc-nav-number">29.</span> <span class="toc-nav-text">八、为什么现在可能“没反应”？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%B9%9D-%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">30.</span> <span class="toc-nav-text">九、如何测试？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8E%BB-metamask-%E8%BD%AC%E4%B8%80%E6%AC%A1-token"><span class="toc-nav-number">31.</span> <span class="toc-nav-text">去 MetaMask 转一次 Token</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8D%81-%E4%BF%9D%E6%8C%81%E7%A8%8B%E5%BA%8F%E4%B8%8D%E9%80%80%E5%87%BA"><span class="toc-nav-number">32.</span> <span class="toc-nav-text">十、保持程序不退出</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8D%81%E4%B8%80-%E7%8E%B0%E5%9C%A8%E4%BD%A0%E4%BC%9A%E7%9C%8B%E5%88%B0%E4%BB%80%E4%B9%88"><span class="toc-nav-number">33.</span> <span class="toc-nav-text">十一、现在你会看到什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%9C%9F%E6%AD%A3-web3-%E5%90%8E%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B"><span class="toc-nav-number">34.</span> <span class="toc-nav-text">真正 Web3 后端核心能力</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8D%81%E4%BA%8C-%E4%B8%8B%E4%B8%80%E6%AD%A5%E7%9C%9F%E6%AD%A3%E9%AB%98%E7%BA%A7"><span class="toc-nav-number">35.</span> <span class="toc-nav-text">十二、下一步（真正高级）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%A7%A3%E6%9E%90-event"><span class="toc-nav-number">36.</span> <span class="toc-nav-text">解析 Event</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Web3" title="Web3">Web3</a>
+                        
+                          <a class="tag" href="/tags/#Web3j" title="Web3j">Web3j</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://www.douban.com/people/80901919/" target="_blank">豆瓣 十渊</a></li>
+                    
+                        <li><a href="https://github.com/niziming" target="_blank">GitHub niziming</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("/js/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com//localhost/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 十渊 2026
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    re-Ported by <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a> |
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >-->
+                    <!--</iframe>-->
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=niziming&amp;repo=hexo-blog&amp;type=star&amp;count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document,
+          t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("/js/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'https://niziming.github.io/';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', '/js/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
